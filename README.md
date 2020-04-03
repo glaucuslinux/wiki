@@ -9,7 +9,7 @@ https://gitter.im/glaucuslinux/wiki?utm_source=badge&utm_medium=badge&utm_campai
 glaucus's wiki
 
 ## Community
-* [Discord](https://discord.gg/gZSHj65)
+* [Discord](https://discord.gg/nDKNmNc)
 * [Gitter](https://gitter.im/glaucuslinux/wiki)
 * [Reddit](https://www.reddit.com/r/glaucus)
 * [Telegram](https://t.me/glaucuslinux)
