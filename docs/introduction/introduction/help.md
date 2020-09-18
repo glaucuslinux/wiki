@@ -7,7 +7,7 @@ then kindly refer to the main Issues page for glaucus.
 glaucus voyagers (maintainers) are willing to offer extended support to fellow
 sailors on the following platforms:
 
-*   [Discord](https://discord.gg/gZSHj65)
+*   [Discord](https://discord.gg/nDKNmNc)
 *   [Gitter](https://gitter.im/glaucuslinux/glaucus)
 *   [Reddit](https://www.reddit.com/r/glaucus)
 *   [Telegram](https://t.me/glaucuslinux)
