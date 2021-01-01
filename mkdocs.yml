@@ -90,7 +90,7 @@ theme:
   palette:
     primary: Blue Grey
     accent: Amber
-copyright: "<p>Copyright © 2019-2020, <a href='mailto:firasuke@glaucuslinux.org'>Firas Khalil Khana</a></p>
+copyright: "<p>Copyright © 2018-2021, <a href='mailto:firasuke@glaucuslinux.org'>Firas Khalil Khana</a></p>
 <p>Distributed under the terms of the <a href='https://github.com/glaucuslinux/glaucus/blob/master/LICENSE'>ISC</a> License</p>
 <p>Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.</p>"
 repo_url: https://github.com/glaucuslinux/glaucus
