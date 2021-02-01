@@ -1,243 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://wiki.glaucuslinux.org/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/foreword/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/audience/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/glaucus-target-architectures/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/glaucus-and-standards/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/rationale-for-cerata/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/prerequisites/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/typography/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/structure/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/preface/errata/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/introduction/introduction/how-to-build-glaucus/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/introduction/introduction/resources/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/introduction/introduction/help/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/preparing-the-host-system/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/preparing-the-host-system/host-system-requirements/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/preparing-the-host-system/building-glaucus-in-stages/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/cerata-and-patches/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/cerata-and-patches/all-cerata/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/cerata-and-patches/needed-patches/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/adding-the-glaucus-user-and-group/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/cloning-the-glaucus-repository/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/initializing-the-glaucus-repository/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/setting-up-the-environment/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/about-ccus-and-ceus/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/final-preparations/about-the-test-suites/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-toolchain/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-toolchain/toolchain-technical-notes/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-toolchain/general-compilation-instructions/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-chroot-environment/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-chroot-environment/stripping/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-the-toolchain-and-the-chroot-environment/constructing-the-chroot-environment/changing-ownership/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/preparing-virtual-kernel-file-systems/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/package-management/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/entering-the-chroot-environment/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/creating-directories/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/creating-essential-files-and-symlinks/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/adjusting-the-toolchain/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/about-debugging-symbols/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/stripping-again/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/installing-basic-system-cerata/cleaning-up/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/overview-of-device-and-module-handling/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/managing-devices/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/general-network-configuration/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/s6-boot-scripts-usage-and-configuration/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/oksh-startup-files/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/system-configuration/creating-the-etc-shells-file/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/making-glaucus-bootable/introduction/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/making-glaucus-bootable/creating-the-etc-fstab-file/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/the-end/the-end/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/the-end/get-counted/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/the-end/rebooting-the-system/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/constructing-and-envenomating-glaucus/the-end/what-now/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/appendices/acronyms-and-terms/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/appendices/acknowledgements/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/appendices/cysts/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/appendices/s6-boot-scripts/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wiki.glaucuslinux.org/appendices/glaucus-licenses/the-isc-license/</loc>
-     <lastmod>2021-01-01</lastmod>
+     <lastmod>2021-02-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
