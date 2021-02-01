@@ -203,11 +203,11 @@ pages).
 But unfortunately (or fortunately), it was at this point that I began to regret
 my poor design decisions that could be summarized in the following list:
 
-1.   I went with the latest upstream version for available software, and by
-     latest I the developmental versions or git versions, which was easier to
-     upgrade as submodules but was harder to maintain due to the constant
+1.   I went with the latest upstream versions for available software, and by
+     latest I mean the development versions or git versions, which were easier
+     to upgrade as submodules but harder to maintain due to the constant
      changes.  I had a cross GCC musl toolchain built with the latest
-     developmental versions of GCC 10, gmp, mpfr, mpc, isl (the latest ISL with
+     development versions of GCC 10, gmp, mpfr, mpc, isl (the latest ISL with
      Graphite optimizations enabled) and zstd (since zstd support was added to
      GCC 10, this meant that this toolchain performed LTO optimizations using
      zstd as the default compression method and zlib as the fallback method).
