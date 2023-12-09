@@ -14,10 +14,8 @@ glaucus's wiki by [Cevdet Arda](https://github.com/cevdetarda)
 * [YouTube](https://www.youtube.com/@glaucuslinux)
 
 ## Mirrors
-* [BitBucket](https://bitbucket.org/glaucuslinux/wiki)
 * [Codeberg](https://codeberg.org/glaucuslinux/wiki)
 * [Framagit](https://framagit.org/glaucuslinux/wiki)
 * [GitHub](https://github.com/glaucuslinux/wiki)
 * [GitLab](https://gitlab.com/glaucuslinux/wiki)
-* [NotABug](https://notabug.org/glaucuslinux/wiki)
 * [SourceHut](https://git.sr.ht/~glaucuslinux/wiki)
