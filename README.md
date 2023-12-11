@@ -3,7 +3,6 @@ glaucus's wiki by [Cevdet Arda](https://github.com/cevdetarda)
 
 ## Community
 * [Discord](https://discord.gg/nDKNmNc)
-* [Gitter](https://gitter.im/glaucuslinux/wiki)
 * [Reddit](https://www.reddit.com/r/glaucus)
 * [Telegram](https://t.me/glaucuslinux)
 * [Twitter](https://twitter.com/glaucuslinux)
