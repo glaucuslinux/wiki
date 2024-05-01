@@ -1,5 +1,5 @@
 ---
-title: Naming Convention - glaucus Wiki
+title: Naming Convention
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
@@ -18,24 +18,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
       <td>a single group of packages</td>
     </tr>
     <tr>
-      <th scope='row'>clusters</th>
-      <td>multiple groups of packages</td>
-    </tr>
-    <tr>
-      <th scope='row'>concentrate</th>
-      <td>a single build-time dependency</td>
-    </tr>
-    <tr>
-      <th scope='row'>concentrates</th>
-      <td>multiple build-time dependencies</td>
-    </tr>
-    <tr>
       <th scope='row'>cyst</th>
       <td>a single run-time dependency</td>
-    </tr>
-    <tr>
-      <th scope='row'>cysts</th>
-      <td>multiple run-time dependencies</td>
     </tr>
     <tr>
       <th scope='row'>envenomate</th>
@@ -66,20 +50,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
       <td>a single directory that holds the build output of a single package</td>
     </tr>
     <tr>
-      <th scope='row'>sacs</th>
-      <td>multiple directories that hold the build output of multiple packages</td>
-    </tr>
-    <tr>
       <th scope='row'>venom</th>
       <td>a single directory that holds a zstd tarball of a sac along with a checksum file of its contents</td>
     </tr>
     <tr>
       <th scope='row'>voyager</th>
       <td>a single glaucus developer or package maintainer</td>
-    </tr>
-    <tr>
-      <th scope='row'>voyagers</th>
-      <td>multiple glaucus developers or package maintainers</td>
     </tr>
   </tbody>
 </table>

@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: A simple and lightweight Linux® distribution based on musl libc and toybox
   image:
-    file: ../../assets/glaucus-logo.png
+    file: ../../assets/glaucus-logo.svg
   actions:
     - text: Naming Convention
       link: /naming-convention/
