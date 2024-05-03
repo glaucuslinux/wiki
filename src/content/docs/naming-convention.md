@@ -18,31 +18,15 @@ description: A simple and lightweight Linux® distribution based on musl libc an
       <td>a single group of packages</td>
     </tr>
     <tr>
-      <th scope='row'>cyst</th>
-      <td>a single run-time dependency</td>
-    </tr>
-    <tr>
       <th scope='row'>envenomate</th>
-      <td>the process of building a package from source</td>
-    </tr>
-    <tr>
-      <th scope='row'>fleet</th>
-      <td>all distributions based on glaucus</td>
-    </tr>
-    <tr>
-      <th scope='row'>genera</th>
-      <td>multiple projects forked from glaucus</td>
+      <td>building a package from source</td>
     </tr>
     <tr>
       <th scope='row'>genome</th>
       <td>architecture</td>
     </tr>
     <tr>
-      <th scope='row'>genus</th>
-      <td>a single project forked from glaucus</td>
-    </tr>
-    <tr>
-      <th scope='row'>radula</th>
+      <th scope='row'>rad</th>
       <td>the package manager</td>
     </tr>
     <tr>
@@ -55,7 +39,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
     </tr>
     <tr>
       <th scope='row'>voyager</th>
-      <td>a single glaucus developer or package maintainer</td>
+      <td>glaucus developer or package maintainer</td>
     </tr>
   </tbody>
 </table>
