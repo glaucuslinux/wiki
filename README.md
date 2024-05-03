@@ -1,5 +1,5 @@
 # wiki
-glaucus's wiki by [Cevdet Arda](https://github.com/cevdetarda)
+glaucus wiki
 
 ## Community
 * [Discord](https://discord.gg/nDKNmNc)
@@ -7,6 +7,9 @@ glaucus's wiki by [Cevdet Arda](https://github.com/cevdetarda)
 * [Telegram](https://t.me/glaucuslinux)
 * [Twitter](https://twitter.com/glaucuslinux)
 * [YouTube](https://www.youtube.com/@glaucuslinux)
+
+## Voyager
+[Cevdet Arda (cevvedy)](https://github.com/cevdetarda/)
 
 ## Mirrors
 * [Codeberg](https://codeberg.org/glaucuslinux/wiki)
