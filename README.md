@@ -8,8 +8,10 @@ glaucus wiki
 * [Twitter](https://twitter.com/glaucuslinux)
 * [YouTube](https://www.youtube.com/@glaucuslinux)
 
-## Voyager
-[Cevdet Arda (cevvedy)](https://github.com/cevdetarda/)
+## Voyagers
+* [Cevdet Arda (cevvedy)](https://github.com/cevdetarda/)
+* Firas Khalil Khana (firasuke) <[firasuke@glaucuslinux.org](
+mailto:firasuke@glaucuslinux.org)>
 
 ## Mirrors
 * [Codeberg](https://codeberg.org/glaucuslinux/wiki)

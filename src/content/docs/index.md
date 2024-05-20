@@ -1,5 +1,5 @@
 ---
-title: glaucus Wiki
+title: glaucus
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 template: splash
 hero:
@@ -7,11 +7,12 @@ hero:
   image:
     file: ../../assets/glaucus-logo.svg
   actions:
+    - text: Install
+      link: /install/
+      icon: right-arrow
+      variant: primary
     - text: Naming Convention
       link: /naming-convention/
       icon: right-arrow
       variant: primary
-    - text: View on GitHub
-      link: https://github.com/glaucuslinux/glaucus
-      icon: external
 ---

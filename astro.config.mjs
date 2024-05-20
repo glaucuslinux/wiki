@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'glaucus Wiki',
+			title: 'glaucus',
 			logo: {
         src: './src/assets/glaucus-logo.svg',
       },

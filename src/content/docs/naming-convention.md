@@ -9,4 +9,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `rad`: package manager
 - `sac`: `DESTDIR`
 - `skeleton`: base group
-- `voyager`: glaucus developer or a package maintainer
+- `voyager`: glaucus developer or package maintainer
