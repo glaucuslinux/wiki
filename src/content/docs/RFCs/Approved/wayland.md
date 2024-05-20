@@ -149,6 +149,6 @@ The following require LLVM/Clang:
 - stuff using llvm: https://archlinux.org/packages/extra/x86_64/llvm/
 
 ## Sway
-- To get screen share working use
-  - grab this file from arch `etc/sway/config.d/50-systemd-user.conf`
+- To get screen share working
+  - check this file from arch `etc/sway/config.d/50-systemd-user.conf`
   - https://wiki.archlinux.org/title/XDG_Desktop_Portal
