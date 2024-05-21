@@ -1,5 +1,5 @@
 {
-  "name": "wiki",
+  "name": "glaucus wiki",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -13,7 +13,6 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/starlight": "^0.23.1",
     "astro": "^4.8.6",
-    "sharp": "^0.32.6",
-    "typescript": "^5.4.5"
+    "sharp": "^0.33.2"
   }
 }
