@@ -8,5 +8,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `clusters`: package repositories
 - `rad`: package manager
 - `sac`: `DESTDIR`
-- `skeleton`: base group
+- `skel`: base group
 - `voyager`: glaucus developer or package maintainer
