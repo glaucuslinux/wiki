@@ -3,7 +3,7 @@ title: Naming Convention
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `bubble`: live system
+- `bubble`: glaucus live
 - `cerata`: packages
 - `clusters`: package repositories
 - `rad`: package manager
