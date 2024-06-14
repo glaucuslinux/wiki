@@ -82,6 +82,7 @@ Cross:
 - https://linux.die.net/man/8/aptitude
 - https://man.archlinux.org/man/pacman.8.en
 
+- https://github.com/void-linux/void-packages/blob/master/Manual.md
 - https://docs.voidlinux.org/xbps/index.html
 - https://man.voidlinux.org/xbps-query.1
 - https://man.voidlinux.org/xbps-install.1
