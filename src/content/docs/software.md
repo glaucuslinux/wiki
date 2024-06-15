@@ -15,6 +15,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`libedit`](https://thrysoee.dk/editline/) is the default command line editor library
 * [`libressl`](https://www.libressl.org/) is the default TLS library
 * [`libudev-zero`](https://github.com/illiliti/libudev-zero) is the default libudev implementation
+* [`limine`](https://limine-bootloader.org/) is the default boot loader and manager
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation

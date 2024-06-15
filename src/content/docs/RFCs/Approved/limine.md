@@ -131,6 +131,9 @@ cp -af /home/firasuke/Downloads/Git/glaucus/initramfs iso/initramfs
 cp -af /home/firasuke/Downloads/Git/glaucus/cerata/limine/limine.cfg.iso iso/limine/limine.cfg
 cp -af /boot/vmlinuz-linux-cachyos iso/vmlinuz
 
+chown -R 0:0 cross
+chown -R 20:20 cross/var/log/wtmpd
+
 mkfs.erofs iso/rootfs cross
 
 cp -af /usr/share/limine/BOOTX64.EFI iso/EFI/BOOT
