@@ -9,12 +9,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 85.07user 85.64system 2:57.57elapsed
 ```
 
-- GNU Parallel?
-
+- For CPU/compute use || (via Weave or OpenMP)
 - For IO use asyncdispatch
-- For CPU/compute use ||
-
-- Don’t use Weave or OpenMP (yes Nim can use OpenMP with the || operator) for IO tasks, it’s made for compute. And don’t use asyncdispatch for compute.
 
 - https://www.youtube.com/watch?v=Ul8OO4vQMTw
 

@@ -3,9 +3,9 @@ title: Bootstrap
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
-- Only native stage is intended to run on glaucus
-- Arch and Fedora can be used to bootstrap glaucus (both toolchain and cross)
+Both Arch and Fedora Linux can be used to bootstrap glaucus.
+
+It is recommended to have 4 GB of memory and 16 GB of storage space to bootstrap glaucus.
 
 ## Requirements
 1. autoconf (requries GNU m4, and perl to run autom4te on tests/wrapper.in)
@@ -47,3 +47,14 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 37. xz?? (mussel)
 38. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
 39. zstd
+
+## Time
+The time required to bootstrap glaucus is measured in Build Units (BUs).
+
+Building `binutils` takes 1 Build Unit, which is approximately 1 minute on my machine.
+
+Building Stage 1 (the toolchain) takes 30 BUs.
+
+Building Stage 2 (cross glaucus) takes 45 BUs.
+
+Building Stage 3 (native glaucus) takes 90 BUs.

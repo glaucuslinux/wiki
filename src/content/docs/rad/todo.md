@@ -17,3 +17,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Nim
 - Investigate iterators and yield
 - The implicit initialization can be avoided for optimization reasons with the noinit pragma
+- doc comments
+- try errors
+- Custom types help you prevent having incorrect representations

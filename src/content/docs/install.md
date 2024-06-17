@@ -3,6 +3,9 @@ title: Install
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+## Requirements
+A minimum of 1 GB of memory and 1 GB of storage space is required to install glaucus.
+
 ## Base Packages
 1. acl
 2. attr
