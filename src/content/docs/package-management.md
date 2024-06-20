@@ -15,8 +15,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Use `install -d` instead of `mkdir`
 
 ## Repository Layout
-- `/var/cache/rad/bin` (binary packages, signed)
 - `/var/cache/rad/local` (local binary packages, contains sac (DESTDIR) + tarball + sum)
+- `/var/cache/rad/pkg` (fetched binary packages, signed)
 - `/var/cache/rad/src` (source tarballs, read-only, equals SRCD)
 - `/var/lib/rad/clusters/cerata` (official cluster, equals CERD)
 - `/var/lib/rad/clusters/custom` (custom cluster)
