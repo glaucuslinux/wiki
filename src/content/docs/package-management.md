@@ -15,17 +15,14 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Use `install -d` instead of `mkdir`
 
 ## Repository Layout
-- `/var/cache/rad/bin` (downloaded binary packages, signed)
-- `/var/cache/rad/local` (locally built binary packages from src, the final DESTDIR for package() of system cerata, contains sac (DESTDIR) + tarball + sum)
-- `/var/cache/rad/src` (source tarballs, must not be changed, remove write permissions, equals SRCD)
-
-- `/var/lib/rad/clusters/cerata` (official cluster location, equals CERD)
-- `/var/lib/rad/clusters/custom` (user-defined cluster location)
-- `/var/lib/rad/local` (used to track installed packages using another form of metadata, with checksums and files)
-
-- `/var/log/rad` (where log files are stored, equals LOGD)
-
-- `/var/tmp/rad` (where src and bld for system are, no cross and toolchain exist inside glaucus)
+- `/var/cache/rad/bin` (binary packages, signed)
+- `/var/cache/rad/local` (local binary packages, contains sac (DESTDIR) + tarball + sum)
+- `/var/cache/rad/src` (source tarballs, read-only, equals SRCD)
+- `/var/lib/rad/clusters/cerata` (official cluster, equals CERD)
+- `/var/lib/rad/clusters/custom` (custom cluster)
+- `/var/lib/rad/local` (track installed packages using another form of metadata, with checksums and files)
+- `/var/log/rad` (log files, equals LOGD)
+- `/var/tmp/rad` (temporary src and bld for native)
 
 ```sh
 # glaucus repo layout
