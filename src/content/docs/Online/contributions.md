@@ -16,6 +16,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/48174
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/52968
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/60171
+- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/68085
 
 - https://alpinelinux.org/posts/Alpine-3.19.0-released.html
 
