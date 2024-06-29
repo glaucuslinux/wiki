@@ -12,8 +12,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 
-- Use `install -d` instead of `mkdir`
-
 ## Repository Layout
 - `/var/cache/rad/local` (local binary packages, contains sac (DESTDIR) + tarball + sum)
 - `/var/cache/rad/pkg` (fetched binary packages, signed)

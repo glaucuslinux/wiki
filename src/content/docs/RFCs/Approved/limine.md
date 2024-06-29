@@ -33,17 +33,17 @@ partx -a $device
 mke2fs -t ext4 $partition
 
 rm -fr /mnt/glaucus
-install -d /mnt/glaucus
+mkdir -p /mnt/glaucus
 
 mount $partition /mnt/glaucus
 
 rsync -aHAXx cross/ /mnt/glaucus
 
-install -d /mnt/glaucus/boot
+mkdir -p /mnt/glaucus/boot
 cp -af /boot/vmlinuz-linux-cachyos /mnt/glaucus/boot/vmlinuz
 booster build --force --compression=zstd --config=/var/lib/rad/clusters/cerata/booster/booster.yaml --universal --strip /mnt/glaucus/boot/initramfs
 
-install -d /mnt/glaucus/boot/limine
+mkdir -p /mnt/glaucus/boot/limine
 
 cp -af /home/firasuke/Downloads/Git/glaucus/cerata/limine/limine.cfg.img /mnt/glaucus/boot/limine/limine.cfg
 cp -af /usr/share/limine/limine-bios.sys /mnt/glaucus/boot/limine
@@ -89,7 +89,7 @@ mkfs.fat -F 32 $partitionOne
 mke2fs -t ext4 $partitionTwo
 
 rm -fr /mnt/glaucus
-install -d /mnt/glaucus
+mkdir -p /mnt/glaucus
 
 mount $partitionTwo /mnt/glaucus
 
@@ -103,7 +103,7 @@ cp -f /home/firasuke/Downloads/Git/glaucus/cerata/limine/limine.cfg.img /mnt/gla
 
 cp -f /boot/vmlinuz-linux-cachyos /mnt/glaucus/boot/vmlinuz
 
-install -d /mnt/glaucus/boot/EFI/BOOT
+mkdir -p /mnt/glaucus/boot/EFI/BOOT
 cp -f /usr/share/limine/BOOTX64.EFI /mnt/glaucus/boot/EFI/BOOT
 
 chown -R 0:0 /mnt/glaucus
@@ -125,7 +125,7 @@ chown firasuke:firasuke glaucus.img
 
 rm -fR glaucus.iso iso
 
-install -d iso/EFI/BOOT iso/limine
+mkdir -p iso/EFI/BOOT iso/limine
 
 cp -af /home/firasuke/Downloads/Git/glaucus/initramfs iso/initramfs
 cp -af /home/firasuke/Downloads/Git/glaucus/cerata/limine/limine.cfg.iso iso/limine/limine.cfg
