@@ -4,6 +4,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 ## Notes
+- https://nim-lang.org/docs/packaging.html
 - https://github.com/nim-lang/Nim
 - https://github.com/nim-lang/csources_v2
 - https://github.com/archlinux/svntogit-community/blob/packages/nim/trunk/PKGBUILD
