@@ -11,42 +11,49 @@ It is recommended to have 4 GB of memory and 16 GB of storage space to bootstrap
 1. autoconf (requries GNU m4, and perl to run autom4te on tests/wrapper.in)
 2. automake
 3. bash
-4. bc?? (mussel)
+4. bc ?? (mussel)
 5. binutils
 6. byacc (or bison)
-7. bzip2?? (mussel)
+7. bzip2 ?? (mussel)
 8. coreutils (or toybox)
 9. diffutils
-10. findutils
-11. g++
-12. gawk?? (mussel)
-13. gcc
-14. git
-15. grep
-16. grub
-17. gzip?? (mussel)
-18. help2man (requires perl as build time dependency, requires perl-locale-gettext?) (required for libtool in cross)
-19. hostname (or inetutils required by autoconf and libtool)
-20. ldconfig (gcc)
-21. libarchive (gcc requires tar for the make target "install-headers-tar")
-22. libcap (requires bash inside progs/mkcapshdoc.sh)
-23. m4
-24. make
-25. makeinfo (binutils)
-26. meson/muon (required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
-27. patch (requires automake as build-time dependency)
-28. perl / pod2man (gcc)
-29. pod2man (required for manual pages)
-30. procps-ng (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
-31. psmisc (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
-32. rsync
-33. sed
-34. texinfo
-35. toybox (requires bash for scripts/genconfig.sh and tests)
-36. wget2
-37. xz?? (mussel)
-38. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
-39. zstd
+10. elfutils ??
+11. findutils
+12. flex ??
+13. g++
+14. gawk ?? (mussel)
+15. gcc
+16. gdbm ??
+17. gettext-tiny
+18. git
+19. grep
+20. groff ??
+21. grub
+22. gzip ?? (mussel)
+23. help2man (requires perl as build time dependency, requires perl-locale-gettext?) (required for libtool in cross)
+24. hostname (or inetutils required by autoconf and libtool)
+25. ldconfig (gcc)
+26. libarchive (gcc requires tar for the make target "install-headers-tar")
+27. libcap (requires bash inside progs/mkcapshdoc.sh)
+28. libtool
+29. m4
+30. make
+31. makeinfo (binutils)
+32. meson/muon (required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
+33. patch (requires automake as build-time dependency)
+34. perl / pod2man (gcc)
+35. pkgconf
+36. pod2man (required for manual pages)
+37. procps-ng (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
+38. psmisc (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
+39. rsync
+40. sed
+41. texinfo
+42. toybox (requires bash for scripts/genconfig.sh and tests)
+43. wget2
+44. xz ?? (mussel)
+45. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
+46. zstd
 
 ## Time
 The time required to bootstrap glaucus is measured in Build Units (BUs).
