@@ -1,8 +1,7 @@
 ---
-title: mold
+title: wlroots
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
 ## Notes
-- Provide native `tbb`
-- `xxhash` is bundled
+- Check if we need to explicitly enable `session` and `color-management` support

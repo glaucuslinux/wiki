@@ -1,8 +1,7 @@
 ---
-title: mold
+title: cmake
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
 ## Notes
-- Provide native `tbb`
-- `xxhash` is bundled
+Is `libressl` a dependency?
