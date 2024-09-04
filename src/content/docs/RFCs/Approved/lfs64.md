@@ -12,7 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/NixOS/nixpkgs/pull/229440
 
 ## Packages That Might Complain
-1. acl
+1. acl (before 2.3.2)
 2. binutils
 3. btop
 4. cmake
