@@ -11,6 +11,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - bash has default variables when cross compiling
 - glaucus bash does not work with readline even with LIBS=-ledit and when using libreadline.a (check?)
 
-- `libcap` requires bash in cross stage
-- `toybox` requires bash in cross stage (hard to patch)
-- `zlib-ng` requires bash in cross stage
+- `libcap` requires bash
+- `toybox` requires bash (hard to patch)
+- `zlib-ng` requires bash

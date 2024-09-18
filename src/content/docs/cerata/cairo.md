@@ -3,5 +3,8 @@ title: cairo
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
-- Older cairo versions apparently use autotools for configuration, rendering existing recipe files old, and the new meson configuration is good with regards to options
+- Disable `dwrite` (Microsoft's DirectWrite)
+- There is a circular dependency between cairo and harfbuzz to build pango (cairo -> harfbuzz -> cairo -> pango) (LFS)
+- Does it require the `buildroot` patch?
+- Does it require `expat` and `python`?
+- Test suite is broken (according to LFS)

@@ -18,6 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/60171
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/68085
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71187
+- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71605
 
 - https://alpinelinux.org/posts/Alpine-3.19.0-released.html
 
@@ -33,6 +34,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Dragora
 - https://notabug.org/dragora/dragora/pulls/82
+
+## nsss
+- https://github.com/skarnet/nsss/issues/3
+- https://github.com/skarnet/nsss/issues/4
 
 ## procps-ng
 - https://gitlab.com/procps-ng/procps/-/merge_requests/158
