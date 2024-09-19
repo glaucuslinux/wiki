@@ -1,5 +1,5 @@
 ---
-title: opendoas
+title: openresolv
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
