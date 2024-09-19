@@ -3,7 +3,8 @@ title: s6-linux-init
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
+- There is no test suite
+- Consider running `s6-linux-init-maker` in `build`?
 `sudo s6-linux-init-maker -c /etc/s6/current -L -f /etc/s6/skel someRandomDir`
 
 - Do not use `-G "agetty -8 -a root -L tty1 115200"` for early Getty because we want `tty1` to depend on `hostname` (to be able to use it with different kernels that might hardcode `hostname`)
