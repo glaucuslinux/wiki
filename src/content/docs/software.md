@@ -21,6 +21,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
+* [`neatvi`](https://github.com/aligrudi/neatvi) is the default text editor
 * [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
 * [`nsss`](https://skarnet.org/software/nsss/) is the default NSS implementation
 * [`opendoas`](https://github.com/Duncaen/OpenDoas) is the default privilege escalation tool
@@ -31,12 +32,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`s6`](https://skarnet.org/software/s6/) is the default init system
 * [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
 * [`samurai`](https://github.com/michaelforney/samurai) is the default ninja implementation
+* [`sdhcp`](https://github.com/michaelforney/sdhcp) is the default DHCP client
 * [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`ugrep`](https://ugrep.com/) is the default grep implementation
 * [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
-* [`vim`](https://www.vim.org/) is the default text editor
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 * [`yash`](https://magicant.github.io/yash/) is the default unix shell
 * [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
