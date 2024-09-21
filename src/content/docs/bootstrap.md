@@ -58,10 +58,10 @@ It is recommended to have 4 GB of memory and 16 GB of storage space to bootstrap
 ## Time
 The time required to bootstrap glaucus is measured in Build Units (BUs).
 
-Building `binutils` takes 1 Build Unit, which is approximately 1 minute on my machine.
+Building `binutils` takes 1 BU.
 
-Building Stage 1 (the toolchain) takes 30 BUs.
+Building Stage 1 (the toolchain) takes 30-35 BUs.
 
-Building Stage 2 (cross glaucus) takes 45 BUs.
+Building Stage 2 (cross glaucus) takes 45-50 BUs.
 
 Building Stage 3 (native glaucus) takes 90 BUs.

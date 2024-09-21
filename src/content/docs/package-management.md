@@ -39,6 +39,7 @@ cerata/$cluster/$nom/{$nom-$ver.tar.zst, sum}
   - .a (static libraries)
   - .alias
   - .bs (perl files)
+  - .dbg
   - .la (libtool archives)
   - .packlist (perl files) (alpine removes them)
   - .pod (perl files) (void removes them)
