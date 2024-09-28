@@ -3,10 +3,9 @@ title: toybox
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
-Remove upstream patch to fix install mode in upcoming release (0.8.11)
+- `toybox`'s `cpio` defaults to newc
+- Do we need to run `scripts/genconfig.sh` before make?
 
-Examine toybox further and see what packages can be replaced with it:
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/status.html

@@ -7,8 +7,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Cerata
 - Patches are typically applied in prepare
-- Patches to configure/makefile should be put in configure
 - Packages that use autoreconf, need runstatedir (copied from the system)
+- Try to group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
+- Group all commands that are repeated 3 or more times into `for` loops
+- Packages should not install to the following directories: `/boot`, `/dev`, `/mnt`, `/run`, `/sys`, `/tmp`
 
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 

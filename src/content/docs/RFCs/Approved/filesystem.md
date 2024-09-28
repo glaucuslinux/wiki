@@ -5,7 +5,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Check if we should give /var/mail permissions of 1777 (Arch?)
 
+- `/boot/efi` is deprecated
 - `/etc/mtab` is deprecated
+- `/var/db` is deprecated (a BSD relic that has been replaced with `/var/lib`)
 - `/var/lock` is a symlink to `../run/lock` (`/run/lock`)
 - `/var/run` is a symlink to `../run` (`/run`)
 - `/var/spool/mail` is a symlink to `../mail` (`/var/mail`)

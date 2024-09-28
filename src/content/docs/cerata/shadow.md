@@ -13,3 +13,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - enable `fcaps` for better security (only in `native`)
 - enable `yescrypt` for better password hashing scalability
 - No need to set `--with-group-name-max-length` as the default value is now `32`
+- https://github.com/shadow-maint/shadow/issues/999

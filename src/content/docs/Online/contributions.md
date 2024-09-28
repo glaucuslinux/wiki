@@ -19,6 +19,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/68085
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71187
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71605
+- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/72339
 
 - https://alpinelinux.org/posts/Alpine-3.19.0-released.html
 
@@ -35,6 +36,13 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Dragora
 - https://notabug.org/dragora/dragora/pulls/82
 
+## gettext-tiny
+ -https://github.com/sabotage-linux/gettext-tiny/issues/64
+- https://github.com/sabotage-linux/gettext-tiny/issues/73
+
+## netbsd-curses
+- https://github.com/sabotage-linux/netbsd-curses/issues/58
+
 ## nsss
 - https://github.com/skarnet/nsss/issues/3
 - https://github.com/skarnet/nsss/issues/4
@@ -44,9 +52,14 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## shadow
 - https://github.com/shadow-maint/shadow/issues/945
+- https://github.com/shadow-maint/shadow/issues/1082
 
 ## ugrep
 - https://github.com/Genivia/ugrep/issues/383
+
+## util-linux
+- https://github.com/util-linux/util-linux/pull/3212
+- https://github.com/util-linux/util-linux/pull/3213
 
 ## Void
 - https://github.com/void-linux/void-packages/pull/48214
