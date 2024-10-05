@@ -9,6 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - slibtool does not install `.la` files by default (can be reversed by using clibtool)
 - `slibtoolize` will be provided in the future (either as a mode or a symlink)
 - `ltdl` is no longer needed (it serves to provide a `dlopen()` functionality on systems which do not offer it, i.e. HP-UX and BeOS)
+- libtoolize fails as a symlink to slibtool (several build tools complain e.g. gmp)
 
 ## Resources
 - https://wiki.gentoo.org/wiki/Slibtool

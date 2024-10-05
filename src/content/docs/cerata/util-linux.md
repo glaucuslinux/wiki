@@ -3,7 +3,7 @@ title: util-linux
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
+- `./autogen.sh` requires GNU `gettext`, so we run `autoreconf -vfis` instead
 - requires `libcap-ng` to build `setpriv` (glaucus already provides `s6-setuidgid`) (https://forum.artixlinux.org/index.php/topic,3360.0.html)
 - `gawk` is hardcoded in in `tools/all_syscalls`
 - use `kill` from `util-linux` instead of the one from `procps-ng` because that is what most distributions are using

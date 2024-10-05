@@ -20,3 +20,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/fim/openpam-modules
 - https://github.com/dslm4515/BMLFS/issues/29#issuecomment-1428896779
 - https://github.com/glaucuslinux/cerata/issues/8
+- https://lwn.net/Articles/992948/

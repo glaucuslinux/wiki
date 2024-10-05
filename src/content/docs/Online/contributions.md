@@ -54,6 +54,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/shadow-maint/shadow/issues/945
 - https://github.com/shadow-maint/shadow/issues/1082
 
+## slibtool
+- https://dev.midipix.org/cross/slibtool/pull-request/78
+
 ## ugrep
 - https://github.com/Genivia/ugrep/issues/383
 
