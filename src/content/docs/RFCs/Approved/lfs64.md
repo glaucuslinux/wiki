@@ -10,6 +10,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://git.alpinelinux.org/aports/log/?qt=grep&q=lfs64
 - https://git.alpinelinux.org/aports/tree/main/acl
 - https://github.com/NixOS/nixpkgs/pull/229440
+- https://os-wiki.ewe.moe/dev/topic/toolchain/musl
 
 ## Packages That Might Complain
 1. acl (before 2.3.2)

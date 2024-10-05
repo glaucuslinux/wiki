@@ -4,4 +4,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - glaucus uses `chattr` and `lsattr` from `toybox`
+- build requires `texi2dvi`
 - Manually remove static libraries
