@@ -16,5 +16,4 @@ mailto:firasuke@glaucuslinux.org)>
 ## Mirrors
 - [Codeberg](https://codeberg.org/glaucuslinux/wiki)
 - [GitHub](https://github.com/glaucuslinux/wiki)
-- [GitLab](https://gitlab.com/glaucuslinux/wiki)
 - [SourceHut](https://git.sr.ht/~glaucuslinux/wiki)
