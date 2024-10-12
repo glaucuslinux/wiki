@@ -91,6 +91,8 @@ Cross:
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
+- https://wiki.archlinux.org/title/Arch_package_guidelines
+- https://os-wiki.ewe.moe/dev/guide/packaging
 
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/quickstart/index.html
