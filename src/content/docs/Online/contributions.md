@@ -57,6 +57,15 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## slibtool
 - https://dev.midipix.org/cross/slibtool/pull-request/78
 
+## toybox
+- https://github.com/landley/toybox/issues/168
+- https://github.com/landley/toybox/issues/170
+- https://github.com/landley/toybox/issues/176
+- https://github.com/landley/toybox/issues/243
+- https://github.com/landley/toybox/issues/486
+- https://github.com/landley/toybox/issues/519
+- https://github.com/landley/toybox/issues/523
+
 ## ugrep
 - https://github.com/Genivia/ugrep/issues/383
 

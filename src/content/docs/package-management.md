@@ -7,6 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Cerata
 - Patches are typically applied in prepare
+- Newly crafted patches should use `-p0`
 - Packages that use autoreconf, need runstatedir (copied from the system)
 - Try to group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group all commands that are repeated 3 or more times into `for` loops
@@ -29,7 +30,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 # Source packages (git repos only):
 
-cerata/$cluster/$nom/{ceras, build.native}
+cerata/$cluster/$nom/{ceras, build}
 
 # Binary packages
 

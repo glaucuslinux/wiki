@@ -6,6 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `bubble`: live system
 - `cerata`: packages
 - `clusters`: package repositories
+- `fleet`: community packages
 - `rad`: package manager
 - `sac`: `DESTDIR`
 - `skel`: base group
