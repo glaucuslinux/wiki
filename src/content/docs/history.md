@@ -38,11 +38,9 @@ Switch to toybox as the default unix user space.
 
 Switch to s6 as the default init system.
 
-Switch to s6-rc as the default unix shell.
+Switch to s6-rc as the default service manager.
 
 Switch to yash as the default unix shell.
-
-Switch to zstd as the default compression algorithm.
 
 ## First Release
 First release was in August 31st, 2019.

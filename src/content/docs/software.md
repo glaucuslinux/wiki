@@ -36,7 +36,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
-* [`ugrep`](https://ugrep.com/) is the default grep implementation
 * [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 * [`yash`](https://magicant.github.io/yash/) is the default unix shell

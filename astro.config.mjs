@@ -14,7 +14,6 @@ export default defineConfig({
         codeberg: 'https://codeberg.org/glaucuslinux/glaucus',
         discord: 'https://discord.gg/nDKNmNc',
         github: 'https://github.com/glaucuslinux/glaucus',
-        gitlab: 'https://gitlab.com/glaucuslinux/glaucus',
         reddit: 'https://www.reddit.com/r/glaucus',
         telegram: 'https://t.me/glaucuslinux',
         twitter: 'https://twitter.com/glaucuslinux',
@@ -62,10 +61,6 @@ export default defineConfig({
         {
           label: "Software",
           link: "/software",
-        },
-        {
-          label: "TODO",
-          link: "/todo",
         },
       ],
     }),
