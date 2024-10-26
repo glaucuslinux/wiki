@@ -40,6 +40,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
  -https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73
 
+## limine
+- https://github.com/limine-bootloader/limine/pull/372
+- https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1
+
 ## netbsd-curses
 - https://github.com/sabotage-linux/netbsd-curses/issues/58
 
@@ -65,6 +69,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/landley/toybox/issues/486
 - https://github.com/landley/toybox/issues/519
 - https://github.com/landley/toybox/issues/523
+
+- https://github.com/landley/toybox/pull/524
 
 ## ugrep
 - https://github.com/Genivia/ugrep/issues/383

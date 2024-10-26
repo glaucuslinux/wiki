@@ -16,40 +16,41 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 7. bzip2 ?? (mussel)
 8. coreutils (or toybox)
 9. diffutils
-10. elfutils ??
-11. findutils
-12. flex ??
-13. g++
-14. gawk ?? (mussel)
-15. gcc
-16. gdbm ??
-17. gettext-tiny
-18. git
-19. grep
-20. groff ??
-21. grub
-22. gzip ?? (mussel)
-23. help2man (requires perl as build time dependency, requires perl-locale-gettext?) (required for libtool in cross)
-24. hostname (or inetutils required by autoconf and libtool)
-25. ldconfig (gcc)
-26. libarchive (gcc requires tar for the make target "install-headers-tar")
-27. libcap (requires bash inside progs/mkcapshdoc.sh)
-28. libtool
-29. m4
-30. make
-31. makeinfo (binutils)
-32. meson/muon (required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
-33. patch (requires automake as build-time dependency)
-34. perl / pod2man (gcc)
-35. pkgconf
-36. pod2man (required for manual pages)
-37. procps-ng (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
-38. psmisc (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
-39. rsync
-40. sed
-41. texinfo
-42. toybox (requires bash for scripts/genconfig.sh and tests)
-43. wget2
-44. xz ?? (mussel)
-45. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
-46. zstd
+10. dosfstools
+11. elfutils ??
+12. findutils
+13. flex ??
+14. g++
+15. gawk ?? (mussel)
+16. gcc
+17. gdbm ??
+18. gettext-tiny
+19. git
+20. grep
+21. groff ??
+22. grub
+23. gzip ?? (mussel)
+24. help2man (requires perl as build time dependency, requires perl-locale-gettext?) (required for libtool in cross)
+25. hostname (or inetutils required by autoconf and libtool)
+26. ldconfig (gcc)
+27. libarchive (gcc requires tar for the make target "install-headers-tar")
+28. libcap (requires bash inside progs/mkcapshdoc.sh)
+29. libtool
+30. m4
+31. make
+32. makeinfo (binutils)
+33. meson/muon (required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
+34. patch (requires automake as build-time dependency)
+35. perl / pod2man (gcc)
+36. pkgconf
+37. pod2man (required for manual pages)
+38. procps-ng (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
+39. psmisc (requires autopoint from gettext-tiny and autoconf and automake for autogen.sh)
+40. rsync
+41. sed
+42. texinfo
+43. toybox (requires bash for scripts/genconfig.sh and tests)
+44. wget2
+45. xz ?? (mussel)
+46. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
+47. zstd
