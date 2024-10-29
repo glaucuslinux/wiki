@@ -40,6 +40,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
  -https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73
 
+## kmod
+- https://github.com/kmod-project/kmod/issues/55#issuecomment-2439723713
+
 ## limine
 - https://github.com/limine-bootloader/limine/pull/372
 - https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1

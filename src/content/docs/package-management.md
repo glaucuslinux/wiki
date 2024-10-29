@@ -12,7 +12,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Try to group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group all commands that are repeated 3 or more times into `for` loops
 - Packages should not install to the following directories: `/boot`, `/dev`, `/mnt`, `/run`, `/sys`, `/tmp`
-
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 
 ## Repository Layout
@@ -80,13 +79,11 @@ Cross:
 - https://linux.die.net/man/8/apt-get
 - https://linux.die.net/man/8/aptitude
 - https://man.archlinux.org/man/pacman.8.en
-
 - https://github.com/void-linux/void-packages/blob/master/Manual.md
 - https://docs.voidlinux.org/xbps/index.html
 - https://man.voidlinux.org/xbps-query.1
 - https://man.voidlinux.org/xbps-install.1
 - https://man.voidlinux.org/xbps-remove.1
-
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries
 - https://wiki.archlinux.org/title/Pacman/Rosetta
@@ -94,10 +91,8 @@ Cross:
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://os-wiki.ewe.moe/dev/guide/packaging
-
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/quickstart/index.html
 - https://devmanual.gentoo.org/general-concepts/dependencies/#implicit-system-dependency
-
 - https://michael.stapelberg.ch/posts/2020-05-09-distri-hermetic-packages/
 - https://github.com/kreatolinux

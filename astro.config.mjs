@@ -29,9 +29,9 @@ export default defineConfig({
           link: "/bootstrap",
         },
         {
-          label: "cerata",
+          label: "cerata Build Notes",
           collapsed: true,
-          autogenerate: { directory: "cerata" },
+          autogenerate: { directory: "cerata Build Notes" },
         },
         {
           label: "History",
