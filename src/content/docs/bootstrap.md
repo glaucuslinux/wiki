@@ -23,23 +23,21 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 14. git
 15. grep (or toybox)
 16. gzip
-17. help2man (requires perl as build time dependency, requires perl-locale-gettext?) (required for libtool in cross)
-18. hostname (or inetutils required by autoconf and libtool)
-19. ldconfig (gcc)
-20. libarchive (gcc requires tar for the make target "install-headers-tar")
-21. libcap (requires bash inside progs/mkcapshdoc.sh)
-22. m4
-23. make
-24. mawk (or gawk)
-25. meson/muon (required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
-26. patch (or toybox)
-27. perl / pod2man (gcc)
-28. pkgconf
-29. reflex (or flex)
-30. sed (or toybox)
-31. slibtool (or libtool)
-32. toybox (requires bash for scripts/genconfig.sh and tests)
-33. wget2
-34. xz
-35. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
-36. zstd
+17. ldconfig (gcc)
+18. libarchive (gcc requires tar for the make target "install-headers-tar")
+19. libcap (requires bash inside progs/mkcapshdoc.sh)
+20. m4
+21. make
+22. mawk (or gawk)
+23. muon (or meson, required by muon to cross compile it on a glibc host) (muon does not support cross compilation)
+24. patch (or toybox)
+25. perl
+26. pkgconf
+27. reflex (or flex)
+28. sed (or toybox)
+29. slibtool (or libtool)
+30. toybox (requires bash for scripts/genconfig.sh and tests)
+31. wget2
+32. xz
+33. zlib-ng (or zlib) (requires bash for configure script, this can be patched easily)
+34. zstd
