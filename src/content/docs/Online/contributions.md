@@ -12,7 +12,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/14920
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/14921
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/15336
-
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/48174
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/52968
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/60171
@@ -21,7 +20,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71605
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/72339
 - https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/74573
-
 - https://alpinelinux.org/posts/Alpine-3.19.0-released.html
 
 ## Arch
@@ -76,7 +74,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/landley/toybox/issues/486
 - https://github.com/landley/toybox/issues/519
 - https://github.com/landley/toybox/issues/523
-
 - https://github.com/landley/toybox/pull/524
 
 ## ugrep
