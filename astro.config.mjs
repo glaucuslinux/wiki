@@ -34,6 +34,10 @@ export default defineConfig({
           autogenerate: { directory: "cerata Build Notes" },
         },
         {
+          label: "Contributions",
+          link: "/online/contributions",
+        },
+        {
           label: "History",
           link: "/history",
         },

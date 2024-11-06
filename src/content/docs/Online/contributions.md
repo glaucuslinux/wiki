@@ -37,6 +37,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Dragora
 - https://notabug.org/dragora/dragora/pulls/82
 
+## findutils
+- https://savannah.gnu.org/bugs/index.php?66418
+
 ## gettext-tiny
  -https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73
