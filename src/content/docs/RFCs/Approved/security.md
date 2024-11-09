@@ -18,6 +18,7 @@ glaucus follows the principle of least privilege; each part of the system should
 * Stack Smashing Protection (SSP)
 
 ## Resources
+- https://github.com/jvoisin/compiler-flags-distro
 - https://github.com/trimstray/the-practical-linux-hardening-guide/wiki/Bootloader-and-Partitions
 - https://github.com/k4yt3x/sysctl
 - https://github.com/hashbang/hardening/blob/master/README.md
