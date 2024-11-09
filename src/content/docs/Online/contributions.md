@@ -62,6 +62,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## procps-ng
 - https://gitlab.com/procps-ng/procps/-/merge_requests/158
 
+## Serpent OS
+- https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3
+
 ## shadow
 - https://github.com/shadow-maint/shadow/issues/945
 - https://github.com/shadow-maint/shadow/issues/1082
