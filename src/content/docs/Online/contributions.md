@@ -35,6 +35,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Dragora
 - https://notabug.org/dragora/dragora/pulls/82
 
+## eiwd
+- https://github.com/illiliti/eiwd/pull/8
+
 ## findutils
 - https://savannah.gnu.org/bugs/index.php?66418
 
