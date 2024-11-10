@@ -14,6 +14,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/usr` merge
 
 - No `lib64` (Pure 64-bit system)
+- No `libexec`
+- No `sbin`
 
 - Sticky bit is set on `/tmp` and `/var/tmp`
 - No one is using `/run/tmp` (with `/tmp` being a symlink to it, even Debian says it is only useful for embedded systems)
