@@ -40,6 +40,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## findutils
 - https://savannah.gnu.org/bugs/index.php?66418
+- https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=ea9288c6beca75
 
 ## gettext-tiny
 - https://github.com/sabotage-linux/gettext-tiny/issues/64

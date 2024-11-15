@@ -4,5 +4,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - `--disable-static` is used by default
-- `file` depends on the same version of itself
+- `file` depends on the same version of itself (and on `libmagic`)
 - No need to symlink against `libpthread` when building against `musl` libc

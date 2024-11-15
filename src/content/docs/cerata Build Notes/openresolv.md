@@ -4,3 +4,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - There is no test suite
+- `--bindir` = `--sbindir`
+- `--statedir` = `--localstatedir`
+- Do we need a resolver helper?

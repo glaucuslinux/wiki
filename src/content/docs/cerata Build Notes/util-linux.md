@@ -13,3 +13,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable `raw` as it requires `raw.h` which is only available on `glibc`
 - `col` requires `glibc` (build system disables it by default on `musl`)
 - glaucus disables `more` and uses `less` by default
+- `more` depends on `libmagic` from `file`
