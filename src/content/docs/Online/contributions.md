@@ -49,6 +49,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## kmod
 - https://github.com/kmod-project/kmod/issues/55#issuecomment-2439723713
 
+## LibreSSL
+- https://github.com/libressl/portable/issues/916
+
 ## limine
 - https://github.com/limine-bootloader/limine/pull/372
 - https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1
@@ -96,3 +99,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Void
 - https://github.com/void-linux/void-packages/pull/48214
+
+## wget2
+- https://mail.gnu.org/archive/html/wget-dev/2023-09/msg00041.html
