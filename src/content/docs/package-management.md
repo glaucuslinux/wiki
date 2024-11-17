@@ -15,14 +15,13 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 
 ## Repository Layout
-- `/var/cache/rad/local` (local binary packages, contains sac (DESTDIR) + tarball + sum)
-- `/var/cache/rad/pkg` (fetched binary packages, signed)
+- `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)
 - `/var/cache/rad/src` (source tarballs, read-only, equals SRCD)
 - `/var/lib/rad/clusters/cerata` (official cluster, equals CERD)
 - `/var/lib/rad/clusters/custom` (custom cluster)
-- `/var/lib/rad/local` (track installed packages using another form of metadata, with checksums and files)
+- `/var/lib/rad/pkg` (track installed packages using another form of metadata, with checksums and files)
 - `/var/log/rad` (log files, equals LOGD)
-- `/var/tmp/rad` (temporary src and bld for native)
+- `/var/tmp/rad` (temporary build files)
 
 ```sh
 # glaucus repo layout

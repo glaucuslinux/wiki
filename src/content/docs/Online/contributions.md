@@ -46,6 +46,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73
 
+## kbd
+- https://github.com/legionus/kbd/issues/121
+
 ## kmod
 - https://github.com/kmod-project/kmod/issues/55#issuecomment-2439723713
 
@@ -69,6 +72,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## procps-ng
 - https://gitlab.com/procps-ng/procps/-/merge_requests/158
+
+## reflex
+- https://github.com/ThomasDickey/reflex-snapshots/issues/1
 
 ## Serpent OS
 - https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3
