@@ -106,7 +106,7 @@ glaucus follows the principle of least privilege; each part of the system should
 - `-Wformat -Wformat-security`
 - `-Werror=format-security` (this alone is enough)
 - `-Wformat -Wformat-security -Werror=format-security`
-- These flags with `-Werror` stop compilation instead of just warning so you can open an upstream issue and make upstream fix it
+- These flags with `-Werror` stop compilation instead of just warning so you can open an issue for upstream to fix it
 
 ## BIND_NOW
 - RELRO is useless without BIND_NOW

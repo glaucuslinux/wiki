@@ -8,6 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`byacc`](https://invisible-island.net/byacc/) is the default yacc implementation
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
+* [`labwc`](https://labwc.github.io/) is the default stacking Wayland compositor
 * [`lbzip2`](https://github.com/kjn/lbzip2) is the default bzip2 implementation
 * [`less`](https://greenwoodsoftware.com/less/) is the default terminal pager
 * [`libarchive`](https://libarchive.org/) is the default archive and compression library
@@ -34,7 +35,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 * [`samurai`](https://github.com/michaelforney/samurai) is the default ninja implementation
 * [`sdhcp`](https://github.com/michaelforney/sdhcp) is the default DHCP client
 * [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
-* [`sway`](https://swaywm.org/) is the default Wayland compositor
+* [`sway`](https://swaywm.org/) is the default tiling Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol

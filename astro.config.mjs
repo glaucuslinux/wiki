@@ -38,6 +38,10 @@ export default defineConfig({
           link: "/online/contributions",
         },
         {
+          label: "Filesystem",
+          link: "/filesystem",
+        },
+        {
           label: "History",
           link: "/history",
         },
