@@ -8,3 +8,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `bootstrap-debug-lean` is slower and bigger compared to `bootstrap-debug`
 - `gcc` `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `--enable-link-mutex` is deprecated, use `--enable-link-serialization=1` instead: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109310 (`=1` is sane, any higher value might thrash the system)
+- `cc1` depends on `mpc` at runtime

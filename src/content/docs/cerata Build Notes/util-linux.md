@@ -14,3 +14,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `col` requires `glibc` (build system disables it by default on `musl`)
 - glaucus disables `more` and uses `less` by default
 - `more` depends on `libmagic` from `file`
+- using `LIBS` instead of `LDFLAGS` does not ensure `nsss` and `utmps` are being linked, and causes weird issues (requiring manual logout to initiate shutdown)

@@ -3,14 +3,16 @@ title: Package Management Policy
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Package management is dependent on limited web servers, making parallelization harder
 - glaucus uses the filesystem tree as its database to store package metadata and recipes
 
 ## Cerata
+- Avoid versions in `nom`
 - Patches are typically applied in prepare
-- Newly crafted patches should use `-p0`
+- Patches should use `-p0`
 - Packages that use autoreconf, need runstatedir (copied from the system)
-- Try to group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
-- Group all commands that are repeated 3 or more times into `for` loops
+- Group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
+- Group commands that are repeated 3 or more times into `for` loops
 - Packages should not install to the following directories: `/boot`, `/dev`, `/mnt`, `/run`, `/sys`, `/tmp`
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 
