@@ -69,6 +69,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## nsss
 - https://github.com/skarnet/nsss/issues/3
 - https://github.com/skarnet/nsss/issues/4
+- https://github.com/skarnet/nsss/pull/5
+- https://github.com/skarnet/nsss/commit/0d0417f3226406fd4546d550bcf188b24b6f88ce
 
 ## procps-ng
 - https://gitlab.com/procps-ng/procps/-/merge_requests/158

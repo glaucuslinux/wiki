@@ -9,7 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No `/libexec`
 - No `/run/tmp` (Debian says it is only useful for embedded systems)
 - No `/sbin`
-- Sticky bit is set on `/tmp` and `/var/tmp`
+- Sticky bit (`1777`) is set on `/tmp` and `/var/tmp` (and `/var/mail`?)
 - `/usr` merge
 - No `/var/db` (deprecated; a BSD relic that has been replaced with `/var/lib`)
 - `/var/lock` is a symlink to `../run/lock` (`/run/lock`)

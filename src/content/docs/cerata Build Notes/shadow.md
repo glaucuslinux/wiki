@@ -14,3 +14,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - enable `yescrypt` for better password hashing scalability
 - No need to set `--with-group-name-max-length` as the default value is now `32`
 - https://github.com/shadow-maint/shadow/issues/999
+- When linking against `nsss` shadow tries to link against `xget*` functions that are used with PAM, even though `--without-pam` is being used and `login_nopam` is being built...
