@@ -62,6 +62,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## mtm
 - https://github.com/deadpixi/mtm/issues/81
 
+## NetBSD
+- https://mail-index.netbsd.org/netbsd-bugs/2024/11/10/msg086293.html
+
 ## netbsd-curses
 - https://github.com/sabotage-linux/netbsd-curses/issues/58
 - https://github.com/sabotage-linux/netbsd-curses/issues/60
