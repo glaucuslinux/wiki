@@ -62,9 +62,9 @@ configure: WARNING: Fortran 77 compiler cannot create executable
 
 ### e2fsprogs
 ```c
-ln: cannot create symbolic link from 'libcom_err.so.2.1' to '/var/cache/rad/local/e2fsprogs/sac/usr/lib/libcom_err.so.2': File exists
+ln: cannot create symbolic link from 'libcom_err.so.2.1' to '/var/cache/rad/pkg/e2fsprogs/sac/usr/lib/libcom_err.so.2': File exists
 
-ln: cannot create symbolic link from 'libcom_err.so.2' to '/var/cache/rad/local/e2fsprogs/sac/usr/lib/libcom_err.so': File exists
+ln: cannot create symbolic link from 'libcom_err.so.2' to '/var/cache/rad/pkg/e2fsprogs/sac/usr/lib/libcom_err.so': File exists
 
 /bin/sh: line 2: @echo: command not found
 
