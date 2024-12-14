@@ -9,7 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - limine does not support booting from `ext4` directly when in BIOS/MBR mode
 
 ## IMG (BIOS/MBR) (Deprecated?)
-```Shell
+```sh
 #!/bin/sh
 
 rm -f glaucus.img

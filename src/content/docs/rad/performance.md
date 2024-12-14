@@ -5,7 +5,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - `rad` now parses 120k packages in under 50 seconds (using `toml_serialization`)
 - Previously with `parsetoml` rad parsed 100k packages in 3 minutes:
-```C
+```c
 85.07user 85.64system 2:57.57elapsed
 ```
 
