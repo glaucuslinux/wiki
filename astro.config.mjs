@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+  site: "https://wiki.glaucuslinux.org/",
   integrations: [
     starlight({
-      title: 'glaucus',
+      title: 'glaucus Linux',
       description: 'A simple and lightweight Linux® distribution based on musl libc and toybox',
       favicon: '/src/assets/glaucus-logo.svg',
       logo: {
@@ -20,7 +21,7 @@ export default defineConfig({
         youtube: 'https://www.youtube.com/@glaucuslinux',
       },
       editLink: {
-        baseUrl: 'https://github.com/glaucuslinux/wiki/tree/main/',
+        baseUrl: 'https://github.com/glaucuslinux/wiki/edit/main/',
       },
       lastUpdated: true,
       sidebar: [
@@ -31,7 +32,7 @@ export default defineConfig({
         {
           label: "cerata Build Notes",
           collapsed: true,
-          autogenerate: { directory: "cerata Build Notes" },
+          autogenerate: { directory: "cerata-build-notes" },
         },
         {
           label: "Contributions",
@@ -60,7 +61,7 @@ export default defineConfig({
         {
           label: "RFCs",
           collapsed: true,
-          autogenerate: { directory: "RFCs" },
+          autogenerate: { directory: "rfcs" },
         },
         {
           label: "Security",

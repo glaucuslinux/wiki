@@ -16,17 +16,17 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Notes
 - You can pass linker flags like this by using a single `-Wl`, check `output.txt`:
-```C
+```c
 gcc -v main.c -o test -Wl,-s,--as-needed,--build-id,sha256,--compress-debug-sections,zstd,--gc-sections,--hash-style=gnu,-z,now,-z,noexecstack,-z,relro 2> output.txt
 ```
 
 - MOLD flags:
-```C
+```c
 RAD_FLAGS_LINKER* = "-fuse-ld=mold -Wl,-s,--as-needed,--compress-debug-sections=zstd,--gc-sections,--hash-style=gnu,-z,now,-z,noexecstack,-z,relro"
 ```
 
 - BFD flags:
-```C
+```c
 RAD_FLAGS_LINKER* = "-Wl,-O1,-s,-z,noexecstack,-z,now,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu,--compress-debug-sections=zstd"
 ```
 
