@@ -3,8 +3,9 @@ title: Package Management Policy
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Package management is dependent on limited web servers, making parallelization harder
-- glaucus uses the filesystem tree as its database to store package metadata and recipes
+Package management is dependent on limited web servers, making parallelization
+harder. glaucus uses the filesystem tree as its database to store package
+metadata and recipes.
 
 ## Cerata
 - Avoid versions in `nom`
@@ -25,20 +26,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/var/log/rad` (log files, equals LOGD)
 - `/var/tmp/rad` (temporary build files)
 
-```sh
-# glaucus repo layout
-
-# Source packages (git repos only):
-
-cerata/$cluster/$nom/{ceras, build}
-
-# Binary packages
-
-cerata/$cluster/$nom/{$nom-$ver.tar.zst, sum}
-```
-
 ## Local
-- check for additional files that need removing (vcheck already does that):
+Remove additional files:
   - .a (static libraries)
   - .alias
   - .bs (perl files)
@@ -51,6 +40,7 @@ cerata/$cluster/$nom/{$nom-$ver.tar.zst, sum}
   - .pyo (python files) (ewe removes them)
   - alias
   - charset
+  - completions
   - extralibs.ld (perl files)
   - locale
   - systemd

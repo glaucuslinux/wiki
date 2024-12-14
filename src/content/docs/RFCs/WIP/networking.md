@@ -17,12 +17,11 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - bcnm: https://skarnet.org/software/bcnm/
 - ifupdown-ng: https://github.com/ifupdown-ng/ifupdown-ng
 - ConnMan: git kernel link
-- NetworkManager: 
 
 ## Wireless Daemon
 - eiwd: https://github.com/illiliti/eiwd
-- iwd: https://iwd.wiki.kernel.org/
 
 ## Excluded
-- (irrelevant) s6-networking: https://skarnet.org/software/s6-networking/
-- (DNS Resolver) systemd-resolved
+- iwd (Wireless Daemon): https://iwd.wiki.kernel.org/
+- s6-networking (irrelevant): https://skarnet.org/software/s6-networking/
+- systemd-resolved (DNS Resolver)

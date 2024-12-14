@@ -5,5 +5,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Make use of Travis and make it run the checks
 - Implement `check` for native functions
-- `check` should not run in cross, toolchain, or native `bootstrap
+- `check` should not run in cross, toolchain, or native `bootstrap`
 - All checks should run with `-j1`?

@@ -3,8 +3,8 @@ title: Bootstrap
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Arch, Fedora and Linux From Scratch (LFS) can be used to bootstrap glaucus.
-- It is recommended to have a minimum of 4 GB of memory and 10 GB of storage space to bootstrap glaucus.
+Arch, Fedora and Linux From Scratch (LFS) can be used to bootstrap glaucus. It
+is recommended to have a minimum of 4 GB of memory and 10 GB of storage space.
 
 ## Required Packages
 1. autoconf
