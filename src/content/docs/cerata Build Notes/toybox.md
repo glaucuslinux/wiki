@@ -5,6 +5,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - `toybox`'s `cpio` defaults to newc
 - Do we need to run `scripts/genconfig.sh` before make?
+- Requires bash for scripts/genconfig.sh and tests
 
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/index.html

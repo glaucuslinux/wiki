@@ -86,6 +86,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## shadow
 - https://github.com/shadow-maint/shadow/issues/945
+- https://github.com/shadow-maint/shadow/issues/999#issuecomment-2379230634
 - https://github.com/shadow-maint/shadow/issues/1082
 
 ## slibtool
@@ -99,6 +100,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/landley/toybox/issues/486
 - https://github.com/landley/toybox/issues/519
 - https://github.com/landley/toybox/issues/523
+- https://github.com/landley/toybox/pull/345
 - https://github.com/landley/toybox/pull/524
 
 ## ugrep
