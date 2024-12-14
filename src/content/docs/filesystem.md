@@ -5,10 +5,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - No `/boot/efi` (deprecated)
 - No `/etc/mtab` (deprecated)
-- No `/lib64` (Pure 64-bit system)
+- No `/lib32` (pure 64-bit system)
+- No `/lib64` (pure 64-bit system)
 - No `/libexec`
-- No `/run/tmp` (Debian says it is only useful for embedded systems)
-- No `/sbin`
+- No `/run/tmp` (only useful for embedded systems on Debian)
 - Sticky bit (`1777`) is set on `/tmp` and `/var/tmp` (and `/var/mail`?)
 - `/usr` merge
 - No `/var/db` (deprecated; a BSD relic that has been replaced with `/var/lib`)

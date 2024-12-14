@@ -17,7 +17,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Design Changes
 - Cross-compiling vs native chroot
-- "/usr" merge, without "sbin"
+- "/usr" merge
 - Switch to libarchive as the default archive and compression library.
 - Switch to LibreSSL as the default TLS library.
 - Switch to NetBSD's Editline Library and curses.
