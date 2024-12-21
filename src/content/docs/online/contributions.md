@@ -46,6 +46,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73
 
+## iproute2
+- https://lists.openwall.net/netdev/2019/01/01/42
+
 ## kbd
 - https://github.com/legionus/kbd/issues/121
 
@@ -69,6 +72,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/sabotage-linux/netbsd-curses/issues/58
 - https://github.com/sabotage-linux/netbsd-curses/issues/60
 
+## nim
+- https://github.com/nim-lang/nightlies/issues/95
+
 ## nsss
 - https://github.com/skarnet/nsss/issues/3
 - https://github.com/skarnet/nsss/issues/4
@@ -81,6 +87,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## reflex
 - https://github.com/ThomasDickey/reflex-snapshots/issues/1
 
+## sbase
+- https://lists.suckless.org/hackers/1809/16524.html
+
 ## Serpent OS
 - https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3
 
@@ -88,6 +97,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/shadow-maint/shadow/issues/945
 - https://github.com/shadow-maint/shadow/issues/999#issuecomment-2379230634
 - https://github.com/shadow-maint/shadow/issues/1082
+
+## smdev
+- https://lists.suckless.org/hackers/2001/17078.html
 
 ## slibtool
 - https://dev.midipix.org/cross/slibtool/pull-request/78
