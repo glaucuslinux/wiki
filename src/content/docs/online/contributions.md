@@ -128,6 +128,16 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## mtm
 - https://github.com/deadpixi/mtm/issues/81
 
+## musl-cross-make
+- https://github.com/richfelker/musl-cross-make/issues/99
+- https://github.com/richfelker/musl-cross-make/issues/100
+- https://github.com/richfelker/musl-cross-make/issues/101
+- https://github.com/richfelker/musl-cross-make/issues/102
+- https://github.com/richfelker/musl-cross-make/issues/105
+- https://github.com/richfelker/musl-cross-make/pull/94
+- https://github.com/richfelker/musl-cross-make/pull/103
+- https://github.com/richfelker/musl-cross-make/pull/104
+
 ## Musl-LFS
 - https://github.com/dslm4515/Musl-LFS/pull/14
 - https://github.com/dslm4515/Musl-LFS/pull/15
