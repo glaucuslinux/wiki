@@ -17,3 +17,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - When linking against `nsss` shadow tries to link against `xget*` functions that are used with PAM, even though `--without-pam` is being used and `login_nopam` is being built...
 - Run `pwconv` to enable shadowed passwords
 - Run `grpconv` to enable shadowed group passwords
+- shadow builds `sulogin` but does not install it?

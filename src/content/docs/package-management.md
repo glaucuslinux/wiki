@@ -15,6 +15,9 @@ metadata and recipes.
 - Group commands that deal with multiple arguments into one (if that applies, e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops
 - Packages should not install to the following directories: `/boot`, `/dev`, `/mnt`, `/run`, `/sys`, `/tmp`
+- Packages should not deal with `$SRCD`, only with `$TMPD`
+- Everything related to `s6` should reside under `/etc/s6`
+- `touch` is faster than `:>`
 - Do not store commands inside variables: https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
 
 ## Repository Layout
