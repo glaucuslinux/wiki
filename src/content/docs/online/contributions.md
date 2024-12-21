@@ -138,6 +138,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/dslm4515/Musl-LFS/pull/38
 - https://github.com/dslm4515/Musl-LFS/pull/39
 
+## musl-nscd
+- https://github.com/pikhq/musl-nscd/issues/34
+
 ## musl wiki
 - https://github.com/somasis/musl-wiki/pull/47
 
