@@ -3,7 +3,7 @@ title: utmps
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-`w` will not work in future versions of shadow due to `login` not recording any utmp entries: https://github.com/shadow-maint/shadow/issues/945
+- `w` will not work in future versions of `shadow` due to `login` not recording any utmp entries: https://github.com/shadow-maint/shadow/issues/945
 
 - Either link or preload using `LD_PRELOAD=libutmps`
 - We can rely on musl's `utmp.h` (after patching) and only remove its `utmpx.h`

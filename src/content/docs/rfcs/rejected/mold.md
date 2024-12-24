@@ -3,28 +3,27 @@ title: mold
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- requires `tbb` to build
-- uses 12 GB when building and basically freezes the build process (mold should speed up linking times and reduce the overall bootstrap time but building mold takes up all the saved time and more...)
-- randomly segfaults producing undebuggable errors:
-  - https://github.com/rui314/mold/issues/1211
-  - https://forums.gentoo.org/viewtopic-p-8804039.html
-
-- Check if it can link the kernel now
-- LTO works now
-- It does not add `libgcc` to all binaries
+- Depends on `tbb`
+- Uses 12 GB when building and basically freezes the build process (mold should speed up linking times and reduce the overall bootstrap time but building mold takes up all the saved time and more...)
+- Segfaults at random
+- Used to add `libgcc` to all linked binaries
+- Used to not be able to link the kernel
+- Used to not support LTO
 - Don't forget to include `mold` in your compiler's custom search directory
+
+## Resources
+- https://github.com/rui314/mold/issues/1211
+- https://forums.gentoo.org/viewtopic-p-8804039.html
 
 ## Notes
 - You can pass linker flags like this by using a single `-Wl`, check `output.txt`:
-```c
+```sh
 gcc -v main.c -o test -Wl,-s,--as-needed,--build-id,sha256,--compress-debug-sections,zstd,--gc-sections,--hash-style=gnu,-z,now,-z,noexecstack,-z,relro 2> output.txt
 ```
-
 - MOLD flags:
 ```c
 RAD_FLAGS_LINKER* = "-fuse-ld=mold -Wl,-s,--as-needed,--compress-debug-sections=zstd,--gc-sections,--hash-style=gnu,-z,now,-z,noexecstack,-z,relro"
 ```
-
 - BFD flags:
 ```c
 RAD_FLAGS_LINKER* = "-Wl,-O1,-s,-z,noexecstack,-z,now,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu,--compress-debug-sections=zstd"

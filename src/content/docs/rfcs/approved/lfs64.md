@@ -3,14 +3,7 @@ title: LFS64
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- musl 1.2.4 is removing LFS64 symbols (glibc only?)
-
-## Resources
-- https://github.com/NixOS/nixpkgs/pull/229439
-- https://git.alpinelinux.org/aports/log/?qt=grep&q=lfs64
-- https://git.alpinelinux.org/aports/tree/main/acl
-- https://github.com/NixOS/nixpkgs/pull/229440
-- https://os-wiki.ewe.moe/dev/topic/toolchain/musl
+- musl 1.2.4 removed LFS64 symbols (glibc only?)
 
 ## Packages That Might Complain
 1. acl (before 2.3.2)
@@ -36,3 +29,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 21. rust (exist PR https://github.com/rust-lang/libc/pull/2935)
 22. vim
 23. wget2
+
+## Resources
+- https://git.alpinelinux.org/aports/log/?qt=grep&q=lfs64
+- https://git.alpinelinux.org/aports/tree/main/acl
+- https://github.com/NixOS/nixpkgs/pull/229439
+- https://github.com/NixOS/nixpkgs/pull/229440
+- https://os-wiki.ewe.moe/dev/topic/toolchain/musl

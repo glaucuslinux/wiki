@@ -3,7 +3,6 @@ title: distrobox
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
-- Uses POSIX shell script
+- POSIX shell script
 - Alpine's container is 5 MB
 - Ubuntu's container is 40 MB

@@ -4,7 +4,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - glaucus removes static libraries
-- In the toolchain, the only required static library before musl is libgcc.a
+- In the toolchain, the only required static library before `musl` is `libgcc.a`
 - glaucus's toolchain supports static linking
 
 ## Resources

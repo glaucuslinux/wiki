@@ -3,10 +3,9 @@ title: gcompat
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- gcompat, voidnsrun, xbps-uunshare, bubblewrap and flatpak are all container
-solutions that enable running sandboxed version of apps and allow running glibc
-on musl
-- gcompat kept on failing and segfaulting
+- `gcompat`, `voidnsrun`, `xbps-uunshare`, `bubblewrap` and `flatpak` are
+container solutions that run software in a sandbox and allow for glibc on musl
+- `gcompat` fails and segfaults
 
 ## Resources
 - https://ch1p.io/void-linux-musl-glibc/

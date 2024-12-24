@@ -3,18 +3,17 @@ title: Filesystem
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- No `/boot/efi` (deprecated)
-- No `/etc/mtab` (deprecated)
-- No `/lib32` (pure 64-bit system)
-- No `/lib64` (pure 64-bit system)
+- `/boot/efi` has been deprecated
+- `/etc/mtab` has been deprecated
+- Pure 64-bit system without `/lib32` and `/lib64`
 - No `/libexec`
-- No `/run/tmp` (only useful for embedded systems on Debian)
+- No `/run/tmp`; only useful for embedded systems on Debian
 - Sticky bit (`1777`) is set on `/tmp` and `/var/tmp` (and `/var/mail`?)
 - `/usr` merge
-- No `/var/db` (deprecated; a BSD relic that has been replaced with `/var/lib`)
-- `/var/lock` is a compatibility symlink to `../run/lock` (`/run/lock`)
-- `/var/run` is a compatibility symlink to `../run` (`/run`)
-- `/var/spool/mail` is a compatibility symlink to `../mail` (`/var/mail`)
+- `/var/db` has been deprecated; a BSD relic that has been replaced with `/var/lib`
+- `/var/lock` is symlink to `../run/lock` for compatibility (`/run/lock`)
+- `/var/run` is symlink to `../run` for compatibility (`/run`)
+- `/var/spool/mail` is symlink to `../mail` for compatibility (`/var/mail`)
 
 ## Resources
 - https://wiki.debian.org/ReleaseGoals/RunDirectory

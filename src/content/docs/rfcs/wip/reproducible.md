@@ -1,5 +1,5 @@
 ---
-title: Reproducible Builds
+title: Reproducible
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 

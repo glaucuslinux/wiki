@@ -1,17 +1,12 @@
 ---
-title: Performance
+title: rad Performance
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `rad` now parses 120k packages in under 50 seconds (using `toml_serialization`)
-- Previously with `parsetoml` rad parsed 100k packages in 3 minutes:
-```c
-85.07user 85.64system 2:57.57elapsed
-```
-
+- `rad` parses 120k packages under 50 seconds using `toml_serialization`
+- Older versions with `parsetoml` parsed 100k packages in 3 minutes
 - For CPU/compute use || (via Weave or OpenMP)
-- For IO use asyncdispatch
-
+- For IO use `asyncdispatch`
 - https://www.youtube.com/watch?v=Ul8OO4vQMTw
 
 ## Compute Tasks (CPU)

@@ -3,15 +3,8 @@ title: BLAKE3
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
 - Fastest cryptographic hash function
-
-- Fastest non-cryptographic hash functions are:
-  - meowhash
-  - t1ha
-  - wyhash
-  - xxhash
-
+- Fastest non-cryptographic hash functions are meowhash, t1ha, wyhash and xxhash
 - `rad` uses `BLAKE3` given that Nim supports it via `nimcrypto`
 
 ## Limitations

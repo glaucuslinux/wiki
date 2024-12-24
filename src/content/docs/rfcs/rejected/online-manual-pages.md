@@ -3,10 +3,10 @@ title: Online Manual Pages
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- There is no proper way to serve roff pages in html format
+- No proper way to serve roff pages in html format
 - It is more convenient to provide manual pages in release images
 
-## Examples
+## Resources
 ### Arch
 - https://man.archlinux.org/
 

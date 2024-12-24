@@ -3,7 +3,8 @@ title: Test Suite
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Make use of Travis and make it run the checks
-- Implement `check` for native functions
+- Use Travis to run the checks
+- Implement `check` in native
 - `check` should not run in cross, toolchain, or native `bootstrap`
 - All checks should run with `-j1`?
+- Log the results of all tests, including broken/failing tests

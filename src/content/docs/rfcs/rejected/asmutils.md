@@ -4,5 +4,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Only for 32-bit
+
+## Resources
 - https://asm.sourceforge.net/asmutils.html
 - https://github.com/leto/asmutils

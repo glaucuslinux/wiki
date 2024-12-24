@@ -3,7 +3,6 @@ title: Standards
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Standards
 - FHS 3.0
 - LSB Core
 

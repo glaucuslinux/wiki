@@ -3,11 +3,10 @@ title: slibtool
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Check if all tools like `LIBTOOL=slibtool` should be added to `MAKEFLAGS` (check Gentoo wiki and slibtool's README?)
+- Check if tools like `LIBTOOL=slibtool` should be added to `MAKEFLAGS` (check Gentoo wiki and slibtool's README?)
 - `/usr/share/libtool` vs `/usr/share/libtoolize` paths
 - `glibtoolize` is not a necessary symlink
-- Do we need to duplicate the copied macros under a new directory `/usr/share/libtool/AC_CONFIG_MACRO_DIRS`?
-
+- Duplicate the copied macros under a new directory `/usr/share/libtool/AC_CONFIG_MACRO_DIRS`?
 - Officially migrated from `midipix.org` to `foss21.org`
 - slibtool does not install `.la` files by default (can be reversed by using clibtool)
 - `slibtoolize` will be provided in the future (either as a mode or a symlink)

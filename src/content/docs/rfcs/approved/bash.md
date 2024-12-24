@@ -5,7 +5,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - `autoreconf` is broken
 - Is `bin/bashbug` needed?
-- Modify CFLAGS to configure:
+- Modify `CFLAGS` to configure:
 ```
 CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
         -DSYS_BASH_LOGOUT='\"/etc/bash_logout\"' \
@@ -19,8 +19,8 @@ CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
 - glaucus version of `bash` is linked against `terminfo` from `netbsd-curses`
 
 ## Limitations
-- bash has default variables when cross compiling
-- glaucus bash does not work with readline even with LIBS=-ledit and when using libreadline.a (check?)
+- Default variables when cross compiling
+- Does not work with `libedit` on glaucus even with `LIBS=-ledit` and when using `libreadline.a` (check?)
 
 - `binutils` (fails to build with `yash` possibly due to POSIXLY_CORRECT)
 - `expat` (buildconf.sh uses bash)

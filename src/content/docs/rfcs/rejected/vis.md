@@ -3,5 +3,5 @@ title: vis
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Requires additional dependencies that aren't used by other packages
-- We already have `vim` working with `netbsd-curses` and `libedit`..
+- Depends on obscure packages
+- Both `neatvi` and `vim` are already working with `libedit` and `netbsd-curses`

@@ -3,7 +3,7 @@ title: Prelink
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- After Spectre/Meltdown, it's probably a bad idea to use Prelink at all as it makes memory mapping attacks easier.
+- After Spectre/Meltdown, it's probably a bad idea to prelink as it makes memory mapping attacks easier.
 - PIE interferes with prelink
 
 ## Resources
@@ -18,4 +18,4 @@ Apparently there's something new called prelink-cross:
 - https://github.com/sjnewbury/prelink-cross/blob/master/README
 - https://voidlinux.org/news/2019/02/cross-gobject.html
 
-- cross-prelink can be used to cross compile gobject packages like GNOME, which we won't need since we will be building everything as native from within glaucus
+- cross-prelink can be used to cross compile gobject packages like GNOME, which will not be an issue on glaucus

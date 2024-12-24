@@ -3,10 +3,9 @@ title: Limine
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Notes
-- limine `bios-install` can only be used for `bios` and not for UEFI
-- parted `mkpart primary` only works for `msdos` (BIOS/MBR), otherwise for GPT it will be set as name/`PARTLABEL` and not `PART-TYPE`
-- limine does not support booting from `ext4` directly when in BIOS/MBR mode
+- Does not boot from `ext4` directly when in `bios` mode
+- `bios-install` can only be used for `bios` and not for UEFI
+- `mkpart primary` from `parted` only works for `msdos` (BIOS/MBR); for GPT it will be set as name/`PARTLABEL` and not `PART-TYPE`
 
 ## IMG (BIOS/MBR) (Deprecated?)
 ```sh
@@ -62,10 +61,10 @@ chown firasuke:firasuke glaucus.img
 ```
 
 ## Resources
-- https://wiki.archlinux.org/title/Limine
-- https://limine-bootloader.org/
+- https://github.com/eweOS/packages/blob/limine/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/CONFIG.md
 - https://github.com/limine-bootloader/limine/blob/trunk/PHILOSOPHY.md
-- https://github.com/limine-bootloader/limine/blob/trunk/USAGE.md
 - https://github.com/limine-bootloader/limine/blob/trunk/test/limine.cfg
-- https://github.com/eweOS/packages/blob/limine/limine.cfg
+- https://github.com/limine-bootloader/limine/blob/trunk/USAGE.md
+- https://limine-bootloader.org/
+- https://wiki.archlinux.org/title/Limine
