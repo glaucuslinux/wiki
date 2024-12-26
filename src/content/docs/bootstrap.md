@@ -40,15 +40,64 @@ is recommended to have a minimum of 4 GB of memory and 10 GB of storage space.
 31. `zstd`
 
 ## Steps
+- Clone repository:
 ```sh
-git clone --
-
+git clone --recursive https://github.com/glaucuslinux/glaucus
+cd glaucus
+```
+- Checkout main branch:
+```sh
+for i in bubble cerata rad s6-boot-scripts; do
+  cd $i
+  git checkout main
+  cd ..
+done
+```
+- Create symlinks:
+```sh
+sudo mkdir -pv \
+  /var/cache/rad \
+  /var/lib/rad/clusters
+sudo ln -fnsv cerata /var/lib/rad/clusters/cerata
+sudo ln -fnsv src /var/cache/rad/src
+```
+- Provide missing stubs (remove `texinfo`):
+```sh
+for i in gtkdocize help2man makeinfo po4a texi2dvi; do
+  sudo cp -af cerata/musl/true /usr/bin/$i
+done
+```
+- Install `glaucus-configure`:
+```sh
+sudo cp -af cerata/autoconf/glaucus-configure /usr/bin
+```
+- Bootstrap toolchain and cross:
+```sh
 cd rad
 ./rad -bt
 ./rad -bx
-
+```
+- Create cross img:
+```sh
 cd bubble
 sudo ./img
-qemu-img glaucus.img
+```
+- Boot via QEMU:
+```sh
+qemu-system-x86_64 \
+  -machine q35,accel=kvm \
+  -cpu host \
+  -smp 4 \
+  -m 4G \
+  -name glaucus \
+  -drive file=glaucus-*.img,format=raw \
+  -nic model=e1000 \
+  -display gtk,gl=on \
+  -vga qxl \
+  -rtc base=localtime \
+  -bios /usr/share/ovmf/x64/OVMF.4m.fd
+```
+- Bootstrap native:
+```sh
 rad -bn
 ```

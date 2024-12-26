@@ -14,12 +14,15 @@ Resources:
 - FreeBSD has a lot of wayland ports
 
 Without Xorg:
-- https://github.com/sdsddsd1/mywayland
-- https://www.linuxquestions.org/questions/linux-from-scratch-13/wayland-w-xwayland-sans-x11-anyone-interested-4175595302/
-- https://lists.freedesktop.org/archives/wayland-devel/2017-December/036143.html
-- https://github.com/swaywm/sway/issues/676
 - https://fedoraproject.org/wiki/Changes/LegacyXorgDriverRemoval
 - https://fedoraproject.org/wiki/Changes/ReplaceFbdevDrivers
+- https://github.com/sdsddsd1/mywayland
+- https://github.com/swaywm/sway/issues/676
+- https://hacktivis.me/notes/pure-wayland
+- https://lists.freedesktop.org/archives/wayland-devel/2017-December/036143.html
+- https://sr.ht/~kqz/repo
+- https://www.linuxquestions.org/questions/linux-from-scratch-13/wayland-w-xwayland-sans-x11-anyone-interested-4175595302/
+- https://www.reddit.com/r/kisslinux/comments/ir0fwp/sway_with_seatd_wayland_is_pretty_cool_this_is/
 
 Compositors:
 - hyprland

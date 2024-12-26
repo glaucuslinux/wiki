@@ -221,6 +221,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/shadow-maint/shadow/issues/945
 - https://github.com/shadow-maint/shadow/issues/999#issuecomment-2379230634
 - https://github.com/shadow-maint/shadow/issues/1082
+- https://github.com/shadow-maint/shadow/releases/tag/4.14.6
 
 ## skabus
 - https://github.com/skarnet/skabus/issues/3

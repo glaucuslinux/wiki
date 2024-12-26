@@ -15,4 +15,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `curl` depends on `cmake` for `brotli` and `c-ares` on Alpine
 - `libidn2` and `c-ares` support are enabled on Alpine for better DNS performance
 - Does `musl` support `libidn2`?
+- Do we need `c-ares` because musl does not support DNS lookups?
 - `c-ares` support is disabled on Arch: https://bugs.archlinux.org/task/49962
