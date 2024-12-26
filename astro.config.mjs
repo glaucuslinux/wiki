@@ -51,8 +51,8 @@ export default defineConfig({
           link: "/install",
         },
         {
-          label: "Naming Convention",
-          link: "/naming-convention",
+          label: "Nomenclature",
+          link: "/nomenclature",
         },
         {
           label: "Package Management",

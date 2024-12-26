@@ -11,6 +11,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Had a read-only file system
 - Only bootable under QEMU
 - Lacked a proper service manager
+- Lacked networking support
 - Subpar unix user space
 - Not able to bootstrap
 - Not able to self-host

@@ -19,7 +19,7 @@ CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
 - glaucus version of `bash` is linked against `terminfo` from `netbsd-curses`
 
 ## Limitations
-- Default variables when cross compiling
+- Does not cross compile well (hardcodes default variables)
 - Does not work with `libedit` on glaucus even with `LIBS=-ledit` and when using `libreadline.a` (check?)
 
 - `binutils` (fails to build with `yash` possibly due to POSIXLY_CORRECT)

@@ -1,5 +1,5 @@
 ---
-title: Naming Convention
+title: Nomenclature
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
