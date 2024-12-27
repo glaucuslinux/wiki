@@ -12,3 +12,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `cc1` depends on `mpc` at run time
 - Depends on `tar` for the `make` target `install-headers-tar`
 - As of 14.1, new configure options `--enable-host-pie`, to build the compiler executables as PIE; and `--enable-host-bind-now`, to link the compiler executables with `-Wl,-z,now` to enable additional hardening
+- `--enable-host-shared` has a performance penalty on `gcc`

@@ -3,6 +3,7 @@ title: util-linux
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Does it depend on `bison`?
 - Does it depend on `python`?
 - Depends on `libcap-ng` to build `setpriv`; glaucus already provides `s6-setuidgid`: https://forum.artixlinux.org/index.php/topic,3360.0.html
 - Use `autoreconf -vfis` as `./autogen.sh` requires GNU `gettext`
@@ -15,3 +16,11 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - glaucus disables `more` and uses `less`
 - `more` depends on `libmagic` from `file`
 - Using `LIBS` instead of `LDFLAGS` does not ensure `nsss` and `utmps` are being linked
+- Uses `ncursesw` over `ncurses` so do not pass `--with-curses`
+- Provides `kill` but not `killall` which is provided by `toybox`
+- Use `su` from `util-linux` as recommended by `shadow`
+- `runuser` and `su` from `util-linux` both require `pam`
+- Disable `pg` as it uses `vidputs()` which is not provided by `netbsd-curses`
+
+## Resources
+- https://github.com/sabotage-linux/sabotage/commit/1f3b7032769f0ce27cde3ac7490d02f0393c9a5a
