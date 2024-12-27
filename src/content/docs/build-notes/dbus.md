@@ -10,3 +10,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `dbus-broker` depends on `systemd` for its launcher:
   - https://wiki.gentoo.org/wiki/Hard_dependencies_on_systemd
   - https://github.com/bus1/dbus-broker/issues/340
+- `--disable-asserts` and not `--disable-assertions` (old configure?)
+- Separate `dbus` user
+- Remove `"$SACD"/etc` and `"$SACD"/var` and `"$SACD"/usr/lib/systemd`
+
+## Resources
+- https://openwrt.org/docs/techref/ubus#what_s_the_difference_between_ubus_vs_dbus
+- https://wiki.hyperbola.info/doku.php?id=en:philosophy:dbus_failure
+- https://www.hyperbola.info/news/end-of-d-bus-support/
+- https://www.hyperbola.info/todo/dbus-mitigation/
