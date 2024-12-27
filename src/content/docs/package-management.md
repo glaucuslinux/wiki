@@ -43,7 +43,7 @@ Remove additional files:
   - .pyo (python files) (ewe removes them)
   - alias
   - charset
-  - completions
+  - completion
   - extralibs.ld (perl files)
   - locale
   - systemd

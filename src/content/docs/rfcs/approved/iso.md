@@ -8,6 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do not add microcode or firmware to live iso?
 - Modify `/etc/issue` and add date and username and pass: https://www.linuxfromscratch.org/blfs/view/svn/postlfs/logon.html
 - `makewhatis /usr/share/man` to update man-pages
+- Prefer `cat` to `dd`
 
 ## Live
 - sleep is essential to avoid race conditions
@@ -121,6 +122,20 @@ grub-mkrescue \
   -vv
 ```
 
+## fstab
+- The number before last in the table structure is an outdated backup method and should not be used (kept 0)
+- The last number in the table is the **File System Check Order**: (second digit).  `0` means that fsck will not check the filesystem. Numbers higher than this represent the check order. The root filesystem should be set to `1` and other partitions set to `2`.
+- Consider the following fstab for EROFS/overlayfs:
+```sh
+/iso/fs /media/fs-ro erofs   defaults,loop                                                                        0 0
+overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-rw/upper,workdir=/media/fs-rw/work 0 0
+```
+
+## OverlayFS (rw)
+- lower should be ro
+- upper and work should be rw in a tmpfs space like `/run` and not in something like `/media` (cdrom can be kept in `/media` though)
+- `switch_root` is responsible for moving `proc`, `dev` and `sys` to the new root
+
 ## Resources
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software
@@ -141,9 +156,13 @@ grub-mkrescue \
 - https://github.com/Tomas-M/linux-live
 - https://github.com/venomlinux/mkinitramfs
 - https://github.com/void-linux/void-mklive/blob/master/mklive.sh
+- https://landley.net/writing/rootfs-programming.html
 - https://linux-live.org/
 - https://notabug.org/arsv/minibase-artix
+- https://unix.stackexchange.com/questions/224277/is-it-better-to-use-cat-dd-pv-or-another-procedure-to-copy-a-cd-dvd/224314#224314
 - https://wiki.archlinux.org/title/Optical_disc_drive
+- https://wiki.archlinux.org/title/USB_flash_installation_medium
 - https://www.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
 - https://www.linuxquestions.org/questions/linux-from-scratch-13/create-an-iso-from-lfs-build-4175703319/
 - https://www.phenix.bnl.gov/~purschke/RescueCD/
+- https://www.vidarholen.net/contents/blog/?p=479

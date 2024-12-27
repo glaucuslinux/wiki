@@ -16,6 +16,7 @@ Resources:
 Without Xorg:
 - https://fedoraproject.org/wiki/Changes/LegacyXorgDriverRemoval
 - https://fedoraproject.org/wiki/Changes/ReplaceFbdevDrivers
+- https://fedoraproject.org/wiki/Changes/WaylandOnlyGNOMEWorkstationMedia
 - https://github.com/sdsddsd1/mywayland
 - https://github.com/swaywm/sway/issues/676
 - https://hacktivis.me/notes/pure-wayland
