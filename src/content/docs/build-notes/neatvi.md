@@ -1,10 +1,6 @@
 ---
-title: plymouth
+title: neatvi
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `/etc/plymouth/plymouthd.conf`:
-```
-[Daemon]
-Theme=tribar
-```
+- Patch to support arrow keys; nextvi

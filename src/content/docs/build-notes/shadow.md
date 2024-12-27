@@ -11,7 +11,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable `su` because the user should use `sudo` or `doas` to escalate privileges and not `su` directly; also recommended by the Arch wiki Security page
 - Prefer `shadow` binaries over `toybox` or `util-linux` similar to Alpine and Arch and unlike LFS
 - `id` and `groups` from shadow are deprecated as of 4.17.0
-- Enable `fcaps` for better security in `native`
+- Enable `fcaps` for better security in `native` (requires `root`)
 - Enable `yescrypt` for better password hashing scalability
 - The default value for `--with-group-name-max-length` is `32`
 - When linking against `nsss` shadow tries to link against `xget*` functions that are used with PAM, even though `--without-pam` is being used and `login_nopam` is being built

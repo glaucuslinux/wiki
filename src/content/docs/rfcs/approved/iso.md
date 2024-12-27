@@ -173,6 +173,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://github.com/Tomas-M/linux-live
 - https://github.com/venomlinux/mkinitramfs
 - https://github.com/void-linux/void-mklive/blob/master/mklive.sh
+- https://hacktivis.me/articles/bootstrap-initrd
 - https://landley.net/writing/rootfs-programming.html
 - https://linux-live.org/
 - https://notabug.org/arsv/minibase-artix

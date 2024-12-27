@@ -17,6 +17,35 @@ metadata and recipes.
 - Patches should use `-p0`
 - Packages should not deal with `$SRCD`, only with `$TMPD`
 - Do not store commands inside variables
+### configure
+#### Disable
+- Disable assert
+- Disable audit
+- Disable dbus
+- Disable debug
+- Disable doc
+- Disable examples
+- Disable logind
+- Disable man
+- Disable nls
+- Disable pam
+- Disable rpath
+- Disable selinux
+- Disable static
+- Disable symvers
+- Disable systemd
+- Disable tests
+- Disable x11
+#### Enable
+- Enable acl
+- Enable ipv6
+- Enable lto
+- Enable pic
+- Enable pie
+- Enable shared
+- Enable threads=posix
+- Enable tls
+- Enable xattr
 ### check
 - Report packages without a test suite
 - Report tests that fail for every package
@@ -32,6 +61,7 @@ metadata and recipes.
 - Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops
 - Everything related to `s6` should reside under `/etc/s6`
+- All text files must end with a newline (POSIX)
 
 ## Repository Layout
 - `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)
@@ -57,17 +87,22 @@ Remove additional files:
   - alias
   - application (kiss)
   - charset
+  - consolekit (kiss)
   - completion
+  - dbus
   - doc (kiss)
   - extralibs.ld (perl files)
   - gettext (kiss)
   - gtk-doc (kiss)
   - icon (kiss)
   - info (kiss)
+  - intl (kiss)
   - locale
+  - logind (kiss)
   - man (kiss)
   - pam
   - polkit (kiss)
+  - pulse (kiss)
   - sound (kiss)
   - systemd
   - test (ewe)
@@ -99,6 +134,7 @@ Cross:
 - https://github.com/pibuxd/vanilla
 - https://github.com/venomlinux/scratchpkg
 - https://github.com/void-linux/void-packages/blob/master/Manual.md
+- https://google.github.io/styleguide/shell.xml
 - https://linux.die.net/man/8/apt-get
 - https://linux.die.net/man/8/aptitude
 - https://man7.org/linux/man-pages/man8/dnf.8.html
@@ -114,4 +150,5 @@ Cross:
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
+- https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
