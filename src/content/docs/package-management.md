@@ -36,18 +36,28 @@ Remove additional files:
   - .bs (perl files)
   - .dbg
   - .la (libtool archives)
-  - .packlist (perl files) (alpine removes them)
-  - .pod (perl files) (void removes them)
+  - .packlist (perl files) (alpine)
+  - .pod (perl files) (void)
   - .py (python files)
-  - .pyc (python files) (ewe removes them)
-  - .pyo (python files) (ewe removes them)
+  - .pyc (python files) (ewe)
+  - .pyo (python files) (ewe)
   - alias
+  - application (kiss)
   - charset
   - completion
+  - doc (kiss)
   - extralibs.ld (perl files)
+  - gettext (kiss)
+  - gtk-doc (kiss)
+  - icon (kiss)
+  - info (kiss)
   - locale
+  - man (kiss)
+  - polkit (kiss)
+  - sound (kiss)
   - systemd
-  - test (ewe removes them)
+  - test (ewe)
+  - zsh (kiss)
 
 ## Out of Tree Builds
 Toolchain:
