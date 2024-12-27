@@ -5,6 +5,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Add `.tar.zst` packages on the install iso (rad should install to custom root, a la pacstrap)
 - Add `limine`, (`mtools`?) and `parted` to install iso
+- Add `dosfstools`, `efibootmgr` and `gptfdisk` to install iso
 - Do not add microcode or firmware to live iso?
 - Modify `/etc/issue` and add date and username and pass: https://www.linuxfromscratch.org/blfs/view/svn/postlfs/logon.html
 - `makewhatis /usr/share/man` to update man-pages
@@ -23,6 +24,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Recommended size of `/boot` and ESP: https://www.rodsbooks.com/efi-bootloaders/principles.html
 - `vfat` vs `fat32` vs `fat` for ESP partition: https://uefi.org/specifications
 - Volume ID should be in capital letters according to ISO 9660 (`GLAUCUS`) (ECMA-119 demands ASCII characters out of `A-Z0-9_`)
+- Suse removed bios support from iso
 
 ## Software
 - `cdrtools` (includes `mkisofs`)
@@ -135,6 +137,21 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - lower should be ro
 - upper and work should be rw in a tmpfs space like `/run` and not in something like `/media` (cdrom can be kept in `/media` though)
 - `switch_root` is responsible for moving `proc`, `dev` and `sys` to the new root
+
+## Alpine
+- Uses `grub` for `efi` and `isolinux` for `bios`
+- SquashFS inside `boot` called `modloop` is mounted on `/.modloop` using `/dev/loop0`
+- `tmpfs` mounted on `/` for `rw`
+- Installs packages in `apks` directory
+
+## Arch
+- `systemd-boot` for `efi` and `isolinux` for `bios`
+
+## Kiss
+- no rootfs; either the initramfs is being used directly or packages are being extracted at boot time?
+- requires at least 2 GB of RAM to boot to extract all the packages
+- ram on / type tmpfs
+- base install packages in pkgs
 
 ## Resources
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)

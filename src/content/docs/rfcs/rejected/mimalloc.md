@@ -12,8 +12,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - openmandriva is the only distribution that uses `mimalloc` by default: https://github.com/OpenMandrivaAssociation/musl/commit/275cbeb5d0a4874610d36f92bcf66d932a0fa0ff
 
 ## Resources
+- https://chimera-linux.org/docs/configuration/musl
 - https://git.alpinelinux.org/aports/tree/community/mimalloc2/APKBUILD
+- https://github.com/dolthub/musl
+- https://github.com/dolthub/musl/commit/8aec69db0851e6e197e69b8dca8da3344190f6dd
+- https://github.com/microsoft/mimalloc/issues/923
 - https://github.com/OpenMandrivaAssociation/musl
-- https://github.com/OpenMandrivaAssociation/musl/blob/master/musl-1.2.3-mimalloc-glue.patch
 - https://github.com/OpenMandrivaAssociation/musl/blob/master/import-mimalloc.sh
+- https://github.com/OpenMandrivaAssociation/musl/blob/master/musl-1.2.3-mimalloc-glue.patch
 - https://github.com/OpenMandrivaAssociation/musl/blob/master/musl.spec

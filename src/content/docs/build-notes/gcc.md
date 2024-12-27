@@ -4,6 +4,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Disable bootstrap (stage1 is good enough)
+- Use a different `libexecdir`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `bootstrap-lto-lean` has to be used with `make profiledbootstrap`
 - `bootstrap-debug-lean` is slower and bigger compared to `bootstrap-debug`

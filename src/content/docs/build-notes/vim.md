@@ -3,6 +3,7 @@ title: vim
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- `autoreconf -vfis` does not work
 - Default `vimrc` directory is `/usr/share/vim/vimrc` (and `/etc/vimrc` symlink is expected)
 - On Alpine and Arch:
 ```sh
