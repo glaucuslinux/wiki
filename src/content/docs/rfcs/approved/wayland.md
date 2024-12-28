@@ -26,10 +26,13 @@ Without Xorg:
 - https://www.reddit.com/r/kisslinux/comments/ir0fwp/sway_with_seatd_wayland_is_pretty_cool_this_is/
 
 Compositors:
-- hyprland
-- labwc
-- sway
-- weston
+- dwl: https://codeberg.org/dwl/dwl
+- hyprland: https://github.com/hyprwm/Hyprland
+- labwc: https://github.com/labwc/labwc (Disable librsvg)
+- sway: https://github.com/swaywm/sway
+- swayfx: https://github.com/WillPower3309/swayfx
+- waybox: https://github.com/wizbright/waybox
+- wayfire: https://github.com/WayfireWM/wayfire
 
 Android:
 - Waydroid: https://waydro.id/

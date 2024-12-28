@@ -8,3 +8,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 [Daemon]
 Theme=tribar
 ```
+
+## Resources
+- https://github.com/chimera-linux/cports/issues/3177
