@@ -18,6 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Enable shadowed passwords by running `pwconv`
 - Enable shadowed group passwords by running `grpconv`
 - `sulogin` is being built, but not installed
+- Builds `login_nopam` correctly, but attempts to link xget pam when using `nsss` patch
 
 ## Resources
 - https://github.com/shadow-maint/shadow/issues/999

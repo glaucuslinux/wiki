@@ -1,7 +1,6 @@
 ---
-title: basu
+title: yash
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Does it depend on `gperf`?
-- Depends on `python`
+- `time` is not a builtin command; use the one from `toybox` instead

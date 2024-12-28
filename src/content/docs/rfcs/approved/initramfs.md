@@ -19,23 +19,20 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - When using `find . -print0` the option `-0` or `--null` should be used with `cpio`
 - `modprobe` resolved dependencies, unlike `insmod`
 
-## History
-- https://landley.net/writing/rootfs-intro.html
-- https://landley.net/writing/rootfs-howto.html
-
 ## Resources
+- https://github.com/hanh-linux/gen-initramfs
 - https://github.com/hanh-linux/gen-initramfs/wiki/Explanation-of-how-initramfs-mounts-the-ISO.
+- https://github.com/rdbo/sigma-linux/blob/master/profile/initfs
+- https://github.com/sabotage-linux/sabotage/blob/master/KEEP/initramfs.init
+- https://github.com/sabotage-linux/sabotage/blob/master/KEEP/initramfs.sh
+- https://github.com/venomlinux/mkinitramfs
+- https://gitlab.alpinelinux.org/alpine/mkinitfs
+- https://hacktivis.me/articles/bootstrap-initrd
+- https://landley.net/writing/rootfs-howto.html
+- https://landley.net/writing/rootfs-intro.html
 - https://wiki.gentoo.org/wiki/Custom_Initramfs
 - https://wiki.gentoo.org/wiki/Custom_Initramfs/Examples
 - https://wiki.gentoo.org/wiki/Early_Userspace_Mounting
 - https://wiki.gentoo.org/wiki/Initramfs
 - https://wiki.gentoo.org/wiki/Initramfs/Guide
 - https://wiki.gentoo.org/wiki/Initramfs_-_make_your_own
-
-## Implementations
-- https://gitlab.alpinelinux.org/alpine/mkinitfs
-- https://github.com/hanh-linux/gen-initramfs
-- https://github.com/venomlinux/mkinitramfs
-- https://github.com/sabotage-linux/sabotage/blob/master/KEEP/initramfs.init
-- https://github.com/sabotage-linux/sabotage/blob/master/KEEP/initramfs.sh
-- https://github.com/rdbo/sigma-linux/blob/master/profile/initfs

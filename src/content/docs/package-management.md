@@ -57,6 +57,7 @@ metadata and recipes.
 - Brace expansion is not POSIX
 - Use `mkdir -pv` over `install -dv`
 - `cp -a` implies `-R/-r/--recursive`
+- Do not use `ln -r`; not POSIX
 - `touch` is faster than `:>`
 - Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops

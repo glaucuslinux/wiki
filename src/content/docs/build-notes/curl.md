@@ -18,3 +18,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need `c-ares` because musl does not support DNS lookups?
 - `c-ares` support is disabled on Arch: https://bugs.archlinux.org/task/49962
 - Disable IDN; not many websites use internationalized domain names
+
+## Resources
+- https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html

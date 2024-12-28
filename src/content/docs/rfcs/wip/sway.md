@@ -34,5 +34,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - build `freetype` (-> `fontconfig` -> `pango` -> `sway`)
 - build `pango` (-> `sway`)
 - `muon` is broken due to `meson` adding `iconv` as a dependency
+- `glib` does not work with `iconv` from `toybox` or from `musl`
 - A circular dependency between `harfbuzz` and `freetype` on kiss
 - Install `cairo` after `freetype` and `fontconfig` to get a font backend, or `pango` won't build?

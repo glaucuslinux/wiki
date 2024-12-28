@@ -1,7 +1,6 @@
 ---
-title: basu
+title: kbd
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Does it depend on `gperf`?
-- Depends on `python`
+- Depends on `flex`; does not support `reflex`

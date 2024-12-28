@@ -24,6 +24,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Use `su` from `util-linux` as recommended by `shadow`
 - `runuser` and `su` from `util-linux` both require `pam`
 - Disable `pg` as it uses `vidputs()` which is not provided by `netbsd-curses`
+- Alpine and Arch use `login` and `su` from `util-linux`
 
 ## Resources
 - https://github.com/sabotage-linux/sabotage/commit/1f3b7032769f0ce27cde3ac7490d02f0393c9a5a
+- https://gitlab.alpinelinux.org/alpine/aports/-/issues/11730

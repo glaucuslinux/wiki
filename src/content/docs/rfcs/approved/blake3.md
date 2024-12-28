@@ -6,6 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Fastest cryptographic hash function
 - Fastest non-cryptographic hash functions are meowhash, t1ha, wyhash and xxhash
 - `rad` uses `BLAKE3` given that Nim supports it via `nimcrypto`
+- Check `argon2id` for `shadow`
 
 ## Limitations
 - The C version of `b3sum` does not support multithreading:

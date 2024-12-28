@@ -9,4 +9,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Resources
 - https://rfc.archlinux.page/0016-spdx-license-identifiers/
+- https://rfc.archlinux.page/0040-license-package-sources/
 - https://spdx.org/licenses/

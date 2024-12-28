@@ -4,3 +4,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - `mandoc` requires an `LN` variable in `configure.local` to use symbolic links
+- `cat` can be used instead of `less` (oasis)

@@ -170,6 +170,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://github.com/kiss-community/kiss-live
 - https://github.com/laurent85v/archuseriso
 - https://github.com/MX-Linux/build-iso-mx
+- https://github.com/oasislinux/oasis/issues/11
 - https://github.com/Tomas-M/linux-live
 - https://github.com/venomlinux/mkinitramfs
 - https://github.com/void-linux/void-mklive/blob/master/mklive.sh
@@ -177,6 +178,8 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://landley.net/writing/rootfs-programming.html
 - https://linux-live.org/
 - https://notabug.org/arsv/minibase-artix
+- https://roscopeco.com/2013/08/12/creating-a-bootable-hard-disk-image-with-grub2/
+- https://superuser.com/questions/130955/how-to-install-grub-into-an-img-file
 - https://unix.stackexchange.com/questions/224277/is-it-better-to-use-cat-dd-pv-or-another-procedure-to-copy-a-cd-dvd/224314#224314
 - https://wiki.archlinux.org/title/Optical_disc_drive
 - https://wiki.archlinux.org/title/USB_flash_installation_medium

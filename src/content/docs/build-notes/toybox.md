@@ -6,6 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `toybox`'s `cpio` defaults to `newc`
 - Do we need to run `scripts/genconfig.sh` before `make`?
 - `scripts/genconfig.sh` and tests depend on `bash`
+- `find` from `findutils` is about twice as fast as the one from `toybox` 
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
