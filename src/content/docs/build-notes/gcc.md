@@ -3,7 +3,7 @@ title: gcc
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Disable bootstrap (stage1 is good enough)
+- Disable bootstrap; stage1 is good enough
 - Use a different `libexecdir`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `bootstrap-lto-lean` has to be used with `make profiledbootstrap`

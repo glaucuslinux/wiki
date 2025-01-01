@@ -8,7 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`byacc`](https://invisible-island.net/byacc/) is the default yacc implementation
 - [`catppuccin`](https://catppuccin.com/) is the default color scheme
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
-- [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
+- [`inetutils`](https://www.gnu.org/software/inetutils/) and [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) are the default networking utilities
 - [`labwc`](https://labwc.github.io/) is the default stacking Wayland compositor
 - [`lbzip2`](https://github.com/kjn/lbzip2) is the default bzip2 implementation
 - [`less`](https://greenwoodsoftware.com/less/) is the default terminal pager

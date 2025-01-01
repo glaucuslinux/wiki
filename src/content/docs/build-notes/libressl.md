@@ -5,3 +5,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - `--enable-libtls-only` only installs `libtls` for systems that use `openssl`
 - Check `--enable-extratests`
+- Provides `/etc/ssl/cert.pem` by default; no need for `ca-certificates`
