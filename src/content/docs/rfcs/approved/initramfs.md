@@ -18,6 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No need for network or wireless drivers inside initramfs because we won't live boot over network for now
 - When using `find . -print0` the option `-0` or `--null` should be used with `cpio`
 - `modprobe` resolved dependencies, unlike `insmod`
+- `blkid` is better than `findfs` in terms of finding block devices; better output
 
 ## Resources
 - https://github.com/hanh-linux/gen-initramfs

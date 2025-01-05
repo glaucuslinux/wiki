@@ -17,6 +17,7 @@ metadata and recipes.
 - Patches should use `-p0`
 - Packages should not deal with `$SRCD`, only with `$TMPD`
 - Do not store commands inside variables
+- Avoid modifications to manual pages as they render `autoreconf` harder; require more stuff
 ### configure
 #### Disable
 - Disable assert
@@ -151,5 +152,6 @@ Cross:
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
+- https://wiki.debian.org/ReduceDebian
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html

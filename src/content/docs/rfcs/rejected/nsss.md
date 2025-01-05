@@ -14,6 +14,7 @@ People who build a distribution with nsss would know to enable the option on utm
 
 It's not very important, but until nsss gets more widespread, I think the statu quo is better.
 ```
+- Should `nsss` also be added as a runtime dependency?
 
 ## Resources
 - https://git.alpinelinux.org/aports/tree/main/musl-nscd/APKBUILD
