@@ -21,9 +21,10 @@ CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
 ## Limitations
 - Does not cross compile well (hardcodes default variables)
 - Does not work with `libedit` on glaucus even with `LIBS=-ledit` and when using `libreadline.a` (check?)
-
-- `binutils` (fails to build with `yash` possibly due to POSIXLY_CORRECT)
-- `expat` (buildconf.sh uses bash)
-- `libcap` depends on `bash`
-- `toybox` depends on `bash` (hard to patch)
-- `zlib-ng` depends on `bash`
+- The following packages depend on `bash`:
+  - `binutils`: `ld/genscripts.sh` fails to build with `yash` and `oksh` possibly due to `POSIXLY_CORRECT`
+  - `expat`: buildconf.sh uses bash
+  - `libcap`
+  - `libedit`
+  - `toybox`: hard to patch
+  - `zlib-ng`

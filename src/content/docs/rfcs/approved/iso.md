@@ -25,6 +25,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `vfat` vs `fat32` vs `fat` for ESP partition: https://uefi.org/specifications
 - Volume ID should be in capital letters according to ISO 9660 (`GLAUCUS`) (ECMA-119 demands ASCII characters out of `A-Z0-9_`)
 - Suse removed bios support from iso
+- Do not further compress the `iso` with `zstd` if the `fs` is already compressed by EROFS or SquashFS
 
 ## Software
 - `cdrtools` (includes `mkisofs`)

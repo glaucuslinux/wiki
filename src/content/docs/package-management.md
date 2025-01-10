@@ -25,7 +25,9 @@ recipes.
 - Disable debug
 - Disable doc
 - Disable examples
+- Disable gettext
 - Disable idn
+- Disable intltool
 - Disable logind
 - Disable man
 - Disable nls
@@ -45,6 +47,7 @@ recipes.
 - Enable lto
 - Enable pic
 - Enable pie
+- Enable pthreads
 - Enable shared
 - Enable threads=posix
 - Enable tls
@@ -138,6 +141,7 @@ Remove additional files:
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
+- https://wiki.archlinux.org/title/Official_repositories
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.debian.org/ReduceDebian

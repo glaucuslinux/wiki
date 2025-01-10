@@ -19,6 +19,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - When using `find . -print0` the option `-0` or `--null` should be used with `cpio`
 - `modprobe` resolved dependencies, unlike `insmod`
 - `blkid` is better than `findfs` in terms of finding block devices; better output
+- Do we need the following modules: `char/tpm`, `firewire`, `hid-generic` and `pcmcia`?
 
 ## Resources
 - https://github.com/hanh-linux/gen-initramfs
