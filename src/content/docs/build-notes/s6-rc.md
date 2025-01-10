@@ -4,4 +4,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - `s6-rc-compile` works in chroot
+- For native builds, database is compiled instead of being copied from git repo
 - There is no test suite

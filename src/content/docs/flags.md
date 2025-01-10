@@ -3,6 +3,15 @@ title: Flags
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Current `CFLAGS`:
+```c
+-pipe -g0 -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=19 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
+```
+- Current `CXXFLAGS` are identical to `CFLAGS`
+- Current `LDFLAGS`:
+```c
+-Wl,-O1,-s,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu,--compress-debug-sections=zstd
+```
 ## CFLAGS
 ### `-flto=auto`
 - Will spawn N threads based on the number of threads; similar to `make -j`
@@ -121,3 +130,4 @@ https://reviews.llvm.org/D4565
 
 ## Resources
 - https://forums.gentoo.org/viewtopic-t-1171518.html?sid=259e0b60fe8784f498bb919b83beb3fb
+- https://www.youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef
