@@ -84,6 +84,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## finit
 - https://github.com/troglobit/finit/issues/133
 
+## gcc
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98400
+
 ## gettext-tiny
 - https://github.com/sabotage-linux/gettext-tiny/issues/64
 - https://github.com/sabotage-linux/gettext-tiny/issues/73

@@ -24,6 +24,6 @@ CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
 
 - `binutils` (fails to build with `yash` possibly due to POSIXLY_CORRECT)
 - `expat` (buildconf.sh uses bash)
-- `libcap` requires bash
-- `toybox` requires bash (hard to patch)
-- `zlib-ng` requires bash
+- `libcap` depends on `bash`
+- `toybox` depends on `bash` (hard to patch)
+- `zlib-ng` depends on `bash`

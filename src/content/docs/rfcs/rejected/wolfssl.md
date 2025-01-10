@@ -8,9 +8,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - OpenSSL compatibility layer is lacking; packages like `kmod` and `toybox` fail to build even with `--enable-opensslall` and `--enable-opensslextra` and with compatibility symlinks for both the libraries and pkg-config files
 
 ## Resources
+- https://curl.se/docs/ssl-compared.html
 - https://danyspin97.org/blog/replacing-openssl-part-1-wolfssl/
+- https://en.wikipedia.org/wiki/Comparison_of_TLS_implementations
 - https://git.alpinelinux.org/aports/tree/community/wolfssl/APKBUILD
 - https://github.com/sabotage-linux/sabotage/blob/master/pkg/wolfssl
+- https://github.com/void-linux/void-packages/issues/20935
 - https://github.com/wolfSSL/osp
 - https://github.com/wolfSSL/wolfssl
 - https://github.com/wolfSSL/wolfssl/issues/1134

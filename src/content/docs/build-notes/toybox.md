@@ -3,10 +3,11 @@ title: toybox
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `toybox`'s `cpio` defaults to `newc`
+- `toybox`'s `cpio` defaults to `newc`, and is as fast as `bsdcpio`
 - Do we need to run `scripts/genconfig.sh` before `make`?
 - `scripts/genconfig.sh` and tests depend on `bash`
-- `find` from `findutils` is about twice as fast as the one from `toybox` 
+- `find` from `findutils` is about twice as fast as the one from `toybox`
+- `toybox`'s `ip` is unable to set interfaces up
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
@@ -29,6 +30,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 18. `vdir`
 
 ## Resources
+- https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
 - https://core.suckless.org/sbase/
 - https://core.suckless.org/ubase/
 - https://github.com/chimera-linux/chimerautils

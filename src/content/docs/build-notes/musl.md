@@ -11,7 +11,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `DT_RELR` support (`-z pack-relative-relocs`) has been upstreamed, and reduces size by 5 - 8%
 - Does `musl` conflict/replace `libssp` (the standalone package)
 
-## References
+## Resources
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
 - https://wiki.gentoo.org/wiki/Musl_porting_notes

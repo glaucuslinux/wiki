@@ -43,6 +43,10 @@ export default defineConfig({
           link: "/filesystem",
         },
         {
+          label: "Flags",
+          link: "/flags",
+        },
+        {
           label: "History",
           link: "/history",
         },

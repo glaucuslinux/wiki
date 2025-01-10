@@ -7,7 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `input` group has been deprecated and `plugdev` should be used (e.g. QEMU)
 - `network` group has been deprecated and `netdev` should be used (e.g. QEMU)
 
-## References
+## Resources
 - https://docs.fedoraproject.org/en-US/packaging-guidelines/UsersAndGroups/
 - https://wiki.archlinux.org/title/DeveloperWiki:UID_/_GID_Database
 - https://wiki.debian.org/SystemGroups

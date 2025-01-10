@@ -14,7 +14,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/etc/adjtime` should be `/var/lib/hwclock/adjtime` according to FHS (both Alpine and Arch are using an old directory version) https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s08.html#varlibhwclockStateDirectoryForHwclo
 - If the `adjtime` file does not exist, the default is `utc`
 - `musl` provides its own `sys/ttydefaults.h`, while Alpine provides a separate version
-- Disable `raw` as it requires `raw.h` which is only available on `glibc`
+- Disable `raw` as it requires `raw.h` which is only available on `glibc`, also `linux/raw.h` has been removed since 5.14
 - `col` requires `glibc` (disabled by default on `musl`)
 - glaucus disables `more` and uses `less`
 - `more` depends on `libmagic` from `file`
@@ -27,5 +27,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Alpine and Arch use `login` and `su` from `util-linux`
 
 ## Resources
+- https://bugzilla.redhat.com/show_bug.cgi?id=1984771
 - https://github.com/sabotage-linux/sabotage/commit/1f3b7032769f0ce27cde3ac7490d02f0393c9a5a
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/11730

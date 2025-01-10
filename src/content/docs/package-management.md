@@ -3,9 +3,8 @@ title: Package Management Policy
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-Package management is dependent on limited web servers, making parallelization
-harder. glaucus uses the filesystem tree as its database to store package
-metadata and recipes.
+glaucus uses the filesystem tree as its database to store package metadata and
+recipes.
 
 ## Cerata
 ### ceras
@@ -26,10 +25,12 @@ metadata and recipes.
 - Disable debug
 - Disable doc
 - Disable examples
+- Disable idn
 - Disable logind
 - Disable man
 - Disable nls
 - Disable pam
+- Disable polkit
 - Disable rpath
 - Disable selinux
 - Disable static
@@ -39,6 +40,7 @@ metadata and recipes.
 - Disable x11
 #### Enable
 - Enable acl
+- Enable attr
 - Enable ipv6
 - Enable lto
 - Enable pic
@@ -49,7 +51,7 @@ metadata and recipes.
 - Enable xattr
 ### check
 - Report packages without a test suite
-- Report tests that fail for every package
+- Report failing tests
 - Try `VERBOSE=1 V=1` for `make check`
 - If tests fail in parallel, try `-j1`
 - Compare failing tests with Alpine and LFS
@@ -58,7 +60,7 @@ metadata and recipes.
 - Brace expansion is not POSIX
 - Use `mkdir -pv` over `install -dv`
 - `cp -a` implies `-R/-r/--recursive`
-- Do not use `ln -r`; not POSIX
+- `ln -r` is not POSIX
 - `touch` is faster than `:>`
 - Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops
@@ -79,7 +81,9 @@ Remove additional files:
   - .a (static libraries)
   - .alias
   - .bs (perl files)
+  - .cmd (kernel files)
   - .dbg
+  - .install (kernel files)
   - .la (libtool archives)
   - .packlist (perl files) (alpine)
   - .pod (perl files) (void)
@@ -110,23 +114,6 @@ Remove additional files:
   - test (ewe)
   - zsh (kiss)
 
-## Out of Tree Builds
-Toolchain:
-- binutils
-- gcc
-
-Cross:
-- binutils
-- dash (no patches applied so no need to copy src)
-- e2fsprogs
-- gcc
-- iputils
-- less
-- lksh
-- mksh
-- musl-utils (has no package source though, as its files are in CERD)
-- which
-
 ## Resources
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/general-concepts/dependencies/#implicit-system-dependency
@@ -146,6 +133,7 @@ Cross:
 - https://man.voidlinux.org/xbps-remove.1
 - https://michael.stapelberg.ch/posts/2020-05-09-distri-hermetic-packages/
 - https://os-wiki.ewe.moe/dev/guide/packaging
+- https://tincan-linux.github.io/wiki/arc
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries
