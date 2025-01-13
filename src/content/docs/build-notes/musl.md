@@ -10,6 +10,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - If the dynamic linker has been installed in a non-default location, the path needs to reside at that location (`../etc` relative to the chosen `syslibdir`)
 - `DT_RELR` support (`-z pack-relative-relocs`) has been upstreamed, and reduces size by 5 - 8%
 - Does `musl` conflict/replace `libssp` (the standalone package)
+- `gencat` requires `queue.h`
 
 ## Resources
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58

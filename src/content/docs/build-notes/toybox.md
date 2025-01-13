@@ -8,6 +8,31 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `scripts/genconfig.sh` and tests depend on `bash`
 - `find` from `findutils` is about twice as fast as the one from `toybox`
 - `toybox`'s `ip` is unable to set interfaces up
+- `musl` recommends using `getconf` from `toybox`
+
+## Replaces
+- `coreutils`
+- `diffutils`
+- `findutils`
+- `libarchive` (only `bsdcpio`)
+- `patch` (toybox's `patch` already does `--no-backup-if-mismatch` by default)
+- `procps-ng` (provide `pidwait`, `tload` and `slabtop`?)
+- `psmisc`
+- `sed`
+
+## Does Not Replace
+- `dhcp` / `sdhcp`
+- `file`
+- `grep` / `ugrep` (toybox's `grep` is at least 10 times slower)
+- `iproute2`
+- `iputils` / `fping`
+- `man-db` / `mandoc` (bad implementation)
+- `more` / `less` (bad implementation)
+- `pciutils`
+- `shadow`
+- `util-linux` (bad implementations like `swapon`)
+- `vim` / `neatvi` (bad implementation)
+- `wget` (bad implementation)
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
@@ -31,6 +56,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Resources
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
+- https://codeberg.org/sewn/kiss-repo/commit/c7449c660d048034b3da358efe0a4d8526c8019b
 - https://core.suckless.org/sbase/
 - https://core.suckless.org/ubase/
 - https://github.com/chimera-linux/chimerautils
@@ -46,3 +72,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
 - https://tools.suckless.org/9base/
+- https://www.openwall.com/lists/musl/2013/11/09/3

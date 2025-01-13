@@ -8,3 +8,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `nettle` is disabled by default
 - glaucus uses `cpio` from `toybox`
 - Is `expat` a run time dependency?
+- bsdcpio is much faster compared to regular cpio
+- bsdcpio is as fast as rust 3cpio and toybox cpio
+
+## Resources
+- https://www.youtube.com/watch?v=M8NVBa3ZsE4

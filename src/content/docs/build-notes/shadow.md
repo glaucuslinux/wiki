@@ -9,6 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable `audit` support because it goes inline with utmp as it grants the ability to monitor users and failed logins and such
 - Disable `logind` because `shadow` switched to `systemd` to provide utmp-like functionality
 - Disable `su` because the user should use `sudo` or `doas` to escalate privileges and not `su` directly; also recommended by the Arch wiki Security page
+- shadow advises against using their `su` and recommends using `util-linux`'s `su` instead (which requires PAM)
 - Prefer `shadow` binaries over `toybox` or `util-linux` similar to Alpine and Arch and unlike LFS
 - `id` and `groups` from shadow are deprecated as of 4.17.0
 - Enable `fcaps` for better security in `native` (requires `root`)
@@ -20,7 +21,34 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `sulogin` is being built, but not installed
 - Builds `login_nopam` correctly, but attempts to link xget pam when using `nsss` patch
 - Check `/etc/login.defs` for mail stuff and others
+- The following utilities can be configured to be built without PAM:
+```sh
+- chfn
+- chpasswd
+- chsh
+- getsubids
+- groupmems
+- login
+- newusers
+- passwd
+```
+
+## Common Binaries
+Comparison of different implementations of the same tools by shadow and util-linux:
+
+- Prefer `shadow`'s `chfn`: util-linux version requires PAM
+- Prefer `shadow`'s `chsh`: util-linux version requires PAM
+- Prefer `shadow`'s `login`: util-linux version requires PAM
+- Prefer `shadow`'s `newgrp`: no flag to disable it from `shadow`, also `util-linux` version needs to be explicitly enabled
+- Prefer `shadow`'s `nologin`: no flag to disable it from `shadow`
+- sg (is just a symlink to newgrp)
+- vigr (is just a symlink to vipw)
+- Prefer `shadow`'s `vipw`: no flag to disable it from `shadow`, also `util-linux` version needs to be explicitly enabled
+- Prefer `util-linux`'s `sulogin`: `shadow`'s `sulogin` lacks options and is not installed by default
+- Prefer `toybox`'s `su`: both `shadow` and `util-linux` versions require `pam`
 
 ## Resources
+- https://bugs.archlinux.org/task/31414
 - https://github.com/shadow-maint/shadow/issues/999
 - https://github.com/shadow-maint/shadow/issues/1082
+- https://github.com/shadow-maint/shadow/pull/1174

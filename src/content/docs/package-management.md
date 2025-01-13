@@ -26,6 +26,7 @@ recipes.
 - Disable doc
 - Disable examples
 - Disable gettext
+- Disable i18n
 - Disable idn
 - Disable intltool
 - Disable logind
@@ -69,6 +70,7 @@ recipes.
 - Group commands that are repeated 3 or more times into `for` loops
 - Everything related to `s6` should reside under `/etc/s6`
 - All text files must end with a newline (POSIX)
+- Prefer strip targets `install-strip` to manually running strip
 
 ## Repository Layout
 - `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)
@@ -100,9 +102,10 @@ Remove additional files:
   - completion
   - dbus
   - doc (kiss)
-  - extralibs.ld (perl files)
+  - extralibs (perl files)
   - gettext (kiss)
   - gtk-doc (kiss)
+  - i18n
   - icon (kiss)
   - info (kiss)
   - intl (kiss)
@@ -145,5 +148,6 @@ Remove additional files:
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.debian.org/ReduceDebian
+- https://www.debian.org/releases/bookworm/amd64/ch03s04.en.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html

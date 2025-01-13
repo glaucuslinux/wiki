@@ -16,6 +16,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ### `-flto=auto`
 - Will spawn N threads based on the number of threads; similar to `make -j`
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs
+- `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO, and was removed from `gcc`'s options
 ### `-flto-compression-level=19`
 - Available when using `zstd` as a backend for LTO as it results in smaller binaries
 - Check if level 22 is supported
@@ -108,6 +109,9 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/wiki/Visibility
 - https://stackoverflow.com/questions/59469822/how-fvisibility-inlines-hidden-differs-from-fvisibility-hidden-in-gcc
 
+### `-march=x86-64-v3`
+- x86-64-v3 provides better performance and battery life
+
 ### Disable LTO
 - Remove `-flto=auto -flto-compression-level=19 -fuse-linker-plugin `
 
@@ -130,4 +134,13 @@ https://reviews.llvm.org/D4565
 
 ## Resources
 - https://forums.gentoo.org/viewtopic-t-1171518.html?sid=259e0b60fe8784f498bb919b83beb3fb
+- https://gcc.gnu.org/install/build.html
+- https://gcc.gnu.org/install/configure.html
+- https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+- https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
+- https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
+- https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
+- https://serpentos.com/blog/2024/01/19/january-updates/
+- https://www.gentoo.org/news/2024/02/04/x86-64-v3.html
+- https://www.phoronix.com/news/Gentoo-x86-64-v3-Binaries
 - https://www.youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef

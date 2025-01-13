@@ -233,6 +233,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://lists.suckless.org/hackers/2001/17078.html
 
 ## slibtool
+- https://dev.midipix.org/cross/slibtool/issue/53
+- https://dev.midipix.org/cross/slibtool/issue/77
 - https://dev.midipix.org/cross/slibtool/pull-request/78
 
 ## squashfs-tools

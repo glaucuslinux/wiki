@@ -26,6 +26,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Volume ID should be in capital letters according to ISO 9660 (`GLAUCUS`) (ECMA-119 demands ASCII characters out of `A-Z0-9_`)
 - Suse removed bios support from iso
 - Do not further compress the `iso` with `zstd` if the `fs` is already compressed by EROFS or SquashFS
+- After mounting overlay all previous mounts need to be moved using `mount --move` to identical mountpoints inside the overlay, otherwise `switch_root` will error out with `failed to unlink` and `directory not empty`
+- ISOs should be hybrid; can be written directly to CD/DVD/BD media OR to USB sticks
+- Distributions with good ISOs include Arch and eweOS
+- Distributions with not so great ISOs include Chimera and Void
 
 ## Software
 - `cdrtools` (includes `mkisofs`)
@@ -182,9 +186,11 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://roscopeco.com/2013/08/12/creating-a-bootable-hard-disk-image-with-grub2/
 - https://superuser.com/questions/130955/how-to-install-grub-into-an-img-file
 - https://unix.stackexchange.com/questions/224277/is-it-better-to-use-cat-dd-pv-or-another-procedure-to-copy-a-cd-dvd/224314#224314
+- https://unix.stackexchange.com/questions/364262/freeing-initramfs-ram-after-switching-root-when-using-overlayfs
 - https://wiki.archlinux.org/title/Optical_disc_drive
 - https://wiki.archlinux.org/title/USB_flash_installation_medium
 - https://www.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
+- https://www.linux.org.ru/forum/linux-install/10720020
 - https://www.linuxquestions.org/questions/linux-from-scratch-13/create-an-iso-from-lfs-build-4175703319/
 - https://www.phenix.bnl.gov/~purschke/RescueCD/
 - https://www.vidarholen.net/contents/blog/?p=479

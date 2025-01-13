@@ -8,6 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Supports DEFLATE (Zlib) for better compression (check with `zlib-ng`?)
 - `booster` does not support live environments, proposal: https://github.com/anatol/booster/issues/232#issuecomment-1737913983
 - `mount` handles both `erofs` and `squashfs` files automatically and does not require manual usage of `losetup`
+- Consider replacing with squashfs and zstd, if `erofs-tools` switches to rust
 
 ## Resources
 - https://ipads.se.sjtu.edu.cn/_media/publications/gaoatc19.pdf

@@ -12,3 +12,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need `connman` to handle wired connections?
 - Use `network` vs `netdev` group?
 - `/var/lib/eiwd/` vs `/var/lib/iwd/`
+- `iwctl` requires explicit enabling `--enable-client`

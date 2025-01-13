@@ -18,6 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No need for network or wireless drivers inside initramfs because we won't live boot over network for now
 - When using `find . -print0` the option `-0` or `--null` should be used with `cpio`
 - `modprobe` resolved dependencies, unlike `insmod`
+- Without running `depmod` module dependencies won't be loaded
 - `blkid` is better than `findfs` in terms of finding block devices; better output
 - Do we need the following modules: `char/tpm`, `firewire`, `hid-generic` and `pcmcia`?
 

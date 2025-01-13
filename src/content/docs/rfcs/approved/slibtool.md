@@ -12,6 +12,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `slibtoolize` will be provided in the future (either as a mode or a symlink)
 - `ltdl` is no longer needed (it serves to provide a `dlopen()` functionality on systems which do not offer it, i.e. HP-UX and BeOS)
 - libtoolize fails as a symlink to slibtool (several build tools complain e.g. gmp) (since slibtool does not treat libtoolize with the stoolie driver)
+- `slibtool`'s `ltmain.sh` is broken; provide alternative instead?
+- `libarchive` does not build with `slibtoolize` or the `libtoolize` wrapper; only with gnu libtoolize
 
 ## Resources
 - https://wiki.gentoo.org/wiki/Slibtool
