@@ -30,6 +30,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - ISOs should be hybrid; can be written directly to CD/DVD/BD media OR to USB sticks
 - Distributions with good ISOs include Arch and eweOS
 - Distributions with not so great ISOs include Chimera and Void
+- Do not forget to generate the `initramfs` before generating the `iso`
+- Do not forget to have `dash` installed before generating the `initramfs`
 
 ## Software
 - `cdrtools` (includes `mkisofs`)

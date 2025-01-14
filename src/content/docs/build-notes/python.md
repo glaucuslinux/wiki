@@ -10,3 +10,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Remove the `pip` symlinks in install if it is not being installed
 - Check `--disable-test-modules`
 - Alpine and Arch provide "Externally Managed" python
+- `--enable-optimizations` runs a suite of tests, and then uses collected profiling data to improve the performance of the installation itself, and some tests might hang in cross which is why a native rebuild is better with optimizations, once the system is complete
+- Unable to use upstream binaries

@@ -20,3 +20,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 #include <bits/alltypes.h>
 ```
+- `glibc` includes a daemon called `nscd`, which caches the results of certain types of database lookups, and it is not particuarly useful unless there are a lot of users or groups, or when using a distributed authentication database like LDAP

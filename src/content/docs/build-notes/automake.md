@@ -7,3 +7,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `autoreconf` depends on `gzip` (for `amhello`) and `makeinfo`
 - Does not support cross-compilation (`amhello` error)
 - Test suite requires `bash` and other dependencies
+- Test suite is unreliable with a lot failing tests (e.g. `lex`)

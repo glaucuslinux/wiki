@@ -279,6 +279,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/raygard/wak/issues/8
 
 ## wget2
+- https://gitlab.com/gnuwget/wget2/-/issues/644
 - https://mail.gnu.org/archive/html/wget-dev/2023-09/msg00041.html
 
 ## yash

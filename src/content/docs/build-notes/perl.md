@@ -12,6 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Check `installman1dir` and `installman3dir`
 - Modules manpages are being removed on Adelie
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
+- Unable to use upstream binaries; requires signing up with a third party vendor?
 
 ## Resources
 - https://perldoc.perl.org/Config

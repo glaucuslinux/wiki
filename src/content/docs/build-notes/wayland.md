@@ -4,3 +4,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Does it depend on `python`?
+- Check packages that depend on `wayland` and/or `wayland-protocols`

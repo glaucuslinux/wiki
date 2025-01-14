@@ -22,6 +22,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 - [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 - [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
+- [`mimalloc`](https://microsoft.github.io/mimalloc/) is the default memory allocator
 - [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 - [`musl`](https://musl.libc.org/) is the default C standard library
 - [`neatvi`](https://github.com/aligrudi/neatvi) is the default text editor
@@ -40,6 +41,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
 - [`sway`](https://swaywm.org/) is the default tiling Wayland compositor
 - [`toybox`](https://landley.net/toybox/) is the default unix user space
+- [`ugrep`](https://ugrep.com/) is the default grep implementation
 - [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
 - [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 - [`yash`](https://magicant.github.io/yash/) is the default unix shell

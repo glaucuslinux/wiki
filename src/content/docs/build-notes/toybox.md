@@ -8,31 +8,34 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `scripts/genconfig.sh` and tests depend on `bash`
 - `find` from `findutils` is about twice as fast as the one from `toybox`
 - `toybox`'s `ip` is unable to set interfaces up
-- `musl` recommends using `getconf` from `toybox`
+- `musl` recommends using `getconf` (and `iconv`?) from `toybox`
+- `toybox`'s `sysctl —system` vs `-p`
+- `sysctl.d` directory is better than `sysctl.conf` file as you're just dropping files in there instead of editing a file in place
+- `sysctl` configuration: https://github.com/k4yt3x/sysctl
 
 ## Replaces
 - `coreutils`
 - `diffutils`
-- `findutils`
-- `libarchive` (only `bsdcpio`)
-- `patch` (toybox's `patch` already does `--no-backup-if-mismatch` by default)
-- `procps-ng` (provide `pidwait`, `tload` and `slabtop`?)
+- `findutils`; `toybox`'s `find` is approximately two times slower
+- `libarchive`; only `bsdcpio`
+- `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default
+- `procps-ng`; provide `pidwait`, `tload` and `slabtop`?
 - `psmisc`
 - `sed`
 
 ## Does Not Replace
 - `dhcp` / `sdhcp`
 - `file`
-- `grep` / `ugrep` (toybox's `grep` is at least 10 times slower)
+- `grep` / `ugrep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
 - `iputils` / `fping`
-- `man-db` / `mandoc` (bad implementation)
-- `more` / `less` (bad implementation)
+- `man-db` / `mandoc`; bad implementation
+- `more` / `less`; bad implementation
 - `pciutils`
 - `shadow`
-- `util-linux` (bad implementations like `swapon`)
-- `vim` / `neatvi` (bad implementation)
-- `wget` (bad implementation)
+- `util-linux`; bad implementations like `swapon`
+- `vim` / `neatvi`; bad implementation
+- `wget`; bad implementation
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`

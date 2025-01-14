@@ -9,15 +9,23 @@ recipes.
 ## Cerata
 ### ceras
 - Avoid versions in `nom`
+- Do not add common packages that are expected to exist at build-time as build dependencies (e.g. `make`, `linux-headers` and so on)
 ### prepare
 - Updating `config.guess`, `config.sub` and `config.rpath` is not enough; use `autoreconf -vfis` instead
 - Packages that use `autoreconf`, need `runstatedir` (copied from the system)
+- Prefer `autogen.sh` and `bootstrap.sh` and provided `autoreconf` upstream scripts instead of manually running the command
+- Disable `po4a` generation and `gtkdocize` if the `autoreconf` scripts allow that
 - Patches are typically applied in prepare
 - Patches should use `-p0`
 - Packages should not deal with `$SRCD`, only with `$TMPD`
 - Do not store commands inside variables
 - Avoid modifications to manual pages as they render `autoreconf` harder; require more stuff
 ### configure
+- Avoid substituting flag strings with variables like `nom`
+- Use `glaucus-configure` for `autoconf` build systems
+- Use `glaucus-cmake` for `cmake` build systems
+- Use `glaucus-muon` for `muon` and `meson` build systems
+- Use full paths to `glaucus-*` files in `build.cross`
 #### Disable
 - Disable assert
 - Disable audit
@@ -71,6 +79,7 @@ recipes.
 - Everything related to `s6` should reside under `/etc/s6`
 - All text files must end with a newline (POSIX)
 - Prefer strip targets `install-strip` to manually running strip
+- Do not create fifo files in `build.cross` as they can't be copied
 
 ## Repository Layout
 - `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)
