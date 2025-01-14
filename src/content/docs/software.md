@@ -7,6 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`booster`](https://github.com/anatol/booster) is the default initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/) is the default yacc implementation
 - [`catppuccin`](https://catppuccin.com/) is the default color scheme
+- [`flex`](https://github.com/westes/flex) is the default lex implementation
 - [`fping`](https://fping.org/) is the default ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
 - [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) is the default networking utilities
@@ -33,7 +34,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`pkgconf`](https://pkgconf.org/) is the default pkg-config implementation
 - [`plocate`](https://plocate.sesse.net/) is the default locate implementation
 - [`plzip`](https://www.nongnu.org/lzip/plzip.html) is the default lzip implementation
-- [`reflex`](https://invisible-island.net/reflex/) is the default lex implementation
 - [`s6`](https://skarnet.org/software/s6/) is the default init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
 - [`samurai`](https://github.com/michaelforney/samurai) is the default ninja implementation
