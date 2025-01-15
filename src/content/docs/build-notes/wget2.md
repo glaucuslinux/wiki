@@ -3,6 +3,7 @@ title: wget2
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- `--with-openssl` breaks build with `libressl`
 - Does `musl` support `libidn2`?
 - Disable `libpcre` and use `libpcre2` instead
 - Check if we need `libpsl`

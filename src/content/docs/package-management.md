@@ -35,6 +35,7 @@ recipes.
 - Disable examples
 - Disable gettext
 - Disable i18n
+- Disable iconv
 - Disable idn
 - Disable intltool
 - Disable logind
