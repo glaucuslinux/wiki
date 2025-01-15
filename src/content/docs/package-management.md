@@ -50,6 +50,7 @@ recipes.
 - Disable systemd
 - Disable tests
 - Disable x11
+- Disable year2038
 #### Enable
 - Enable acl
 - Enable attr

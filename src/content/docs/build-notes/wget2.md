@@ -4,7 +4,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - `--with-openssl` breaks build with `libressl`
-- Does `musl` support `libidn2`?
+- Disable `libidn` and `libidn2`; not needed and no `musl` support
+- `wget2_noinstall`, `--enable-fuzzing` and `--enable-manylibs` are for developers
 - Disable `libpcre` and use `libpcre2` instead
 - Check if we need `libpsl`
 - Does not support `reflex`; `css_tokenizer.lex` issue (depends on `flex`)
