@@ -26,14 +26,29 @@ make[1]: [Makefile:664: install] Error 1 (ignored)
 
 ### gcc
 ```c
+checking the name lister (nm) interface... glaucus/tmp/gcc/gcc-14.2.0/gmp/configure: line 12615: External.*some_variable: command not found
+
+checking for lex library... not found
+configure: WARNING: required lex library not found; giving up on touch lex.yy.c
+
 checking what otool to use... not found
 
-checking for exported symbols... glaucus/tmp/src/gcc/libcc1/configure: line 15097: -T: command not found
+checking for exported symbols... glaucus/tmp/gcc/gcc-14.2.0/libcc1/configure: line 15097: -T: command not found
 
-checking for -rdynamic... glaucus/tmp/src/gcc/libcc1/configure: line 15107: -T: command not found
+checking for -rdynamic... glaucus/tmp/gcc/gcc-14.2.0/libcc1/configure: line 15107: -T: command not found
 
-make[2]: [Makefile:1819: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
-make[2]: [Makefile:1820: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+libstdc++-v3: make[2]: [Makefile:1819: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+libstdc++-v3: make[2]: [Makefile:1820: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+```
+
+### kmod
+```c
+because gtk-doc >= 1.14 is not found.
+```
+
+### shadow
+```c
+configure: WARNING: libcmocka not found, cmocka tests will not be built
 ```
 
 ### util-linux
@@ -45,12 +60,16 @@ configure: WARNING: building for glibc not found; not building col
 ## Toolchain
 ### gcc
 ```c
+checking the name lister (nm) interface... glaucus/tmp/gcc/gcc-14.2.0/gmp/configure: line 12615: External.*some_variable: command not found
+checking for lex library... not found
+configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 checking what otool to use... not found
 ```
 
 ### libstdc++-v3
 ```c
-make[1]: [Makefile:1819: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+make[2]: [Makefile:1819: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+make[2]: [Makefile:1820: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 ```
 
 ## Native
