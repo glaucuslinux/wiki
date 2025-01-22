@@ -124,6 +124,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## mdevd
 - https://github.com/skarnet/mdevd/issues/8
+- https://github.com/skarnet/mdevd/issues/10
 
 ## mold
 - https://github.com/rui314/mold/issues/1032
