@@ -67,6 +67,7 @@ recipes.
 - Report packages without a test suite
 - Report failing tests
 - Try `VERBOSE=1 V=1` for `make check`
+- Prefer `make -k check` to keep going until all tests are checked
 - If tests fail in parallel, try `-j1`
 - Compare failing tests with Alpine and LFS
 ### package
@@ -160,5 +161,6 @@ Remove additional files:
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.debian.org/ReduceDebian
 - https://www.debian.org/releases/bookworm/amd64/ch03s04.en.html
+- https://www.gnu.org/software/make/manual/html_node/Testing.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html

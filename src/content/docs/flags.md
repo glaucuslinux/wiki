@@ -5,14 +5,20 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Current `CFLAGS`:
 ```c
--pipe -g0 -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=19 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
+-pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=19 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS`:
 ```c
--Wl,-O1,-s,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu,--compress-debug-sections=zstd
+-Wl,-O1,-s,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu
 ```
 ## CFLAGS
+### `-pipe`
+- Use pipes rather than temporary files
+- Uses more RAM but reduces disk usage
+### `-g0`
+- Compiling with `-g0` or without `-g` at all results in no debugging information in the binaries
+- Some build systems might misinterpret `-g0` as `-g`; this is a bug and should be reported to the relative upstream
 ### `-flto=auto`
 - Will spawn N threads based on the number of threads; similar to `make -j`
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs
@@ -27,6 +33,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - It's not necessarily buggy, but its benefits are rather doubtful
 ### `-floop-nest-optimize`
 - Required for `isl` to work
+- Used to be known as `-floop-optimize-isl`
 - A new way to implement Graphite.
 - Replaces `-floop-interchange`, `-ftree-loop-linear`, `-floop-strip-mine` and `-floop-block`
 - Still considered experimental?
@@ -61,6 +68,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - RHEL and Fedora patch `gcc` to enable it by default
 - https://code.forksand.com/qemu/edk2/commit/cbf00651eda6818ca3c76115b8a18e3f6b23eef4?lang=zh-HK
 - https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc/
+- https://gcc.gnu.org/legacy-ml/gcc-help/2016-10/msg00023.html
+- https://lists.busybox.net/pipermail/busybox/2012-September/078331.html
+- https://lists.busybox.net/pipermail/busybox/2012-September/078326.html
 ### `-O3`
 - Will certainly beat `-O2` in microbenchmarks, but when you benchmark an entire distribution you will see that `-O2` beats it in terms of size and performance
 - Can cause executables to run slower because it would generate more machine code than `-O2` which would then make the program bigger and unable to fit in the L1 cache causing cache misses for instructions

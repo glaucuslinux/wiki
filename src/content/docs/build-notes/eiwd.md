@@ -13,3 +13,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Use `network` vs `netdev` group?
 - `/var/lib/eiwd/` vs `/var/lib/iwd/`
 - `iwctl` requires explicit enabling `--enable-client`
+- move iwd from `libexec/lib` to `/usr/bin`?

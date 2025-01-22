@@ -10,3 +10,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Check if we need `libpsl`
 - Does not support `reflex`; `css_tokenizer.lex` issue (depends on `flex`)
 - `/etc/wgetrc` should contain `ca_certificate=/etc/ssl/certs/ca-certificates.crt`
+
+## Resources
+- https://gitlab.com/gnuwget/wget2/-/issues/603

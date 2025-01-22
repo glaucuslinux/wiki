@@ -4,6 +4,11 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Start `mdevd` with `-O4`; this will make the daemon rebroadcast kernel uevents to `libudev-zero`
+- Readiness `-D` only works when `mdevd` is being called by `s6` and not manually in an `initramfs`
+- A summary of what `mdevd-coldplug` and `udevadm trigger` do:
+```sh
+for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
+```
 - There is no test suite
 
 ## Resources

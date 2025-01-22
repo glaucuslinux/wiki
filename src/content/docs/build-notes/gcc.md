@@ -25,6 +25,7 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 - Check `clocale` to use for `libstdc++`; `generic` vs `--disable-clocale`?
 - `libgcc_s.so.1` size dramatically reduced when using stage1 flags (from ~ 830k to ~ 170k)
 - `otool` is for mach os, and is part of LLVM; the `otool` not found error is normal for `gcc`
+- Move cpp from lib to bin?
 
 ## Resources
 - https://gcc.gnu.org/install/build.html
