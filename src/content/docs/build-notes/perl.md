@@ -13,6 +13,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Modules manpages are being removed on Adelie
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
 - Unable to use upstream binaries; requires signing up with a third party vendor?
+- Does `perl` require a loopback `lo` network device and `/etc/hosts`?
 
 ## Resources
 - https://perldoc.perl.org/Config

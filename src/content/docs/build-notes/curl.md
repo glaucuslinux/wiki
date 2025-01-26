@@ -20,4 +20,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable IDN; not many websites use internationalized domain names
 
 ## Resources
+- https://curl.se/docs/comparison-table.html
 - https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html

@@ -9,6 +9,7 @@ recipes.
 ## Cerata
 ### ceras
 - Avoid versions in `nom`
+- Avoid `-e` and `-x` in the shebang (vague behavior)
 - Do not add common packages that are expected to exist at build-time as build dependencies (e.g. `make`, `linux-headers` and so on)
 ### prepare
 - Updating `config.guess`, `config.sub` and `config.rpath` is not enough; use `autoreconf -vfis` instead
@@ -115,6 +116,7 @@ Remove additional files:
   - dbus
   - doc (kiss)
   - extralibs (perl files)
+  - gdb (kiss)
   - gettext (kiss)
   - gtk-doc (kiss)
   - i18n
@@ -151,6 +153,7 @@ Remove additional files:
 - https://man.voidlinux.org/xbps-remove.1
 - https://michael.stapelberg.ch/posts/2020-05-09-distri-hermetic-packages/
 - https://os-wiki.ewe.moe/dev/guide/packaging
+- https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages

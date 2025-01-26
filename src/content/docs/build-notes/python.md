@@ -6,6 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Depends on `libgcov.a` from `gcc`
 - Use bundled `mpdecimal`
 - Add `gdbm` as a build-time dependency: https://docs.python.org/3/using/configure.html
+- Test suite for Berkeley DB requires `tcl`
 - `--with-pymalloc` provides better performance
 - Remove the `pip` symlinks in install if it is not being installed
 - Check `--disable-test-modules`
