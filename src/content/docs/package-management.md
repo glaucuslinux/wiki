@@ -39,6 +39,7 @@ recipes.
 - Disable iconv
 - Disable idn
 - Disable intltool
+- Disable l10n
 - Disable logind
 - Disable man
 - Disable nls
@@ -64,6 +65,15 @@ recipes.
 - Enable threads=posix
 - Enable tls
 - Enable xattr
+### build
+- Pass`CFLAGS`, `CXXFLAGS` and `LDFLAGS` as arguments to `make` and not as environment variables, so they are propagated correctly:
+```sh
+## Correct
+make foo=bar
+
+## Incorrect, might get unexported in the Makefile and not get passed to submakes
+foo=bar make
+```
 ### check
 - Report packages without a test suite
 - Report failing tests

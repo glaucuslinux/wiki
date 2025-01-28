@@ -32,6 +32,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Distributions with not so great ISOs include Chimera and Void
 - Do not forget to generate the `initramfs` before generating the `iso`
 - Do not forget to have `dash` installed before generating the `initramfs`
+- Let the kernel use the defaults for its command-line parameters (e.g. `loglevel` and `ro`/`rw`)
 
 ## Software
 - `cdrtools` (includes `mkisofs`)
@@ -159,6 +160,9 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - requires at least 2 GB of RAM to boot to extract all the packages
 - ram on / type tmpfs
 - base install packages in pkgs
+
+## Misc
+- `perl` adds 83M to the iso if provided
 
 ## Resources
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)

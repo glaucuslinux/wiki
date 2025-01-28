@@ -4,16 +4,17 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 Resources:
-- https://wayland.freedesktop.org/building.html
 - https://arewewaylandyet.com/
 - https://github.com/natpen/awesome-wayland
-- https://github.com/solarkraft/awesome-wlroots
 - https://github.com/oofdog/awesome-wayland
+- https://github.com/solarkraft/awesome-wlroots
+- https://wayland.freedesktop.org/building.html
 - https://wiki.gentoo.org/wiki/List_of_software_for_Wayland
 
 - FreeBSD has a lot of wayland ports
 
 Without Xorg:
+- A pure wayland install shouldn't show `libX` under `/usr/lib`
 - https://fedoraproject.org/wiki/Changes/LegacyXorgDriverRemoval
 - https://fedoraproject.org/wiki/Changes/ReplaceFbdevDrivers
 - https://fedoraproject.org/wiki/Changes/WaylandOnlyGNOMEWorkstationMedia
