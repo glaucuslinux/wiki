@@ -21,4 +21,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Resources
 - https://curl.se/docs/comparison-table.html
+- https://daniel.haxx.se/docs/curl-vs-wget.html
 - https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html

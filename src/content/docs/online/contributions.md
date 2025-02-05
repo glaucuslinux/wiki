@@ -169,6 +169,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## nim
 - https://github.com/nim-lang/nightlies/issues/95
+- https://github.com/nim-lang/nightlies/issues/102
 - https://github.com/nim-lang/Nim/issues/24174
 
 ## noname linux
@@ -246,6 +247,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/illiliti/tinyramfs/issues/39
 
 ## toybox
+- https://github.com/landley/toybox/commit/2f07d87b26e85ad30926d17d379463de6a4fb0c9
 - https://github.com/landley/toybox/issues/161
 - https://github.com/landley/toybox/issues/168
 - https://github.com/landley/toybox/issues/170

@@ -113,8 +113,8 @@ Remove additional files:
   - .dbg
   - .install (kernel files)
   - .la (libtool archives)
-  - .packlist (perl files) (alpine)
-  - .pod (perl files) (void)
+  - .packlist (perl files)
+  - .pod (perl files)
   - .py (python files)
   - .pyc (python files) (ewe)
   - .pyo (python files) (ewe)

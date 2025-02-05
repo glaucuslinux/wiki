@@ -25,6 +25,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `runuser` and `su` from `util-linux` both require `pam`
 - Disable `pg` as it uses `vidputs()` which is not provided by `netbsd-curses`
 - Alpine and Arch use `login` and `su` from `util-linux`
+- `--enable-sulogin-emergency-mount`: check if it requires `pam` and if `shadow` provides it
+- `--disable-year2038`: check if it requires `logind` and `pam`
+- `--without-libmagic`: check if it requires `file`
+- `--with-cryptsetup`: check if it requires `systemd`; only works with `systemd`
 
 ## Resources
 - https://bugzilla.redhat.com/show_bug.cgi?id=1984771
