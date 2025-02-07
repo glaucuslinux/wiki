@@ -74,5 +74,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
+- https://packages.gentoo.org/categories/app-alternatives
 - https://tools.suckless.org/9base/
 - https://www.openwall.com/lists/musl/2013/11/09/3

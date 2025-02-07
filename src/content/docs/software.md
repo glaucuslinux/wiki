@@ -7,7 +7,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`booster`](https://github.com/anatol/booster): initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/): yacc implementation
 - [`catppuccin`](https://catppuccin.com/): color scheme
-- [`flex`](https://github.com/westes/flex): lex implementation
 - [`fping`](https://fping.org/): ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny): gettext implementation
 - [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2): networking utilities
@@ -34,6 +33,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`pkgconf`](https://pkgconf.org/): pkg-config implementation
 - [`plocate`](https://plocate.sesse.net/): locate implementation
 - [`plzip`](https://www.nongnu.org/lzip/plzip.html): lzip implementation
+- [`reflex`](https://invisible-island.net/reflex/): lex implementation
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`samurai`](https://github.com/michaelforney/samurai): ninja implementation
@@ -41,7 +41,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
 - [`sway`](https://swaywm.org/): tiling Wayland compositor
 - [`toybox`](https://landley.net/toybox/): unix user space
-- [`ugrep`](https://ugrep.com/): grep implementation
 - [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation
 - [`wayland`](https://wayland.freedesktop.org/): display server protocol
 - [`wget2`](https://gitlab.com/gnuwget/wget2): wget implementation

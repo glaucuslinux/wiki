@@ -10,6 +10,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Is `expat` a run time dependency?
 - bsdcpio is much faster compared to regular cpio
 - bsdcpio is as fast as rust 3cpio and toybox cpio
+- `bsdtar -p` implies `--acl --xattrs`, it also only works in `x` mode
+- Prefer `--no-same-owner`
+- Avoid `--numeric-owner`
 
 ## Resources
 - https://www.youtube.com/watch?v=M8NVBa3ZsE4
