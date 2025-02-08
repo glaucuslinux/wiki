@@ -19,6 +19,24 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `-Dusesoname` is obsolete
 - It is recommended to not use `-Dusenm` on Linux
 - `miniperl` is not needed as we aren't bootstrapping `perl`
+- `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` and stack size patches for musl are needed for `s390x` on Alpine and Void
+- `PERL_TEST_HARNESS_ASAP=1` causes the test suite to finish somewhat earlier with less logical ordering of the tests
+- `PERL_BUILD_PACKAGING` skips a small number of porting tests (those in t/porting) that assume they are in a git clone of the upstream Perl repository, or enforce irrelevant rules which are not
+- Void passes `export CFLAGS+="-DNO_POSIX_2008_LOCALE -D_GNU_SOURCE"` to fix build on musl
+- Specify additional flags?
+```
+-Dcccdlflags="-fPIC"
+-Dccdlflags="-rdynamic"
+-Dccflags="$CFLAGS"
+-Dlddlflags="-shared $LDFLAGS"
+-Dldflags="$LDFLAGS"
+```
+- Compare `make` vs `make libperl.so && make`
+- Compare `make install` target vs `make install.perl`
+- `-Duse64bitint -Duselargefiles` are detected by default?
+- Prefer `test_harness_notty` over `test_harness`?
+- `HARNESS_OPTIONS` defaults to `j9`?
+- Examine alpine's `-Dd_semctl_semun -Dd_sockaddr_in6=define`?
 
 ## Resources
 - https://perldoc.perl.org/Config
