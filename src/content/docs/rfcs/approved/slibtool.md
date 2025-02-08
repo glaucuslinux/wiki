@@ -14,6 +14,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - libtoolize fails as a symlink to slibtool (several build tools complain e.g. gmp) (since slibtool does not treat libtoolize with the stoolie driver)
 - `slibtool`'s `ltmain.sh` is broken; provide alternative instead?
 - `libarchive` does not build with `slibtoolize` or the `libtoolize` wrapper; only with gnu libtoolize
+- Serpent's space macro patch breaks builds with `slibtool-shared-shared` not found
 
 ## Resources
 - https://wiki.gentoo.org/wiki/Slibtool
