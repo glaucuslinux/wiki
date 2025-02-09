@@ -33,6 +33,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do not forget to generate the `initramfs` before generating the `iso`
 - Do not forget to have `dash` installed before generating the `initramfs`
 - Let the kernel use the defaults for its command-line parameters (e.g. `loglevel` and `ro`/`rw`)
+- `fakeroot` can be used instead of `sudo` for generating images, managing mounts and `make install`s for `DESTDIR`s that require root
 
 ## Software
 - `cdrtools` (includes `mkisofs`)

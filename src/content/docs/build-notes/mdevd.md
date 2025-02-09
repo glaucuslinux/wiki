@@ -10,6 +10,16 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 ```
 - There is no test suite
+- `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this problem seems to not exist when using `dash`
+- `mdev.conf` syntax:
+```
+<device regex> <uid>:<gid> <permissions> [=path] [@|$|*<command>]
+
+- @ Run after creating the device.
+- $ Run before removing the device.
+- * Run both after creating and before removing the device.
+```
+- The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
 
 ## mdev.conf
 - `mdevd` parses `mdev.conf` when a new device event occurs
@@ -28,6 +38,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://git.busybox.net/busybox/plain/docs/mdev.txt
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
 - https://github.com/fff7d1bc/mdev-like-a-boss/blob/master/mdev.conf
+- https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf
 - https://wiki.gentoo.org/wiki/Mdev
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB

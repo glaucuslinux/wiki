@@ -16,6 +16,7 @@ recipes.
 - Packages that use `autoreconf`, need `runstatedir` (copied from the system)
 - Prefer `autogen.sh` and `bootstrap.sh` and provided `autoreconf` upstream scripts instead of manually running the command
 - Disable `po4a` generation and `gtkdocize` if the `autoreconf` scripts allow that
+- If patch is not absolutely necessary, we can do without it; keep things vanilla
 - Patches are typically applied in prepare
 - Patches should use `-p0`
 - Packages should not deal with `$SRCD`, only with `$TMPD`
