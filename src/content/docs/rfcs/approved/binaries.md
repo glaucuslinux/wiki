@@ -6,7 +6,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 No differences or additional tools in glaucus in:
 - e2fsprogs (fuse2fs: additional in glaucus)
 - psmisc (identical)
-- procps-ng (pwait and pidwait: additional in glaucus)
 
 ## Resources
 - https://en.wikipedia.org/wiki/E2fsprogs

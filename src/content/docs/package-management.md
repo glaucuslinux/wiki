@@ -95,6 +95,7 @@ foo=bar make
 - All text files must end with a newline (POSIX)
 - Prefer strip targets `install-strip` to manually running strip
 - Do not create fifo files in `build.cross` as they can't be copied
+- Only quote shell variables with whitespace characters
 
 ## Repository Layout
 - `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)

@@ -5,3 +5,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Pass `PREFIX` and `DISPATCH=1` to check and install targets?
 - Alpine adds `-DXXH_FORCE_MEMORY_ACCESS=1` to `CFLAGS` (which prefers gcc to portable memcpy)
+
+## Resources
+- https://github.com/Cyan4973/xxHash/issues/728

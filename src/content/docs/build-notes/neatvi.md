@@ -4,3 +4,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Patch to support arrow keys; nextvi
+- `neatvi > nextvi > openvi > e3`

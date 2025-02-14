@@ -3,6 +3,7 @@ title: libffi
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- `autoreconf` breaks build
 - Static exec trampolines are enabled by default since `3.4.2`
 - Remove `--disable-exec-static-tramp` once `ghc` and `gobject-introspection` support it: https://github.com/libffi/libffi/pull/647
 - `--enable-pax_emutramp` on Alpine (experimental)

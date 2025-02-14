@@ -12,6 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - bsdcpio is as fast as rust 3cpio and toybox cpio
 - `bsdtar -p` implies `--acl --xattrs`, it also only works in `x` mode
 - Prefer `--no-same-owner`
+- Avoid `--no-same-permissions`?
 - Avoid `--numeric-owner`
 
 ## Resources

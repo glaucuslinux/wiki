@@ -3,7 +3,7 @@ title: Bash
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `autoreconf` is broken
+- `autoreconf` breaks build
 - Is `bin/bashbug` needed?
 - Modify `CFLAGS` to configure:
 ```
