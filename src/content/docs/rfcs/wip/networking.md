@@ -25,3 +25,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - iwd (Wireless Daemon): https://iwd.wiki.kernel.org/
 - s6-networking (irrelevant): https://skarnet.org/software/s6-networking/
 - systemd-resolved (DNS Resolver)
+
+## Resources
+- https://busybox.net/~vda/no_ifup.txt

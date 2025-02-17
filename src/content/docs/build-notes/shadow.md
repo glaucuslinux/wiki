@@ -16,11 +16,15 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Enable `yescrypt` for better password hashing scalability
 - The default value for `--with-group-name-max-length` is `32`
 - When linking against `nsss` shadow tries to link against `xget*` functions that are used with PAM, even though `--without-pam` is being used and `login_nopam` is being built
-- Enable shadowed passwords by running `pwconv`
-- Enable shadowed group passwords by running `grpconv`
+- Enable shadowed passwords by running `pwconv` post install
+- Enable shadowed group passwords by running `grpconv` post install
 - `sulogin` is being built, but not installed
 - Builds `login_nopam` correctly, but attempts to link xget pam when using `nsss` patch
 - Check `/etc/login.defs` for mail stuff and others
+- `src/useradd.c` can be patched to change default values; users can still use `/etc/default/useradd` to modify these values
+- `INACTIVE` is set to `-1` by default
+- `EXPIRE` is empty by default
+- `/etc/default/useradd` permissions `600`
 - The following utilities can be configured to be built without PAM:
 ```sh
 - chfn

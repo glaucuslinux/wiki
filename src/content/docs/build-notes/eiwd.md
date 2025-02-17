@@ -14,6 +14,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/var/lib/eiwd/` vs `/var/lib/iwd/`
 - `iwctl` requires explicit enabling `--enable-client`
 - move iwd from `libexec/lib` to `/usr/bin`?
+- Patch `src/wiphy.c` to provide basename on void
 
 ## Resources
 - https://wiki.archlinux.org/title/Iwd

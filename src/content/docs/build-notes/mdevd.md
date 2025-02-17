@@ -35,6 +35,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `/dev/sda` has replaced `/dev/cciss` and `/dev/ida`
 
 ## Resources
+- https://codeberg.org/smj/mdevd-as-an-admin
 - https://git.busybox.net/busybox/plain/docs/mdev.txt
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
 - https://github.com/fff7d1bc/mdev-like-a-boss/blob/master/mdev.conf

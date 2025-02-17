@@ -29,6 +29,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `grep` / `ugrep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
 - `iputils` / `fping`
+- `kbd`; busybox has better implementations
 - `man-db` / `mandoc`; bad implementation
 - `more` / `less`; bad implementation
 - `pciutils`
@@ -40,7 +41,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
 2. `basenc`
-3. `chcon`
+3. `chcon` (for SELinux)
 4. `csplit`
 5. `dir`
 6. `dircolors` (provided by `ls`)
