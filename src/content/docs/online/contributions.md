@@ -4,86 +4,85 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 ## Aalbus
-- https://github.com/Aalbus-linux/Aalbus/pull/9
+- [Change zlib to zlib-ng](https://github.com/Aalbus-linux/Aalbus/pull/9)
 
 ## Alpine
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/13930
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/14208
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/14244
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/14807
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/14920
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/14921
-- https://gitlab.alpinelinux.org/alpine/aports/-/issues/15336
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/48174
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/52968
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/60171
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/68085
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71187
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71605
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/72339
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/74573
-- https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/78720
-- https://alpinelinux.org/posts/Alpine-3.19.0-released.html
+- [Issue 13929 - elfutils: strndupa patch is no longer needed](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929)
+- [Issue 13930 - pciutils: manual installation instead of using "install-lib"](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13930)
+- [Issue 14208 - curl: remove unrecognized option --without-libidn](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14208)
+- [Issue 14244 - gcc: remove obsolete configuration flags](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14244)
+- [Issue 14807 - rsync: use --with-rrsync flag instead of manual installation](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14807)
+- [Issue 14920 - zlib-ng: add bash as a build-time dependency for make](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14920)
+- [Issue 14921 - autoconf: typo in APKBUILD file](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14921)
+- [Issue 15336 - libevdev: remove unused patch](https://gitlab.alpinelinux.org/alpine/aports/-/issues/15336)
+- [Merge Request 48174 - libudev-zero: use install-shared make target](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/48174)
+- [Merge Request 52968 - community/libevdev: remove stale patch](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/52968)
+- [Merge Request 60171 - testing/hardened-malloc: do not specify VARIANT for default](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/60171)
+- [Merge Request 68085 - main/dbus: update configure flags](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/68085)
+- [Merge Request 71187 - main/attr: remove specfile specific environment variables](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71187)
+- [Merge Request 71605 - main/libpciaccess: remove util-macros as build system now uses meson](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71605)
+- [Merge Request 72339 - main/gcc: drop unused variable BOOT_CXXFLAGS](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/72339)
+- [Merge Request 74573 - main/pciutils: remove basename patch](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/74573)
+- [Merge Request 78720 - main/libevent: enable tests and rely on configure flag to skip failed regression tests](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/78720)
+- [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
 
 ## Arch
-- https://bugs.archlinux.org/task/75038
-- https://bugs.archlinux.org/task/75043
-- https://bugs.archlinux.org/task/75098
-- https://bugs.archlinux.org/task/75997
-- https://bugs.archlinux.org/task/76673
+- [Bug 75038 - pciutils: update-pciids is being installed](https://bugs.archlinux.org/task/75038)
+- [Bug 75043 - e2fsprogs: SS_DIR and ET_DIR no longer exist](https://bugs.archlinux.org/task/75043)
+- [Bug 75098 - util-linux: use `usrsbin_execdir` when installing](https://bugs.archlinux.org/task/75098)
+- [Bug 75997 - hwdata: no need to call `make`](https://bugs.archlinux.org/task/75997)
+- [Bug 76673 - hwdata: use `--disable-blacklist`](https://bugs.archlinux.org/task/76673)
 
 ## Ataraxia
-- https://github.com/ataraxialinux/ataraxia/pull/127
-- https://github.com/ataraxialinux/ataraxia/pull/133
-- https://github.com/ataraxialinux/ataraxia/pull/141
-- https://github.com/ataraxialinux/ataraxia/pull/146
-- https://github.com/ataraxialinux/ataraxia/pull/151
+- [Pull Request 127 - Remove deprecated `--enable-widec`](https://github.com/ataraxialinux/ataraxia/pull/127)
+- [Pull Request 133 - Remove unneeded flags from GCC](https://github.com/ataraxialinux/ataraxia/pull/133)
+- [Pull Request 141 - It's plugin not plugins](https://github.com/ataraxialinux/ataraxia/pull/141)
+- [Pull Request 146 - Remove `--prefix` flag from iproute2 configure](https://github.com/ataraxialinux/ataraxia/pull/146)
+- [Pull Request 151 - Fix pkgconf environment variables](https://github.com/ataraxialinux/ataraxia/pull/151)
 
 ## bc
-- https://github.com/gavinhoward/bc/issues/30
-- https://github.com/gavinhoward/bc/issues/52
-- https://github.com/gavinhoward/bc/issues/56
-- https://github.com/gavinhoward/bc/issues/58
-- https://github.com/gavinhoward/bc/pull/49
-- https://github.com/gavinhoward/bc/pull/57
+- [Issue 30 - Can't find the link to the .xz archive in assets](https://github.com/gavinhoward/bc/issues/30)
+- [Issue 52 - Release tarballs in gzip format](https://github.com/gavinhoward/bc/issues/52)
+- [Issue 56 - Specifying `--prefix` when cross-compiling](https://github.com/gavinhoward/bc/issues/56)
+- [Issue 58 - Difference between `--localedir` and NLSPATH](https://github.com/gavinhoward/bc/issues/58)
+- [Pull Request 49 - Add missing newline character](https://github.com/gavinhoward/bc/pull/49)
+- [Pull Request 49 - Mention MAN3DIR in build.md](https://github.com/gavinhoward/bc/pull/57)
 
 ## booster
-- https://github.com/anatol/booster/issues/88
-- https://github.com/anatol/booster/issues/189
-- https://github.com/anatol/booster/issues/223
-- https://github.com/anatol/booster/issues/232
-- https://github.com/anatol/booster/pull/162
-- https://github.com/anatol/booster/pull/165
-- https://github.com/anatol/booster/pull/215
+- [Issue 88 - Add support for overlay root filesystem](https://github.com/anatol/booster/issues/88)
+- [Issue 189 - Generating images for custom built kernels](https://github.com/anatol/booster/issues/189)
+- [Issue 223 - Unable to detect active ESP](https://github.com/anatol/booster/issues/223)
+- [Issue 232 - Handle compressed root filesystem in ISO mode](https://github.com/anatol/booster/issues/232)
+- [Pull Request 162 - Fix typo in flag mentioned in README.md](https://github.com/anatol/booster/pull/162)
+- [Pull Request 165 - Fix wrong flag in README](https://github.com/anatol/booster/pull/165)
+- [Pull Request 215 - Update CHANGES.md](https://github.com/anatol/booster/pull/215)
 
 ## Buildroot
-- https://github.com/buildroot/buildroot/commit/bddc64e866186356297240240c69be7b17ff6d40
-- https://github.com/buildroot/buildroot/pull/113
+- [Pull Request 113 - package/m4: remove `--disable-static` for host package](https://github.com/buildroot/buildroot/pull/113)
 
 ## CMLFS
-- https://github.com/dslm4515/CMLFS/issues/101
+- [Issue 101 - utmps utmpx.h already includes utmps/utmpx.h](https://github.com/dslm4515/CMLFS/issues/101)
 
 ## cosmopolitan
-- https://github.com/jart/cosmopolitan/issues/50
-- https://github.com/jart/cosmopolitan/issues/820
+- [Issue 50 - Cosmopolitan C Library / GCC Toolchains](https://github.com/jart/cosmopolitan/issues/50)
+- [Issue 820 - Is cosmopolitan suitable for building a Linux distribution from scratch?](https://github.com/jart/cosmopolitan/issues/820)
 
 ## dinit
-- https://github.com/davmac314/dinit/pull/55
-- https://github.com/davmac314/dinit/pull/66
+- [Pull Request 55 - Fix forgotten BUILD.txt to BUILD](https://github.com/davmac314/dinit/pull/55)
+- [Pull Request 66 - Don't mount devpts and shm again](https://github.com/davmac314/dinit/pull/66)
 
 ## Dragora
-- https://notabug.org/dragora/dragora/pulls/82
+- [Pull Request 82 - squashfs-tools: no need to create symlinks manually](https://notabug.org/dragora/dragora/pulls/82)
 
 ## eiwd
-- https://github.com/illiliti/eiwd/pull/8
+- [Pull Request 8 - resolvconf is being used by default](https://github.com/illiliti/eiwd/pull/8)
 
 ## findutils
-- https://savannah.gnu.org/bugs/index.php?66418
-- https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=ea9288c6beca75
+- [Bug 66418 - Typo in Leaf Optimisation](https://savannah.gnu.org/bugs/index.php?66418)
+- [doc: fix typo in Texinfo manual](https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=ea9288c6beca75)
 
 ## finit
-- https://github.com/troglobit/finit/issues/133
+- [Issue 133 - finit hangs at "Requesting subsystem events"](https://github.com/troglobit/finit/issues/133)
 
 ## gcc
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98400
