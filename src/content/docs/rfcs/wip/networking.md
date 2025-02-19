@@ -8,7 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - sdhcp: https://github.com/michaelforney/sdhcp
 - toybox `dhcp`: https://github.com/landley/toybox/blob/master/toys/pending/dhcp.c
 
-## DNS Resolver
+## DNS Resolver (run as a `nobody` user without permissions)
 - dnsmasq: https://thekelleys.org.uk/dnsmasq/doc.html
 - OpenResolv: https://roy.marples.name/projects/openresolv
 - s6-dns: https://skarnet.org/software/s6-dns/
