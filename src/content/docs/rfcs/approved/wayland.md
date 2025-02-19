@@ -58,13 +58,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - mew: https://codeberg.org/sewn/mew
 - tofi: https://github.com/philj56/tofi
 - wmenu: https://codeberg.org/adnano/wmenu
-- wofi: https://sr.ht/~scoopta/wofi/
+- wofi: https://hg.sr.ht/~scoopta/wofi
 
-## Login Manager
-- greetd: https://git.sr.ht/~kennylevinsen/greetd
+## Login Managers
 - gtkgreet: https://git.sr.ht/~kennylevinsen/gtkgreet
-- tuigreet: https://github.com/apognu/tuigreet
-- wlgreet: https://git.sr.ht/~kennylevinsen/wlgreet
 
 ## Notifications
 - fnott: https://codeberg.org/dnkl/fnott
