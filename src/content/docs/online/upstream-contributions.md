@@ -4,10 +4,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 ## Aalbus
-- [Change `zlib` to `zlib-ng`](https://github.com/Aalbus-linux/Aalbus/pull/9)
+- Pull Request #9: [Change `zlib` to `zlib-ng`](https://github.com/Aalbus-linux/Aalbus/pull/9)
 
 ## Alpine
-- [Issue 13929 - `elfutils`: strndupa patch is no longer needed](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929)
+- Issue #13929: [Issue 13929 - `elfutils`: strndupa patch is no longer needed](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929)
 - [Issue 13930 - `pciutils`: manual installation instead of using `install-lib`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13930)
 - [Issue 14208 - `curl`: remove unrecognized option `--without-libidn`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14208)
 - [Issue 14244 - `gcc`: remove obsolete configuration flags](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14244)
