@@ -180,47 +180,47 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [Pull Request 7 - zstdmt symlink is automatically created](https://github.com/xhebox/noname-linux/pull/7)
 
 ## nsss
-- https://github.com/skarnet/nsss/issues/3
-- https://github.com/skarnet/nsss/issues/4
-- https://github.com/skarnet/nsss/pull/5
-- https://github.com/skarnet/nsss/commit/0d0417f3226406fd4546d550bcf188b24b6f88ce
+- [Issue 3 - Implicit declarations when using `--enable-libc-includes`](https://github.com/skarnet/nsss/issues/3)
+- [Issue 4 - Missing define in `nsss/shadow.h`](https://github.com/skarnet/nsss/issues/4)
+- [Pull Request 5 - Rename group.h to grp.h](https://github.com/skarnet/nsss/pull/5)
+- [Commit 0d0417f - Doc fixes (it's grp.h!)](https://github.com/skarnet/nsss/commit/0d0417f3226406fd4546d550bcf188b24b6f88ce)
 
 ## oksh
-- https://github.com/ibara/oksh/issues/45
+- [Issue 45 - Does oksh support cross compilation?](https://github.com/ibara/oksh/issues/45)
 
 ## om4
-- https://github.com/ibara/m4/pull/1
+- [Pull Request 1 - Fixed unexpected ';' errors and manual's name](https://github.com/ibara/m4/pull/1)
 
 ## openresolv
-- https://github.com/NetworkConfiguration/openresolv/issues/27
+- [Issue 27 - Missing explanation for available options in README](https://github.com/NetworkConfiguration/openresolv/issues/27)
 
 ## pam
-- https://github.com/linux-pam/linux-pam/pull/815
+- [Pull Request 815 - configure.ac: fix typo in the help message for `--enable-lastlog`](https://github.com/linux-pam/linux-pam/pull/815)
 
 ## perl
-- https://github.com/Perl/perl5/pull/21094
-- https://www.nntp.perl.org/group/perl.perl5.changes/2023/05/msg61675.html
-- https://www.nntp.perl.org/group/perl.perl5.porters/2023/07/msg266602.html
+- [Pull Request 21094 - Fix typo in INSTALL](https://github.com/Perl/perl5/pull/21094)
+- [Perl Author](https://www.nntp.perl.org/group/perl.perl5.changes/2023/05/msg61675.html)
+- [Perl v5.38.0 Contributor](https://www.nntp.perl.org/group/perl.perl5.porters/2023/07/msg266602.html)
 
 ## procps-ng
-- https://gitlab.com/procps-ng/procps/-/merge_requests/158
+- [Merge Request 158 - netbsd-curses compatibility](https://gitlab.com/procps-ng/procps/-/merge_requests/158)
 
 ## reflex
-- https://github.com/ThomasDickey/reflex-snapshots/issues/1
+- [Issue 1 - Support for `--header-file`](https://github.com/ThomasDickey/reflex-snapshots/issues/1)
 
 ## s6-linux-init
-- https://github.com/skarnet/s6-linux-init/issues/4
+- [Issue 4 - The run file for utmpd isn't terminated by a newline character](https://github.com/skarnet/s6-linux-init/issues/4)
 
 ## Sabotage Linux
-- https://github.com/sabotage-linux/sabotage/commit/90b5fe09641311d18042265ddc947eecd243e447
-- https://github.com/sabotage-linux/sabotage/pull/687
+- [Commit 90b5fe0 - mandoc: generate symlinks via built-in mechanism](https://github.com/sabotage-linux/sabotage/commit/90b5fe09641311d18042265ddc947eecd243e447)
+- [Pull Request 687 - Use LN Variable Instead](https://github.com/sabotage-linux/sabotage/pull/687)
 
 ## sbase
-- https://lists.suckless.org/hackers/1809/16524.html
+- [ed: Changed delimiter to fix unterminated TODO comment](https://lists.suckless.org/hackers/1809/16524.html)
 
 ## Serpent OS
-- https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3
-- https://github.com/serpent-os/recipes/pull/407
+- [Commit affd4c2 - slibtool: simplify symlink](https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3)
+- [Pull Request 407 - slibtool: simplify symlink](https://github.com/serpent-os/recipes/pull/407)
 
 ## shadow
 - https://github.com/shadow-maint/shadow/issues/945
