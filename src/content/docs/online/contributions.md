@@ -85,99 +85,99 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [Issue 133 - finit hangs at "Requesting subsystem events"](https://github.com/troglobit/finit/issues/133)
 
 ## gcc
-- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98400
+- [Bug 98400 - GCC online docs "S/390 and zSeries Options" has a typo](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98400)
 
 ## gettext-tiny
-- https://github.com/sabotage-linux/gettext-tiny/issues/64
-- https://github.com/sabotage-linux/gettext-tiny/issues/73
+- [Issue 64 - glib-2.78.1 complains about iconv and intl](https://github.com/sabotage-linux/gettext-tiny/issues/64)
+- [Issue 73 - autopoint fails to bootstrap m4](https://github.com/sabotage-linux/gettext-tiny/issues/73)
 
 ## Hanh Linux
-- https://github.com/hanh-linux/gen-initramfs/pull/3
+- [Pull Request 3 - Fix blkid flag for LABEL in init.in](https://github.com/hanh-linux/gen-initramfs/pull/3)
 
 ## iproute2
-- https://lists.openwall.net/netdev/2019/01/01/42
+- [configure: Fix to minor error caused by 377a09902a57 ("configure: Minor code cleanup")](https://lists.openwall.net/netdev/2019/01/01/42)
 
 ## kbd
-- https://github.com/legionus/kbd/issues/121
+- [Issue 121 - Unable to build with alternative lex implementation](https://github.com/legionus/kbd/issues/121)
 
 ## kmod
-- https://github.com/kmod-project/kmod/issues/55#issuecomment-2439723713
+- [Issue 55 - Import and update shell completions](https://github.com/kmod-project/kmod/issues/55#issuecomment-2439723713)
 
 ## lh-bootstrap
-- https://github.com/skarnet/lh-bootstrap/issues/2
-- https://github.com/skarnet/lh-bootstrap/issues/3
+- [Issue 2 - Fix misinformation in documentation](https://github.com/skarnet/lh-bootstrap/issues/2)
+- [Issue 3 - lastb does not work as /var/log/btmp does not exist](https://github.com/skarnet/lh-bootstrap/issues/3)
 
 ## LibreSSL
-- https://github.com/libressl/portable/issues/916
+- [Issue 916 - Regarding CRYPTO_free_ex_index](https://github.com/libressl/portable/issues/916)
 
 ## libucontext
-- https://github.com/kaniini/libucontext/issues/42
+- [Issue 42 - Two 1.2 versions and duplicate directory name?](https://github.com/kaniini/libucontext/issues/42)
 
 ## libudev-zero
-- https://github.com/illiliti/libudev-zero/issues/58
-- https://github.com/illiliti/libudev-zero/pull/5
+- [Issue 58 - NetBSD libxdev](https://github.com/illiliti/libudev-zero/issues/58)
+- [Pull Request 5 - PREFIX has to be specified twice](https://github.com/illiliti/libudev-zero/pull/5)
 
 ## limine
-- https://github.com/limine-bootloader/limine/pull/372
-- https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1
+- [Pull Request 372 - Support booting on usb](https://github.com/limine-bootloader/limine/pull/372)
+- [misc: xorriso: Create Joliet info and hfsplus for ISOHYBRIDs. Fixes #372](https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1)
 
 ## mdevd
-- https://github.com/skarnet/mdevd/issues/8
-- https://github.com/skarnet/mdevd/issues/10
+- [Issue 8 - Mention nsss as an optional dependency](https://github.com/skarnet/mdevd/issues/8)
+- [Issue 10 - Default path for executing commands in mdev.conf](https://github.com/skarnet/mdevd/issues/10)
 
 ## mold
-- https://github.com/rui314/mold/issues/1032
-- https://github.com/rui314/mold/issues/1211
+- [Issue 1032 - Custom built GCC search paths](https://github.com/rui314/mold/issues/1032)
+- [Issue 1211 - mold randomly segfaults](https://github.com/rui314/mold/issues/1211)
 
 ## mtm
-- https://github.com/deadpixi/mtm/issues/81
+- [Issue 81 - Does not build against netbsd-curses](https://github.com/deadpixi/mtm/issues/81)
 
 ## musl-cross-make
-- https://github.com/richfelker/musl-cross-make/issues/99
-- https://github.com/richfelker/musl-cross-make/issues/100
-- https://github.com/richfelker/musl-cross-make/issues/101
-- https://github.com/richfelker/musl-cross-make/issues/102
-- https://github.com/richfelker/musl-cross-make/issues/105
-- https://github.com/richfelker/musl-cross-make/pull/94
-- https://github.com/richfelker/musl-cross-make/pull/103
-- https://github.com/richfelker/musl-cross-make/pull/104
+- [Issue 99 - Why isn't musl-cross-make on par with musl.cc's version?](https://github.com/richfelker/musl-cross-make/issues/99)
+- [Issue 100 - OUTPUT should be an absolute path?](https://github.com/richfelker/musl-cross-make/issues/100)
+- [Issue 101 - Why isn't the dynamic linker (loader) a symlink to libc.so?](https://github.com/richfelker/musl-cross-make/issues/101)
+- [Issue 102 - NATIVE inside chroot](https://github.com/richfelker/musl-cross-make/issues/102)
+- [Issue 105 - Outdated information in the README](https://github.com/richfelker/musl-cross-make/issues/105)
+- [Pull Request 94 - Remove unnecessary flags from GCC](https://github.com/richfelker/musl-cross-make/pull/94)
+- [Pull Request 103 - Why is MAKEINFO set to false?](https://github.com/richfelker/musl-cross-make/pull/103)
+- [Pull Request 104 - Don't install headers again](https://github.com/richfelker/musl-cross-make/pull/104)
 
 ## Musl-LFS
-- https://github.com/dslm4515/Musl-LFS/pull/14
-- https://github.com/dslm4515/Musl-LFS/pull/15
-- https://github.com/dslm4515/Musl-LFS/pull/16
-- https://github.com/dslm4515/Musl-LFS/pull/18
-- https://github.com/dslm4515/Musl-LFS/pull/36
-- https://github.com/dslm4515/Musl-LFS/pull/37
-- https://github.com/dslm4515/Musl-LFS/pull/38
-- https://github.com/dslm4515/Musl-LFS/pull/39
+- [Pull Request 14 - Several fixes](https://github.com/dslm4515/Musl-LFS/pull/14)
+- [Pull Request 15 - Several fixes](https://github.com/dslm4515/Musl-LFS/pull/15)
+- [Pull Request 16 - Remove unnecessary flags passed to GCC configure scripts](https://github.com/dslm4515/Musl-LFS/pull/16)
+- [Pull Request 18 - Disable optimizations for GCC Pass 1](https://github.com/dslm4515/Musl-LFS/pull/18)
+- [Pull Request 36 - `--enable-force-devr` is obsolete](https://github.com/dslm4515/Musl-LFS/pull/36)
+- [Pull Request 37 - `--enable-force-devr` is obsolete](https://github.com/dslm4515/Musl-LFS/pull/37)
+- [Pull Request 38 - Fix typo in 088-Final_System-S6_Linux_init](https://github.com/dslm4515/Musl-LFS/pull/38)
+- [Pull Request 39 - Fix typo](https://github.com/dslm4515/Musl-LFS/pull/39)
 
 ## musl-nscd
-- https://github.com/pikhq/musl-nscd/issues/34
+- [Issue 34 - How does this compare against something like skarnet's nsss?](https://github.com/pikhq/musl-nscd/issues/34)
 
 ## musl wiki
-- https://github.com/somasis/musl-wiki/pull/47
+- [Pull Request 47 - Fix a typo in ld-musl-$(ARCH).path path](https://github.com/somasis/musl-wiki/pull/47)
 
 ## NetBSD
-- https://mail-index.netbsd.org/netbsd-bugs/2024/11/10/msg086293.html
+- [Bug 58823 - wgetscrreg is not defined](https://mail-index.netbsd.org/netbsd-bugs/2024/11/10/msg086293.html)
 
 ## netbsd-curses
-- https://github.com/sabotage-linux/netbsd-curses/issues/58
-- https://github.com/sabotage-linux/netbsd-curses/issues/60
-- https://github.com/sabotage-linux/netbsd-curses/pull/37
+- [Issue 58 - util-linux: more fails with tparm](https://github.com/sabotage-linux/netbsd-curses/issues/58)
+- [Issue 60 - wgetscrreg is not defined](https://github.com/sabotage-linux/netbsd-curses/issues/60)
+- [Pull Request 37 - Prevent clear.sh from overwriting userland's clear](https://github.com/sabotage-linux/netbsd-curses/pull/37)
 
 ## nim
-- https://github.com/nim-lang/nightlies/issues/95
-- https://github.com/nim-lang/nightlies/issues/102
-- https://github.com/nim-lang/Nim/issues/24174
+- [Issue 95 - Size of tarballs tripled](https://github.com/nim-lang/nightlies/issues/95)
+- [Issue 102 - latest-devel no longer syncs](https://github.com/nim-lang/nightlies/issues/102)
+- [Issue 24174 - copyDir and copyDirWithPermissions do not handle FIFOs (named pipes)](https://github.com/nim-lang/Nim/issues/24174)
 
 ## noname linux
-- https://github.com/xhebox/noname-linux/issues/4
-- https://github.com/xhebox/noname-linux/issues/8
-- https://github.com/xhebox/noname-linux/pull/3
-- https://github.com/xhebox/noname-linux/pull/5
-- https://github.com/xhebox/noname-linux/pull/6
-- https://github.com/xhebox/noname-linux/pull/7
+- [Issue 4 - What's this musl patch for?](https://github.com/xhebox/noname-linux/issues/4)
+- [Issue 8 - curl: why enable manual after disabling it?](https://github.com/xhebox/noname-linux/issues/8)
+- [Pull Request 3 - Remove obsolete flags](https://github.com/xhebox/noname-linux/pull/3)
+- [Pull Request 5 - Remove systemv from tzdata](https://github.com/xhebox/noname-linux/pull/5)
+- [Pull Request 6 - Remove flags from binutils](https://github.com/xhebox/noname-linux/pull/6)
+- [Pull Request 7 - zstdmt symlink is automatically created](https://github.com/xhebox/noname-linux/pull/7)
 
 ## nsss
 - https://github.com/skarnet/nsss/issues/3
