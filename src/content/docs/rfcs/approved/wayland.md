@@ -35,10 +35,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - kanshi: https://git.sr.ht/~emersion/kanshi
 - wlr-randr: https://gitlab.freedesktop.org/emersion/wlr-randr
 
-## File Managers
-- nnn: https://github.com/jarun/nnn
-- sff: https://codeberg.org/sylphenix/sff
-
 ## Image Viewers
 - imv: https://sr.ht/~exec64/imv/
 - swayimg: https://github.com/artemsen/swayimg
