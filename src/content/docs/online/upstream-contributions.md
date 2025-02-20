@@ -220,7 +220,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`ed`: Changed delimiter to fix unterminated TODO comment](https://lists.suckless.org/hackers/1809/16524.html)
 
 ## Serpent OS
-- Commit #affd4c2: [`slibtool`: simplify symlink](https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3)
+- Commit affd4c2: [`slibtool`: simplify symlink](https://github.com/serpent-os/recipes/commit/affd4c2341f692e680d5cc0046058e94426663f3)
 - Pull Request #407: [`slibtool`: simplify symlink](https://github.com/serpent-os/recipes/pull/407)
 
 ## shadow
