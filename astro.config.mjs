@@ -35,10 +35,6 @@ export default defineConfig({
           autogenerate: { directory: "build-notes" },
         },
         {
-          label: "Contributions",
-          link: "/online/contributions",
-        },
-        {
           label: "Filesystem",
           link: "/filesystem",
         },
@@ -74,6 +70,10 @@ export default defineConfig({
         {
           label: "Software",
           link: "/software",
+        },
+        {
+          label: "Upstream Contributions",
+          link: "/online/upstream-contributions",
         },
       ],
     }),
