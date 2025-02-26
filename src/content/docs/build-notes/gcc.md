@@ -26,8 +26,14 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 - `libgcc_s.so.1` size dramatically reduced when using stage1 flags (from ~ 830k to ~ 170k)
 - `otool` is for mach os, and is part of LLVM; the `otool` not found error is normal for `gcc`
 - Move cpp from lib to bin?
+- Race condition that happens with `libstdc++-v3`:
+```
+libstdc++-v3.log:945:make[1]: [Makefile:1831: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
+```
 
 ## Resources
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html
 - https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html

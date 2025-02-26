@@ -7,6 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Pull Request #9: [Change `zlib` to `zlib-ng`](https://github.com/Aalbus-linux/Aalbus/pull/9)
 
 ## Alpine
+- [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
 - Issue #13929: [`elfutils`: strndupa patch is no longer needed](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929)
 - Issue #13930: [`pciutils`: manual installation instead of using `install-lib`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13930)
 - Issue #14208: [`curl`: remove unrecognized option `--without-libidn`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14208)
@@ -24,7 +25,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Merge Request #72339: [main/`gcc`: drop unused variable `BOOT_CXXFLAGS`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/72339)
 - Merge Request #74573: [main/`pciutils`: remove `basename` patch](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/74573)
 - Merge Request #78720: [main/`libevent`: enable tests and rely on configure flag to skip failed regression tests](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/78720)
-- [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
+- Merge Request #80593: [main/`spirv-headers`: remove irrelevant `BUILD_SHARED_LIBS`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/80593)
 
 ## Arch
 - Bug #75038: [`pciutils`: `update-pciids` is being installed](https://bugs.archlinux.org/task/75038)
