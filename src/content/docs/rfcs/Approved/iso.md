@@ -167,6 +167,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 
 ## Resources
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)
+- https://codeberg.org/emmett1/mkinitrd
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software
 - https://fedoraproject.org/wiki/LiveOS_image
 - https://gitea.artixlinux.org/artix/iso-profiles

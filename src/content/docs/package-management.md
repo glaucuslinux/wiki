@@ -83,7 +83,7 @@ foo=bar make
 - If tests fail in parallel, try `-j1`
 - Compare failing tests with Alpine and LFS
 ### package
-- Do not install to the following directories: `/boot`, `/dev`, `/mnt`, `/run`, `/sys`, `/tmp`
+- Do not install in: `/bin`, `/boot`, `/dev`,`/home`,`/lib`, `/mnt`, `/proc`, `/root`, `/run`, `/sbin`, `/sys`, `/tmp`, `/usr/sbin`
 - Brace expansion is not POSIX
 - Use `mkdir -pv` over `install -dv`
 - `cp -a` implies `-R/-r/--recursive`

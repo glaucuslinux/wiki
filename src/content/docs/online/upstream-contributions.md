@@ -8,6 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Alpine
 - [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
+- [Alpine Linux 3.21.0 Contributor](https://alpinelinux.org/posts/Alpine-3.21.0-released.html)
 - Issue #13929: [`elfutils`: strndupa patch is no longer needed](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13929)
 - Issue #13930: [`pciutils`: manual installation instead of using `install-lib`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13930)
 - Issue #14208: [`curl`: remove unrecognized option `--without-libidn`](https://gitlab.alpinelinux.org/alpine/aports/-/issues/14208)
@@ -200,8 +201,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Pull Request #815: [`configure.ac`: fix typo in the help message for `--enable-lastlog`](https://github.com/linux-pam/linux-pam/pull/815)
 
 ## perl
-- [Perl 5.38.0 Contributor](https://www.nntp.perl.org/group/perl.perl5.porters/2023/07/msg266602.html)
-- [Perl Author](https://www.nntp.perl.org/group/perl.perl5.changes/2023/05/msg61675.html)
+- [Perl 5.38.0 Contributor](https://nntp.perl.org/group/perl.perl5.porters/2023/07/msg266602.html)
+- [Perl Author](https://nntp.perl.org/group/perl.perl5.changes/2023/05/msg61675.html)
 - Pull Request #21094: [Fix typo in `INSTALL`](https://github.com/Perl/perl5/pull/21094)
 
 ## procps-ng
@@ -248,6 +249,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Issue #39: [Generate initramfs for live ISO](https://github.com/illiliti/tinyramfs/issues/39)
 
 ## toybox
+- [toybox 0.8.4 Contributor](http://landley.net/toybox/news.html#24-10-2020)
+- [toybox 0.8.5 Contributor](http://landley.net/toybox/news.html#19-05-2021)
+- [toybox 0.8.12 Contributor](http://landley.net/toybox/news.html#18-01-2025)
 - Commit 2f07d87: [Add `hwdata` path to `lsusb`/`lspci`](https://github.com/landley/toybox/commit/2f07d87b26e85ad30926d17d379463de6a4fb0c9)
 - Issue #161: [`install` performs stripping regardless if files were executables or not](https://github.com/landley/toybox/issues/161)
 - Issue #168: [Some commands aren't listed on the website](https://github.com/landley/toybox/issues/168)

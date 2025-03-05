@@ -4,4 +4,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Depends on `gettext-tiny`
-- Test suite requires `coreutils` and a filesystem that supports ACLs
+- Does not require `-D_LARGEFILE64_SOURCE` when targeting musl `1.2.5` and up
+- Test suite requires `bash`, `coreutils`, `perl` and a filesystem that supports ACLs
