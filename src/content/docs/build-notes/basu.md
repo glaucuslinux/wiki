@@ -3,5 +3,4 @@ title: basu
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Does it depend on `gperf`?
-- Depends on `python`
+- Depends on `gperf` and `python`
