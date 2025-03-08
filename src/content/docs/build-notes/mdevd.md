@@ -3,6 +3,7 @@ title: mdevd
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Check alpine's patches
 - Start `mdevd` with `-O4`; this will make the daemon rebroadcast kernel uevents to `libudev-zero`
 - Readiness `-D` only works when `mdevd` is being called by `s6` and not manually in an `initramfs`
 - A summary of what `mdevd-coldplug` and `udevadm trigger` do:
@@ -13,7 +14,11 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this problem seems to not exist when using `dash`
 - `mdev.conf` syntax:
 ```
-<device regex> <uid>:<gid> <permissions> [=path] [@|$|*<command>]
+<device regex> <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
+
+- =path moves to path
+- >path symlinks device to path
+- ! prevents device from being created
 
 - @ Run after creating the device.
 - $ Run before removing the device.
@@ -24,10 +29,13 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 ## mdev.conf
 - `mdevd` parses `mdev.conf` when a new device event occurs
 - `/dev/audio` and `/dev/dsp` have been replaced with newer drivers and naming conventions
+- `/dev/core` has been deprecated
 - `/dev/dsp` and `/dev/adsp` have been deprecated as modern systems don't use OSS
 - `/dev/fd0` has been deprecated
 - `/dev/grsec` has been deprecated since `4.14`
 - `/dev/hd{a,b,c}` have been deprecated
+- `/dev/hwrng` has replaced `/dev/hwrandom` and `/dev/hw_random`
+- `/dev/mixer` and `/dev/sequencer` have been deprecated as modern systems don't use OSS
 - `/dev/psaux` has been deprecated
 - `/dev/pty` has been deprecated since `2.6.4` (https://man7.org/linux/man-pages/man7/pty.7.html)
 - `/dev/snd` has replaced `/dev/sound`
