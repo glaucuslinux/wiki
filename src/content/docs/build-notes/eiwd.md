@@ -12,9 +12,11 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need `connman` to handle wired connections?
 - Use `network` vs `netdev` group?
 - `/var/lib/eiwd/` vs `/var/lib/iwd/`
+- `main.conf` should be in `/etc/iwd` and not `/etc/eiwd`
 - `iwctl` requires explicit enabling `--enable-client`
 - move iwd from `libexec/lib` to `/usr/bin`?
 - Patch `src/wiphy.c` to provide basename on void
+- `EnableIPv6` is set to `true` by default since version `2.0`
 
 ## Resources
 - https://wiki.archlinux.org/title/Iwd

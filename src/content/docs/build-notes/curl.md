@@ -8,6 +8,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `--with-nghttp2` vs `--with-nghttp3`
 - `--with-openssl-quic`
 - `--without-libpsl` vs `--with-libpsl`
+- Prefer `--with-ca-embed`
+- Do we need `curldebug`?
 - symlink `/etc/ssl/certs/ca-certificates.crt` to `/etc/ssl/cert.pem`
 - `make install -C scripts` does nothing
 - Do we need `--with-random=/dev/urandom` even if we're not cross-compiling?
@@ -23,4 +25,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Resources
 - https://curl.se/docs/comparison-table.html
 - https://daniel.haxx.se/docs/curl-vs-wget.html
+- https://github.com/curl/curl/pull/14059
 - https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html

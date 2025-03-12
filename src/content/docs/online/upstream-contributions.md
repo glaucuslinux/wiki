@@ -27,6 +27,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Merge Request #74573: [main/`pciutils`: remove `basename` patch](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/74573)
 - Merge Request #78720: [main/`libevent`: enable tests and rely on configure flag to skip failed regression tests](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/78720)
 - Merge Request #80593: [main/`spirv-headers`: remove irrelevant `BUILD_SHARED_LIBS`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/80593)
+- Merge Request #81115: [main/`e2fsprogs`: use `--enable-lto` configure flag](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81115)
 
 ## Arch
 - Bug #75038: [`pciutils`: `update-pciids` is being installed](https://bugs.archlinux.org/task/75038)

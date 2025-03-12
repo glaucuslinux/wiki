@@ -36,6 +36,7 @@ recipes.
 - Disable doc
 - Disable examples
 - Disable gettext
+- Disable gtk-doc
 - Disable i18n
 - Disable iconv
 - Disable idn
@@ -122,12 +123,15 @@ Remove additional files:
   - .pyo (python files) (ewe)
   - alias
   - application (kiss)
+  - bash
   - charset
-  - consolekit (kiss)
+  - cmake
   - completion
+  - consolekit (kiss)
   - dbus
   - doc (kiss)
   - extralibs (perl files)
+  - fish
   - gdb (kiss)
   - gettext (kiss)
   - gtk-doc (kiss)
