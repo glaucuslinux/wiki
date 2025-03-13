@@ -31,6 +31,7 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 libstdc++-v3.log:945:make[1]: [Makefile:1831: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 ```
+- No need to fix headers or includes on glaucus
 
 ## Resources
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
