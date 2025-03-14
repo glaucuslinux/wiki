@@ -29,6 +29,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Merge Request #80593: [main/`spirv-headers`: remove irrelevant `BUILD_SHARED_LIBS`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/80593)
 - Merge Request #81115: [main/`e2fsprogs`: use `--enable-lto` configure flag](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81115)
 - Merge Request #81217: [main/`fontconfig`: `src/fcobjhash.h` does not exist and removing `src/fcobjshash.gperf.h` breaks build](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81217)
+- Merge Request #81347: [main/`iproute2`: do not install `libnetlink`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81347)
 
 ## Arch
 - Bug #75038: [`pciutils`: `update-pciids` is being installed](https://bugs.archlinux.org/task/75038)
