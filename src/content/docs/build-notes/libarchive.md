@@ -14,7 +14,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Prefer `--no-same-owner`
 - Avoid `--no-same-permissions`?
 - Avoid `--numeric-owner`
-- Prefer `bsdunzip` over unmaintained `unzip`
+- Prefer `bsdunzip` over unmaintained Info-ZIP `unzip`
 
 ## Resources
 - https://www.youtube.com/watch?v=M8NVBa3ZsE4
