@@ -4,3 +4,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Releases have migrated to github from `xkbcommon.org`
+- `xkbregistry` depends on `libxml2`
