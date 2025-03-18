@@ -10,4 +10,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Export `LD_PRELOAD=/usr/lib/libmimalloc.so` in `/etc/profile` (or `/etc/environment`?)
 
 ## Resources
+- https://github.com/bell-sw/alpaquita-aports/blob/stream/core/mimalloc
 - https://github.com/microsoft/mimalloc/issues/597

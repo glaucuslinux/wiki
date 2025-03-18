@@ -11,8 +11,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `DT_RELR` support (`-z pack-relative-relocs`) has been upstreamed, and reduces size by 5 - 8%
 - Does `musl` conflict/replace `libssp` (the standalone package)
 - `gencat` requires `queue.h`
+- Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
+- Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
 
 ## Resources
+- https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
+- https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
 - https://wiki.gentoo.org/wiki/Musl_porting_notes
