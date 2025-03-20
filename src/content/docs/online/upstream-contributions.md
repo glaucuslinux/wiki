@@ -6,6 +6,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Aalbus
 - Pull Request #9: [Change `zlib` to `zlib-ng`](https://github.com/Aalbus-linux/Aalbus/pull/9)
 
+## AerynOS
+- Pull Request #711: [`pkgconf`: update canonical locations](https://github.com/AerynOS/recipes/pull/711)
+
 ## Alpine
 - [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
 - [Alpine Linux 3.21.0 Contributor](https://alpinelinux.org/posts/Alpine-3.21.0-released.html)

@@ -9,3 +9,12 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `kyua` has a cyclic dependency issue; it depends on `pkg-config` (as well as `lutok` and `sqlite`)
 - to get around this build: `pkgconf` -> `lutok` -> `sqlite` -> `kyua` -> `pkgconf` with tests
 - No need to set `PKGCONFDIR` and `PKGCONFIGDIR` as environment variables during build
+- Do we need a `personality` file `/usr/share/pkgconfig/personality.d/x86_64-pc-linux-musl.personality` for native?
+```
+Triplet: x86_64-pc-linux-musl
+SysrootDir: /
+DefaultSearchPaths: /usr/lib/pkgconfig:/usr/share/pkgconfig
+SystemIncludePaths: /usr/include
+SystemLibraryPaths: /usr/lib
+```
+- Also do we need another personality file for cross (`x86_64-glaucus-linux-musl`)?
