@@ -114,6 +114,7 @@ Remove additional files:
   - .bs (perl files)
   - .cmd (kernel files)
   - .dbg
+  - .e2x (perl files)
   - .install (kernel files)
   - .la (libtool archives)
   - .packlist (perl files)
