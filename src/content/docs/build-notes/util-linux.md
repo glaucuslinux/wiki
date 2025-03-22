@@ -5,10 +5,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Depends on `bison`; not `byacc`?
 - Depends on `gettext`; not `gettext-tiny`?
-- `autoreconf` depends on `gtkdocize`
 - Does it depend on `python`?
 - Depends on `libcap-ng` to build `setpriv`; glaucus already provides `s6-setuidgid`: https://forum.artixlinux.org/index.php/topic,3360.0.html
-- Use `autoreconf -vfis` as `./autogen.sh` requires GNU `gettext`
+- Use `autoreconf -vfis` as `./autogen.sh` requires GNU `gettext`, `gtkdocize` and `bison`
 - `tools/all_syscalls` hardcodes `gawk`
 - Use `kill` from `util-linux` instead of `procps-ng` (mainstream)
 - `/etc/adjtime` should be `/var/lib/hwclock/adjtime` according to FHS (both Alpine and Arch are using an old directory version) https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s08.html#varlibhwclockStateDirectoryForHwclo
@@ -21,7 +20,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Using `LIBS` instead of `LDFLAGS` does not ensure `nsss` and `utmps` are being linked
 - Uses `ncursesw` over `ncurses` so do not pass `--with-curses`
 - Provides `kill` but not `killall` which is provided by `toybox`
-- Use `su` from `util-linux` as recommended by `shadow`
+- Use `su` from `toybox` or `util-linux` as recommended by `shadow`
 - `runuser` and `su` from `util-linux` both require `pam`
 - Disable `pg` as it uses `vidputs()` which is not provided by `netbsd-curses`
 - Alpine and Arch use `login` and `su` from `util-linux`
