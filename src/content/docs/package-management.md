@@ -35,6 +35,7 @@ recipes.
 - Disable debug
 - Disable doc
 - Disable examples
+- Disable fuzzing
 - Disable gettext
 - Disable gtk-doc
 - Disable i18n
