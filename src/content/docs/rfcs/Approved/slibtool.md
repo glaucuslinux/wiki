@@ -3,7 +3,7 @@ title: slibtool
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Check if tools like `LIBTOOL=slibtool` should be added to `MAKEFLAGS` (check Gentoo wiki and slibtool's README?)
+- `LIBTOOL=slibtool` should be added to `MAKEFLAGS`
 - `/usr/share/libtool` vs `/usr/share/libtoolize` paths
 - `glibtoolize` is not a necessary symlink
 - Duplicate the copied macros under a new directory `/usr/share/libtool/AC_CONFIG_MACRO_DIRS`?
