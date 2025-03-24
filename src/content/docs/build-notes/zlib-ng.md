@@ -3,7 +3,7 @@ title: zlib-ng
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `--without-unaligned` improves safety
+- `--without-unaligned` improves safety; has been removed as of `2.2.3`
 - `configure` depends on `bash`, but can be patched easily
 
 ## Resources

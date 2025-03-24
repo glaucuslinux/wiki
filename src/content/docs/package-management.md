@@ -11,6 +11,16 @@ recipes.
 - Avoid versions in `nom`
 - Avoid `-e` and `-x` in the shebang (vague behavior)
 - Do not add common packages that are expected to exist at build-time as build dependencies (e.g. `make`, `linux-headers` and so on)
+- `nop` is short for "no operation" and includes:
+  - `bootstrap`: install package to `/`; only available in cross
+  - `check`: disable test suite
+  - `doc`, `man`: preserve documentation
+  - `empty`: preserve empty directories
+  - `la`, `libtool`: preserve libtool archives (`.la` files) in native; they are deleted either ways in cross
+  - `lto`: disable LTO
+  - `parallel`: use -j1
+  - `purge`, `prune`: do not remove unwanted files
+  - `static`: preserve static libraries (.a files)
 ### prepare
 - Updating `config.guess`, `config.sub` and `config.rpath` is not enough; use `autoreconf -vfis` instead
 - Packages that use `autoreconf`, need `runstatedir` (copied from the system)
