@@ -8,7 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `wget2_noinstall`, `--enable-fuzzing` and `--enable-manylibs` are for developers
 - Disable `libpcre` and use `libpcre2` instead
 - Check if we need `libpsl`
-- Does not support `reflex`; `css_tokenizer.lex` issue (depends on `flex`)?
+- `css_tokenizer.lex` fails with `reflex`; depends on `flex`?
 - `/etc/wgetrc` should contain `ca_certificate=/etc/ssl/certs/ca-certificates.crt`
 
 ## Resources
