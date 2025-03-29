@@ -30,7 +30,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 22. vim
 23. wget2
 
-## Resources
+## References
 - https://git.alpinelinux.org/aports/log/?qt=grep&q=lfs64
 - https://git.alpinelinux.org/aports/tree/main/acl
 - https://github.com/NixOS/nixpkgs/pull/229439

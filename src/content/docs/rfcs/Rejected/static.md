@@ -7,7 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - In the toolchain, the only required static library before `musl` is `libgcc.a`
 - glaucus's toolchain supports static linking
 
-## Resources
+## References
 - https://gavinhoward.com/2021/01/dynamic-linking-needs-to-die/
 - https://gavinhoward.com/2021/10/static-linking-considered-harmful-considered-harmful/
 - https://drewdevault.com/dynlib.html

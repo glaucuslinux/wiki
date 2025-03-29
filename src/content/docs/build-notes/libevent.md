@@ -9,5 +9,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Some tests that are related to `regress_dns.c` are also known to fail intermittently due to insufficient test timeouts on LFS
 - `cmake` is available as an alternative build system with more options
 
-## Resources
+## References
 - https://gitlab.archlinux.org/archlinux/packaging/packages/libevent/-/blob/main/PKGBUILD

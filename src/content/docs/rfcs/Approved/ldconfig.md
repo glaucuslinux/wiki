@@ -27,6 +27,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - mpc
 - mpfr
 
-## Resources
+## References
 - https://github.com/dslm4515/Musl-LFS/discussions/85
 - https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities

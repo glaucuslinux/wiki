@@ -13,5 +13,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Should we leave `xinclude` enabled? or is it deprecated as well?
 - Check OpenBSD for `bsdtar` patches to `xstc`
 
-## Resources
+## References
 - https://gitlab.gnome.org/GNOME/libxml2/-/releases

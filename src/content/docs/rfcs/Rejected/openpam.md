@@ -9,7 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Configure the modules properly
 - `SCONFIGDIR=/etc/security` for `make install` on Arch
 
-## Resources
+## References
 - https://git.des.dev/openpam/openpam/wiki
 - https://github.com/apple-oss-distributions/OpenPAM
 - https://github.com/dslm4515/BMLFS/issues/29#issuecomment-1428896779

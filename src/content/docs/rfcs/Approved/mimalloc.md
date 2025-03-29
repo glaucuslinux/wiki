@@ -11,7 +11,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - All allocators should be secure; having a secure version does not make sense
 - Alpaquita, Chimera, eweOS, OpenMandriva and Void all have experimental `mimalloc` support
 
-## Resources
+## References
 - https://chimera-linux.org/docs/configuration/musl
 - https://dustri.org/b/files/blackalps_2022.pdf
 - https://git.alpinelinux.org/aports/tree/community/mimalloc2/APKBUILD

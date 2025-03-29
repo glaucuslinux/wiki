@@ -16,7 +16,7 @@ It's not very important, but until nsss gets more widespread, I think the statu 
 ```
 - Should `nsss` also be added as a runtime dependency?
 
-## Resources
+## References
 - https://git.alpinelinux.org/aports/tree/main/musl-nscd/APKBUILD
 - https://github.com/pikhq/musl-nscd
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/6711

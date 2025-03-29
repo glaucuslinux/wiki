@@ -7,7 +7,7 @@ No differences or additional tools in glaucus in:
 - e2fsprogs (fuse2fs: additional in glaucus)
 - psmisc (identical)
 
-## Resources
+## References
 - https://en.wikipedia.org/wiki/E2fsprogs
 - https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands
 - https://en.wikipedia.org/wiki/Util-linux

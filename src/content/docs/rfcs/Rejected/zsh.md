@@ -7,7 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `--emulate sh` mode is not great and breaks the POSIX build system
 - https://rwx.gg/advice/dont/zsh/
 
-## Resources
+## References
 - https://github.com/jandamm/zgenom
 - https://github.com/jtyr/gbt
 - https://github.com/marlonrichert/zsh-autocomplete

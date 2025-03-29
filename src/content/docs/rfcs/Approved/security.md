@@ -18,7 +18,7 @@ should only be able to access what is strictly required, and nothing more.
 - Stack Clash Protection (SCP)
 - Stack Smashing Protection (SSP)
 
-## Resources
+## References
 - https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc
 - https://dustri.org/b/security-features-of-musl.html
 - https://fedoraproject.org/wiki/Changes/Harden_All_Packages

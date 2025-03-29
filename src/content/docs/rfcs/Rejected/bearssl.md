@@ -7,6 +7,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Does not support TLSv1.3
 - `libtls-bearssl` seems dormant
 
-## Resources
+## References
 - https://bearssl.org/
 - https://github.com/michaelforney/libtls-bearssl

@@ -114,12 +114,15 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Arch fixes screen sharing by providing `etc/sway/config.d/50-systemd-user.conf`
 
 ## Without Xorg
-- A pure wayland install shouldn't show `libX` under `/usr/lib`
+- A pure wayland install:
+  - No `libX` under `/usr/lib`
+  - `pidof Xorg` returns nothing
+  - `pmap $(pidof Xorg) | grep _drv` also returns nothing
 - https://github.com/sdsddsd1/mywayland
 - https://hacktivis.me/notes/pure-wayland
 - https://sr.ht/~kqz/repo
 
-## Resources
+## References
 - FreeBSD has a lot of wayland ports
 - https://arewewaylandyet.com/
 - https://en.opensuse.org/Portal:OpenSUSEway

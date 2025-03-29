@@ -42,7 +42,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `/dev/sr0` has replaced `/dev/cdrom`
 - `/dev/sda` has replaced `/dev/cciss` and `/dev/ida`
 
-## Resources
+## References
 - https://codeberg.org/emmett1/alicelinux/src/branch/main/repos/core/busybox/mdev.conf
 - https://codeberg.org/kiss-community/repo/src/branch/master/core/busybox/files/mdev.conf
 - https://codeberg.org/smj/mdevd-as-an-admin

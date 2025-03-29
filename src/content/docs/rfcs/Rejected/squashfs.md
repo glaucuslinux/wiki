@@ -10,7 +10,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ```
 - `squashfs-tools` compresses manpages by default before installing them, so check that as well
 
-## Resources
+## References
 - https://fedoraproject.org/wiki/Changes/OptimizeSquashFS
 - https://github.com/AgentD/squashfs-tools-ng
 - https://github.com/plougher/squashfs-tools

@@ -9,5 +9,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Explicitly specify `ac_cv_prog_LESS=less` to configure?
 - Alpine and Void pass `DEFS=NO_ASM gl_cv_func_fflush_stdin=yes` for `musl`to avoid text relocation
 
-## Resources
+## References
 - https://lists.alpinelinux.org/~alpine/aports/patches/2545

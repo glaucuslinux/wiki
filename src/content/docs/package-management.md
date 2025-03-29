@@ -13,7 +13,7 @@ recipes.
 - Do not add common packages that are expected to exist at build-time as build dependencies (e.g. `make`, `linux-headers` and so on)
 - `nop` is short for "no operation" and includes:
   - `bootstrap`: install package to `/`; only available in cross
-  - `check`: disable test suite
+  - `check`: disable `check()`; must be provided for `build` without `check()`
   - `doc`, `man`: preserve documentation
   - `empty`: preserve empty directories
   - `la`, `libtool`: preserve libtool archives (`.la` files) in native; they are deleted either ways in cross
@@ -162,7 +162,7 @@ Remove additional files:
   - test (ewe)
   - zsh (kiss)
 
-## Resources
+## References
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/general-concepts/dependencies/#implicit-system-dependency
 - https://devmanual.gentoo.org/quickstart/index.html

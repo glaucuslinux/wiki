@@ -29,7 +29,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `--without-libmagic`: check if it requires `file`
 - `--with-cryptsetup`: check if it requires `systemd`; only works with `systemd`
 
-## Resources
+## References
 - https://bugzilla.redhat.com/show_bug.cgi?id=1984771
 - https://github.com/sabotage-linux/sabotage/commit/1f3b7032769f0ce27cde3ac7490d02f0393c9a5a
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/11730

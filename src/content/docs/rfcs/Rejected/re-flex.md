@@ -6,5 +6,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Replaces `flex++`
 - Does not replace `flex`
 
-## Resources
+## References
 - https://github.com/Genivia/RE-flex/issues/102

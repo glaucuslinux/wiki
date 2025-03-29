@@ -6,7 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - After Spectre/Meltdown, it's probably a bad idea to prelink as it makes memory mapping attacks easier.
 - PIE interferes with prelink
 
-## Resources
+## References
 - http://www.linuxfromscratch.org/hints/downloads/files/prelink.txt
 - http://www.linuxfromscratch.org/hints/downloads/files/OLD/prelink.txt
 - https://wiki.gentoo.org/wiki/Prelink

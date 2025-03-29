@@ -8,5 +8,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `egrep` and `fgrep` are symlinks
 - `ugrep+` replaces `rga` (`ripgrep-all`)
 
-## Resources
+## References
 - https://github.com/Genivia/ugrep?tab=readme-ov-file#using-ugrep-to-replace-gnubsd-grep

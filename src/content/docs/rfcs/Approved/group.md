@@ -8,7 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `network` group has been deprecated and `netdev` should be used (e.g. QEMU)
 - `uucp` group has been deprecated and `dialout` should be used
 
-## Resources
+## References
 - https://docs.fedoraproject.org/en-US/packaging-guidelines/UsersAndGroups/
 - https://wiki.archlinux.org/title/DeveloperWiki:UID_/_GID_Database
 - https://wiki.debian.org/SystemGroups

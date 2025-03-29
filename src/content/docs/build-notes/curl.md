@@ -22,7 +22,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable IDN; not many websites use internationalized domain names
 - Does not support recursive downloads, metalinks and same file multiconnect for security reasons
 
-## Resources
+## References
 - https://curl.se/docs/comparison-table.html
 - https://daniel.haxx.se/docs/curl-vs-wget.html
 - https://github.com/curl/curl/pull/14059

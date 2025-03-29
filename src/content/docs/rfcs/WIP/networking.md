@@ -26,5 +26,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - s6-networking (irrelevant): https://skarnet.org/software/s6-networking/
 - systemd-resolved (DNS Resolver)
 
-## Resources
+## References
 - https://busybox.net/~vda/no_ifup.txt

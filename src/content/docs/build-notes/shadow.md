@@ -51,7 +51,7 @@ Comparison of different implementations of the same tools by shadow and util-lin
 - Prefer `util-linux`'s `sulogin`: `shadow`'s `sulogin` lacks options and is not installed by default
 - Prefer `toybox`'s `su`: both `shadow` and `util-linux` versions require `pam`
 
-## Resources
+## References
 - https://bugs.archlinux.org/task/31414
 - https://github.com/shadow-maint/shadow/issues/999
 - https://github.com/shadow-maint/shadow/issues/1082

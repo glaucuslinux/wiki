@@ -7,5 +7,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Shouldn't the `glslangValidator` symlink be created automatically after install?
 - Test suite depends on `bash`
 
-## Resources
+## References
 - https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/blob/main/README.md

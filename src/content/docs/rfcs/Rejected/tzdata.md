@@ -5,5 +5,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Not POSIX compliant
 
-## Resources
+## References
 - https://bugs.gentoo.org/623962

@@ -15,6 +15,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Sabotage disables libiberty, and has a fix for older gnu packages
 - Sabotage libiberty fix is intended for older versions of gnu packages
 
-## Resources
+## References
 - https://github.com/sabotage-linux/sabotage/blob/master/KEEP/libibertyfix
 - https://github.com/sabotage-linux/sabotage/commit/98e5fc3ce6e7946792284ec5a937959b5ffbd0c2#commitcomment-73101387

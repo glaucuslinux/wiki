@@ -11,5 +11,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `bridge` provides a superset of the functionality implemented by the `brctl` program from `bridge-utils`
 - `ss` aka "Socket Statistics" can replace `netstat` from `net-tools` as it provides more TCP and state information
 
-## Resources
+## References
 - https://gitlab.archlinux.org/archlinux/packaging/packages/iproute2/-/issues/2

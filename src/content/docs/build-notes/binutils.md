@@ -15,5 +15,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `bfd` does not build with `yash`; only with `dash` and `bash`
 - `gold` has been deprecated
 
-## Resources
+## References
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882

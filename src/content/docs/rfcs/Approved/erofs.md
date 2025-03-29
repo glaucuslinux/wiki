@@ -10,6 +10,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `mount` handles both `erofs` and `squashfs` files automatically and does not require manual usage of `losetup`
 - Consider replacing with squashfs and zstd, if `erofs-tools` switches to rust
 
-## Resources
+## References
 - https://ipads.se.sjtu.edu.cn/_media/publications/gaoatc19.pdf
 - https://lore.kernel.org/lkml/ZrViqMFpC6uVEoXK@debian/

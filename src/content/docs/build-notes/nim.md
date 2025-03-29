@@ -8,7 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Run `koch` to build Nim and Nim tools
 - Consider `/opt` for Nim installation
 
-## Resources
+## References
 - https://build.opensuse.org/package/view_file/openSUSE:Factory/nim/nim.spec?expand=1
 - https://git.alpinelinux.org/aports/tree/community/nim/APKBUILD
 - https://git.alpinelinux.org/aports/tree/community/nimble/APKBUILD

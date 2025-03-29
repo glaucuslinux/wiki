@@ -7,7 +7,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 container solutions that run software in a sandbox and allow for glibc on musl
 - `gcompat` fails and segfaults
 
-## Resources
+## References
 - https://ch1p.io/void-linux-musl-glibc/
 - https://wiki.alpinelinux.org/wiki/Running_glibc_programs
 - https://github.com/gch1p/voidnsrun

@@ -11,7 +11,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Used to not support LTO
 - Don't forget to include `mold` in your compiler's custom search directory
 
-## Resources
+## References
 - https://github.com/rui314/mold/issues/1211
 - https://forums.gentoo.org/viewtopic-p-8804039.html
 

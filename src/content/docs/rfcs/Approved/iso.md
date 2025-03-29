@@ -165,7 +165,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 ## Misc
 - `perl` adds 83M to the iso if provided
 
-## Resources
+## References
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)
 - https://codeberg.org/emmett1/mkinitrd
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software

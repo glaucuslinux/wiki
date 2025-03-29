@@ -8,5 +8,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No initramfs generator supports DwarFS because of accessibility at boot time or in embedded environments as it depends on a lot of advanced C++ libraries (e.g. boost and Polly)
 - Other alternatives `composefs` and `mergerfs`
 
-## Resources
+## References
 - https://github.com/mhx/dwarfs#comparison

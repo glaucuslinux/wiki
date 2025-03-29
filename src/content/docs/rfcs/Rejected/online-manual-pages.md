@@ -6,7 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No proper way to serve roff pages in html format
 - It is more convenient to provide manual pages in release images
 
-## Resources
+## References
 ### Arch
 - https://man.archlinux.org/
 

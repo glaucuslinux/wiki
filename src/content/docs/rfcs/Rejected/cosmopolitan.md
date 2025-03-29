@@ -5,7 +5,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Replaces `musl`
 
-## Resources
+## References
 - https://github.com/jart/cosmopolitan
 - https://github.com/jart/cosmopolitan/issues/50
 - https://github.com/jart/cosmopolitan/issues/820

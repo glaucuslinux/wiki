@@ -50,7 +50,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need to explicitly define `static_inline`? Or does `perl`'s build system automatically detect it?
  `musl-locale` patches are for `perl-cross` which glaucus does not use
 
-## Resources
+## References
 - https://bugs.gentoo.org/506818
 - https://cgit.freebsd.org/ports/commit/lang/perl5.40?id=06745788d4b143777aa2cb91e31a4c07af90ded3
 - https://github.com/void-linux/void-packages/blob/master/srcpkgs/perl/patches/cpan_definstalldirs.diff

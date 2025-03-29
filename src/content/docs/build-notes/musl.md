@@ -14,7 +14,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
 - Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
 
-## Resources
+## References
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58

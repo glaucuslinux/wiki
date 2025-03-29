@@ -8,3 +8,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `src/fcobjshash.h` does not exist
 - Does not build with `muon`
 - Requires `gperf`; `kiss` provides `fcobjshash.h` to remove `gperf` dependency
+
+## References
+- https://www.linuxfromscratch.org/blfs/view/svn/x/tuning-fontconfig.html

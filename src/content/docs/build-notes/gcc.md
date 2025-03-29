@@ -33,7 +33,7 @@ libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/lar
 ```
 - No need to fix headers or includes on glaucus
 
-## Resources
+## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html

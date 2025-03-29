@@ -6,7 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - FHS 3.0
 - LSB Core
 
-## Resources
+## References
 - http://refspecs.linux-foundation.org/
 - https://www.linux.org/threads/linux-standards.11759/
 - https://en.wikipedia.org/wiki/Linux_Standard_Base

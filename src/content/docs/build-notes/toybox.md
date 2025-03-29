@@ -58,7 +58,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 17. `users` (provided by `shadow`)
 18. `vdir`
 
-## Resources
+## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
 - https://codeberg.org/sewn/kiss-repo/commit/c7449c660d048034b3da358efe0a4d8526c8019b
 - https://core.suckless.org/sbase/

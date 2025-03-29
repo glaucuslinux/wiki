@@ -13,5 +13,5 @@ sed -e 's@_GL_WARN_ON_USE (gets@//_GL_WARN_ON_USE (gets@' -i lib/stdio.in.h
 echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
 ```
 
-## Resources
+## References
 - https://www.gnu.org/software/inetutils/manual/inetutils.html

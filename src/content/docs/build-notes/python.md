@@ -20,7 +20,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - No need to provide an `EXTERNALLY-MANAGED` file as we want users to use `pip` to manage python packages
 - Should we create symlinks for `idle`, `pip` and `pydoc` to their `3` versions?
 
-## Resources
+## References
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
 - https://rfc.archlinux.page/0010-adopt-pep517-tooling/
 - https://rfc.archlinux.page/0020-sources-for-python-packaging/

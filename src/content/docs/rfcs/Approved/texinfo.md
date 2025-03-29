@@ -17,5 +17,5 @@ make INFO_DEPS= infodir= ac_cv_prog_lex_root=lex.yy MAKEINFO=true
 echo '==makeinfo== (GNU texinfo) 5.2'
 ```
 
-## Resources
+## References
 - https://git.alpinelinux.org/aports/tree/main/texinfo/fix-build-without-NLS.patch

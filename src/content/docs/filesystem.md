@@ -15,6 +15,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/var/run` is symlink to `../run` for compatibility (`/run`)
 - `/var/spool/mail` is symlink to `../mail` for compatibility (`/var/mail`)
 
-## Resources
-- https://wiki.debian.org/ReleaseGoals/RunDirectory
+## References
 - FHS 3.0
+- https://musl.libc.org/doc/1.1.24/manual.html
+- https://wiki.debian.org/ReleaseGoals/RunDirectory

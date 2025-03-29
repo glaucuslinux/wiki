@@ -9,6 +9,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - glaucus does not use `libfl` (`gcc` configure might complain about a missing lex library)
 - Explicitly specify `ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes` otherwise it will be guessed as `no`
 
-## Resources
+## References
 - https://github.com/westes/flex/issues/337
 - https://github.com/westes/flex/milestone/5

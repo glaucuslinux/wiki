@@ -16,7 +16,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `libarchive` does not build with `slibtoolize` or the `libtoolize` wrapper; only with gnu libtoolize
 - Serpent's space macro patch breaks builds with `slibtool-shared-shared` not found
 
-## Resources
+## References
 - https://wiki.gentoo.org/wiki/Slibtool
 - https://dev.midipix.org/cross/slibtool/issue/5
 - https://dev.midipix.org/cross/slibtool/issue/8

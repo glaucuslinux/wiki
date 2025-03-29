@@ -8,6 +8,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/usr/etc` does not get created when `vlock` is disabled
 - `openvt` runs interactive shells on virtual terminals
 
-## Resources
+## References
 - https://kisslinux.org/wiki/console/bkeymaps
 - https://kisslinux.org/wiki/pkg/bkeymaps

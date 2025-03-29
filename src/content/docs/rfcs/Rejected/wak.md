@@ -6,5 +6,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Also known as `awk` for `toybox`
 - Promising but very slow; `mawk` is 8-10 times faster
 
-## Resources
+## References
 - https://github.com/raygard/wak

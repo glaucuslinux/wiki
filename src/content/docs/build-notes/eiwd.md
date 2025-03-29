@@ -3,6 +3,7 @@ title: eiwd
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- `iwctl` requires `dbus`
 - Do we need `--disable-tools`?
 - Do not use `--enable-external-ell` as it is not stable yet
 - We might need to add `UseDefaultInterface=true` to `main.conf` to prevent iwd from manipulating network interfaces names
@@ -18,6 +19,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Patch `src/wiphy.c` to provide basename on void
 - `EnableIPv6` is set to `true` by default since version `2.0`
 
-## Resources
+## References
 - https://wiki.archlinux.org/title/Iwd
 - https://wiki.gentoo.org/wiki/Iwd

@@ -11,5 +11,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Test suite might require `LC_ALL=en_US.UTF-8` on LFS
 - Builds takes a while (~10 minutes) even with jobs=2 and jobs=4; compare `make` against `samu`?
 
-## Resources
+## References
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html

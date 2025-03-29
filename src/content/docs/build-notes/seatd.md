@@ -9,7 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need `chmod u+s` (suid) on `bin/seatd-launch`?
 - Group name `video` vs `seat` (prefer the former as it already exists)
 
-## Resources
+## References
 - https://cgit.freebsd.org/ports/tree/sysutils/seatd/files/pkg-message.in
 - https://cgit.freebsd.org/ports/tree/sysutils/seatd/Makefile
 - https://github.com/openbsd/ports/tree/master/sysutils/seatd/patches

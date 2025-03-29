@@ -16,5 +16,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Avoid `--numeric-owner`
 - Prefer `bsdunzip` over unmaintained Info-ZIP `unzip`
 
-## Resources
+## References
 - https://www.youtube.com/watch?v=M8NVBa3ZsE4

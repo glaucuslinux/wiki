@@ -11,5 +11,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `css_tokenizer.lex` fails with `reflex`; depends on `flex`?
 - `/etc/wgetrc` should contain `ca_certificate=/etc/ssl/certs/ca-certificates.crt`
 
-## Resources
+## References
 - https://gitlab.com/gnuwget/wget2/-/issues/603

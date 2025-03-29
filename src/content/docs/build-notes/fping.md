@@ -6,7 +6,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `--enable-ipv4` and `--enable-ipv6` are on by default
 - Might require `setcap cap_net_raw=+ep /usr/bin/fping` (or `cap_net_raw+eip`?)
 
-## Resources
+## References
 - https://github.com/josephcolton/tcpping
 - https://github.com/shackleb0lt/cerberus
 - https://github.com/ThomasHabets/arping

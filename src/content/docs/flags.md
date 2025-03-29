@@ -142,7 +142,7 @@ https://reviews.llvm.org/D4565
 - No higher value
 - Ignored by `mold`
 
-## Resources
+## References
 - https://forums.gentoo.org/viewtopic-t-1171518.html?sid=259e0b60fe8784f498bb919b83beb3fb
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html

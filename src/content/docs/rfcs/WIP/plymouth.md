@@ -9,5 +9,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 Theme=tribar
 ```
 
-## Resources
+## References
 - https://github.com/chimera-linux/cports/issues/3177

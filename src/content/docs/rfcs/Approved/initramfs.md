@@ -22,7 +22,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `blkid` is better than `findfs` in terms of finding block devices; better output
 - Do we need the following modules: `char/tpm`, `firewire`, `hid-generic` and `pcmcia`?
 
-## Resources
+## References
 - https://github.com/hanh-linux/gen-initramfs
 - https://github.com/hanh-linux/gen-initramfs/wiki/Explanation-of-how-initramfs-mounts-the-ISO.
 - https://github.com/rdbo/sigma-linux/blob/master/profile/initfs

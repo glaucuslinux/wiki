@@ -16,7 +16,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Iosevka (huge, uses javascript)
 - cool old fonts (no `psf`): https://int10h.org/oldschool-pc-fonts/
 
-## Resources
+## References
 - https://en.wikipedia.org/wiki/List_of_monospaced_typefaces
 - https://www.linuxfromscratch.org/blfs/view/svn/postlfs/console-fonts.html
 - https://wiki.archlinux.org/title/Linux_console

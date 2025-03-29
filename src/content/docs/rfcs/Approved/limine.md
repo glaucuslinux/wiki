@@ -60,7 +60,7 @@ losetup -d $device
 chown firasuke:firasuke glaucus.img
 ```
 
-## Resources
+## References
 - https://github.com/eweOS/packages/blob/limine/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/CONFIG.md
 - https://github.com/limine-bootloader/limine/blob/trunk/PHILOSOPHY.md
