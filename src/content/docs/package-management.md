@@ -97,9 +97,9 @@ foo=bar make
 ### package
 - Do not install in: `/bin`, `/boot`, `/dev`,`/home`,`/lib`, `/mnt`, `/proc`, `/root`, `/run`, `/sbin`, `/sys`, `/tmp`, `/usr/sbin`
 - Brace expansion is not POSIX
-- Use `mkdir -pv` over `install -dv`
-- `cp -a` implies `-R/-r/--recursive`
-- `ln -r` is not POSIX
+- Use `mkdir -p` over `install -d`
+- `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
+- `ln -r` and `ln -n` is not POSIX
 - `touch` is faster than `:>`
 - Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops

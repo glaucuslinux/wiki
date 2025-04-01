@@ -13,3 +13,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## References
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+- https://linuxfromscratch.org/blfs/view/svn/kde/extra-cmake-modules.html

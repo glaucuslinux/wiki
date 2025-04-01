@@ -12,6 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Does `musl` conflict/replace `libssp` (the standalone package)
 - `gencat` requires `queue.h`
 - Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
+- Alpaquita has patches to fix `ldd` output for `static-pie` executables
 - Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
 
 ## References

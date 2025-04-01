@@ -86,6 +86,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## eiwd
 - Pull Request #8: [`resolvconf` is being used by default](https://github.com/illiliti/eiwd/pull/8)
 
+## eweOS
+- Pull Request #16: [`kernel_path` is now an alias to `path`](https://github.com/eweOS/iso/pull/16)
+
 ## findutils
 - Bug #66418: [Typo in Leaf Optimisation](https://savannah.gnu.org/bugs/index.php?66418)
 - Commit ea9288c: [doc: fix typo in Texinfo manual](https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=ea9288c6beca75)
@@ -140,6 +143,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## mtm
 - Issue #81: [Does not build against `netbsd-curses`](https://github.com/deadpixi/mtm/issues/81)
+
+## muon
+- Issue #107: [Support for `--cross-file`](https://todo.sr.ht/~lattis/muon/107)
+- Issue #139: [Does not search in `PATH` for `add_install_script()`](https://todo.sr.ht/~lattis/muon/139)
 
 ## musl-cross-make
 - Issue #99: [Why isn't `musl-cross-make` on par with musl.cc's version?](https://github.com/richfelker/musl-cross-make/issues/99)

@@ -53,6 +53,7 @@ Comparison of different implementations of the same tools by shadow and util-lin
 
 ## References
 - https://bugs.archlinux.org/task/31414
-- https://github.com/shadow-maint/shadow/issues/999
 - https://github.com/shadow-maint/shadow/issues/1082
+- https://github.com/shadow-maint/shadow/issues/999
 - https://github.com/shadow-maint/shadow/pull/1174
+- https://linuxfromscratch.org/blfs/view/svn/postlfs/shadow.html
