@@ -7,6 +7,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do not depend on `icu`
 - Some distributions enable `legacy` for ABI compatibility
 - In `legacy` mode support for `http`, `lzma` and `zlib` is enabled by default
+- The “legacy” configuration option won’t enable support for HTTP and
+LZMA anymore. These features will be removed in the next release.
 - SAX1 is deprecated
 - Test suite is optional and requires additional download `xmlts` on LFS?
 - Support for FTP and xpointer() XPath extensions has been deprecated
