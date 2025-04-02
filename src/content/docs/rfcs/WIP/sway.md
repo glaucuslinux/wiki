@@ -18,8 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - build `libxkbcommon` (-> `wlroots`)
 - build `libpng` (-> `pixman` -> `wlroots` -> `sway`)
 - build `pixman` (-> `wlroots`)
-- [BROKEN] build `egl` and `vulkan` (-> `wlroots`)?
-- [BROKEN] build `gbm` (-> `wlroots`)?
+- [BROKEN] build `mesa` (-> `wlroots`)?
 - build `hwdata` (-> `wlroots`)
 - build `mtdev` (-> `libinput` -> `wlroots` -> `sway`)
 - build `libevdev` (-> `libinput` -> `wlroots` -> `sway`)
@@ -28,10 +27,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - build `seatd` (-> `wlroots`)
 - [BROKEN] build `wlroots` (-> `sway`)
 - build `cairo` (-> `sway`)
-- [BROKEN] build `glib` (-> `pango` -> `sway`)
+- build `glib` (-> `pango` -> `sway`)
 - build `harfbuzz` (-> `pango` -> `sway`)
 - build `fontconfig` (-> `pango` -> `sway`)
 - build `freetype` (-> `fontconfig` -> `pango` -> `sway`)
 - build `pango` (-> `sway`)
-- A circular dependency between `harfbuzz` and `freetype` on kiss
-- Install `cairo` after `freetype` and `fontconfig` to get a font backend, or `pango` won't build?
+- build `cairo`
+- [BROKEN] build `sway`

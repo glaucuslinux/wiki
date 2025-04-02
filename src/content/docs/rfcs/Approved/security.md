@@ -67,9 +67,12 @@ should only be able to access what is strictly required, and nothing more.
 ## Control-Flow Integrity (CFI)
 - `-fsanitize=shadow-call-stack`
 - `-fsanitize=kcfi` vs `-fsanitize=cfi`
-- `-mcet -fcf-protection` (we have `--disable-cet` passed to GCC) (Control-Flow Enforcement Technology (CET) feature in future Intel CPUs)
-- https://maskray.me/blog/2022-12-18-control-flow-integrity
+- `-mcet -fcf-protection` (we have `--disable-cet` passed to GCC) (Control-Flow Enforcement Technology (CET) feature in future Intel and AMD CPUs); not supported by `musl`, and gentoo also masks `cet` support with `musl`
+- https://edu.chainguard.dev/chainguard/chainguard-images/about/images-compiled-programs/glibc-vs-musl/
 - https://gcc.gnu.org/pipermail/gcc-patches/2022-December/608723.html
+- https://gitlab.alpinelinux.org/alpine/tsc/-/issues/64
+- https://maskray.me/blog/2022-12-18-control-flow-integrity
+- https://reviews.llvm.org/D58102
 
 ## Source Fortification
 - `-D_FORTIFY_SOURCE=2`
