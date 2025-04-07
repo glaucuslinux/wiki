@@ -4,6 +4,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Does not support remote build
-- Does not support `cross-file`
+- Does not support `cross-file` and cross compilation in general (e.g. `kmod`)
 - A circular dependency between muon and itself?
 - muon replaces meson, but resulting binaries are not stripped?

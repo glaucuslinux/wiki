@@ -5,3 +5,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Patch `tools/kconfig/lxdialog/check-lxdialog.sh` with `int main()` to fix `make menuconfig`
 - Pipe binary keymaps from `bkeymaps` to `loadkmap` to load them: `loadkmap < /usr/share/bkeymaps/...`
+
+## Replaces
+- `kbd`
+- `procps-ng`: `hugetop`, `pidwait`, `slabtop`, `tload`
+- `psmisc`: `fuser`, `pstree`

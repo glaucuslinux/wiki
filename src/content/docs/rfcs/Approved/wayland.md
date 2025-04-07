@@ -119,8 +119,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
   - `pidof Xorg` returns nothing
   - `pmap $(pidof Xorg) | grep _drv` also returns nothing
 - https://github.com/sdsddsd1/mywayland
+- https://git.sr.ht/~kqz/repo
 - https://hacktivis.me/notes/pure-wayland
-- https://sr.ht/~kqz/repo
 
 ## References
 - FreeBSD has a lot of wayland ports

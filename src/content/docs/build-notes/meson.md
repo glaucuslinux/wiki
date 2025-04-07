@@ -8,3 +8,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `abuild-meson` uses custom cross files on Alpine
 - `gettext-tiny` patch on Adelie: https://git.adelielinux.org/adelie/packages/-/blob/current/user/meson/meson-0.62.1-gettext-tiny.patch
 - Does it depend on `setup-tools` from `python`?
+
+## References
+- https://mesonbuild.com/Builtin-options.html
+- https://mesonbuild.com/Cross-compilation.html

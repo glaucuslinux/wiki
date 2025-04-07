@@ -3,6 +3,9 @@ title: glib
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Consider `-Dforce_posix_threads=true`
+- Fails with no wrap due to `gvdb`
+
 ## References
 - https://github.com/muon-build/muon/issues/105
 - https://github.com/muon-build/muon/issues/98

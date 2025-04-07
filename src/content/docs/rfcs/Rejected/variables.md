@@ -38,6 +38,9 @@ HOST_LDFLAGS
 # LD=$LDBFD \
 LDBFD=x86_64-glaucus-linux-musl-ld.bfd
 
+# We are using GNU libtoolize
+LIBTOOLIZE=slibtoolize
+
 # Better have a file stub
 MAKEINFO=true
 
