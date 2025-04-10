@@ -240,10 +240,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Pull Request #407: [`slibtool`: simplify symlink](https://github.com/serpent-os/recipes/pull/407)
 
 ## shadow
+- [`shadow` 4.14.6 Contributor](https://github.com/shadow-maint/shadow/releases/tag/4.14.6)
 - Issue #945: [`login` and `logoutd` broken on systems with `utmps`](https://github.com/shadow-maint/shadow/issues/945)
 - Issue #999: [rfc: drop everything that conflicts with `util-linux`](https://github.com/shadow-maint/shadow/issues/999#issuecomment-2379230634)
 - Issue #1082: [`sulogin` is not being installed](https://github.com/shadow-maint/shadow/issues/1082)
-- [`shadow` 4.14.6 Contributor](https://github.com/shadow-maint/shadow/releases/tag/4.14.6)
 
 ## skabus
 - Issue #3: [How does `skabus` compare to `basu`?](https://github.com/skarnet/skabus/issues/3)
@@ -305,6 +305,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## wget2
 - Issue #644: [Undefined reference to `CRYPTO_free_ex_index`](https://gitlab.com/gnuwget/wget2/-/issues/644)
 - Issue #644: [`wget2` | Undefined reference to `CRYPTO_free_ex_index`](https://mail.gnu.org/archive/html/wget-dev/2023-09/msg00041.html)
+
+## xz
+- [xz 5.8.1 Contributor](https://github.com/tukaani-project/xz/blob/master/THANKS)
+- Commit 80ffa38: [Build: Fix a typo in `autogen.sh`](https://github.com/tukaani-project/xz/commit/80ffa38f56657257ed4d90d76f6bd2f2bcb8163c)
 
 ## yash
 - Issue #48: [Support for cross compilation](https://github.com/magicant/yash/issues/48)
