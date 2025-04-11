@@ -17,10 +17,17 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable `CLANG_ENABLE_STATIC_ANALYZER` for `toolchain` and `cross`
 - To disable `LIBCXX_ENABLE_RTTI` disable `LIBCXX_ENABLE_EXCEPTIONS` first
 - What is the default value for `LIBCXX_CXX_ABI`?
+- Clang uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
+- Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
+- Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
+- Clang defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
 
 ## References
+- https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
 - https://clang.llvm.org/c_status.html
 - https://clang.llvm.org/cxx_status.html
+- https://clang.llvm.org/docs/ClangCommandLineReference.html
+- https://clang.llvm.org/docs/CommandGuide/clang.html
 - https://clang.llvm.org/docs/CrossCompilation.html
 - https://clang.llvm.org/docs/InternalsManual.html
 - https://clang.llvm.org/docs/Toolchain.html
@@ -42,6 +49,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://llvm.org/docs/CMake.html
 - https://llvm.org/docs/genindex.html
 - https://llvm.org/docs/GettingStarted.html
+- https://llvm.org/docs/GoldPlugin.html
 - https://llvm.org/docs/HowToCrossCompileBuiltinsOnArm.html
 - https://llvm.org/docs/HowToCrossCompileLLVM.html
 - https://llvm.org/docs/Lexicon.html
