@@ -21,6 +21,16 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
 - Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
 - Clang defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
+- Should we set `CMAKE_CXX_STANDARD` to `20` instead of `17`
+- `LLVM_BUILD_BENCHMARKS`, `LLVM_BUILD_DOCS`, `LLVM_BUILD_EXAMPLES` and `LLVM_BUILD_TESTS` are `OFF` by default
+- `LLVM_BUILD_LLVM_DYLIB` is used to build `llvm` as a single shared library; it can't be used with `BUILD_SHARED_LIBS`
+- `LLVM_DEFAULT_TARGET_TRIPLE` defaults to `host` (the machine where `llvm` is being built according to the docs) if no target is explicitly specified; for cross-compilers use `$TGT` instead
+- `LLVM_ENABLE_ASSERTIONS` defaults to `OFF` if `CMAKE_BUILD_TYPE` is `Release`
+- Explicitly disable `LLVM_BUILD_TELEMETRY` and `LLVM_ENABLE_BINDINGS`; they are `ON` by default
+- `LLVM_ENABLE_PEDANTIC` defaults to `ON`
+- It is better to pass `compiler-rt` to `LLVM_ENABLE_RUNTIMES` rather than `LLVM_ENABLE_PROJECTS`
+- Try setting `LLVM_ENABLE_UNWIND_TABLES` to `OFF` instead of passing `-fno-unwind-tables` in `CFLAGS`?
+- Consider `LLVM_ENABLE_Z3_SOLVER=ON` in the future
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
@@ -38,6 +48,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CMake.html
 - https://cmake.org/cmake/help/latest/index.html
 - https://compiler-rt.llvm.org/
+- https://discourse.llvm.org/
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
 - https://github.com/llvm/llvm-zorg
 - https://libcxx.llvm.org/Modules.html
@@ -47,6 +58,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://llvm.org/docs/AdvancedBuilds.html
 - https://llvm.org/docs/BuildingADistribution.html
 - https://llvm.org/docs/CMake.html
+- https://llvm.org/docs/CMakePrimer.html
 - https://llvm.org/docs/genindex.html
 - https://llvm.org/docs/GettingStarted.html
 - https://llvm.org/docs/GoldPlugin.html
