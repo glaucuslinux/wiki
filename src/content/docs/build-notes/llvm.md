@@ -31,6 +31,14 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - It is better to pass `compiler-rt` to `LLVM_ENABLE_RUNTIMES` rather than `LLVM_ENABLE_PROJECTS`
 - Try setting `LLVM_ENABLE_UNWIND_TABLES` to `OFF` instead of passing `-fno-unwind-tables` in `CFLAGS`?
 - Consider `LLVM_ENABLE_Z3_SOLVER=ON` in the future
+- `LLVM_INTEGRATED_CRT_ALLOC` is only relevant on Windows
+- Consider `LLVM_ENABLE_RPMALLOC`?; can't be used with `LLVM_USE_SANITIZER=ON`
+- `LLVM_LINK_LLVM_DYLIB=ON` implies `LLVM_BUILD_LLVM_DYLIB=ON`
+- If `LLVM_TABLEGEN` is explicitly set to `llvm-tblgen`, then no native TableGen will be compiled, and the one provided by the host will be used; this is useful when cross-compiling to reduce build time by not having to compile a native tool that could be provided by the host itself
+- It is better to not have `LLVM_TARGET_ARCH` set as a triplet, as it'll resolve via regex to `X86` almost always
+- `LLVM_USE_LINKER` prefixes the value (e.g. `mold`) with `ld.` (so it becomes `ld.mold`)
+- It is probably a good idea to enable `LLVM_USE_PERF` on Linux
+- Do we need `LLVM_USE_SANITIZER=OFF`? It defaults to an empty string "" so no?
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
@@ -51,6 +59,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://discourse.llvm.org/
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
 - https://github.com/llvm/llvm-zorg
+- https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
 - https://libcxx.llvm.org/Modules.html
 - https://libcxx.llvm.org/TestingLibcxx.html
 - https://libcxx.llvm.org/UserDocumentation.html
