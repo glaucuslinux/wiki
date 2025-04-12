@@ -35,6 +35,7 @@ is recommended to have a minimum of 4 GB of memory and 10 GB of storage space.
 - `pkg-config` (or `pkgconf`)
 - `sed` (or `toybox`)
 - `tar` (or `libarchive`)
+- `wget2`
 - `xz`
 - `zlib` (or `zlib-ng`)
 - `zstd`
@@ -58,18 +59,18 @@ done
 sudo mkdir -pv \
   /var/cache/rad \
   /var/lib/rad/clusters
-sudo ln -fnsv cerata /var/lib/rad/clusters/cerata
-sudo ln -fnsv src /var/cache/rad/src
+sudo ln -fs cerata /var/lib/rad/clusters/cerata
+sudo ln -fs src /var/cache/rad/src
 ```
 - Provide missing stubs (remove `texinfo`):
 ```sh
 for i in gtkdocize help2man makeinfo po4a texi2dvi; do
-  sudo cp -af cerata/musl/files/true /usr/bin/$i
+  sudo cp -fPp cerata/musl/files/true /usr/bin/$i
 done
 ```
 - Install `glaucus-configure`:
 ```sh
-sudo cp -af cerata/autoconf/files/glaucus-configure /usr/bin
+sudo cp -fPp cerata/autoconf/files/glaucus-configure /usr/bin
 ```
 - Bootstrap toolchain and cross:
 ```sh
