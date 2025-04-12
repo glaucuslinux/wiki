@@ -37,8 +37,18 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - If `LLVM_TABLEGEN` is explicitly set to `llvm-tblgen`, then no native TableGen will be compiled, and the one provided by the host will be used; this is useful when cross-compiling to reduce build time by not having to compile a native tool that could be provided by the host itself
 - It is better to not have `LLVM_TARGET_ARCH` set as a triplet, as it'll resolve via regex to `X86` almost always
 - `LLVM_USE_LINKER` prefixes the value (e.g. `mold`) with `ld.` (so it becomes `ld.mold`)
-- It is probably a good idea to enable `LLVM_USE_PERF` on Linux
+- Set `LLVM_USE_PERF` to `ON` for `pgo` to work; also consider `LLVM_ENABLE_LIBPFM` (should be `ON` by default)
 - Do we need `LLVM_USE_SANITIZER=OFF`? It defaults to an empty string "" so no?
+- Do we need this early on `LLVM_ENABLE_LIBXML2`?
+- Not all LLVM projects require LLVM; `compiler-rt` can be built without `llvm`
+- `LLVM_ENABLE_LTO=Thin` does not work if you are using `gcc` to build `llvm` obviously
+- `CLANG_VENDOR_UTI` is a macOS only option
+- `CLANG_LINK_CLANG_DYLIB` is set to `LLVM_LINK_LLVM_DYLIB` value
+- Do we need `CLANG_BUILD_TOOLS=ON`? Are the tools really needed for just building software?
+- `CLANG_INCLUDE_DOCS` and `CLANG_INCLUDE_TESTS` are set to `LLVM_INCLUDE_DOCS` and `LLVM_INCLUDE_TESTS` values respectively
+- Prefer `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` over `C_COMPILER` and `CXX_COMPILER`; the latter are `llvm` only and they set the former internally
+- Do we need to set `CMAKE_ASM_COMPILER=clang`?
+- `LLVM_LIBDIR_SUFFIX` is set to `""` by default; also `CLANG_LIBDIR_SUFFIX` is set to its value
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
@@ -55,6 +65,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://cliutils.gitlab.io/modern-cmake/
 - https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CMake.html
 - https://cmake.org/cmake/help/latest/index.html
+- https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html
 - https://compiler-rt.llvm.org/
 - https://discourse.llvm.org/
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
