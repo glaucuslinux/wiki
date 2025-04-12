@@ -64,18 +64,18 @@ sudo ln -fnsv src /var/cache/rad/src
 - Provide missing stubs (remove `texinfo`):
 ```sh
 for i in gtkdocize help2man makeinfo po4a texi2dvi; do
-  sudo cp -af cerata/musl/true /usr/bin/$i
+  sudo cp -af cerata/musl/files/true /usr/bin/$i
 done
 ```
 - Install `glaucus-configure`:
 ```sh
-sudo cp -af cerata/autoconf/glaucus-configure /usr/bin
+sudo cp -af cerata/autoconf/files/glaucus-configure /usr/bin
 ```
 - Bootstrap toolchain and cross:
 ```sh
 cd rad
-./rad -bt
-./rad -bx
+./rad bootstrap toolchain
+./rad bootstrap cross
 ```
 - Create cross img:
 ```sh
