@@ -133,6 +133,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Commit 13ae2fb: [misc: xorriso: Create Joliet info and hfsplus for ISOHYBRIDs. Fixes #372](https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1)
 - Pull Request #372: [Support booting on usb](https://github.com/limine-bootloader/limine/pull/372)
 
+## llvm
+- Pull Request #135546: [Update `LIBUNWIND_ENABLE_WERROR` default value in `BuildingLibunwind.rst`](https://github.com/llvm/llvm-project/pull/135546)
+
 ## mdevd
 - Issue #8: [Mention `nsss` as an optional dependency](https://github.com/skarnet/mdevd/issues/8)
 - Issue #10: [Default path for executing commands in `mdev.conf`](https://github.com/skarnet/mdevd/issues/10)

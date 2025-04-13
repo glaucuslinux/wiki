@@ -12,6 +12,7 @@ is recommended to have a minimum of 4 GB of memory and 10 GB of storage space.
 - `bash`
 - `binutils`
 - `bison` (or `byacc`)
+- `booster`
 - `bzip2`
 - `coreutils` (or `toybox`)
 - `diffutils` (or `toybox`)
@@ -56,7 +57,7 @@ done
 ```
 - Create symlinks:
 ```sh
-sudo mkdir -pv \
+sudo mkdir -p \
   /var/cache/rad \
   /var/lib/rad/clusters
 sudo ln -fs cerata /var/lib/rad/clusters/cerata
@@ -68,9 +69,12 @@ for i in gtkdocize help2man makeinfo po4a texi2dvi; do
   sudo cp -fPp cerata/musl/files/true /usr/bin/$i
 done
 ```
-- Install `glaucus-configure`:
+- Install `glaucus-configure` and `glaucus-meson`:
 ```sh
-sudo cp -fPp cerata/autoconf/files/glaucus-configure /usr/bin
+sudo cp -fPp \
+  cerata/autoconf/files/glaucus-configure \
+  cerata/muon/files/glaucus-meson \
+  /usr/bin
 ```
 - Bootstrap toolchain and cross:
 ```sh
@@ -100,5 +104,10 @@ qemu-system-x86_64 \
 ```
 - Bootstrap native:
 ```sh
-rad -bn
+rad bootstrap native
+```
+- Create native iso:
+```sh
+cd bubble
+sudo ./iso
 ```

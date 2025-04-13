@@ -49,6 +49,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Prefer `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` over `C_COMPILER` and `CXX_COMPILER`; the latter are `llvm` only and they set the former internally
 - Do we need to set `CMAKE_ASM_COMPILER=clang`?
 - `LLVM_LIBDIR_SUFFIX` is set to `""` by default; also `CLANG_LIBDIR_SUFFIX` is set to its value
+- Do we need `COMPILER_RT_DEFAULT_TARGET_ARCH`?
+- Do we need `LIBUNWIND_ENABLE_CROSS_UNWINDING`?
+- Do we need `COMPILER_RT_USE_ATOMIC_LIBRARY`; does it use `compiler-rt` or `libatomic`?
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
@@ -57,6 +60,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://clang.llvm.org/docs/ClangCommandLineReference.html
 - https://clang.llvm.org/docs/CommandGuide/clang.html
 - https://clang.llvm.org/docs/CrossCompilation.html
+- https://clang.llvm.org/docs/index.html
 - https://clang.llvm.org/docs/InternalsManual.html
 - https://clang.llvm.org/docs/Toolchain.html
 - https://clang.llvm.org/docs/Tooling.html
@@ -71,6 +75,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
 - https://github.com/llvm/llvm-zorg
 - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
+- https://libcxx.llvm.org/Hardening.html
+- https://libcxx.llvm.org/index.html
 - https://libcxx.llvm.org/Modules.html
 - https://libcxx.llvm.org/TestingLibcxx.html
 - https://libcxx.llvm.org/UserDocumentation.html
