@@ -14,10 +14,14 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
 - Alpaquita has patches to fix `ldd` output for `static-pie` executables
 - Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
+- `LC_ALL` overrides category-specific variables, and `LANG` provides a default for any category not set
+- `MUSL_LOCPATH` - Colon-separated list of paths that will be searched for locale definitions. The requested locale name string will used as a filename and searched in each path component. If unset, locale files are not loaded and only the "C" locale is available. This variable is completely ignored in programs invoked setuid, setgid, or with other elevated capabilities
+- musl provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead as they are the modern implementation (this means that `gcc` and `binutils` should be configured with `--enable-initfini-array`)
 
 ## References
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
+- https://musl.libc.org/manual.html
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
 - https://wiki.gentoo.org/wiki/Musl_porting_notes

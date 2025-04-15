@@ -3,6 +3,7 @@ title: utmps
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Solves 32bit time_t problem; however, all applications need to be reviewed for 64bit time_t
 - `w` will not work in future versions of `shadow` due to `login` not recording any utmp entries: https://github.com/shadow-maint/shadow/issues/945
 
 - Either link or preload using `LD_PRELOAD=libutmps`
