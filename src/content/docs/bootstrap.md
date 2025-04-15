@@ -55,13 +55,13 @@ for i in bubble cerata rad s6-boot-scripts; do
   cd ..
 done
 ```
-- Create symlinks:
+- Create symlinks (assuming you are in `glaucus/`):
 ```sh
 sudo mkdir -p \
   /var/cache/rad \
   /var/lib/rad/clusters
-sudo ln -fs cerata /var/lib/rad/clusters/cerata
-sudo ln -fs src /var/cache/rad/src
+sudo ln -fs $PWD/cerata /var/lib/rad/clusters
+sudo ln -fs $PWD/src /var/cache/rad
 ```
 - Provide missing stubs (remove `texinfo`):
 ```sh

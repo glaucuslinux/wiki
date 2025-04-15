@@ -22,6 +22,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
+- https://maskray.me/blog/2021-11-07-init-ctors-init-array
 - https://musl.libc.org/manual.html
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
 - https://wiki.gentoo.org/wiki/Musl_porting_notes
