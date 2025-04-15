@@ -60,8 +60,8 @@ done
 sudo mkdir -p \
   /var/cache/rad \
   /var/lib/rad/clusters
-sudo ln -fs $PWD/cerata /var/lib/rad/clusters
 sudo ln -fs $PWD/src /var/cache/rad
+sudo ln -fs $PWD/cerata /var/lib/rad/clusters
 ```
 - Provide missing stubs (remove `texinfo`):
 ```sh
