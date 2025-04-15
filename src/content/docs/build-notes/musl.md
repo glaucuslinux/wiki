@@ -17,6 +17,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `LC_ALL` overrides category-specific variables, and `LANG` provides a default for any category not set
 - `MUSL_LOCPATH` - Colon-separated list of paths that will be searched for locale definitions. The requested locale name string will used as a filename and searched in each path component. If unset, locale files are not loaded and only the "C" locale is available. This variable is completely ignored in programs invoked setuid, setgid, or with other elevated capabilities
 - musl provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead as they are the modern implementation (this means that `gcc` and `binutils` should be configured with `--enable-initfini-array`)
+- Log messages will be discarded if `/dev/log` is absent
 
 ## References
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf

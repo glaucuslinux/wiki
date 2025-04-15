@@ -3,17 +3,24 @@ title: Filesystem
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- `/boot/efi` has been deprecated
-- `/etc/mtab` has been deprecated; `mount` and `umount` traditionally maintained `/etc/mtab` for mounted filesystems, which is now completely disabled at compile time by default, although some systems still symlink `/etc/mtab` to `/proc/mounts` for compatibility
+## Deprecations
+- No `/boot/efi`; deprecated
+- No `/etc/mtab`; succeeded by `/proc/mounts`
 - No `/lib32` and `/lib64`; pure 64-bit system
-- No `/libexec`
+- No `/run/shm`; succeeded by `/dev/shm`
 - No `/run/tmp`; only useful for embedded systems on Debian
-- Sticky bit (`1777`) is set on `/tmp` and `/var/tmp` (and `/var/mail`?)
-- `/usr` merge
-- `/var/db` has been deprecated; a BSD relic that has been replaced with `/var/lib`
-- `/var/lock` is symlink to `../run/lock` for compatibility (`/run/lock`)
-- `/var/run` is symlink to `../run` for compatibility (`/run`)
-- `/var/spool/mail` is symlink to `../mail` for compatibility (`/var/mail`)
+- No `/var/db`; a BSD relic that was succeeded by `/var/lib`
+
+## Compatibility Symlinks
+- `/bin` as a symlink to `/usr/bin`
+- `/lib` as a symlink to `/usr/lib`
+- `/sbin` as a symlink to `/usr/bin`
+- `/usr/libexec` as a symlink to `/usr/bin` or `/usr/lib` or not at all?
+- `/usr/sbin` as a symlink to `/usr/bin`
+- `/var/lock` as a symlink to `/run/lock`
+- `/var/run` as a symlink to `/run`
+- `/var/spool/mail` as a symlink to `/var/mail`
+- Sticky bit (`1777`) is set on `/dev/shm`, `/tmp` and `/var/tmp` (and `/var/mail`?)
 
 ## References
 - FHS 3.0
