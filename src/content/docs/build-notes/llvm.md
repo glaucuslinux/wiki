@@ -52,6 +52,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Do we need `COMPILER_RT_DEFAULT_TARGET_ARCH`?
 - Do we need `LIBUNWIND_ENABLE_CROSS_UNWINDING`?
 - Do we need `COMPILER_RT_USE_ATOMIC_LIBRARY`; does it use `compiler-rt` or `libatomic`?
+- `LIBCXX_HARDENING_MODE=fast` is recommended due to minimal overhead
+- Do we need `LIBCXX_ENABLE_TIME_ZONE_DATABASE=OFF`?
+- Do not set `LIBCXX_ENABLE_PEDANTIC=ON` and `LIBCXXABI_ENABLE_PEDANTIC=ON` as `#include_next` is used everywhere
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/

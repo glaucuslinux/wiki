@@ -4,9 +4,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 ## DHCP
+- busybox udhcpc: https://udhcp.busybox.net/README.udhcpc
 - ISC dhcp
 - sdhcp: https://github.com/michaelforney/sdhcp
-- toybox `dhcp`: https://github.com/landley/toybox/blob/master/toys/pending/dhcp.c
+- toybox dhcp: https://github.com/landley/toybox/blob/master/toys/pending/dhcp.c
 
 ## DNS Resolver (run as a `nobody` user without permissions)
 - dnsmasq: https://thekelleys.org.uk/dnsmasq/doc.html
