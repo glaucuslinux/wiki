@@ -12,5 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Builds takes a while (~10 minutes) even with jobs=2 and jobs=4; compare `make` against `samu`?
 
 ## References
+- https://cmake.org/cmake/help/latest/command/install.html
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+- https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
 - https://linuxfromscratch.org/blfs/view/svn/kde/extra-cmake-modules.html
