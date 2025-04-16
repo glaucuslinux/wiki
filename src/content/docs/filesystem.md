@@ -4,9 +4,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 ## Deprecations
-- No `/boot/efi`; deprecated
+- No `/boot/efi`
 - No `/etc/mtab`; succeeded by `/proc/mounts`
-- No `/lib32` and `/lib64`; pure 64-bit system
+- No `/lib32`; pure 64-bit system
+- No `/lib64`; pure 64-bit system
 - No `/run/shm`; succeeded by `/dev/shm`
 - No `/run/tmp`; only useful for embedded systems on Debian
 - No `/usr/com`; succeeded by `/var/lib`
