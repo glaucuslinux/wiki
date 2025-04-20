@@ -55,6 +55,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `LIBCXX_HARDENING_MODE=fast` is recommended due to minimal overhead
 - Do we need `LIBCXX_ENABLE_TIME_ZONE_DATABASE=OFF`?
 - Do not set `LIBCXX_ENABLE_PEDANTIC=ON` and `LIBCXXABI_ENABLE_PEDANTIC=ON` as `#include_next` is used everywhere
+- `-Wno-dev` suppresses developer warnings
 
 ## References
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/

@@ -50,6 +50,7 @@ Comparison of different implementations of the same tools by shadow and util-lin
 - Prefer `shadow`'s `vipw`: no flag to disable it from `shadow`, also `util-linux` version needs to be explicitly enabled
 - Prefer `util-linux`'s `sulogin`: `shadow`'s `sulogin` lacks options and is not installed by default
 - Prefer `toybox`'s `su`: both `shadow` and `util-linux` versions require `pam`
+- `shadow` uses file capabilities over suid; consider that for `seatd`?
 
 ## References
 - https://bugs.archlinux.org/task/31414

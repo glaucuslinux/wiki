@@ -7,7 +7,8 @@ glaucus uses the filesystem tree as its database to store package metadata and
 recipes.
 
 ## Cerata
-### ceras
+### info
+- `nom` is the only required key to declare a package
 - Avoid versions in `nom`
 - Avoid `-e` and `-x` in the shebang (vague behavior)
 - Do not add common packages that are expected to exist at build-time as build dependencies (e.g. `make`, `linux-headers` and so on)
@@ -21,7 +22,7 @@ recipes.
   - `parallel`: use -j1
   - `purge`, `prune`: do not remove unwanted files
   - `static`: preserve static libraries (.a files)
-### prepare
+### prepare()
 - Updating `config.guess`, `config.sub` and `config.rpath` is not enough; use `autoreconf -vfis` instead
 - Packages that use `autoreconf`, need `runstatedir` (copied from the system)
 - Prefer `autogen.sh` and `bootstrap.sh` and provided `autoreconf` upstream scripts instead of manually running the command
@@ -32,7 +33,7 @@ recipes.
 - Packages should not deal with `$SRCD`, only with `$TMPD`
 - Do not store commands inside variables
 - Avoid modifications to manual pages as they render `autoreconf` harder; require more stuff
-### configure
+### configure()
 - Avoid substituting flag strings with variables like `nom`
 - Use `glaucus-configure` for `autoconf` build systems
 - Use `glaucus-cmake` for `cmake` build systems
@@ -78,7 +79,7 @@ recipes.
 - Enable threads=posix
 - Enable tls
 - Enable xattr
-### build
+### build()
 - Pass`CFLAGS`, `CXXFLAGS` and `LDFLAGS` as arguments to `make` and not as environment variables, so they are propagated correctly:
 ```sh
 ## Correct
@@ -87,36 +88,65 @@ make foo=bar
 ## Incorrect, might get unexported in the Makefile and not get passed to submakes
 foo=bar make
 ```
-### check
+### check()
 - Report packages without a test suite
 - Report failing tests
 - Try `VERBOSE=1 V=1` for `make check`
 - Prefer `make -k check` to keep going until all tests are checked
 - If tests fail in parallel, try `-j1`
 - Compare failing tests with Alpine and LFS
-### package
+### package()
+- `package()` is the only required function to declare `build` files
 - Do not install in: `/bin`, `/boot`, `/dev`,`/home`,`/lib`, `/mnt`, `/proc`, `/root`, `/run`, `/sbin`, `/sys`, `/tmp`, `/usr/sbin`
-- Brace expansion is not POSIX
-- Use `mkdir -p` over `install -d`
-- `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
-- `ln -r` and `ln -n` is not POSIX
-- `touch` is faster than `:>`
-- Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
-- Group commands that are repeated 3 or more times into `for` loops
 - Everything related to `s6` should reside under `/etc/s6`
 - All text files must end with a newline (POSIX)
 - Prefer strip targets `install-strip` to manually running strip
 - Do not create fifo files in `build.cross` as they can't be copied
+
+## Misc
+- Do not declare empty functions; if a function does nothing then it shoul not be declared
+```
+prepare() {
+  :
+}
+```
+- Brace expansion is not POSIX
+- Use `mkdir -p` over `install -d`
+- `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
+- `cp -v` and `mv -v` are not POSIX
+- `ln -r` and `ln -n` is not POSIX; use `ln -fs` instead
+- `patch` only accepts one diff/patch file at a time when using `-i`; if multiple files are provided it will use the last one
+- `touch` is faster than `:>`
+- `command -v` is faster than `type`
+- Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
+- Group commands that are repeated 3 or more times into `for` loops
 - Only quote shell variables with whitespace characters
+- Separate options that accept arguments from ones that do not; prefer this:
+```
+mkdir -m 555 -p
+```
+to this:
+```
+mkdir -pm 555
+```
+- Use a single space character to separate arguments from their options; prefer this:
+```
+patch -p 0 ...
+```
+to this:
+```
+patch -p0 ...
+```
 
 ## Repository Layout
-- `/var/cache/rad/pkg` (binary packages, contains sac (DESTDIR) + tarball + sum)
-- `/var/cache/rad/src` (source tarballs, read-only, equals SRCD)
-- `/var/lib/rad/clusters/cerata` (official cluster, equals CERD)
+- `/var/cache/rad/pkg` (built packages with `contents`)
+- `/var/cache/rad/src` (source tarballs, read-only, equals `$SRCD`)
+- `/var/lib/rad/clusters/cerata` (official cluster, equals `$CERD`)
 - `/var/lib/rad/clusters/custom` (custom cluster)
-- `/var/lib/rad/pkg` (track installed packages using another form of metadata, with checksums and files)
-- `/var/log/rad` (log files, equals LOGD)
-- `/var/tmp/rad` (temporary build files)
+- `/var/lib/rad/clusters/fleet` (community cluster)
+- `/var/lib/rad/pkg` (installed packages with `contents`)
+- `/var/log/rad` (log files, equals `$LOGD`)
+- `/var/tmp/rad` (temporary build artefacts)
 
 ## Local
 Remove additional files:
@@ -181,6 +211,7 @@ Remove additional files:
 - https://man.voidlinux.org/xbps-remove.1
 - https://michael.stapelberg.ch/posts/2020-05-09-distri-hermetic-packages/
 - https://os-wiki.ewe.moe/dev/guide/packaging
+- https://pubs.opengroup.org/onlinepubs/9799919799/
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
 - https://wiki.archlinux.org/title/Arch_package_guidelines

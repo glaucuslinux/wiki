@@ -12,8 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
   - dragora
   - t2
   - void (in a separate binutils-devel package)
-- Sabotage disables libiberty, and has a fix for older gnu packages
-- Sabotage libiberty fix is intended for older versions of gnu packages
+- Sabotage disables libiberty, and has a fix for older versions of gnu packages
 
 ## References
 - https://github.com/sabotage-linux/sabotage/blob/master/KEEP/libibertyfix

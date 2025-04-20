@@ -19,8 +19,26 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `--with-system-ffi` has been deprecated
 - No need to provide an `EXTERNALLY-MANAGED` file as we want users to use `pip` to manage python packages
 - Should we create symlinks for `idle`, `pip` and `pydoc` to their `3` versions?
+- Should we allow `pip` and other programming languages package managers to run as root alongside `rad`?; `cp externally-managed /usr/lib/python3.13/EXTERNALLY-MANAGED`
+- Do we need to explicitly pass `--with-openssl=/usr`?
+- Do we need to specify these?
+```
+ac_cv_header_bluetooth_bluetooth_h=no
+ac_cv_header_bluetooth_h=no
+```
+- Consider adding `-DLIBEDIT_SUPPORT` to `EXTRA_CFLAGS`
+- For `libedit` support, sabotage also does:
+```
+# Apple is not the only platform where libedit is used
+sed -i 's/__APPLE__/LIBEDIT_SUPPORT/g' Modules/readline.c
+# workaround readline bug by removing unnecessary strdup/setlocale calls
+sed -i 's/HAVE_SETLOCALE/HAVE_SETLOCALE) \&\& !defined(LIBEDIT_SUPPORT/g' Modules/readline.c
+sed -i 's@return readline@return feedline@' configure
+```
 
 ## References
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
+- https://packaging.python.org/en/latest/specifications/externally-managed-environments/
+- https://peps.python.org/pep-0668/
 - https://rfc.archlinux.page/0010-adopt-pep517-tooling/
 - https://rfc.archlinux.page/0020-sources-for-python-packaging/

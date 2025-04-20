@@ -19,6 +19,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `/sbin` as a symlink to `/usr/bin`
 - `/usr/libexec` as a symlink to `/usr/lib`
 - `/usr/sbin` as a symlink to `/usr/bin`
+- `/usr/share/pkgconfig` as a symlink to `/usr/lib/pkgconfig`
 - `/var/lock` as a symlink to `/run/lock`
 - `/var/run` as a symlink to `/run`
 - `/var/spool/mail` as a symlink to `/var/mail`

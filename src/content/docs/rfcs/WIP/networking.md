@@ -10,6 +10,8 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - toybox dhcp: https://github.com/landley/toybox/blob/master/toys/pending/dhcp.c
 
 ## DNS Resolver (run as a `nobody` user without permissions)
+- The Linux kernel does not perform DNS resolution although it may cache DNS results (via `nscd` which is disabled on glaucus)
+- DNS resolution happens in user space
 - dnsmasq: https://thekelleys.org.uk/dnsmasq/doc.html
 - OpenResolv: https://roy.marples.name/projects/openresolv
 - s6-dns: https://skarnet.org/software/s6-dns/

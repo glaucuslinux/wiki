@@ -10,4 +10,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## References
 - https://askubuntu.com/questions/1017309/fallocate-vs-dd-for-swapfile
+- https://git.adelielinux.org/adelie/bootstrap/-/blob/master/bootstrap?ref_type=heads
 - https://roscopeco.com/2013/08/12/creating-a-bootable-hard-disk-image-with-grub2/

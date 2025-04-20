@@ -10,6 +10,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Build `cmake` by itself to enable LTO (`BUILD_LTO=ON`)
 - Test suite might require `LC_ALL=en_US.UTF-8` on LFS
 - Builds takes a while (~10 minutes) even with jobs=2 and jobs=4; compare `make` against `samu`?
+- Absolute paths are allowed for `CMAKE_INSTALL_<dir>`, but are not recommended
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html

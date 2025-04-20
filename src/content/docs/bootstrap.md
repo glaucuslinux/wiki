@@ -55,7 +55,7 @@ for i in bubble cerata rad s6-boot-scripts; do
   cd ..
 done
 ```
-- Create symlinks (assuming you are in `glaucus/`):
+- Create symlinks to `cerata` and `src` (assuming you are in `glaucus/`):
 ```sh
 sudo mkdir -p \
   /var/cache/rad \
@@ -69,12 +69,10 @@ for i in gtkdocize help2man makeinfo po4a texi2dvi; do
   sudo cp -fPp cerata/musl/files/true /usr/bin/$i
 done
 ```
-- Install `glaucus-configure` and `glaucus-meson`:
+- Create symlinks to `glaucus-configure` and `glaucus-meson` (assuming you are in `glaucus`):
 ```sh
-sudo cp -fPp \
-  cerata/autoconf/files/glaucus-configure \
-  cerata/muon/files/glaucus-meson \
-  /usr/bin
+sudo ln -fs $PWD/cerata/autoconf/files/glaucus-configure /usr/bin
+sudo ln -fs $PWD/cerata/muon/files/glaucus-meson /usr/bin
 ```
 - Bootstrap toolchain and cross:
 ```sh

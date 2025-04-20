@@ -25,6 +25,8 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - * Run both after creating and before removing the device.
 ```
 - The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
+- Use libudev helper in `mdev.conf`
+- Does `mdevd` work with `udev` directories and rules or should we delete them?
 
 ## mdev.conf
 - `mdevd` parses `mdev.conf` when a new device event occurs

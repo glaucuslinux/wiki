@@ -65,6 +65,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://core.suckless.org/ubase/
 - https://github.com/chimera-linux/chimerautils
 - https://github.com/dcantrell/bsdutils
+- https://github.com/evilusean/Pysean/blob/main/NoBloatTools
 - https://github.com/ibara/baseutils
 - https://github.com/matijaskala/coreutils-bsd
 - https://github.com/oracle/solaris-userland
