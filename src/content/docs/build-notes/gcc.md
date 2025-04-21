@@ -32,6 +32,7 @@ libstdc++-v3.log:945:make[1]: [Makefile:1831: x86_64-glaucus-linux-musl/bits/lar
 libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 ```
 - No need to fix headers or includes on glaucus
+- `libsupc++` is the ABI library and it is a subset of `libstdc++`
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162

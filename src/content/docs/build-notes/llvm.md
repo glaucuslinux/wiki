@@ -17,7 +17,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Disable `CLANG_ENABLE_STATIC_ANALYZER` for `toolchain` and `cross`
 - To disable `LIBCXX_ENABLE_RTTI` disable `LIBCXX_ENABLE_EXCEPTIONS` first
 - What is the default value for `LIBCXX_CXX_ABI`?
-- Clang uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
+- `clang` by design is a full fledged cross compiler
+- `clang` always ignores `-pipe`
+- `clang` uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
 - Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
 - Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
 - Clang defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
@@ -55,9 +57,13 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `LIBCXX_HARDENING_MODE=fast` is recommended due to minimal overhead
 - Do we need `LIBCXX_ENABLE_TIME_ZONE_DATABASE=OFF`?
 - Do not set `LIBCXX_ENABLE_PEDANTIC=ON` and `LIBCXXABI_ENABLE_PEDANTIC=ON` as `#include_next` is used everywhere
+- Do not mix `libstdc++` and `libc++` as they export the same symbols...
+- Arch does not provide `clang-tblgen`
 - `-Wno-dev` suppresses developer warnings
+- To build `mesa` you only need `libllvm` and maybe `clang` (and `libclc`?)
 
 ## References
+- https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf
 - https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/BuildingLibunwind/
 - https://clang.llvm.org/c_status.html
 - https://clang.llvm.org/cxx_status.html
@@ -85,6 +91,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://libcxx.llvm.org/TestingLibcxx.html
 - https://libcxx.llvm.org/UserDocumentation.html
 - https://libcxx.llvm.org/VendorDocumentation.html
+- https://llvm.org/devmtg/2023-10/slides/tutorials/Hosek-UnderstandingtheLLVMbuild.pdf
 - https://llvm.org/docs/AdvancedBuilds.html
 - https://llvm.org/docs/BuildingADistribution.html
 - https://llvm.org/docs/CMake.html
