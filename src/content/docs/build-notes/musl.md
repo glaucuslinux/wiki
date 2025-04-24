@@ -20,8 +20,10 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Log messages will be discarded if `/dev/log` is absent
 
 ## References
+- https://github.com/AppImage/type2-runtime/issues/116
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
+- https://github.com/orgs/chimera-linux/discussions/2480
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
 - https://maskray.me/blog/2021-11-07-init-ctors-init-array
 - https://musl.libc.org/manual.html

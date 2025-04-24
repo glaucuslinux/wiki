@@ -69,7 +69,7 @@ for i in gtkdocize help2man makeinfo po4a texi2dvi; do
   sudo cp -fPp cerata/musl/files/true /usr/bin/$i
 done
 ```
-- Create symlinks to `glaucus-configure` and `glaucus-meson` (assuming you are in `glaucus`):
+- Create symlinks to `glaucus-configure` and `glaucus-meson` (assuming you are in `glaucus/`):
 ```sh
 sudo ln -fs $PWD/cerata/autoconf/files/glaucus-configure /usr/bin
 sudo ln -fs $PWD/cerata/muon/files/glaucus-meson /usr/bin
