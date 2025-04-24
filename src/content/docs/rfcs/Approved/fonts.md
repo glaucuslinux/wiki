@@ -11,7 +11,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## Final
 - cozette: https://github.com/slavfox/Cozette
-- scientifica: https://github.com/oppiliappan/scientifica
 - spleen:
   - https://github.com/fcambus/spleen
   - https://www.cambus.net/spleen-monospaced-bitmap-fonts/
@@ -26,6 +25,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - comic code:
   - https://tosche.net/fonts/comic-code
   - https://coding-fonts.pages.dev/fonts/comic-code/
+- envypyn:
+  - https://github.com/hicolour/envypn-font
+  - https://github.com/Sorixelle/envypn-powerline
 - fantasque-sans:
   - https://belluzj.github.io/projects/design/fantasquesansmono-font
   - https://github.com/belluzj/fantasque-sans
@@ -42,6 +44,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
   - https://mplusfonts.github.io/
   - https://github.com/rayshan/mplus-fonts
 - ohsnapmod: https://codeberg.org/h3xx/ohsnapmod
+- scientifica: https://github.com/oppiliappan/scientifica
 - tamsyn:
   - http://www.fial.com/~scott/tamsyn-font/
   - https://github.com/roman0x58/tamsyn-mac-version
