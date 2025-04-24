@@ -25,7 +25,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - comic code:
   - https://tosche.net/fonts/comic-code
   - https://coding-fonts.pages.dev/fonts/comic-code/
-- envypyn:
+- envypn:
   - https://github.com/hicolour/envypn-font
   - https://github.com/Sorixelle/envypn-powerline
 - fantasque-sans:
@@ -87,5 +87,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - https://int10h.org/oldschool-pc-fonts/
 - https://wiki.archlinux.org/title/Linux_console
 - https://www.linuxfromscratch.org/blfs/view/svn/postlfs/console-fonts.html
-- https://www.linuxfromscratch.org/blfs/view/svn/postlfs/console-fonts.html
+- https://bbs.archlinux.org/viewtopic.php?pid=770649#p770649
 - https://www.linuxfromscratch.org/lfs/view/development/chapter09/usage.html
