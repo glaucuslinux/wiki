@@ -18,6 +18,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
   - https://files.ax86.net/terminus-ttf/
   - https://terminus-font.sourceforge.net/
 - tamzen: https://github.com/sunaku/tamzen-font
+- zap: https://www.zap.org.au/projects/console-fonts-zap/
 
 ## Curated
 - 0xProto: https://github.com/0xType/0xProto
