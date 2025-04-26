@@ -58,52 +58,54 @@ and build scripts.
 - Avoid modifications and patches to documentation and manual pages as they render `autoreconf` harder; require more stuff
 - Double check if the package's build system requires that it be built out-of-tree; if so then `mkdir -p build` and `cd build`
 #### `configure()` function
-- Avoid substituting flag strings with variables like `nom`
 - glaucus provides wrappers for various build systems that come with the required installation paths and basic configuration options
 - Use `glaucus-configure` for `autotools` build system
 - Use `glaucus-cmake` for `cmake` build system
 - Use `glaucus-muon` for `muon` and `meson` build systems
 - For developers who are bootstrapping the `toolchain` and `cross` stages use full paths to `glaucus-*` in `build-toolchain` and `build-cross` respectively
+- Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`
 ###### Disable
-- Disable assert
-- Disable audit
-- Disable dbus
-- Disable debug
-- Disable doc
-- Disable examples
-- Disable fuzzing
-- Disable gettext
-- Disable gtk-doc
-- Disable i18n
-- Disable iconv
-- Disable idn
-- Disable intltool
-- Disable l10n
-- Disable logind
-- Disable man
-- Disable nls
-- Disable pam
-- Disable polkit
-- Disable rpath
-- Disable selinux
-- Disable static
-- Disable symvers
-- Disable systemd
-- Disable tests
-- Disable x11
-- Disable year2038
+- In glaucus, it is preferred to disable the following options:
+  - assert
+  - audit
+  - dbus
+  - debug
+  - doc
+  - examples
+  - fuzzing
+  - gettext
+  - gtk-doc
+  - i18n
+  - iconv
+  - idn
+  - intltool
+  - l10n
+  - logind
+  - man
+  - nls
+  - pam
+  - polkit
+  - rpath
+  - selinux
+  - static
+  - symvers
+  - systemd
+  - tests
+  - x11
+  - year2038
 ###### Enable
-- Enable acl
-- Enable attr
-- Enable ipv6
-- Enable lto
-- Enable pic
-- Enable pie
-- Enable pthreads
-- Enable shared
-- Enable threads=posix
-- Enable tls
-- Enable xattr
+- It is also preferred to enable the following options:
+  - acl
+  - attr
+  - ipv6
+  - lto
+  - pic
+  - pie
+  - pthreads
+  - shared
+  - threads=posix
+  - tls
+  - xattr
 #### `build()` function
 - Pass`CFLAGS`, `CXXFLAGS` and `LDFLAGS` as arguments to `make` and not as environment variables, so they are propagated correctly:
 ```sh
@@ -127,58 +129,9 @@ foo=bar make
 - Everything related to `s6` should reside under `/etc/s6`
 - All text files must end with a newline (POSIX)
 - Prefer strip targets `install-strip` to manually running strip
-- Do not create fifo files in `build.cross` as they can't be copied
-
-## Misc
-- Avoid `-e` and `-x` in the shebang (vague behavior)
-- Do not store commands inside variables
-- Do not declare empty functions; if a function does nothing then it shoul not be declared
-```
-prepare() {
-  :
-}
-```
-- Brace expansion is not POSIX
-- Use `mkdir -p` over `install -d`
-- `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
-- `cp -v` and `mv -v` are not POSIX
-- `ln -r` and `ln -n` are not POSIX; use `ln -fs` instead
-- `patch` only accepts one diff/patch file at a time when using `-i`; if multiple files are provided it will use the last one
-- `touch` is faster than `:>`
-- `command -v` is faster than `type`
-- Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
-- Group commands that are repeated 3 or more times into `for` loops
-- Only quote shell variables with whitespace characters
-- Separate options that accept arguments from ones that do not; prefer this:
-```
-mkdir -m 555 -p
-```
-to this:
-```
-mkdir -pm 555
-```
-- Use a single space character to separate arguments from their options; prefer this:
-```
-patch -p 0 ...
-```
-to this:
-```
-patch -p0 ...
-```
-
-## Repository Layout
-- `/var/cache/rad/pkg` (built packages with `contents`)
-- `/var/cache/rad/src` (source tarballs, read-only, equals `$SRCD`)
-- `/var/lib/rad/clusters/cerata` (official cluster, equals `$CERD`)
-- `/var/lib/rad/clusters/custom` (custom cluster)
-- `/var/lib/rad/clusters/fleet` (community cluster)
-- `/var/lib/rad/pkg` (installed packages with `contents`)
-- `/var/log/rad` (log files, equals `$LOGD`)
-- `/var/tmp/rad` (temporary build artefacts)
-
-## Local
-Remove additional files:
-  - .a (static libraries)
+- For developers, do not create fifo files when in `cross` stage as they can't be copied
+- Consider removing the following files if unnecessary:
+  - .a (static libraries whenever possible)
   - .alias
   - .bs (perl files)
   - .cmd (kernel files)
@@ -219,6 +172,53 @@ Remove additional files:
   - systemd
   - test (ewe)
   - zsh (kiss)
+
+## Misc
+- Avoid `-e` and `-x` in the shebang (vague behavior)
+- Do not store commands inside variables
+- Do not declare empty functions; if a function does nothing then it shoul not be declared
+```
+prepare() {
+  :
+}
+```
+- Brace expansion is not POSIX
+- Use `mkdir -p` over `install -d`
+- `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
+- `cp -v` and `mv -v` are not POSIX; `rm -v` is POSIX though
+- `ln -r` and `ln -n` are not POSIX; use `ln -fs` instead
+- `patch` only accepts one diff/patch file at a time when using `-i`; if multiple files are provided it will use the last one
+- `touch` is faster than `:>`
+- `command -v` is faster than `type`
+- Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
+- Group commands that are repeated 3 or more times into `for` loops
+- Only quote shell variables with whitespace characters
+- Separate options that accept arguments from ones that do not; prefer this:
+```
+mkdir -m 555 -p
+```
+to this:
+```
+mkdir -pm 555
+```
+- Use a single space character to separate arguments from their options; prefer this:
+```
+patch -p 0 ...
+```
+to this:
+```
+patch -p0 ...
+```
+
+## Repository Layout
+- `/var/cache/rad/pkg` (built packages with `contents`)
+- `/var/cache/rad/src` (source tarballs, read-only, equals `$SRCD`)
+- `/var/lib/rad/clusters/cerata` (official cluster, equals `$CERD`)
+- `/var/lib/rad/clusters/custom` (custom cluster)
+- `/var/lib/rad/clusters/fleet` (community cluster)
+- `/var/lib/rad/pkg` (installed packages with `contents`)
+- `/var/log/rad` (log files, equals `$LOGD`)
+- `/var/tmp/rad` (temporary build artefacts)
 
 ## References
 - https://devmanual.gentoo.org/general-concepts/dependencies/
