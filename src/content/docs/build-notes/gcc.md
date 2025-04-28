@@ -33,6 +33,7 @@ libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/lar
 ```
 - No need to fix headers or includes on glaucus
 - `libsupc++` is the ABI library and it is a subset of `libstdc++`
+- Alpine sets `libat_cv_have_ifunc=no` before gcc configure; related to libatomic, and Alpaquita are providing ifunc and are not setting this variable
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
