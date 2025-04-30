@@ -101,15 +101,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - swaybg: https://github.com/swaywm/swaybg
 - wbg: https://codeberg.org/dnkl/wbg
 
-## LLVM/Clang
-- https://archlinux.org/packages/extra/x86_64/clang/
-- https://archlinux.org/packages/extra/x86_64/llvm/
-- https://archlinux.org/packages/extra/x86_64/llvm-libs/
-- librsvg
-- mesa software renderer
-- swiftshader
-- v4l
-
 ## Sway
 - Arch fixes screen sharing by providing `etc/sway/config.d/50-systemd-user.conf`
 

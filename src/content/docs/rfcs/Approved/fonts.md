@@ -77,6 +77,19 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - ubuntu mono: https://github.com/canonical/Ubuntu-Sans-Mono-fonts
 - ysabeau infant: https://github.com/CatharsisFonts/Ysabeau
 
+## Misc
+- http://mplus-fonts.osdn.jp/mplus-bitmap-fonts/index.html
+- https://github.com/cmvnd/fonts
+- https://github.com/hishamhm/lode-fonts
+- https://github.com/htayj/DEC-Fonts/tree/main/dist/fonts
+- https://github.com/IT-Studio-Rech/bdf-fonts
+- https://github.com/MicahElliott/Orp-Font
+- https://github.com/multitheftauto/unifont
+- https://github.com/talamus/solarize-12x29-psf
+- https://github.com/wikkyk/leggie
+- https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/
+- https://tobiasjung.name/profont/index.php?fs=14&pf=on
+
 ## References
 - https://codeberg.org/amarok24/Amiga_fonts
 - https://codeberg.org/exorcist/fonts

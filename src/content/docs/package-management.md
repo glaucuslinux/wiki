@@ -23,7 +23,7 @@ and build scripts.
       - Kernel packages should use: `https://cdn.kernel.org/pub/linux/`
       - Non GNU packages should use: `https://download.savannah.nongnu.org/releases/`
       - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
-  - `sum`: package checksum, **only valid if the `url` is not a git repository**
+  - `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
   - `bld`: package build time dependencies sorted alphabetically
     - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
   - `run`: package run time dependencies sorted alphabetically
