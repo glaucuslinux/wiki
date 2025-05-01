@@ -9,6 +9,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Depends on `libcap-ng` to build `setpriv`; glaucus already provides `s6-setuidgid`: https://forum.artixlinux.org/index.php/topic,3360.0.html
 - Use `autoreconf -vfis` as `./autogen.sh` requires GNU `gettext`, `gtkdocize` and `bison`
 - `tools/all_syscalls` hardcodes `gawk`
+- Explicitly specify `--bindir`
 - Use `kill` from `util-linux` instead of `procps-ng` (mainstream)
 - `/etc/adjtime` should be `/var/lib/hwclock/adjtime` according to FHS (both Alpine and Arch are using an old directory version) https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s08.html#varlibhwclockStateDirectoryForHwclo
 - If the `adjtime` file does not exist, the default is `utc`

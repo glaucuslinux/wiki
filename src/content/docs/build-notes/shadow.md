@@ -3,6 +3,7 @@ title: shadow
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- Explicitly specify `--bindir`
 - `faillog` failed login attempts for existing users
 - `btmp` lists every failed login attempt
 - Create a `~/.hushlogin` file to disable `No mail.` message from `login` (`lib/mail.c`)

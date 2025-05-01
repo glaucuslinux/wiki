@@ -255,6 +255,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [Include `sys/sysmacros.h` in `smdev.c` when major is not defined in `sys/types.h`](https://lists.suckless.org/hackers/2001/17078.html)
 
 ## slibtool
+- Commit eba391f: [`aux/slibtool.sh`: fix typo](https://github.com/midipix-project/slibtool/commit/eba391f32ba3f2156410c7a162f89cb40b8d631a)
 - Issue #53: [`cfgdefs.usage` does not exist](https://dev.midipix.org/cross/slibtool/issue/53)
 - Issue #77: [configure missing `--docdir`](https://dev.midipix.org/cross/slibtool/issue/77)
 - Pull Request #78: [Operate in stoolie mode when called as libtoolize](https://dev.midipix.org/cross/slibtool/pull-request/78)

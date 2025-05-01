@@ -183,7 +183,7 @@ prepare() {
 }
 ```
 - Brace expansion is not POSIX
-- Use `mkdir -p` over `install -d`
+- Use `mkdir -p` over `install -d`; using `mkdir` alone is discouraged
 - `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
 - `cp -v` and `mv -v` are not POSIX; `rm -v` is POSIX though
 - `ln -r` and `ln -n` are not POSIX; use `ln -fs` instead
@@ -218,7 +218,7 @@ patch -p0 ...
 - `/var/lib/rad/clusters/fleet` (community cluster)
 - `/var/lib/rad/pkg` (installed packages with `contents`)
 - `/var/log/rad` (log files, equals `$LOGD`)
-- `/var/tmp/rad` (temporary build artefacts)
+- `/var/tmp/rad` (temporary build artefacts, equals `$TMPD`)
 
 ## References
 - https://devmanual.gentoo.org/general-concepts/dependencies/

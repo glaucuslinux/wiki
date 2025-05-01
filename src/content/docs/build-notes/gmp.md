@@ -5,3 +5,4 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 - Depends on `flex` and `slibtool`
 - `--enable-fat` for optimized low level subroutines; improves performance, without a size increase
+- Checks for `with-pic` and not `enable-pic`
