@@ -16,6 +16,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ### `-pipe`
 - Use pipes rather than temporary files
 - Uses more RAM but reduces disk usage
+- Does it get ignored by `clang`?
 ### `-g0`
 - Compiling with `-g0` or without `-g` at all results in no debugging information in the binaries
 - Some build systems might misinterpret `-g0` as `-g`; this is a bug and should be reported to the relative upstream

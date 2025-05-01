@@ -51,6 +51,10 @@ export default defineConfig({
           link: "/install",
         },
         {
+          label: "Media Coverage",
+          link: "/online/media-coverage",
+        },
+        {
           label: "Nomenclature",
           link: "/nomenclature",
         },

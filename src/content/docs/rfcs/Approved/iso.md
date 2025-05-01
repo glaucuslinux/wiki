@@ -12,7 +12,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Prefer `cat` to `dd`
 
 ## Live
-- sleep is essential to avoid race conditions
+- sleep is essential to avoid race conditions; unfortunately `rootdelay` and `rootwait` are not available in live environments
 - Mounting a device `/dev/sda` is type `iso9660`
 - Mounting a partition `/dev/sda3` is type `hfsplus`
 - If detected as `/dev/sr0` it is type `iso9660`
