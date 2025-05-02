@@ -1,5 +1,5 @@
 ---
-title: Software
+title: Default Software
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 

@@ -5,7 +5,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## WIP
 - Support installing from files `.tar.zst` and not just passing filenames (check beforehand if valid glaucus package?)
-- Check what file belongs to what package (or just list installed files and perhaps verify them?)
 - Operation Symbols:
   - Add: +
   - Remove: -

@@ -3,7 +3,7 @@ title: Licenses
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- Follow SPDX
+- Follow SPDX; according to some mainstream distributions, even the SPDX is not enough as they have an additional list of licenses to add...
 - Add licenses to `cerata`
 - Store licenses in `/usr/share/licenses` (similar to Arch)
 

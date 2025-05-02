@@ -12,7 +12,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ## Rules
 1. Be respectful — Disagreements, both social and technical, are not an excuse for poor behavior.
 2. No offensive messages or nicknames — Anything that a reasonable person might find offensive.
-3. No spam — This includes but is not limited to, loud/obnoxious noises in voice, @mention spam, character spam, image spam, and message spam.
+3. No spam — This includes but is not limited to character spam, image spam, and message spam.
 4. No gorey, sexually explicit, or scary content — Screamer links, porn, nudity, violence or death.
 5. No harassment — Including sexual harassment or encouraging of harassment.
-6. Use the appropriate channels.

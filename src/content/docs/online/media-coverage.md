@@ -3,8 +3,8 @@ title: Media Coverage
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-## Copacabana
-- https://copacabana.pindorama.net.br/
+## Copacabana Media
+- https://copacabana.pindorama.net.br/#media
 
 ## Hacker News
 - https://news.ycombinator.com/item?id=41715930

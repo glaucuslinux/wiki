@@ -3,8 +3,8 @@ title: History
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-- glaucus started as a personal research project in early 2018
-- Previously known as "snail"
+- glaucus started as a personal research project known as "snail" in February, 2018
+- "snail" was succeeded by glaucus in September, 2018 and has been under development ever since
 
 ## snail
 - An Automated Linux From Scratch distribution with alternatives (PCC, TCC, ELF Tool Chain, elfutils, musl, sbase, ubase, sinit, svc and dash)

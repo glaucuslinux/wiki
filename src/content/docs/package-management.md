@@ -3,11 +3,10 @@ title: Package Management Policy
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-glaucus uses the filesystem tree as its database to store package information
-and build scripts.
+glaucus uses the filesystem tree as its database to store package information and build scripts.
 
 ## Anatomy of a Package
-### `info` file
+### The `info` file
 - An `info` file is a TOML file that stores package information (aka metadata)
 - `info` files are also valid POSIX shell scripts due to the way they are written; can be sourced by `.`
 - To create a new package, create a directory with the package name under a cluster of yours, then create an `info` file inside that directory with the mandatory variable `nom` inside; `nom` should be equal to the package directory's name
@@ -28,27 +27,27 @@ and build scripts.
     - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
   - `run`: package run time dependencies sorted alphabetically
   - `nop`: package "no operation" and includes:
-    - `bootstrap`: install package to `/`; only available in cross
-    - `check`: do not run `check()`; must be provided for `build` without `check()`
+    - `bootstrap`: install package to `/`; only relevant in bootstrap stage cross
+    - `check`: do not run `check()`; **mandatory if `build` does not have `check()`**
     - `doc`, `man`: do not remove documentation
     - `empty`: do not remove empty directories
     - `la`, `libtool`: do not remove libtool archives (`.la` files) in native; they are deleted either ways in cross
     - `lto`: do not use LTO
-    - `parallel`: use `-j 1`
+    - `parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
     - `purge`, `prune`: do not remove unwanted files
     - `static`: do not remove static libraries (.a files)
-### `build` file
+### The `build` file
 - A `build` file is a POSIX shell script that includes the build instructions of a package
 - The build process of a package is split into 5 different phases:
   - Preparation: handled by the function `prepare()`
   - Configuration: handled by the function `configure()`
-  - Compilation: handled by the function `build()`
+  - Compilation: handled by the function `build()`; not to be confused with the `build` file itself; for further reading, if `build` is used then we are addressing the script, otherwise if `build()` is used then the intention is the function
   - Checking: handled by the function `check()`
   - Packaging: handled by the function `package()`, **mandatory**
-- Some packages include special versions of the `build` file called `build-toolchain` and `build-cross`; these are only intended to be run by developers when bootstrapping the `toolchain` and `cross` stages of glaucus
+- Some packages include special versions of the `build` file called `build-toolchain` and `build-cross`; these are only intended to be run in the bootstrap process during the `toolchain` and `cross` stages, and regular users should not bother with them
 #### `prepare()` function
 - glaucus package manager `rad` automatically does a `cd` into `$TMPD/$nom/$nom-$ver` if the package's `url` is not a git repository, and into `$TMPD/$nom` if it is a git repository
-- If extracting the source tarball provided by `url` does not follow the `$nom-$ver` rule then you are expected to manually `cd` into whatever the directory name is (e.g. for `python` we do a `cd "$TMPD"/$nom/Python-$ver`); do not interact with `$SRCD`, only `$TMPD`
+- If extracting the source tarball provided by `url` does not follow the `$nom-$ver` rule then you are expected to manually `cd` into whatever the directory name is (e.g. for `python` we do a `cd "$TMPD"/$nom/Python-$ver`); only interact with `$TMPD`
 - If a package uses autotools, always run `autoreconf -vfis` to update its files
 - If the package provides an `autogen.sh` or a `bootstrap.sh` then prefer these over manually running `autoreconf -vfis`
 - This is done because updating `config.guess`, `config.sub` and `config.rpath` is usually not enough
@@ -65,7 +64,7 @@ and build scripts.
 - For developers who are bootstrapping the `toolchain` and `cross` stages use full paths to `glaucus-*` in `build-toolchain` and `build-cross` respectively
 - Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`
 ###### Disable
-- In glaucus, it is preferred to disable the following options:
+- It is preferred to disable the following options:
   - assert
   - audit
   - dbus
@@ -107,6 +106,7 @@ and build scripts.
   - tls
   - xattr
 #### `build()` function
+- The general `build()` process is ran in parallel with the default number of jobs being `-j 5`
 - Pass`CFLAGS`, `CXXFLAGS` and `LDFLAGS` as arguments to `make` and not as environment variables, so they are propagated correctly:
 ```sh
 ## Correct
@@ -210,15 +210,15 @@ to this:
 patch -p0 ...
 ```
 
-## Repository Layout
-- `/var/cache/rad/pkg` (built packages with `contents`)
-- `/var/cache/rad/src` (source tarballs, read-only, equals `$SRCD`)
-- `/var/lib/rad/clusters/cerata` (official cluster, equals `$CERD`)
-- `/var/lib/rad/clusters/custom` (custom cluster)
-- `/var/lib/rad/clusters/fleet` (community cluster)
-- `/var/lib/rad/pkg` (installed packages with `contents`)
-- `/var/log/rad` (log files, equals `$LOGD`)
-- `/var/tmp/rad` (temporary build artefacts, equals `$TMPD`)
+## Layout
+- `/var/cache/rad/pkg`: Cache store for build artefacts
+- `/var/cache/rad/src`: Cache store for upstream source tarballs; read-only
+- `/var/lib/rad/clusters/cerata`: Official repository; `$CERD`
+- `/var/lib/rad/clusters/custom`: Custom local repository
+- `/var/lib/rad/clusters/fleet`: Community repository
+- `/var/lib/rad/pkg`: Local database of installed packages
+- `/var/log/rad`: Log directory
+- `/var/tmp/rad`: Temporary store for build artefacts; `$TMPD`
 
 ## References
 - https://devmanual.gentoo.org/general-concepts/dependencies/

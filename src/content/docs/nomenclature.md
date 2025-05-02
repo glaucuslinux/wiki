@@ -10,5 +10,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `fleet`: community packages
 - `rad`: package manager
 - `sac`: `DESTDIR`
-- `skel`: base group
+- `skel`: core packages
 - `voyagers`: distribution developers or package maintainers

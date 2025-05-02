@@ -3,7 +3,11 @@ title: Install
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
-It is recommended to have a minimum of 256 MB of memory and 512 MB of storage
+## Disclaimer
+**`glaucus` is not yet available for install!**
+
+## Requirements
+It is recommended to have a minimum of 512 MB of memory and 1024 MB of storage
 space to install glaucus.
 
 ## Included Packages
