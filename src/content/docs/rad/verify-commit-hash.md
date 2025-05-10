@@ -1,6 +1,6 @@
 ---
 title: rad Verify Commit Hash
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Rejected: Check for commit number (analogous to checking for checksum for binaries)

@@ -1,6 +1,6 @@
 ---
 title: xxhash
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Pass `PREFIX` and `DISPATCH=1` (for SSE/AVX on `x86-64`) to check and install targets as they are not detected in the Makefile

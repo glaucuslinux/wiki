@@ -1,6 +1,6 @@
 ---
 title: skalibs
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Do not use cross-compilation `sysdep` options in `build`, from INSTALL:

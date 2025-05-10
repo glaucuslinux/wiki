@@ -1,6 +1,6 @@
 ---
 title: rad Performance
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `rad` parses 120k packages under 50 seconds using `toml_serialization`

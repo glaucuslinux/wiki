@@ -1,6 +1,6 @@
 ---
 title: Groups
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `locate` group is needed for `plocate`

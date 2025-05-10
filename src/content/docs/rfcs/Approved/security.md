@@ -1,6 +1,6 @@
 ---
 title: Hardening and Security
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 glaucus follows the principle of "least privilege"; each part of the system

@@ -1,6 +1,6 @@
 ---
 title: Test Suite
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Use Travis to run the checks

@@ -1,6 +1,6 @@
 ---
 title: execline
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `--enable-multicall` reduces disk usage, and barely increases resource usage (skarnet uses it on lh-bootstrap and Alpine): https://skarnet.org/software/execline/execline.html

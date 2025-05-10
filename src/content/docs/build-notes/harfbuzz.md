@@ -1,6 +1,6 @@
 ---
 title: harfbuzz
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Circular dependency with `cairo`? But we need to enable `cairo` support in the future

@@ -1,6 +1,6 @@
 ---
 title: meson
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - When using `buildtype=release` in `glaucus-meson`, `debug` is automatically set to `false`

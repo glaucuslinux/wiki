@@ -1,6 +1,6 @@
 ---
 title: ISO
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Add `.tar.zst` packages on the install iso (rad should install to custom root, a la pacstrap)

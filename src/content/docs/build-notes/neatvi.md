@@ -1,6 +1,6 @@
 ---
 title: neatvi
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Patch to support arrow keys; nextvi

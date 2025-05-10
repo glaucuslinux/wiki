@@ -1,6 +1,6 @@
 ---
 title: utmps
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Solves 32bit time_t problem; however, all applications need to be reviewed for 64bit time_t

@@ -1,6 +1,6 @@
 ---
 title: dbus
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `developer` mode (`asserts`, `verbose` and `embedded-tests`) is disabled by default

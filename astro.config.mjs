@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'glaucus',
-      description: 'A simple and lightweight Linux® distribution based on musl libc and toybox',
+      description: 'A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox',
       favicon: '/src/assets/glaucus-logo.svg',
       logo: {
         src: '/src/assets/glaucus-logo.svg',

@@ -1,6 +1,6 @@
 ---
 title: pkgconf
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - The canonical url has moved to "https://distfiles.ariadne.space/pkgconf" from "https://distfiles.dereferenced.org/pkgconf"

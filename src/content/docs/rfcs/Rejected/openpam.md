@@ -1,6 +1,6 @@
 ---
 title: OpenPAM
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - OpenPAM is an alternative to Linux PAM (Both are approximately 20 years old)

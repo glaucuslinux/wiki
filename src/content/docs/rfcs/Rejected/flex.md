@@ -1,6 +1,6 @@
 ---
 title: flex
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - No release in over 8 years; stuck on version `2.6.4` and pulling the latest `git` breaks a LOT of things

@@ -1,6 +1,6 @@
 ---
 title: Online Manual Pages
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - No proper way to serve roff pages in html format

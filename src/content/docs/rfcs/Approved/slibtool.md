@@ -1,6 +1,6 @@
 ---
 title: slibtool
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `LIBTOOL=slibtool` should be added to `MAKEFLAGS`

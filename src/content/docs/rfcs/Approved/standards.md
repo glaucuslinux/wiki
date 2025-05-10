@@ -1,6 +1,6 @@
 ---
 title: Standards
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - FHS 3.0

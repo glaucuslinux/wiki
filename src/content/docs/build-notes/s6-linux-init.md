@@ -1,6 +1,6 @@
 ---
 title: s6-linux-init
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Run `s6-linux-init-maker` in `build`:

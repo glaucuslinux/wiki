@@ -1,6 +1,6 @@
 ---
 title: netbsd-curses
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Try to link against `terminfo` alone without `curses` if doable; oksh and bash, use only terminfo for what they need?

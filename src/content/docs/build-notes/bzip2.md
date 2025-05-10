@@ -1,6 +1,6 @@
 ---
 title: bzip2
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `bzip2` only provides the header file and shared library on glaucus

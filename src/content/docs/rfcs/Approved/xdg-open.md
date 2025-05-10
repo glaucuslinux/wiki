@@ -1,6 +1,6 @@
 ---
 title: xdg-open
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - chndlr: https://github.com/bharatvaj/chndlr

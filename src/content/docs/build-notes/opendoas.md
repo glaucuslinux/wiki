@@ -1,6 +1,6 @@
 ---
 title: opendoas
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Owner and group of `/etc/doas.conf` should be `0`, and permissions `400`

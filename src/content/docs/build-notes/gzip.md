@@ -1,6 +1,6 @@
 ---
 title: gzip
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Does it depend on `bash` and `less` (for its scripts)?

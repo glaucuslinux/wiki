@@ -1,6 +1,6 @@
 ---
 title: tmux
-description: A simple and lightweight Linux® distribution based on musl libc and toybox
+description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `tmux` does better multiplexing compared to `dtach`, `mtm` and built-in terminal multiplexers (e.g. `wezterm`)
