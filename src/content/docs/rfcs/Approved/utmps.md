@@ -27,17 +27,11 @@ utmps is a solution to systems using s6, and won't work for systemd, and it impl
 - https://en.wikipedia.org/wiki/Utmp
 
 * utmp.h has been deprecated in 2001 in favor of utmpx.h
-
 * On Glibc systems the former utmp.h is just an alias (or a symlink) for the latter utmpx.h
-
 * On musl libc, utmps can be used to provide utmpx functionality - but not utmp (This means that applications like procps-ng either don't work properly (w shows nothing under musl with default no-op implementation), or fails to build (utmps provides utmpx.h but no utmp.h)
-
 * utmps also uses a daemon as the only authority to manage the utmp and wtmp data, which is an extra service to consider
-
 * we also need to remove the stub header utmpx.h (and maybe even utmp.h) provided by musl if you plan on using skarnet's utmps
-
-
-* we also need to patch multiple software to support utmpx.h instead of utmp.h since utmps only provides the latter. Here's a list of packages using utmp h (that might require patching) that I compiled based on my experiments in [glaucus](https://www.glaucuslinux.org/):
+* we also need to patch multiple software to support utmpx.h instead of utmp.h since utmps only provides the latter. Here's a list of packages using utmp h (that might require patching) that I compiled based on my experiments in [glaucus](https://glaucuslinux.org/):
 
   - autoconf
   - gcc (in libsanitizer)
