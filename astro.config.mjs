@@ -17,7 +17,7 @@ export default defineConfig({
         github: 'https://github.com/glaucuslinux/glaucus',
         reddit: 'https://reddit.com/r/glaucus',
         telegram: 'https://t.me/glaucuslinux',
-        x-twitter: 'https://x.com/glaucuslinux',
+        twitter: 'https://x.com/glaucuslinux',
         youtube: 'https://youtube.com/@glaucuslinux',
       },
       editLink: {
