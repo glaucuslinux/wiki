@@ -4,10 +4,10 @@ description: A simple, lightweight and opinionated Linux® distribution based on
 ---
 
 - [Discord](https://discord.gg/nDKNmNc)
-- [Reddit](https://www.reddit.com/r/glaucus)
+- [Reddit](https://reddit.com/r/glaucus)
 - [Telegram](https://t.me/glaucuslinux)
-- [Twitter](https://twitter.com/glaucuslinux)
-- [YouTube](https://www.youtube.com/@glaucuslinux)
+- [X](https://x.com/glaucuslinux)
+- [YouTube](https://youtube.com/@glaucuslinux)
 
 ## Rules
 1. Be respectful — Disagreements, both social and technical, are not an excuse for poor behavior.

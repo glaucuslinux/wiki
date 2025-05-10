@@ -15,10 +15,10 @@ export default defineConfig({
         codeberg: 'https://codeberg.org/glaucuslinux/glaucus',
         discord: 'https://discord.gg/nDKNmNc',
         github: 'https://github.com/glaucuslinux/glaucus',
-        reddit: 'https://www.reddit.com/r/glaucus',
+        reddit: 'https://reddit.com/r/glaucus',
         telegram: 'https://t.me/glaucuslinux',
-        twitter: 'https://twitter.com/glaucuslinux',
-        youtube: 'https://www.youtube.com/@glaucuslinux',
+        x: 'https://x.com/glaucuslinux',
+        youtube: 'https://youtube.com/@glaucuslinux',
       },
       editLink: {
         baseUrl: 'https://github.com/glaucuslinux/wiki/edit/main/',
