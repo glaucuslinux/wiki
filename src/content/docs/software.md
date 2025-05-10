@@ -3,6 +3,7 @@ title: Default Software
 description: A simple and lightweight Linux® distribution based on musl libc and toybox
 ---
 
+- [`aws-lc`](https://github.com/aws/aws-lc): TLS library
 - [`bc-gh`](https://git.gavinhoward.com/gavin/bc): bc implementation
 - [`booster`](https://github.com/anatol/booster): initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/): yacc implementation
@@ -15,7 +16,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - [`less`](https://greenwoodsoftware.com/less/): terminal pager
 - [`libarchive`](https://libarchive.org/): archive and compression library
 - [`libedit`](https://thrysoee.dk/editline/): command line editor library
-- [`libressl`](https://www.libressl.org/): TLS library
 - [`libudev-zero`](https://github.com/illiliti/libudev-zero): libudev implementation
 - [`limine`](https://limine-bootloader.org/): boot loader and manager
 - [`linux-cachyos`](https://github.com/CachyOS/linux-cachyos): kernel

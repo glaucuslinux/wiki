@@ -61,6 +61,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Arch does not provide `clang-tblgen`
 - `-Wno-dev` suppresses developer warnings
 - To build `mesa` you only need `libllvm` and maybe `clang` (and `libclc`?)
+- It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf

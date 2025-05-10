@@ -49,6 +49,9 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - Pull Request #146: [Remove `--prefix` flag from `iproute2` configure](https://github.com/ataraxialinux/ataraxia/pull/146)
 - Pull Request #151: [Fix `pkgconf` environment variables](https://github.com/ataraxialinux/ataraxia/pull/151)
 
+## aws-lc
+- Issue #2408: [`wget2` fails to build with `aws-lc`](https://github.com/aws/aws-lc/issues/2408)
+
 ## bc
 - Issue #30: [Can't find the link to the `.xz` archive in assets](https://github.com/gavinhoward/bc/issues/30)
 - Issue #52: [Release tarballs in `gzip` format](https://github.com/gavinhoward/bc/issues/52)

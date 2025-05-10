@@ -9,4 +9,5 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 
 ## References
 - https://github.com/gentoo/gentoo/pull/17167
+- https://news.ycombinator.com/item?id=37270631
 - https://quixdb.github.io/squash-benchmark/?visible-plugins=zlib,zlib-ng

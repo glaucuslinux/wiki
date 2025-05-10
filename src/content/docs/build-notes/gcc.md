@@ -26,11 +26,28 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 - `libgcc_s.so.1` size dramatically reduced when using stage1 flags (from ~ 830k to ~ 170k)
 - `otool` is for mach os, and is part of LLVM; the `otool` not found error is normal for `gcc`
 - Move cpp from lib to bin?
-- Race condition that happens with `libstdc++-v3`:
+- The following (ignored) errors occur when building `libstdc++-v3` (in all stages):
 ```
 libstdc++-v3.log:945:make[1]: [Makefile:1831: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 libstdc++-v3.log:946:make[1]: [Makefile:1832: x86_64-glaucus-linux-musl/bits/largefile-config.h] Error 1 (ignored)
 ```
+According to `tmp/gcc/gcc-14.2.0/build/x86_64-glaucus-linux-musl/libstdc++-v3/include/Makefile`:
+```make
+...
+# This header is not installed, it's only used to build libstdc++ itself.
+${host_builddir}/largefile-config.h: ${CONFIG_HEADER} stamp-${host_alias}
+	@rm -f $@.tmp
+	@-grep 'define _DARWIN_USE_64_BIT_INODE' ${CONFIG_HEADER} >> $@.tmp
+	@-grep 'define _FILE_OFFSET_BITS' ${CONFIG_HEADER} >> $@.tmp
+	@-grep 'define _LARGE_FILES' ${CONFIG_HEADER} >> $@.tmp
+	@mv $@.tmp $@
+...
+```
+and indeed if we check `tmp/gcc/gcc-14.2.0/build/x86_64-glaucus-linux-musl/libstdc++-v3/include/x86_64-glaucus-linux-musl/bits/largefile-config.h`:
+```c
+# define _DARWIN_USE_64_BIT_INODE 1
+```
+which means that the first `@-grep` is working, while the latter two are not causing these two `Error 1 (ignored)` messages; and no this is not related to a race condition and it does not go away neither with `-j 1` nor with `--disable-largefile`
 - No need to fix headers or includes on glaucus
 - `libsupc++` is the ABI library and it is a subset of `libstdc++`
 - Alpine sets `libat_cv_have_ifunc=no` before gcc configure; related to libatomic, and Alpaquita are providing ifunc and are not setting this variable
