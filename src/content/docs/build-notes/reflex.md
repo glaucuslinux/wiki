@@ -4,4 +4,6 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 ---
 
 - Depends on `byacc`
-- Breaks the building of `kbd` and `wget2`
+- Breaks the build of:
+  - `kbd`: use `bkeymaps` and `busybox` instead
+  - `wget2`: when `autoreconf -vfis` is ran (though this does not always happen)
