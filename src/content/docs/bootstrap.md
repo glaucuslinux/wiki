@@ -45,6 +45,7 @@ description: A simple and lightweight Linux® distribution based on musl libc an
 - `limine`
 - `m4`
 - `make`
+- `meson` (and not `muon` as it does not support `--cross-file`)
 - `patch` (or `toybox`)
 - `perl`
 - `pkg-config` (or `pkgconf`)
@@ -86,7 +87,7 @@ sudo mkdir -p \
 sudo ln -fs $PWD/src /var/cache/rad
 sudo ln -fs $PWD/cerata /var/lib/rad/clusters
 ```
-- Bootstrap toolchain and cross:
+- Bootstrap toolchain and cross (use `nimble` to build `rad`):
 ```sh
 cd rad
 ./rad bootstrap toolchain
@@ -112,7 +113,7 @@ qemu-system-x86_64 \
   -rtc base=localtime \
   -bios /usr/share/ovmf/x64/OVMF.4m.fd
 ```
-- Bootstrap native:
+- Bootstrap native (use cross-compiled `rad`):
 ```sh
 rad bootstrap native
 ```
