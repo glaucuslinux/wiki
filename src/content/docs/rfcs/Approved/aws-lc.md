@@ -4,8 +4,6 @@ description: A simple, lightweight and opinionated Linux® distribution based on
 ---
 
 - Replaces `libressl`
-- Replaced by `mbedtls` on `openwrt`
-- OpenSSL compatibility layer is lacking; packages like `kmod` and `toybox` fail to build even with `--enable-opensslall` and `--enable-opensslextra` and with compatibility symlinks for both the libraries and pkg-config files
 
 ## References
 - https://news.ycombinator.com/item?id=34696769
