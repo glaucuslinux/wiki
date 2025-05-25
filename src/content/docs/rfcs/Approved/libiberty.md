@@ -1,6 +1,6 @@
 ---
 title: libiberty
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `libiberty` is not needed as it acts like another libc

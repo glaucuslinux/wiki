@@ -1,6 +1,6 @@
 ---
 title: Licenses
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Follow SPDX; according to some mainstream distributions, even the SPDX is not enough as they have an additional list of licenses to add...

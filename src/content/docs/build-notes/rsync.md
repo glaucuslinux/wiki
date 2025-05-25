@@ -1,6 +1,6 @@
 ---
 title: rsync
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - https://github.com/WayneD/rsync/issues/29

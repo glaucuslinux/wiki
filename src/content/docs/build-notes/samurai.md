@@ -1,6 +1,6 @@
 ---
 title: samurai
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `samurai` handles install for `cmake` configure and `samurai` build

@@ -1,6 +1,6 @@
 ---
 title: dash
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `--enable-glob` breaks with `musl`

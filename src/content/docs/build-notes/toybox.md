@@ -1,6 +1,6 @@
 ---
 title: toybox
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `toybox`'s `cpio` defaults to `newc`, and is as fast as `bsdcpio`

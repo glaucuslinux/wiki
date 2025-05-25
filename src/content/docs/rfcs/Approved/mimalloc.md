@@ -1,6 +1,6 @@
 ---
 title: mimalloc
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Segfaults when used in `LD_PRELOAD`

@@ -1,6 +1,6 @@
 ---
 title: udev
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Extract `udev` from `systemd` on Chimera, Gentoo and LFS

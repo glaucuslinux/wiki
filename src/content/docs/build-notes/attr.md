@@ -1,6 +1,6 @@
 ---
 title: attr
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Test suite requires a filesystem that supports extended attributes

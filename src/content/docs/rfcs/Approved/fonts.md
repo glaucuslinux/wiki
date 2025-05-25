@@ -1,6 +1,6 @@
 ---
 title: Fonts
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `setfont` from `kbd` is used to set console fonts (`psf` or `psfu`)

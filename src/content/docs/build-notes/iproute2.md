@@ -1,6 +1,6 @@
 ---
 title: iproute2
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - glaucus removes `ARPD` and `BDB`

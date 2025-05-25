@@ -1,6 +1,6 @@
 ---
 title: gdbm
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `configure` enables line-editing support if available

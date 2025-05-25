@@ -1,6 +1,6 @@
 ---
 title: pciutils
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - You need to explicitly specify `CFLAGS` in `OPT` for it to get picked up

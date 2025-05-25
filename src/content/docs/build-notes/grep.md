@@ -1,6 +1,6 @@
 ---
 title: grep
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `egrep` and `fgrep` are obsolescent; warnings can make some test suites fail so remove them?

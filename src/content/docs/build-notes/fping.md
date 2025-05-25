@@ -1,6 +1,6 @@
 ---
 title: fping
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `--enable-ipv4` and `--enable-ipv6` are on by default

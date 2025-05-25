@@ -1,6 +1,6 @@
 ---
 title: libopeninput
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Replaces `libinput`; an older fork for OpenBSD

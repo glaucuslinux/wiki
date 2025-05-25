@@ -1,6 +1,6 @@
 ---
 title: glslang
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `glslang`, `spirv-headers` and `spirv-tools` must have the same version to prevent ABI breakages

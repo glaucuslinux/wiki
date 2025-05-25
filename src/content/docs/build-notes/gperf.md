@@ -1,6 +1,6 @@
 ---
 title: gperf
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `autoreconf` does not work

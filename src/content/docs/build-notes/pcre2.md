@@ -1,6 +1,6 @@
 ---
 title: pcre2
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Force `-O3` might be needed for Julia on Alpine?

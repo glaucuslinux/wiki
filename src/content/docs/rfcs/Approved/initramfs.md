@@ -1,6 +1,6 @@
 ---
 title: initramfs
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - tinycorelinux is run entirely in the initramfs (no `switch_root`)

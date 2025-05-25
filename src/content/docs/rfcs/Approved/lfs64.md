@@ -1,6 +1,6 @@
 ---
 title: LFS64
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - musl 1.2.4 removed LFS64 symbols (glibc only?)

@@ -1,6 +1,6 @@
 ---
 title: Kernel
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - CachyOS (Arch): https://github.com/CachyOS/linux-cachyos

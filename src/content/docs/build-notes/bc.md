@@ -1,6 +1,6 @@
 ---
 title: bc
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Rely on `github` for `url` as `gavinhoward.com` frequently goes down

@@ -1,6 +1,6 @@
 ---
 title: wak
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Also known as `awk` for `toybox`

@@ -1,6 +1,6 @@
 ---
 title: gcompat
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `gcompat`, `voidnsrun`, `xbps-uunshare`, `bubblewrap` and `flatpak` are

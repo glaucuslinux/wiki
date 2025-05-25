@@ -1,6 +1,6 @@
 ---
 title: libtool
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `./bootstrap` and `autoreconf -vfis` do not work

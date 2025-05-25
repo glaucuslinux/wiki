@@ -1,6 +1,6 @@
 ---
 title: History
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - glaucus started as a personal research project known as "snail" in February, 2018

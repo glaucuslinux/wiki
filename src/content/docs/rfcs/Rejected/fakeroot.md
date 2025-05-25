@@ -1,6 +1,6 @@
 ---
 title: fakeroot
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `fakeroot` (the binary) in `package()` can preserve ownership and permissions in `$SACD`; it also ensures that the host won't be tainted (won't be run as `root`)

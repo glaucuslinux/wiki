@@ -1,10 +1,10 @@
 ---
 title: netbsd-curses
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Try to link against `terminfo` alone without `curses` if doable; oksh and bash, use only terminfo for what they need?
-- Sabotage does not recommend adding a `libtinfo` symlink to either `libncurses` or `libterminfo` and suggests using `LDFLAGS="-lcurses -lterminfo" ./configure` instead
+- Sabotage does not recommend adding a `libtinfo` symlink to either `libncurses` or `libterminfo` and suggests using `LDFLAGS="-lcurses -lterminfo" ./configure` instead; some packages link against `libtinfo` like `util-linux` and `yash`
 
 ## References
 - https://github.com/sabotage-linux/netbsd-curses/issues/39

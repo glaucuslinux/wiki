@@ -1,6 +1,6 @@
 ---
 title: motd
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `motd` stands for "Message Of The Day"

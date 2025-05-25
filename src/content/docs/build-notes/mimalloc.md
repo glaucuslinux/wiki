@@ -1,6 +1,6 @@
 ---
 title: mimalloc
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `v3` is the experimental branch, use `v2` instead

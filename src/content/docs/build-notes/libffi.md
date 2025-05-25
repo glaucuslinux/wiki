@@ -1,6 +1,6 @@
 ---
 title: libffi
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `autoreconf` breaks build

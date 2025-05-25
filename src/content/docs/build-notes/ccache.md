@@ -1,6 +1,6 @@
 ---
 title: ccache
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - No cpp symlink on Alpine because host system does not provide it

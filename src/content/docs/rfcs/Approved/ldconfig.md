@@ -1,6 +1,6 @@
 ---
 title: ldconfig
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `musl` does not need an `ldconfig` as it uses its own search mechanism

@@ -1,6 +1,6 @@
 ---
 title: e2fsprogs
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - glaucus uses `chattr` and `lsattr` from `toybox`

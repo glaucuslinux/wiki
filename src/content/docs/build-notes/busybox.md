@@ -1,6 +1,6 @@
 ---
 title: busybox
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Patch `tools/kconfig/lxdialog/check-lxdialog.sh` with `int main()` to fix `make menuconfig`

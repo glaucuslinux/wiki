@@ -1,6 +1,6 @@
 ---
 title: Prelink
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - After Spectre/Meltdown, it's probably a bad idea to prelink as it makes memory mapping attacks easier.

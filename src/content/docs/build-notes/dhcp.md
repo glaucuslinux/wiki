@@ -1,6 +1,6 @@
 ---
 title: dhcp
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `--enable-dhcpv4o6` aids in transition from DHCPv4 to DHCPv6 on Alpine: https://kb.isc.org/docs/aa-01359

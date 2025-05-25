@@ -1,6 +1,6 @@
 ---
 title: s6-rc
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `s6-rc-compile` works in chroot

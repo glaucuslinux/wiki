@@ -1,6 +1,6 @@
 ---
 title: cmake
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Use bundled version of `libuv` (for now)

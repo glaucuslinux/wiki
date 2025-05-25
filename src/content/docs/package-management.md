@@ -1,6 +1,6 @@
 ---
 title: Package Management Policy
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 glaucus uses the filesystem tree as its database to store package information and build scripts.

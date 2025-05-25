@@ -1,6 +1,6 @@
 ---
 title: libpng
-description: A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `apng` support will be upstreamed (previously apng was not part of the PNG specification)
