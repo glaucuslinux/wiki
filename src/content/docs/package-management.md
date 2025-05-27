@@ -56,6 +56,7 @@ glaucus uses the filesystem tree as its database to store package information an
 - All patches should use `-p 0`
 - Avoid modifications and patches to documentation and manual pages as they render `autoreconf` harder; require more stuff
 - Double check if the package's build system requires that it be built out-of-tree; if so then `mkdir -p build` and `cd build`
+- `meson`/`muon` and `cmake` build systems automatically create the `build` directory for you; no need to `mkdir -p build`
 #### `configure()` function
 - glaucus provides wrappers for various build systems that come with the required installation paths and basic configuration options
 - Use `glaucus-configure` for `autotools` build system
@@ -128,7 +129,7 @@ foo=bar make
 - Do not install in: `/bin`, `/boot`, `/dev`,`/home`,`/lib`, `/mnt`, `/proc`, `/root`, `/run`, `/sbin`, `/sys`, `/tmp`, `/usr/sbin`
 - Everything related to `s6` should reside under `/etc/s6`
 - All text files must end with a newline (POSIX)
-- Prefer strip targets `install-strip` to manually running strip
+- Prefer strip targets `install-strip` (and `install/strip` for `cmake`) over manual strip
 - For developers, do not create fifo files when in `cross` stage as they can't be copied
 - Consider removing the following files if unnecessary:
   - .a (static libraries whenever possible)
