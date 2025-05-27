@@ -30,7 +30,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`nsss`](https://skarnet.org/software/nsss/): NSS implementation
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
 - [`pigz`](https://zlib.net/pigz/): gzip implementation
-- [`pkgconf`](https://pkgconf.org/): pkg-config implementation
 - [`plocate`](https://plocate.sesse.net/): locate implementation
 - [`plzip`](https://www.nongnu.org/lzip/plzip.html): lzip implementation
 - [`reflex`](https://invisible-island.net/reflex/): lex implementation
@@ -41,6 +40,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
 - [`sway`](https://swaywm.org/): tiling Wayland compositor
 - [`toybox`](https://landley.net/toybox/): unix user space
+- [`u-config`](https://github.com/skeeto/u-config): pkg-config implementation
 - [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation
 - [`wayland`](https://wayland.freedesktop.org/): display server protocol
 - [`wget2`](https://gitlab.com/gnuwget/wget2): wget implementation
