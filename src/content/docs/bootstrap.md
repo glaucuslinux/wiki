@@ -90,6 +90,9 @@ sudo ln -fs $PWD/cerata /var/lib/rad/clusters
 - Bootstrap toolchain and cross (use `nimble` to build `rad`):
 ```sh
 cd rad
+
+nimble build # `rad` binaries will be provided in the future
+
 ./rad bootstrap toolchain
 ./rad bootstrap cross
 ```
