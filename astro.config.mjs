@@ -11,15 +11,15 @@ export default defineConfig({
       logo: {
         src: '/src/assets/glaucus-logo.svg',
       },
-      social: {
-        codeberg: 'https://codeberg.org/glaucuslinux/glaucus',
-        discord: 'https://discord.gg/nDKNmNc',
-        github: 'https://github.com/glaucuslinux/glaucus',
-        reddit: 'https://reddit.com/r/glaucus',
-        telegram: 'https://t.me/glaucuslinux',
-        twitter: 'https://x.com/glaucuslinux',
-        youtube: 'https://youtube.com/@glaucuslinux',
-      },
+      social: [
+        { icon: 'codeberg', label: 'Codeberg', href: 'https://codeberg.org/glaucuslinux/glaucus' },
+        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/nDKNmNc' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/glaucuslinux/glaucus' },
+        { icon: 'reddit', label: 'Reddit', href: 'https://reddit.com/r/glaucus' },
+        { icon: 'telegram', label: 'Telegram', href: 'https://t.me/glaucuslinux' },
+        { icon: 'twitter', label: 'X', href: 'https://x.com/glaucuslinux' },
+        { icon: 'youtube', label: 'YouTube', href: 'https://youtube.com/@glaucuslinux' },
+      ],
       editLink: {
         baseUrl: 'https://github.com/glaucuslinux/wiki/edit/main/',
       },
