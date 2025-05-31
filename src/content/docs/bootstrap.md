@@ -48,7 +48,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `meson` (and not `muon` as it does not support `--cross-file`)
 - `patch` (or `toybox`)
 - `perl`
-- `pkg-config` (or `pkgconf`)
+- `pkg-config` (or `pkgconf`) (and not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
 - `sed` (or `toybox`)
 - `tar` (or `libarchive`)
 - `wget2`

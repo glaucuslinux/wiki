@@ -116,6 +116,7 @@ make foo=bar
 ## Incorrect, might get unexported in the Makefile and not get passed to submakes
 foo=bar make
 ```
+- Prefer `make` (to `muon samu`) as `cmake` generator/build tool
 #### `check()` function
 - Only relevant for native `build` recipes; will not be called in `cross` and `toolchain` stages (do not add a `check()` function in `build-cross` and `build-toolchain`)
 - Report packages without a test suite

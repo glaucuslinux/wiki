@@ -5,7 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Current `CFLAGS`:
 ```c
--pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=19 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
+-pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS`:
@@ -24,9 +24,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Will spawn N threads based on the number of threads; similar to `make -j`
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO, and was removed from `gcc`'s options
-### `-flto-compression-level=19`
+### `-flto-compression-level=3`
 - Available when using `zstd` as a backend for LTO as it results in smaller binaries
-- Check if level 22 is supported
 ### `-fgraphite-identity`
 - Graphite is not well maintained in `gcc` and will likely end up being removed entirely
 - Most of its developers have moved to Polly in LLVM/Clang?
@@ -124,7 +123,7 @@ https://reviews.llvm.org/D4565
 - x86-64-v3 provides better performance and battery life
 
 ### Disable LTO
-- Remove `-flto=auto -flto-compression-level=19 -fuse-linker-plugin `
+- Remove `-flto=auto -flto-compression-level=3 -fuse-linker-plugin `
 
 ## LDFLAGS
 ### `-Wl,--gc-sections`
