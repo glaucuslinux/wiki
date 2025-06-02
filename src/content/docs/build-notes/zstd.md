@@ -8,3 +8,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - The `test` target is expensive, use `shortest` (aka `check`) instead
 - Prefer `zstd -T0` to `zstdmt` and `pzstd` as it is more modern
 - Level `3` is good enough; after level `19` it will regress
+- `make` is the officially maintained build system (all other build systems are "compatible" and 3rd-party maintained)
+- `HAVE_ZLIB`, `HAVE_LZMA` and `HAVE_LZ4` are automatically enabled when detected at build time; disable them explicitly
+
+## References
+- https://github.com/facebook/zstd/blob/dev/examples/README.md
+- https://github.com/facebook/zstd/blob/dev/lib/README.md
+- https://github.com/facebook/zstd/blob/dev/programs/README.md
+- https://github.com/facebook/zstd/blob/dev/tests/README.md
