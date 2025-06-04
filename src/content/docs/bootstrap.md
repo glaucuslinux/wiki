@@ -59,46 +59,38 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Steps
 - Clone the `glaucus` repository:
 ```sh
-git clone --recursive https://github.com/glaucuslinux/glaucus
+git clone --recurse-submodules https://github.com/glaucuslinux/glaucus
+git -C glaucus submodule foreach 'git checkout main'
+```
+- Create symlinks **on your host system**:
+```sh
 cd glaucus
-```
-- Checkout the `main` branch:
-```sh
-for i in bubble cerata rad s6-boot-scripts; do
-  cd $i
-  git checkout main
-  cd ..
-done
-```
-- Provide missing stubs **in case your host system does not provide them** (remove `texinfo`):
-```sh
-for i in gtkdocize help2man makeinfo po4a texi2dvi; do
-  sudo cp -fPp cerata/musl/files/true /usr/bin/$i
-done
-```
-- **Optional** Create symlinks **on your host system** (assuming you are in `glaucus/`):
-```sh
-sudo ln -fs $PWD/cerata/autoconf/files/glaucus-configure /usr/bin
-sudo ln -fs $PWD/cerata/muon/files/glaucus-meson /usr/bin
 
 sudo mkdir -p \
   /var/cache/rad \
   /var/lib/rad/clusters
+
 sudo ln -fs $PWD/src /var/cache/rad
 sudo ln -fs $PWD/cerata /var/lib/rad/clusters
+```
+- Provide missing stubs **in case your host system does not provide them** (remove `texinfo`):
+```sh
+for i in a2x asciidoc gtkdocize help2man ldconfig makeinfo po4a texi2dvi; do
+  sudo cp -fPp cerata/musl/files/true /usr/bin/$i
+done
 ```
 - Bootstrap toolchain and cross (use `nimble` to build `rad`):
 ```sh
 cd rad
 
-nimble build # `rad` binaries will be provided in the future
+nimble build # `rad` binary will be provided in the future
 
 ./rad bootstrap toolchain
 ./rad bootstrap cross
 ```
 - Create the cross img:
 ```sh
-cd bubble
+cd ../bubble
 sudo ./img
 ```
 - Boot via QEMU:
@@ -109,7 +101,7 @@ qemu-system-x86_64 \
   -smp 4 \
   -m 4G \
   -name glaucus \
-  -drive file=glaucus-*.img,format=raw \
+  -drive file="../glaucus-s6-x86-64-v3-$(date +"%Y%m%d").img",format=raw \
   -nic model=e1000 \
   -display gtk,gl=on \
   -vga qxl \
@@ -118,10 +110,11 @@ qemu-system-x86_64 \
 ```
 - Bootstrap native (use cross-compiled `rad`):
 ```sh
-rad bootstrap native
+rad bootstrap native # `rad` binary will be provided in the future
+
+poweroff
 ```
 - Create the native iso:
 ```sh
-cd bubble
 sudo ./iso
 ```

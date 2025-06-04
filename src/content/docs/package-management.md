@@ -188,7 +188,7 @@ prepare() {
 - Use `mkdir -p` over `install -d`; using `mkdir` alone is discouraged
 - `cp -a` is not POSIX; use `cp -fPp` for files and `cp -fPpR` for directories
 - `cp -v` and `mv -v` are not POSIX; `rm -v` is POSIX though
-- `ln -r` and `ln -n` are not POSIX; use `ln -fs` instead
+- `ln -r` and `ln -n` are not POSIX; use `ln -fs` instead; prefer symbolic links to hard links
 - `patch` only accepts one diff/patch file at a time when using `-i`; if multiple files are provided it will use the last one
 - `touch` is faster than `:>`
 - `command -v` is faster than `type`
