@@ -83,10 +83,10 @@ done
 ```sh
 cd rad
 
-nimble build # `rad` binary will be provided in the future
+nimble build # native and cross-compiled `rad` will be provided in the future
 
-./rad bootstrap toolchain
-./rad bootstrap cross
+./rad bootstrap toolchain # stage 0
+./rad bootstrap cross # stage 1
 ```
 - Create the cross img:
 ```sh
@@ -108,9 +108,9 @@ qemu-system-x86_64 \
   -rtc base=localtime \
   -bios /usr/share/ovmf/x64/OVMF.4m.fd
 ```
-- Bootstrap native (use cross-compiled `rad`):
+- Bootstrap native **under QEMU**:
 ```sh
-rad bootstrap native # `rad` binary will be provided in the future
+rad bootstrap native # stage 2
 
 poweroff
 ```
