@@ -79,11 +79,14 @@ for i in a2x asciidoc gtkdocize help2man ldconfig makeinfo po4a texi2dvi; do
   sudo cp -fPp cerata/musl/files/true /usr/bin/$i
 done
 ```
-- Bootstrap toolchain and cross (use `nimble` to build `rad`):
+- Bootstrap toolchain and cross:
 ```sh
 cd rad
 
-nimble build # native and cross-compiled `rad` will be provided in the future
+curl -fL -o rad -s https://github.com/glaucuslinux/rad/releases/latest/download/rad-x86-64-v3-pc-linux-gnu
+curl -fL -s https://github.com/glaucuslinux/rad/releases/latest/download/rad-x86-64-v3-glaucus-linux-musl
+
+chmod 755 rad
 
 ./rad bootstrap toolchain # stage 0
 ./rad bootstrap cross # stage 1
@@ -92,6 +95,8 @@ nimble build # native and cross-compiled `rad` will be provided in the future
 ```sh
 cd ../bubble
 sudo ./img
+sudo ./mount
+sudo ./umount
 ```
 - Boot via QEMU:
 ```sh
