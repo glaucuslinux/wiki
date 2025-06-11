@@ -26,15 +26,15 @@ glaucus uses the filesystem tree as its database to store package information an
   - `bld`: package build time dependencies sorted alphabetically
     - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
   - `run`: package run time dependencies sorted alphabetically
-  - `nop`: package "no operation" and includes:
+  - `opt`: package options and includes:
     - `bootstrap`: install package to `/`; only relevant in bootstrap stage cross
-    - `check`: do not run `check()`; **mandatory if `build` does not have `check()`**
+    - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
     - `doc`, `man`: do not remove documentation
     - `empty`: do not remove empty directories
     - `la`, `libtool`: do not remove libtool archives (`.la` files) in native; they are deleted either ways in cross
-    - `lto`: do not use LTO
-    - `parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
-    - `purge`, `prune`: do not remove unwanted files
+    - `no-lto`: do not use LTO
+    - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
+    - `no-purge`/`no-prune`: do not remove unwanted files
     - `static`: do not remove static libraries (.a files)
 ### The `build` file
 - A `build` file is a POSIX shell script that includes the build instructions of a package
@@ -62,6 +62,8 @@ glaucus uses the filesystem tree as its database to store package information an
 - Use `glaucus-configure` for `autotools` build system
 - Use `glaucus-cmake` for `cmake` build system
 - Use `glaucus-muon` for `muon` and `meson` build systems
+- Use the officially supported build system by upstream; e.g. `zstd` has multiple third party build systems but the only officially maintained build system is `make`
+- Use the newer build system if a package has multiple officially supported and maintained build systems and/or is in the process of moving to a newer build system (e.g. `kmod`)
 - For developers who are bootstrapping the `toolchain` and `cross` stages use full paths to `glaucus-*` in `build-toolchain` and `build-cross` respectively
 - Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`
 ###### Disable
@@ -213,11 +215,10 @@ patch -p0 ...
 ```
 
 ## Layout
-- `/var/cache/rad/pkg`: Cache store for build artefacts
+- `/var/cache/rad/build`: Cache store for build artefacts
 - `/var/cache/rad/src`: Cache store for upstream source tarballs; read-only
-- `/var/lib/rad/clusters/cerata`: Official repository; `$CERD`
-- `/var/lib/rad/clusters/custom`: Custom local repository
-- `/var/lib/rad/clusters/fleet`: Community repository
+- `/var/lib/rad/repo/pkg`: Official repository; `$CERD`
+- `/var/lib/rad/repo/community`: Community repository
 - `/var/lib/rad/pkg`: Local database of installed packages
 - `/var/log/rad`: Log directory
 - `/var/tmp/rad`: Temporary store for build artefacts; `$TMPD`

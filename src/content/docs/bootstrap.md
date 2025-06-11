@@ -84,12 +84,12 @@ done
 cd rad
 
 curl -fL -o rad -s https://github.com/glaucuslinux/rad/releases/latest/download/rad-x86-64-v3-pc-linux-gnu
-curl -fL -s https://github.com/glaucuslinux/rad/releases/latest/download/rad-x86-64-v3-glaucus-linux-musl
+curl -fLOs https://github.com/glaucuslinux/rad/releases/latest/download/rad-x86-64-v3-glaucus-linux-musl
 
 chmod 755 rad
 
 ./rad bootstrap toolchain # stage 0
-./rad bootstrap cross # stage 1
+./rad bootstrap cross # stage 1, if it fails for whatever reason start again from stage 0
 ```
 - Create the cross img:
 ```sh
