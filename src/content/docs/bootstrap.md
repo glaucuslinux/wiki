@@ -91,35 +91,25 @@ chmod 755 rad
 ./rad bootstrap toolchain # stage 0
 ./rad bootstrap cross # stage 1, if it fails for whatever reason start again from stage 0
 ```
-- Create the cross img:
+- Create the cross `img`:
 ```sh
 cd ../bubble
-sudo ./img
-sudo ./mount
-sudo ./umount
+sudo ./img # You can specify the img name as an argument
 ```
-- Boot via QEMU:
+- Copy `rad` to the cross `img`:
 ```sh
-qemu-system-x86_64 \
-  -machine q35,accel=kvm \
-  -cpu host \
-  -smp 4 \
-  -m 4G \
-  -name glaucus \
-  -drive file="../glaucus-s6-x86-64-v3-$(date +"%Y%m%d").img",format=raw \
-  -nic model=e1000 \
-  -display gtk,gl=on \
-  -vga qxl \
-  -rtc base=localtime \
-  -bios /usr/share/ovmf/x64/OVMF.4m.fd
+sudo ./mount # You can specify the img name as an argument
+sudo ./umount # You can specify the img name as an argument
 ```
 - Bootstrap native **under QEMU**:
 ```sh
+./qemu-img # You can specify the img name as an argument
+
 rad bootstrap native # stage 2
 
 poweroff
 ```
 - Create the native iso:
 ```sh
-sudo ./iso
+sudo ./iso # You can specify the iso name as an argument
 ```

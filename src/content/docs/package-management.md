@@ -217,9 +217,9 @@ patch -p0 ...
 ## Layout
 - `/var/cache/rad/build`: Cache store for build artefacts
 - `/var/cache/rad/src`: Cache store for upstream source tarballs; read-only
-- `/var/lib/rad/repo/pkg`: Official repository; `$CERD`
+- `/var/lib/rad/repo/core`: Official repository; `$CERD`
 - `/var/lib/rad/repo/community`: Community repository
-- `/var/lib/rad/pkg`: Local database of installed packages
+- `/var/lib/rad/local`: Local database of installed packages
 - `/var/log/rad`: Log directory
 - `/var/tmp/rad`: Temporary store for build artefacts; `$TMPD`
 
