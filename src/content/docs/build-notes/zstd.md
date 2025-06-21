@@ -10,6 +10,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Level `3` is good enough; after level `19` it will regress
 - `make` is the officially maintained build system (all other build systems are "compatible" and 3rd-party maintained)
 - `HAVE_ZLIB`, `HAVE_LZMA` and `HAVE_LZ4` are automatically enabled when detected at build time; disable them explicitly
+- No need to specify `lib-mt` build target as the dynamic library is multithreaded by default; and even though the static library is single-threaded it is being removed so that won't matter
+- `-pthread` is included in `libzstd.pc` and is automatically passed when linking against it
 
 ## References
 - https://github.com/facebook/zstd/blob/dev/examples/README.md
