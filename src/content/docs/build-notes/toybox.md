@@ -69,7 +69,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/ibara/baseutils
 - https://github.com/matijaskala/coreutils-bsd
 - https://github.com/oracle/solaris-userland
-- https://github.com/Projeto-Pindorama/heirloom-ng
+- https://heirloom-ng.pindorama.net.br
 - https://heirloom.sourceforge.net/devtools.html
 - https://heirloom.sourceforge.net/sh.html
 - https://heirloom.sourceforge.net/tools.html
