@@ -253,6 +253,7 @@ patch -p0 ...
 - https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.debian.org/ReduceDebian
+- https://wiki.gentoo.org/wiki/Stage_file
 - https://www.debian.org/releases/bookworm/amd64/ch03s04.en.html
 - https://www.gnu.org/software/make/manual/html_node/Testing.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html

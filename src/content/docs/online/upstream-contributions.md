@@ -202,6 +202,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Pull Request #7: [`zstdmt` symlink is automatically created](https://github.com/xhebox/noname-linux/pull/7)
 
 ## nsss
+- [nsss Contributor](https://github.com/skarnet/nsss/blob/main/AUTHORS)
 - Commit 0d0417f: [Doc fixes (it's `grp.h`!)](https://github.com/skarnet/nsss/commit/0d0417f3226406fd4546d550bcf188b24b6f88ce)
 - Issue #3: [Implicit declarations when using `--enable-libc-includes`](https://github.com/skarnet/nsss/issues/3)
 - Issue #4: [Missing define in `nsss/shadow.h`](https://github.com/skarnet/nsss/issues/4)

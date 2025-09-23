@@ -20,7 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Host System Requirements
 - Arch, Fedora and Linux From Scratch (LFS) can be used to bootstrap glaucus
 - It is recommended to have a minimum of 4 GB of memory and 10 GB of storage space
-### Required Packages
+### Required Packages (will be automatically checked)
 - `autoconf`
 - `automake`
 - `bash`
@@ -29,6 +29,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `booster`
 - `bzip2`
 - `coreutils` (or `toybox`)
+- `curl`
 - `diffutils` (or `toybox`)
 - `dosfstools`
 - `erofs-utils`
@@ -45,13 +46,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `limine`
 - `m4`
 - `make`
-- `meson` (and not `muon` as it does not support `--cross-file`)
+- `meson` (not `muon` as it does not support `--cross-file`)
+- `ninja` (or `samurai`)
 - `patch` (or `toybox`)
 - `perl`
-- `pkg-config` (or `pkgconf`) (and not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
+- `pkg-config` (or `pkgconf`) (not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
 - `sed` (or `toybox`)
 - `tar` (or `libarchive`)
-- `wget2`
 - `xz`
 - `zlib` (or `zlib-ng`)
 - `zstd`
@@ -68,15 +69,16 @@ cd glaucus
 
 sudo mkdir -p \
   /var/cache/rad \
-  /var/lib/rad/clusters
+  /var/lib/rad/repo
 
+sudo ln -fs $PWD/core /var/lib/rad/repo
+sudo ln -fs $PWD/log /var/log/rad
 sudo ln -fs $PWD/src /var/cache/rad
-sudo ln -fs $PWD/cerata /var/lib/rad/clusters
 ```
 - Provide missing stubs **in case your host system does not provide them** (remove `texinfo`):
 ```sh
-for i in a2x asciidoc gtkdocize help2man ldconfig makeinfo po4a texi2dvi; do
-  sudo cp -fPp cerata/musl/files/true /usr/bin/$i
+for i in a2x asciidoc gtkdocize help2man makeinfo po4a texi2dvi; do
+  sudo cp -fPp core/musl/files/true /usr/bin/$i
 done
 ```
 - Bootstrap toolchain and cross:
