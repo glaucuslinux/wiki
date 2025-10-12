@@ -193,6 +193,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Issue #102: [latest-devel no longer syncs](https://github.com/nim-lang/nightlies/issues/102)
 - Issue #24174: [`copyDir` and `copyDirWithPermissions` do not handle FIFOs (named pipes)](https://github.com/nim-lang/Nim/issues/24174)
 
+## nimalyzer
+- Ticket c8c1aff: [Fix typo in configuration files](https://www.laeran.pl.eu.org/repositories/nimalyzer/tktview/c8c1aff8e5c824e59ca24df0381daf24bbc96bf7)
+
 ## noname linux
 - Issue #4: [What's this musl patch for?](https://github.com/xhebox/noname-linux/issues/4)
 - Issue #8: [`curl`: why enable manual after disabling it?](https://github.com/xhebox/noname-linux/issues/8)
