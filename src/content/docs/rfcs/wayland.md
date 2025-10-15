@@ -25,6 +25,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - croissant: https://codeberg.org/vyivel/croissant
 - dwl: https://codeberg.org/dwl/dwl
 - labwc: https://github.com/labwc/labwc (Disable librsvg)
+- mango: https://github.com/DreamMaoMao/mangowc
+- scroll: https://github.com/dawsers/scroll
 - sway: https://github.com/swaywm/sway
 - volare: https://codeberg.org/raboof/volare
 - waybox: https://github.com/wizbright/waybox
