@@ -8,6 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## AerynOS
 - Pull Request #711: [`pkgconf`: update canonical locations](https://github.com/AerynOS/recipes/pull/711)
+- Pull Request #1122: [`binutils`: Fix typo in `gprofng` summary and description](https://github.com/AerynOS/recipes/pull/1122)
 
 ## Alpine
 - [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
@@ -194,6 +195,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Issue #24174: [`copyDir` and `copyDirWithPermissions` do not handle FIFOs (named pipes)](https://github.com/nim-lang/Nim/issues/24174)
 
 ## nimalyzer
+- Commit 992f47b: [docs: fixed typos](https://github.com/thindil/nimalyzer/commit/992f47bf7817aaa92b7d076013f9d0d93e9fda52)
+- Commit 4ea2cef: [docs: updated changelog](https://github.com/thindil/nimalyzer/commit/4ea2cef757eb443e11e3a3d03fcaf69d4d6b5e56)
+- Commit f37dc26: [docs: updated documentation for complexity rule](https://github.com/thindil/nimalyzer/commit/f37dc262302d77b11c12321998089e4aafc1d47b)
+- Commit 1e117ad: [docs: updated changelog](https://github.com/thindil/nimalyzer/commit/1e117adaab89e557f7d7701a84ff09a8d6b1d584)
 - Ticket c8c1aff8e5: [Fix typo in configuration files](https://www.laeran.pl.eu.org/repositories/nimalyzer/tktview/c8c1aff8e5)
 - Ticket cac8a77a3b: [search complexity lists below or equal to the selected value](https://www.laeran.pl.eu.org/repositories/nimalyzer/tktview/cac8a77a3b)
 

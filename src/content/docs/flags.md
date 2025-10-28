@@ -143,6 +143,7 @@ https://reviews.llvm.org/D4565
 - Ignored by `mold`
 
 ## References
+- https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html
 - https://forums.gentoo.org/viewtopic-t-1171518.html?sid=259e0b60fe8784f498bb919b83beb3fb
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html

@@ -54,6 +54,7 @@ glaucus uses the filesystem tree as its database to store package information an
 - Disable `po4a` generation and `gtkdocize` when running `autoreconf -vfis`, `autogen.sh` or `bootstrap.sh`
 - If a patch is absolutely necessary, then it is applied here in `prepare()`; otherwise, keep things vanilla
 - All patches should use `-p 0`
+- Prefer `patch` to `sed`
 - Avoid modifications and patches to documentation and manual pages as they render `autoreconf` harder; require more stuff
 - Double check if the package's build system requires that it be built out-of-tree; if so then `mkdir -p build` and `cd build`
 - `meson`/`muon` and `cmake` build systems automatically create the `build` directory for you; no need to `mkdir -p build`
@@ -218,12 +219,13 @@ patch -p0 ...
 - `/var/cache/rad/build`: Persistent cache store for build artefacts
 - `/var/cache/rad/src`: Persistent read-only cache store for upstream source tarballs
 - `/var/lib/rad/local`: Local database of installed packages
-- `/var/lib/rad/repo/core`: Core repository; `$CORD`
-- `/var/lib/rad/repo/extra`: Extra repository; `$EXTD`
+- `/var/lib/rad/repo/core`: Core repository; `$core`
+- `/var/lib/rad/repo/extra`: Extra repository; `$extra`
 - `/var/log/rad`: Log directory
-- `/var/tmp/rad`: Temporary store for build artefacts; `$TMPD`
+- `/var/tmp/rad`: Temporary store for build artefacts; `$tmp`
 
 ## References
+- https://crux.nu/doc/handbook.html
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/general-concepts/dependencies/#implicit-system-dependency
 - https://devmanual.gentoo.org/quickstart/index.html
@@ -245,6 +247,7 @@ patch -p0 ...
 - https://pubs.opengroup.org/onlinepubs/9799919799/
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
+- https://wiki.alpinelinux.org/wiki/Package_policies
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries

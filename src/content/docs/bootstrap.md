@@ -39,6 +39,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `gcc`
 - `gettext` (or `gettext-tiny`)
 - `git`
+- `gperf`
 - `grep`
 - `gzip` (or `pigz`)
 - `libcap`
@@ -69,11 +70,13 @@ cd glaucus
 
 sudo mkdir -p \
   /var/cache/rad \
-  /var/lib/rad/repo
+  /var/lib/rad/repo \
+  /var/tmp/rad
 
 sudo ln -fs $PWD/core /var/lib/rad/repo
 sudo ln -fs $PWD/log /var/log/rad
 sudo ln -fs $PWD/src /var/cache/rad
+sudo ln -fs $PWD/tmp /var/tmp/rad
 ```
 - Provide missing stubs **in case your host system does not provide them** (remove `texinfo`):
 ```sh

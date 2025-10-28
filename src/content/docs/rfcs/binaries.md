@@ -17,4 +17,6 @@ No differences or additional tools in glaucus in:
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
+- https://packages.gentoo.org/categories/app-alternatives
+- https://wiki.gentoo.org/wiki/Project:Base/Alternatives
 - https://wiki.archlinux.org/title/core_utilities

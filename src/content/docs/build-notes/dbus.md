@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Remove `"$SACD"/etc` and `"$SACD"/var` and `"$SACD"/usr/lib/systemd`
 
 ## References
+- https://chimera-linux.org/docs/configuration/dbus
 - https://openwrt.org/docs/techref/ubus#what_s_the_difference_between_ubus_vs_dbus
 - https://wiki.hyperbola.info/doku.php?id=en:philosophy:dbus_failure
 - https://www.hyperbola.info/news/end-of-d-bus-support/
