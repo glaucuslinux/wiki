@@ -88,6 +88,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Pull Request #82: [`squashfs-tools`: no need to create symlinks manually](https://notabug.org/dragora/dragora/pulls/82)
 
 ## eiwd
+- Pull Request #1: [`resolvconf` is being used by default](https://github.com/ioraff/eiwd/pull/1)
 - Pull Request #8: [`resolvconf` is being used by default](https://github.com/illiliti/eiwd/pull/8)
 
 ## eweOS

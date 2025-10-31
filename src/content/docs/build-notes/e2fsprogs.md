@@ -12,4 +12,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Replace `awk` for `bin/compile_et` and `bin/mk_cmds`?
 - Consider adding `e2fsprogs_cv_struct_st_flags=no` to configure?
 - Compare test results with Alpine's
-- Try `-j1` for both build and install
+- To get rid of current warnings:
+  - Try `-j1` for both build and install
+  - Try `MKDIR_P=mkdir -p`, because `install-sh` is buggy and only creates one directory according to Chimera
+- Explicitly disable udev rules `--with-udev-rules-dir=no`/`--without-udev-rules-dir`?

@@ -8,4 +8,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `xlib-xcb` is disabled by default
 - A circular dependency between `cairo` and `harfbuzz` on LFS (`cairo` -> `harfbuzz` -> `cairo` -> `pango`)
 - `buildroot` uses a patch
+- Does `/usr/bin/cairo-trace` have `755` permissions?
 - Test suite is broken on LFS

@@ -15,10 +15,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ```
 - -DBUILD_CursesDialog=OFF
 - -DCMAKE_MAKE_PROGRAM=/usr/bin/samu
+- -DCMake_TEST_NO_NETWORK=ON
+- rm -fR "$dir"/usr/share/emacs
+```
+- Might consider these when we have more stuff:
+```
+- --bootstrap-system-libuv
+- --bootstrap-system-jsoncpp
+- --bootstrap-system-librhash
 ```
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 - https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
+- https://cmake.org/cmake/help/latest/policy/CMP0192.html
 - https://linuxfromscratch.org/blfs/view/svn/kde/extra-cmake-modules.html

@@ -5,9 +5,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Does not allow `autoreconf` and does not have `runstatedir`
 - Depends on `zstd`
+- Do we need to depend on `jansson` with `--enable-jansson`, or is that for `gdb` only?
 - Alpine reverts `25882` for ARM and PowerPC
 - `--disable-separate-code` bloats every executable and shared library by at least 2 MB
 - `--enable-64-bit-bfd` is needed to ensure 64-bit support even on hosts with narrower word sizes
+- Is `libbfd` even needed `--disable-install-libbfd` (same thing for `libiberty`, `--disable-install-libiberty`)?
 - `--enable-pgo-build=lto` requires `dejagnu` and the test suite?
 - Do we need `make configure-host configure-target`?
 - Should the target `bpf-unknown-none` be enabled?
