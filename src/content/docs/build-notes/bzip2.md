@@ -8,3 +8,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check the new `bzip2` ver `1.1+`:
   - https://gitlab.com/bzip2/bzip2
   - https://gitweb.gentoo.org/repo/gentoo.git/tree/app-arch/bzip2/bzip2-9999.ebuild
+- The newer version `1.1+` does not allow for isolating binaries from libraries at build time
