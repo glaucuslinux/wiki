@@ -51,6 +51,11 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - No need to fix headers or includes on glaucus
 - `libsupc++` is the ABI library and it is a subset of `libstdc++`
 - Alpine sets `libat_cv_have_ifunc=no` before gcc configure; related to libatomic, and Alpaquita are providing ifunc and are not setting this variable
+- Alpine uses `gcc-go` to bootstrap go
+- `-fstack-protector-strong` is the default; no need to lower `ssp-buffer-size` from the default `8` to `4`, but glaucus still does it
+- Sanitizers can be enabled with musl on `x86-64` (according to alpine)
+- Do we need to remove `usr/lib/gcc/x86_64-glaucus-linux-musl/$ver/install-tools/` (and `include-fixed/`)?
+- Patching `gcc` to link `libatomic` to everything is not needed on `x86_64` (Alpine enables it for `riscv64`)
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
@@ -61,4 +66,5 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 - https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
+- https://github.com/dslm4515/Musl-LFS/issues/74
 - https://wiki.osdev.org/Building_GCC

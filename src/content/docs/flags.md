@@ -152,6 +152,7 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 - https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
 - https://serpentos.com/blog/2024/01/19/january-updates/
+- https://wiki.ubuntu.com/ToolChain/CompilerFlags
 - https://www.gentoo.org/news/2024/02/04/x86-64-v3.html
 - https://www.phoronix.com/news/Gentoo-x86-64-v3-Binaries
 - https://www.youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef

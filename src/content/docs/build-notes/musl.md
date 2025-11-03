@@ -8,6 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do not set the prefix to `/usr`, `/usr/local`, or `/` unless upgrading libc on an existing musl-based system (this will break your existing system after running `make install` making it difficult to recover)
 - The dynamic linker searches for shared libraries at run time under directories listed in `/etc/ld-musl-$ARCH.path` separated by colons or newlines
 - If the dynamic linker has been installed in a non-default location, the path needs to reside at that location (`../etc` relative to the chosen `syslibdir`)
+- Do not use `--syslibdir=/usr/lib` as it will break the ABI; `/lib/ld-musl-x86_64.so.1` gets hardcoded in the binaries regardless of `syslibdir` (You can check with `readelf -p .interp /bin/toybox`)
 - `DT_RELR` support (`-z pack-relative-relocs`) has been upstreamed, and reduces size by 5 - 8%
 - Does `musl` conflict/replace `libssp` (the standalone package)
 - `gencat` requires `queue.h`
@@ -18,14 +19,49 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `MUSL_LOCPATH` - Colon-separated list of paths that will be searched for locale definitions. The requested locale name string will used as a filename and searched in each path component. If unset, locale files are not loaded and only the "C" locale is available. This variable is completely ignored in programs invoked setuid, setgid, or with other elevated capabilities
 - musl provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead as they are the modern implementation (this means that `gcc` and `binutils` should be configured with `--enable-initfini-array`)
 - Log messages will be discarded if `/dev/log` is absent
+- musl treats all text as UTF-8, and all non-ASCII characters as first-class; no external locale files or conversion modules are needed
+- musl does not support DNS for non-ASCII domains (IDN); not complete yet but will be supported in the future
+- In the absence of the LANG and LC_* environment variables, POSIX leaves the default locale (used when "" is passed to setlocale) implementation-defined. Under glibc versions at least up through 2.26, this default is "C". musl on the other hand always uses "C.UTF-8" as the default. There has been discussion on the glibc side of possibly adopting the musl behavior here once the "C.UTF-8" locale is an established feature of glibc.
+- musl’s resolver queries nameservers in parallel and accepts whichever response arrives first
+- This can increase network load and is mitigated by only supporting up to three nameservers:
+  - Caching nameserver on localhost (near-zero latency for locally cached results, but typically smallest cache size, and slowest for queries not serviceable from cache)
+  - ISP nameserver (very low latency for cached results, typically moderate cache size, and moderate performance for queries not serviceable from cache)
+  - 8.8.8.8 (somewhat higher latency but tends to have the whole DNS tree cached)
+- `LD_PRELOAD` and `LD_LIBRARY_PATH` are completely ignored in programs that invoke `setuid`, `setgid`, or with other elevated capabilities
+- `musl` recommends building with recent versions of `gcc` (see INSTALL)
+- Linux kernel headers are not required to build `musl`, and might even collide with `musl` headers
+- musl does not implement legacy functions operating on `ucontext_t` (`getcontext`, `setcontext`, `makecontext`, `swapcontext`); no longer part of POSIX, but cooperative multi-tasking applications use them, `ucontext_t` also appears as an argument to sigaction handlers which cannot be used portably
 
 ## References
+- https://git.2f30.org/fortify-headers/
 - https://github.com/AppImage/type2-runtime/issues/116
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://github.com/orgs/chimera-linux/discussions/2480
+- https://github.com/richfelker/musl-cross-make/issues/101
+- https://github.com/richfelker/musl-cross-make/issues/102
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
+- https://git.musl-libc.org/cgit/musl/tree/INSTALL
+- https://git.musl-libc.org/cgit/musl/tree/WHATSNEW
 - https://maskray.me/blog/2021-11-07-init-ctors-init-array
+- https://molluscular.com/
+- https://musl.libc.org/about.html
 - https://musl.libc.org/manual.html
+- https://musl.libc.org/releases.html
+- https://openwall.com/lists/musl/
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
+- https://wiki.debian.org/musl
+- https://wiki.gentoo.org/wiki/Musl
 - https://wiki.gentoo.org/wiki/Musl_porting_notes
+- https://wiki.gentoo.org/wiki/Musl_porting_notes/1.2.4
+- https://wiki.gentoo.org/wiki/Project:Musl
+- https://wiki.musl-libc.org/
+- https://wiki.musl-libc.org/compatibility
+- https://wiki.musl-libc.org/design-concepts
+- https://wiki.musl-libc.org/environment-variables
+- https://wiki.musl-libc.org/faq
+- https://wiki.musl-libc.org/functional-differences-from-glibc
+- https://wiki.musl-libc.org/future-ideas
+- https://wiki.musl-libc.org/guidelines-for-distributions
+- https://wiki.musl-libc.org/open-issues
+- https://wiki.musl-libc.org/roadmap
