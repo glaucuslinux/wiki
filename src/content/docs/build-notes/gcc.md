@@ -6,7 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Disable bootstrap; stage1 is good enough
 - Use a different `libexecdir`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
-- `bootstrap-lto-lean` has to be used with `make profiledbootstrap`
+- `--with-build-config=bootstrap-lto-lean` has to be used with `make profiledbootstrap`
 - `bootstrap-debug-lean` is slower and bigger compared to `bootstrap-debug`
 - `BOOT_CFLAGS`, `BOOT_LDFLAGS` and `--with-boot-ldflags` only make sense when bootstrapping gcc; applies to stages 2 and 3
 - `LD_FOR_TARGET`, `STAGE1_CFLAGS` and `STAGE1_LDFLAGS` apply to stage 1
@@ -53,7 +53,7 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - Alpine sets `libat_cv_have_ifunc=no` before gcc configure; related to libatomic, and Alpaquita are providing ifunc and are not setting this variable
 - Alpine uses `gcc-go` to bootstrap go
 - `-fstack-protector-strong` is the default; no need to lower `ssp-buffer-size` from the default `8` to `4`, but glaucus still does it
-- Sanitizers can be enabled with musl on `x86-64` (according to alpine)
+- Disable `libsanitizer` for `gcc` with musl (only ASan works), and prefer `clang` and `compiler-rt` for sanitizers
 - Do we need to remove `usr/lib/gcc/x86_64-glaucus-linux-musl/$ver/install-tools/` (and `include-fixed/`)?
 - Patching `gcc` to link `libatomic` to everything is not needed on `x86_64` (Alpine enables it for `riscv64`)
 

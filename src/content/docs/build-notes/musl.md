@@ -30,7 +30,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `LD_PRELOAD` and `LD_LIBRARY_PATH` are completely ignored in programs that invoke `setuid`, `setgid`, or with other elevated capabilities
 - `musl` recommends building with recent versions of `gcc` (see INSTALL)
 - Linux kernel headers are not required to build `musl`, and might even collide with `musl` headers
-- musl does not implement legacy functions operating on `ucontext_t` (`getcontext`, `setcontext`, `makecontext`, `swapcontext`); no longer part of POSIX, but cooperative multi-tasking applications use them, `ucontext_t` also appears as an argument to sigaction handlers which cannot be used portably
+- `musl` does not implement legacy functions operating on `ucontext_t` (`getcontext`, `setcontext`, `makecontext`, `swapcontext`); no longer part of POSIX, but cooperative multi-tasking applications use them, `ucontext_t` also appears as an argument to sigaction handlers which cannot be used portably
+- `musl` does not have (or want) NSS; consider `musl-nscd` from pikhq if this functionality is needed
 
 ## References
 - https://git.2f30.org/fortify-headers/
