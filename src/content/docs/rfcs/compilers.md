@@ -55,19 +55,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - wgtcc: https://github.com/wgtdkp/wgtcc
 - cc3: https://github.com/kukrimate/cc3
 
-cpp:
+## Preprocessors
 - fcpp: https://github.com/bagder/fcpp
 - gpp: https://logological.org/gpp
 - mcpp: https://mcpp.sourceforge.net/
 - simplecpp: https://github.com/danmar/simplecpp
 - tinycpp: https://github.com/rofl0r/tinycpp
 - ucpp: https://github.com/lpsantil/ucpp
-
-## Limitations
-- The C version of `b3sum` does not support multithreading:
-  - https://github.com/BLAKE3-team/BLAKE3/issues/184
-  - https://github.com/BLAKE3-team/BLAKE3/issues/229
-
-## Others
-- CMake: https://github.com/BLAKE3-team/BLAKE3/blob/master/c/CMakeLists.txt
-- Make: https://github.com/michaelforney/b3sum/blob/master/Makefile
