@@ -23,11 +23,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Compilers that can't build `grep`
 ### Active
+- c2m (MIR): https://github.com/vnmakarov/mir/tree/master/c2mir
 - cake: https://github.com/thradams/cake
 - cparser (libfirm): https://pp.ipd.kit.edu/firm/index.html
 - cuik: https://github.com/RealNeGate/Cuik
 - cwerg: https://github.com/robertmuth/Cwerg
-- neatcc: https://github.com/aligrudi/neatcc
 - scc (QBE): https://git.simple-cc.org/scc/
 - ucc:
   - https://github.com/bobrippling/ucc-c-compiler
@@ -43,6 +43,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - https://github.com/rui314/chibicc
   - https://briancallahan.net/blog/20220629.html
   - https://sr.ht/~ach/minias/
+- neatcc: https://github.com/aligrudi/neatcc
 - ucc162.3:
   - https://github.com/sheisc/ucc162.3
   - part of a book "The Dissection of C Compiler"
