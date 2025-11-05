@@ -10,7 +10,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Compilers that can build `grep`
 - clang
-- gcc
 - cproc (QBE):
   - https://git.sr.ht/~mcf/cproc
   - https://man.sr.ht/~mcf/cproc/doc/software.md
@@ -25,8 +24,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Compilers that can't build `grep`
 ### Active
 - cake: https://github.com/thradams/cake
-- cuik: https://github.com/RealNeGate/Cuik
 - cparser (libfirm): https://pp.ipd.kit.edu/firm/index.html
+- cuik: https://github.com/RealNeGate/Cuik
+- cwerg: https://github.com/robertmuth/Cwerg
 - neatcc: https://github.com/aligrudi/neatcc
 - scc (QBE): https://git.simple-cc.org/scc/
 - ucc:

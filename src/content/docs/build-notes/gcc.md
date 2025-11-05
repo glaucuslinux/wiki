@@ -56,6 +56,7 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - Disable `libsanitizer` for `gcc` with musl (only ASan works), and prefer `clang` and `compiler-rt` for sanitizers
 - Do we need to remove `usr/lib/gcc/x86_64-glaucus-linux-musl/$ver/install-tools/` (and `include-fixed/`)?
 - Patching `gcc` to link `libatomic` to everything is not needed on `x86_64` (Alpine enables it for `riscv64`)
+- If you are not building a C library in the same source tree as GCC, you should also provide the target libraries and headers before configuring GCC, specifying the directories with --with-sysroot or --with-headers and --with-libs. Many targets also require “start files” such as crt0.o and crtn.o which are linked into each executable. There may be several alternatives for crt0.o, for use with profiling or other compilation options. Check your target’s definition of STARTFILE_SPEC to find out what start files it uses.
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
