@@ -20,6 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - tcc:
   - https://github.com/TinyCC/tinycc
   - https://repo.or.cz/w/tinycc.git
+  - provides both an assembler and a linker
 
 ## Compilers that can't build `grep`
 ### Active
