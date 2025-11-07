@@ -5,7 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Current `CFLAGS`:
 ```c
--pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -mfpmath=sse -mabi=sysv -malign-data=cacheline -mtls-dialect=gnu2
+-pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -malign-data=cacheline -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS`:
@@ -121,6 +121,9 @@ https://reviews.llvm.org/D4565
 
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life
+
+### `-mfpmath=sse -mabi=sysv`
+- Automatically detected on modern 64-bit hosts and Linux targets
 
 ### Disable LTO
 - Remove `-flto=auto -flto-compression-level=3 -fuse-linker-plugin `

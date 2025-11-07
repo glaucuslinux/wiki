@@ -57,6 +57,13 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - Do we need to remove `usr/lib/gcc/x86_64-glaucus-linux-musl/$ver/install-tools/` (and `include-fixed/`)?
 - Patching `gcc` to link `libatomic` to everything is not needed on `x86_64` (Alpine enables it for `riscv64`)
 - If you are not building a C library in the same source tree as GCC, you should also provide the target libraries and headers before configuring GCC, specifying the directories with --with-sysroot or --with-headers and --with-libs. Many targets also require “start files” such as crt0.o and crtn.o which are linked into each executable. There may be several alternatives for crt0.o, for use with profiling or other compilation options. Check your target’s definition of STARTFILE_SPEC to find out what start files it uses.
+- No need to perform this maneuver from LFS thanks to our toolchain design:
+```
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+  `dirname $($target-gcc -print-libgcc-file-name)`/include/limits.h
+```
+- `--enable-gnu-indirect-function` (ifunc) is only available for glibc
+- For bootstrap builds we hardcode `sysroot` because it is split from the `toolchain` and located in its own directory outside of the `toolchain` directory; this does not change with `build-sysroot` because `build-sysroot` controls where gcc finds its libaries, headers and stuff during its build, while `sysroot` controls where it finds them after the build when building stuff, in a sense this makes the toolchain not so relocatable (well it will still look under `sysroot` (which is `cross` in our condition) for stuff regardless of what the `toolchain` directory is named or located, meaning if we moved `glaucus/toolchain` over to `/tmp/someOtherDir` it will still look for stuff under `glaucus/cross` wherever that is, so that's a minor win), but it is not meant to be, this is because we want to keep `cross` (basically our `sysroot`) separate from the `toolchain` so we can populate it later on with stage 2 stuff and turn it into a bootable image; this is not `mussel` after all
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
