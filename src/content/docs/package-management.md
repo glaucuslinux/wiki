@@ -135,6 +135,9 @@ foo=bar make
 - All text files must end with a newline (POSIX)
 - Prefer strip targets `install-strip` (and `install/strip` for `cmake`) over manual strip
 - For developers, do not create fifo files when in `cross` stage as they can't be copied
+- `DESTDIR` should be:
+  - passed as an argument to `make DESTDIR="$dir" install`
+  - passed as an environment variable to `samu/muon`
 - Consider removing the following files if unnecessary:
   - .a (static libraries whenever possible)
   - .alias
