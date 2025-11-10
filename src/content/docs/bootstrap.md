@@ -80,7 +80,14 @@ sudo ln -fs $PWD/tmp /var/tmp/rad
 ```
 - Provide missing stubs **in case your host system does not provide them** (remove `texinfo`):
 ```sh
-for i in a2x asciidoc gtkdocize help2man ldconfig makeinfo po4a texi2dvi; do
+for i in \
+a2x asciidoc \
+gtkdocize \
+help2man \
+ldconfig \
+makeinfo \
+po4a \
+texi2dvi texi2pdf; do
   sudo cp -fPp core/musl/files/true /usr/bin/$i
 done
 ```
