@@ -3,7 +3,7 @@ title: kmod
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Depends on `gtkdocize`
+- Depends on `gtkdocize`; chimera has a patch
 - Build system no longer uses autotools, and has switched to `meson` instead
 - `depmod.d` and `modprobe.d` are now created by default with the new `meson` build system
 - Disable `logging` support?
