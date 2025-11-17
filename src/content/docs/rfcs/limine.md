@@ -40,11 +40,11 @@ rsync -aHAXx cross/ /mnt/glaucus
 
 mkdir -p /mnt/glaucus/boot
 cp -af /boot/vmlinuz-linux-cachyos /mnt/glaucus/boot/vmlinuz
-booster build --force --compression=zstd --config=/var/lib/rad/clusters/cerata/booster/booster.yaml --universal --strip /mnt/glaucus/boot/initramfs
+booster build --force --compression=zstd --config=/var/lib/rad/repo/core/booster/files/booster.yaml --universal --strip /mnt/glaucus/boot/initramfs
 
 mkdir -p /mnt/glaucus/boot/limine
 
-cp -af /home/firasuke/Downloads/Git/glaucus/cerata/limine/limine.cfg.img /mnt/glaucus/boot/limine/limine.cfg
+cp -af /home/firasuke/Downloads/Git/glaucus/core/limine/files/limine.cfg.img /mnt/glaucus/boot/limine/limine.cfg
 cp -af /usr/share/limine/limine-bios.sys /mnt/glaucus/boot/limine
 
 limine bios-install glaucus.img
@@ -61,10 +61,12 @@ chown firasuke:firasuke glaucus.img
 ```
 
 ## References
+- https://bkhome.org/news/202312/limine-v6-has-dropped-support-for-ext4.html
 - https://github.com/eweOS/packages/blob/limine/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/CONFIG.md
 - https://github.com/limine-bootloader/limine/blob/trunk/PHILOSOPHY.md
 - https://github.com/limine-bootloader/limine/blob/trunk/test/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/USAGE.md
+- https://github.com/OS-1337/OS1337/issues/10
 - https://limine-bootloader.org/
 - https://wiki.archlinux.org/title/Limine

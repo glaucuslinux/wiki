@@ -9,10 +9,8 @@ glaucus uses the filesystem tree as its database to store package information an
 ### The `info` file
 - An `info` file is a TOML file that stores package information (aka metadata)
 - `info` files are also valid POSIX shell scripts due to the way they are written; can be sourced by `.`
-- To create a new package, create a directory with the package name under a cluster of yours, then create an `info` file inside that directory with the mandatory variable `nom` inside; `nom` should be equal to the package directory's name
+- To create a new package, create a directory with the package name under a repository (`core` or `extra`), then create an `info` file
 - The following is a list of all the variables supported by `info` files:
-  - `nom`: package name, **mandatory**
-    - Do not put version numbers in `nom`
   - `ver`: package version number, or commit number if `url` is a git repository
   - `url`: package source url
     - Prefer `https` over `http` and `ftp`

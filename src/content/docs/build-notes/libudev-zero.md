@@ -4,6 +4,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - There is no test suite
+- Might have to add the following to `/etc/mdev.conf`:
+```
+SUBSYSTEM=drm;.*   root:video 660 *libudev-zero-helper
+SUBSYSTEM=input;.* root:input 660 *libudev-zero-helper
+```
 
 ## References
 - https://github.com/illiliti/libudev-zero/pull/69

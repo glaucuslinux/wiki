@@ -61,7 +61,7 @@ For further reading:
 - w, getty, tmux, libutempter, shadow, util-linux, procps-ng all use utmp/utmpx (For utmps)
 
 ## DEPRECATE UTMP, UTMPX, UTMPS, WTMP, BTMP AND LASTLOG
-- https://github.com/glaucuslinux/cerata/commit/2173b4c9944027ba69dc5b31b22b6955307c112a
+- https://github.com/glaucuslinux/core/commit/2173b4c9944027ba69dc5b31b22b6955307c112a
 - https://www.tenable.com/audits/items/CIS_Ubuntu_12.04_LTS_Server_v1.0.0_L2.audit:aba64ea9780bd411ca0074d3730917d8
 - https://github.com/util-linux/util-linux/issues/2088
 - https://github.com/thkukuk/utmpx/blob/main/Y2038.md

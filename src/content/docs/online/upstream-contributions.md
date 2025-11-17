@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## AerynOS
 - Pull Request #711: [`pkgconf`: update canonical locations](https://github.com/AerynOS/recipes/pull/711)
 - Pull Request #1122: [`binutils`: Fix typo in `gprofng` summary and description](https://github.com/AerynOS/recipes/pull/1122)
+- Pull Request #1160: [`libcap`: fix wrong license](https://github.com/AerynOS/recipes/pull/1160)
 
 ## Alpine
 - [Alpine Linux 3.19.0 Contributor](https://alpinelinux.org/posts/Alpine-3.19.0-released.html)
@@ -202,6 +203,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Commit 1e117ad: [docs: updated changelog](https://github.com/thindil/nimalyzer/commit/1e117adaab89e557f7d7701a84ff09a8d6b1d584)
 - Ticket c8c1aff8e5: [Fix typo in configuration files](https://www.laeran.pl.eu.org/repositories/nimalyzer/tktview/c8c1aff8e5)
 - Ticket cac8a77a3b: [search complexity lists below or equal to the selected value](https://www.laeran.pl.eu.org/repositories/nimalyzer/tktview/cac8a77a3b)
+
+## nimony
+- Pull Request #1548: [Fix some silly typos in Nimony's documentation](https://github.com/nim-lang/nimony/pull/1548)
 
 ## noname linux
 - Issue #4: [What's this musl patch for?](https://github.com/xhebox/noname-linux/issues/4)

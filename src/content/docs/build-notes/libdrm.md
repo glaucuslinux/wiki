@@ -4,4 +4,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Depends on `libpciaccess` for intel support
-- Depends on `libudev-zero` for udev support?
+- Depends on `libudev-zero` for udev support? (do we need to disable `udev` support with `mdevd`?)

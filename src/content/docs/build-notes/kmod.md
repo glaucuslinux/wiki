@@ -9,3 +9,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Disable `logging` support?
 - `--without-bashcompletiondir` creates a directory called `crossno` where completion files are installed (a bug)
 - Test suite requires raw sanitized kernel headers
+- Do we need `-Ddlopen=all` (or `-Ddlopen=xz,zlib` since `zstd` is the default on glaucus)
