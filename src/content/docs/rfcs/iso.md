@@ -170,6 +170,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://codeberg.org/emmett1/mkinitrd
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software
 - https://fedoraproject.org/wiki/LiveOS_image
+- https://forums.gentoo.org/viewtopic-t-1110764-highlight-.html
 - https://gitea.artixlinux.org/artix/iso-profiles
 - https://github.com/archlinux/archiso
 - https://github.com/chimera-linux/chimera-live

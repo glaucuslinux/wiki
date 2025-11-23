@@ -135,6 +135,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Issue #58: [NetBSD libxdev](https://github.com/illiliti/libudev-zero/issues/58)
 - Pull Request #5: [`PREFIX` has to be specified twice](https://github.com/illiliti/libudev-zero/pull/5)
 
+## libxkbcommon
+- Issue #930: [Consider supporting `byacc` again](https://github.com/xkbcommon/libxkbcommon/issues/930)
+
 ## limine
 - Commit 13ae2fb: [misc: xorriso: Create Joliet info and hfsplus for ISOHYBRIDs. Fixes #372](https://github.com/limine-bootloader/limine/commit/13ae2fb9648fe6e00272269d4ba3ff4fac0c97e1)
 - Pull Request #372: [Support booting on usb](https://github.com/limine-bootloader/limine/pull/372)

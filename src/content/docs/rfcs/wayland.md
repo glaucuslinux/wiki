@@ -111,9 +111,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - No `libX` under `/usr/lib`
   - `pidof Xorg` returns nothing
   - `pmap $(pidof Xorg) | grep _drv` also returns nothing
+- https://github.com/cevdetta/waypure-pkgbuild
 - https://github.com/sdsddsd1/mywayland
 - https://git.sr.ht/~kqz/repo
 - https://hacktivis.me/notes/pure-wayland
+- https://tilde.team/~kiedtl/blog/wayland/
 
 ## References
 - FreeBSD has a lot of wayland ports
