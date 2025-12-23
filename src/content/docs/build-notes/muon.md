@@ -6,13 +6,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does it depend on `libedit` with `bestline`?
 - muon defaults to `static` for `default_library` unlike `meson` which defaults to `shared`
 - Depends on `meson` or itself to cross compile itself on a glibc host
-- Does not support `cross-file`
+- Supports `--cross-file` using `muon setup -p cross:<file>`; replace `meson` in `build-cross` (e.g. `kmod`)
 - A circular dependency between muon and itself?
 - muon replaces meson, but resulting binaries are not stripped?
 - Alpine uses the following for `abuild-muon`:
 ```
 exec muon meson setup \
-  -Dauto_features=disabled \
   -Db_staticpic=true \
   -Dpython.bytecompile=0 \
   -Dwerror=false \
@@ -26,3 +25,4 @@ exec muon meson setup \
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/16133
 - https://git.sr.ht/~lattis/muon/tree/master/item/src/meson_opts.c
 - https://git.sr.ht/~lattis/muon/tree/master/item/src/script/options/global.meson
+- https://todo.sr.ht/~lattis/muon/107

@@ -3,7 +3,7 @@ title: libarchive
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Depdends on `queue.h`
+- Depdends on `queue.h`; provides its own `unzip/la_queue.h`
 - `--without-xml2` disables `libxml2` (glaucus uses `expat` instead)
 - `nettle` is disabled by default
 - glaucus uses `cpio` from `toybox`

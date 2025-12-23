@@ -35,10 +35,12 @@ sed -i 's/__APPLE__/LIBEDIT_SUPPORT/g' Modules/readline.c
 sed -i 's/HAVE_SETLOCALE/HAVE_SETLOCALE) \&\& !defined(LIBEDIT_SUPPORT/g' Modules/readline.c
 sed -i 's@return readline@return feedline@' configure
 ```
+- Support for `libressl` was dropped
 
 ## References
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
 - https://packaging.python.org/en/latest/specifications/externally-managed-environments/
+- https://peps.python.org/pep-0644/
 - https://peps.python.org/pep-0668/
 - https://rfc.archlinux.page/0010-adopt-pep517-tooling/
 - https://rfc.archlinux.page/0020-sources-for-python-packaging/

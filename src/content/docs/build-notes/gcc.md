@@ -62,7 +62,7 @@ which means that the first `@-grep` is working, while the latter two are not cau
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($target-gcc -print-libgcc-file-name)`/include/limits.h
 ```
-- `--enable-gnu-indirect-function` (ifunc) is only available for glibc
+- `--enable-gnu-indirect-function` (ifunc) is only available for glibc and is enabled by default on glibc systems; it won't hurt to explicitly disable it on musl
 - For bootstrap builds we hardcode `sysroot` because it is split from the `toolchain` and located in its own directory outside of the `toolchain` directory; this does not change with `build-sysroot` because `build-sysroot` controls where gcc finds its libaries, headers and stuff during its build, while `sysroot` controls where it finds them after the build when building stuff, in a sense this makes the toolchain not so relocatable (well it will still look under `sysroot` (which is `cross` in our condition) for stuff regardless of what the `toolchain` directory is named or located, meaning if we moved `glaucus/toolchain` over to `/tmp/someOtherDir` it will still look for stuff under `glaucus/cross` wherever that is, so that's a minor win), but it is not meant to be, this is because we want to keep `cross` (basically our `sysroot`) separate from the `toolchain` so we can populate it later on with stage 2 stuff and turn it into a bootable image; this is not `mussel` after all
 
 ## References

@@ -111,6 +111,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - No `libX` under `/usr/lib`
   - `pidof Xorg` returns nothing
   - `pmap $(pidof Xorg) | grep _drv` also returns nothing
+- https://forums.freebsd.org/threads/example-tutorial-pure-wayland-desktop.85930/
 - https://github.com/cevdetta/waypure-pkgbuild
 - https://github.com/sdsddsd1/mywayland
 - https://git.sr.ht/~kqz/repo
