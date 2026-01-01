@@ -3,6 +3,7 @@ title: mdevd
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- `mdevd` deprecates `s6-uevent-listener` and `s6-uevent-spawner`
 - Check alpine's patches
 - Start `mdevd` with `-O4`; this will make the daemon rebroadcast kernel uevents to `libudev-zero`
 - Readiness `-D` only works when `mdevd` is being called by `s6` and not manually in an `initramfs`

@@ -36,6 +36,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Merge Request #81217: [main/`fontconfig`: `src/fcobjhash.h` does not exist and removing `src/fcobjshash.gperf.h` breaks build](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81217)
 - Merge Request #81347: [main/`iproute2`: do not install `libnetlink`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81347)
 - Merge Request #81846: [community/`zlib-ng`: `WITH_UNALIGNED` no longer exists](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81846)
+- Merge Request #95079: [main/`pciutils`: use the correct SPDX identifier](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/95079)
+- Merge Request #95151: [main/`spirv-headers`: use the correct SPDX identifier](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/95151)
 
 ## Arch
 - Bug #75038: [`pciutils`: `update-pciids` is being installed](https://bugs.archlinux.org/task/75038)
@@ -185,6 +187,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## musl wiki
 - Pull Request #47: [Fix a typo in `ld-musl-$(ARCH).path` path](https://github.com/somasis/musl-wiki/pull/47)
+
+## neatvi
+- Pull Request #94: [Basic arrow keys support](https://github.com/aligrudi/neatvi/pull/94)
 
 ## NetBSD
 - Bug #58823: [`wgetscrreg` is not defined](https://mail-index.netbsd.org/netbsd-bugs/2024/11/10/msg086293.html)

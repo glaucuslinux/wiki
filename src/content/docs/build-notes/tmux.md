@@ -9,3 +9,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Depends on `libevent` and `netbsd-curses`
 - Check if `--enable-utempter` works with `utmps`
 - Check `/usr/share/doc/tmux/examples/tmux.conf` and install `tmux.conf`
+- Might backport some patches for `3.6a` to fix borders and colors (e.g. Gentoo)
+- Should we explicitly pass `--disable-cgroups` as it requires `systemd`? Or will `configure` automatically detect that systemd is not supported?

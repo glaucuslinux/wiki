@@ -4,7 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Do not depend on `logind` for `libseat`
-- Does it depend on `basu`?
+- Does it depend on `basu` if we're not relying on `logind`/`systemd`?
 - Check if we need a service file?
 - Do we need `chmod u+s` (suid) on `bin/seatd-launch`?
 - Group name `video` vs `seat` (prefer the former as it already exists)

@@ -11,8 +11,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Disable `logind` because `shadow` switched to `systemd` to provide utmp-like functionality
 - Disable `su` because the user should use `sudo` or `doas` to escalate privileges and not `su` directly; also recommended by the Arch wiki Security page
 - shadow advises against using their `su` and recommends using `util-linux`'s `su` instead (which requires PAM)
+- Do we need to pass `pamddir= ` to `make` (to prevent installation of shipped PAM configuration files to `/etc/pam.d` as in BLFS) (I don't think it matters as BLFS does not use `--without-libpam` which means they want PAM, but don't want the shipped configurations and are relying on their own configurations..)
 - Prefer `shadow` binaries over `toybox` or `util-linux` similar to Alpine and Arch and unlike LFS
-- `id` and `groups` from shadow are deprecated as of 4.17.0
+- `id` and `groups` from shadow have been removed as of 4.17.0
 - Enable `fcaps` for better security in `native` (requires `root`)
 - Enable `yescrypt` for better password hashing scalability
 - The default value for `--with-group-name-max-length` is `32`
