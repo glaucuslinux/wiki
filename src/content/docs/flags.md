@@ -196,6 +196,14 @@ https://reviews.llvm.org/D4565
 - Using `-z,separate-code` is good for security
 - Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
 - Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB
+> Default program headers:
+With traditional -z noseparate-code, GNU ld defaults to a RX/R/RW program header layout.
+With -z separate-code (default on Linux/x86 from binutils 2.31 onwards), GNU ld defaults to a R/RX/R/RW program header layout.
+ld.lld defaults to R/RX/RW(RELRO)/RW(non-RELRO). With --rosegment, ld.lld uses RX/RW(RELRO)/RW(non-RELRO).
+Placing all R before RX is preferable because it can save one program header and reduce alignment costs.
+ld.lld's split of RW saves one maxpagesize alignment and can make the linked image smaller.
+This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment".
+- https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html
