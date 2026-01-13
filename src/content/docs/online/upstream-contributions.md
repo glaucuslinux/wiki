@@ -37,7 +37,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Merge Request #81347: [main/`iproute2`: do not install `libnetlink`](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81347)
 - Merge Request #81846: [community/`zlib-ng`: `WITH_UNALIGNED` no longer exists](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/81846)
 - Merge Request #95079: [main/`pciutils`: use the correct SPDX identifier](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/95079)
-- Merge Request #95151: [main/`spirv-headers`: use the correct SPDX identifier](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/95151)
+- Merge Request #95614: [main/`spirv-headers`: use the correct SPDX identifier](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/95614)
 
 ## Arch
 - Bug #75038: [`pciutils`: `update-pciids` is being installed](https://bugs.archlinux.org/task/75038)

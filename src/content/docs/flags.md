@@ -5,7 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Current `CFLAGS`:
 ```c
--pipe -O2 -fgraphite-identity -floop-nest-optimize -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -malign-data=cacheline -mtls-dialect=gnu2
+-pipe -O2 -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -malign-data=cacheline -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS`:
@@ -28,9 +28,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Available when using `zstd` as a backend for LTO as it results in smaller binaries
 ### `-fgraphite-identity`
 - Graphite is not well maintained in `gcc` and will likely end up being removed entirely
-- Most of its developers have moved to Polly in LLVM/Clang?
+- Most of its developers have moved to Polly in LLVM/Clang
+- Graphite cannot effectively optimize compared to the baseline gcc
 - The optimizations it was supposed to make are just being implemented via other methods
 - It's not necessarily buggy, but its benefits are rather doubtful
+- https://dl.acm.org/doi/full/10.1145/3674735
 ### `-floop-nest-optimize`
 - Required for `isl` to work
 - Used to be known as `-floop-optimize-isl`
@@ -39,13 +41,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Still considered experimental?
 ### `-fno-plt`
 - Only applies to shared libraries and when dynamic linking
-- Recommended to enable it on 64-bit systems
-- Alpine, Arch and OpenWRT are using it by default
-- Incompatible with lazy linking which should not be relevant with `musl` as it does not support lazy linking
-- Removes the ability to `prelink`; which is probably a bad idea nowadays
+- Arch and OpenWRT are using it by default
+- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; also `musl` does not have the greatest support for lazy binding anyways
+- Removes the ability to `prelink`; `prelink`ing is bad for ASLR
+- https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
 - https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
+- https://github.com/InBetweenNames/gentooLTO/issues/302
 - https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
 - https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
+- https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
 ### `-fuse-linker-plugin`
 - Enabled by default if `gcc` is built with `lto` enabled
 - There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
@@ -86,7 +90,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### `-fira-loop-pressure`
 - Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it sometimes produces slower code: https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
 ### `-fno-semantic-interposition`
-- Makes code built with `-fPIC` and LTO faster, and improves performance in general, but breaks `LD_PRELOAD` which in turn breaks allocators like `mimalloc`
+- Makes code built with `-fPIC` and LTO faster, and improves performance in general; might cause subtle ABI breakages
+- Breaks `LD_PRELOAD` which in turn breaks custom memory allocators like `mimalloc`
 - Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang. This option is also only for shared libraries/dynamic linking and breaks static libraries
 ### `-floop-parallelize-all`
 - Does not get activated unless `-ftree-parallelize-loops=4` is used; where a number is specified, and it is not a good idea to use `-floop-parallelize-all` because it does not check if it is profitable to parallelize a loop or not, also it requires OMP (OpenMP and libgomp)
@@ -105,11 +110,16 @@ https://reviews.llvm.org/D4565
 - Has no use when `-falign-functions` is not used
 ### `-ftracer` and `-funroll-loops`
 - Enabled after decisions by PGO and shouldn't be manually used everywhere; may cause regressions and produce bigger code that may or may not be fast
-### `-ffunction-sections` and `-fdata-sections`
-- According to GCC's optimization manual, these options affect code generation, and should only be used when there are significant benefits from doing so
-- They make the assembler and linker create larger and slower objects and executables
-- Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time
-- An example of such an optimization is relaxing calls to short call instructions
+### `-ffunction-sections`, `-fdata-sections` and `-Wl,--gc-sections`
+- These options affect code generation, and should only be used when there are significant benefits from doing so
+- They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files) and sometimes even executables
+- Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
+- Might cause subtle breakages by mistakenly removing necessary sections
+- https://elinux.org/images/2/2d/ELC2010-gc-sections_Denys_Vlasenko.pdf
+- https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
+- https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
+- https://github.com/android/ndk/issues/748
+- https://lists.freebsd.org/pipermail/freebsd-current/2013-September/044561.html
 ### `-fvisibility-inlines-hidden`
 - Breaks a lot of packages (particularly C++ packages), and many suggest disabling it to allow `libstdc++` to detect its symbols
 - Its behavior is already covered by `-fvisibility=hidden`
@@ -118,12 +128,30 @@ https://reviews.llvm.org/D4565
 - https://forums.gentoo.org/viewtopic-p-8604744.html?sid=eb649881fb22afe89b2160b9dd4f89f9
 - https://gcc.gnu.org/wiki/Visibility
 - https://stackoverflow.com/questions/59469822/how-fvisibility-inlines-hidden-differs-from-fvisibility-hidden-in-gcc
+### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
+- It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
+- It is better to have `gcc` configured with `--enable-default-pie` so that it knows when to pass these options
+- These options do not contradict with `-fno-plt`
+### `-fno-var-tracking`
+- Speeds up compilation time when `-g` is used
+- Does not make sense when `-g` is not used
 
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life
 
 ### `-mfpmath=sse -mabi=sysv`
 - Automatically detected on modern 64-bit hosts and Linux targets
+
+### `-malign-data=abi`
+- `compat` is the default value
+- `cacheline` is bloat, but might increase performance in some cases
+- https://github.com/InBetweenNames/gentooLTO/issues/164
+
+### `-mtls-dialect=gnu2`
+- `musl` supports `gnu2` for `x86-64` as of `1.1.3`
+
+### `-momit-leaf-frame-pointer`
+- Redundant when `-fomit-frame-pointer` is used (which is the default with `-O2` and `-Os`)
 
 ### Disable LTO
 - Remove `-flto=auto -flto-compression-level=3 -fuse-linker-plugin `
@@ -144,6 +172,30 @@ https://reviews.llvm.org/D4565
 ### `-Wl,-O1`
 - No higher value
 - Ignored by `mold`
+### `--compress-debug-sections=zstd`
+- It does not make sense to compress "nonexistant" debug sections as we're stripping everything with `-s`
+### `--no-keep-memory` and `--reduce-memory-overheads`
+- Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
+### `-x, --discard-all` and `-X, --discard-locals`
+- `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
+- for `-x` and `-X` to work, `.symtab` needs to exist, which means using them alongside `-s` is redundant
+- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
+### `--relax`
+- Performs some optimizations (instruction relaxation) for certain targets
+- `gas` from `binutils` has the configure option `--enable-x86-relax-relocations` that is on by default; unlike `tcc`'s internal assembler which does not support instruction relaxation for understandable reasons
+- `gcc` also has `-mrelax-cmpxchg-loop` for x86
+- This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
+- https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
+- https://reviews.llvm.org/D100835
+- https://reviews.llvm.org/D113615
+- https://reviews.llvm.org/D157020
+- https://reviews.llvm.org/D75203
+- https://sourceware.org/bugzilla/show_bug.cgi?id=27837
+- https://www.sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
+### `-z,separate-code` and `--rosegment`
+- Using `-z,separate-code` is good for security
+- Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
+- Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html

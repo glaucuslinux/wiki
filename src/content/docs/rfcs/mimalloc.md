@@ -4,11 +4,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Segfaults when used in `LD_PRELOAD`
+- v2 vs v3.1.x vs v3.0.x
 - Depends on `cmake`
 - `jemalloc`, `mimalloc`, and `rpmalloc` are "modern allocators"
 - `mimalloc` is more than 2.5× faster than `tcmalloc` and `jemalloc`
-- `musl` allocator `malloc-ng` is based on `hardened_malloc`
-- All allocators should be secure; having a secure version does not make sense
+- `isoalloc` uses a global lock
+- `jemalloc` is the default allocator for FreeBSD
+- Haiku is considering both `rpmalloc` and OpenBSD `malloc` for its libc malloc
+- `musl` allocator `malloc-ng` is based on `hardened_malloc` and OpenBSD `malloc`
+- All allocators should be secure by default; having a secure version does not make sense
 - Alpaquita, Chimera, eweOS, OpenMandriva and Void all have experimental `mimalloc` support
 
 ## References
@@ -19,6 +23,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/dolthub/musl/commit/8aec69db0851e6e197e69b8dca8da3344190f6dd
 - https://github.com/microsoft/mimalloc/issues/923
 - https://github.com/OpenMandrivaAssociation/musl
+- https://github.com/zelang-dev/rpmalloc
 - https://github.com/OpenMandrivaAssociation/musl/blob/master/import-mimalloc.sh
 - https://github.com/OpenMandrivaAssociation/musl/blob/master/musl-1.2.3-mimalloc-glue.patch
 - https://github.com/OpenMandrivaAssociation/musl/blob/master/musl.spec

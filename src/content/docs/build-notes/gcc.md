@@ -64,6 +64,16 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
 ```
 - `--enable-gnu-indirect-function` (ifunc) is only available for glibc and is enabled by default on glibc systems; it won't hurt to explicitly disable it on musl
 - For bootstrap builds we hardcode `sysroot` because it is split from the `toolchain` and located in its own directory outside of the `toolchain` directory; this does not change with `build-sysroot` because `build-sysroot` controls where gcc finds its libaries, headers and stuff during its build, while `sysroot` controls where it finds them after the build when building stuff, in a sense this makes the toolchain not so relocatable (well it will still look under `sysroot` (which is `cross` in our condition) for stuff regardless of what the `toolchain` directory is named or located, meaning if we moved `glaucus/toolchain` over to `/tmp/someOtherDir` it will still look for stuff under `glaucus/cross` wherever that is, so that's a minor win), but it is not meant to be, this is because we want to keep `cross` (basically our `sysroot`) separate from the `toolchain` so we can populate it later on with stage 2 stuff and turn it into a bootable image; this is not `mussel` after all
+- `--with-libstdcxx-lock-policy=atomic` uses less memory and is simpler than `mutex`
+- `--enable-linker-build-id` is `off` by default
+- Disable transactional memory (Intel TSX) `--disable-tm-clone-registry` as it is obsolete nowadays (see `-fgnu-tm`)
+- `-Qn` is an old obsolete synonym for `-fno-ident`
+- `-mmusl` is the default on `*-*-linux-*musl*` targets
+- `-fomit-frame-pointer` is used by default with `-Os` (and `-O2`)
+- From `ld` manual:
+```
+Note that the location of the compiler originated plugins is different from the place where the ar, nm and ranlib programs search for their plugins. In order for those commands to make use of a compiler based plugin it must first be copied into the ${libdir}/bfd-plugins directory. All gcc based linker plugins are backward compatible, so it is sufficient to just copy in the newest one.
+```
 
 ## References
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162

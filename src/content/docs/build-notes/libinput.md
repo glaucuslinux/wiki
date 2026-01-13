@@ -7,6 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `-Dzshcompletiondir=no` disables the completion dir
 - How is `libopeninput` different from `libinput`?
 - Do we need to explicitly specify `-Dudev-dir=/usr/lib/udev`?
+- Explicitly specify whether we need Lua bindings or not instead of relying on `auto`
 
 ## References
 - https://github.com/sizeofvoid/libopeninput

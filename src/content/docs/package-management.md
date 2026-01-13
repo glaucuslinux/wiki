@@ -123,6 +123,7 @@ foo=bar make
 - Report packages without a test suite
 - Report failing tests
 - Try `VERBOSE=1 V=1` for `make check`
+- Try `ulimit -n 4096` before `make check`
 - Prefer `make -k check` to keep going until all tests are checked
 - If tests fail in parallel, try `-j1`
 - Compare failing tests with Alpine and LFS

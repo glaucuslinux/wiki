@@ -14,6 +14,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do we need to pass `pamddir= ` to `make` (to prevent installation of shipped PAM configuration files to `/etc/pam.d` as in BLFS) (I don't think it matters as BLFS does not use `--without-libpam` which means they want PAM, but don't want the shipped configurations and are relying on their own configurations..)
 - Prefer `shadow` binaries over `toybox` or `util-linux` similar to Alpine and Arch and unlike LFS
 - `id` and `groups` from shadow have been removed as of 4.17.0
+- `logoutd` has been scheduled for removal
 - Enable `fcaps` for better security in `native` (requires `root`)
 - Enable `yescrypt` for better password hashing scalability
 - The default value for `--with-group-name-max-length` is `32`

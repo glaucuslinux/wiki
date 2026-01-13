@@ -12,3 +12,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://www.youtube.com/watch?v=n1uaoJyBwHk
+- https://gitweb.gentoo.org/repo/proj/libressl.git/log/
