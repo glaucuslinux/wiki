@@ -115,7 +115,6 @@ https://reviews.llvm.org/D4565
 - They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files) and sometimes even executables
 - Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
 - Might cause subtle breakages by mistakenly removing necessary sections
-- https://elinux.org/images/2/2d/ELC2010-gc-sections_Denys_Vlasenko.pdf
 - https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
 - https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
 - https://github.com/android/ndk/issues/748
@@ -179,12 +178,15 @@ https://reviews.llvm.org/D4565
 ### `-x, --discard-all` and `-X, --discard-locals`
 - `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
 - for `-x` and `-X` to work, `.symtab` needs to exist, which means using them alongside `-s` is redundant
+- `-X` is the default behavior for gnu ld `ld --help`
 - https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 ### `--relax`
 - Performs some optimizations (instruction relaxation) for certain targets
 - `gas` from `binutils` has the configure option `--enable-x86-relax-relocations` that is on by default; unlike `tcc`'s internal assembler which does not support instruction relaxation for understandable reasons
 - `gcc` also has `-mrelax-cmpxchg-loop` for x86
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
+- `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
+ - `mold` uses `--relax` by default
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
 - https://reviews.llvm.org/D100835
 - https://reviews.llvm.org/D113615
@@ -195,7 +197,7 @@ https://reviews.llvm.org/D4565
 ### `-z,separate-code` and `--rosegment`
 - Using `-z,separate-code` is good for security
 - Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
-- Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB
+- Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB (for better huge page support)
 > Default program headers:
 With traditional -z noseparate-code, GNU ld defaults to a RX/R/RW program header layout.
 With -z separate-code (default on Linux/x86 from binutils 2.31 onwards), GNU ld defaults to a R/RX/R/RW program header layout.
@@ -203,7 +205,16 @@ ld.lld defaults to R/RX/RW(RELRO)/RW(non-RELRO). With --rosegment, ld.lld uses R
 Placing all R before RX is preferable because it can save one program header and reduce alignment costs.
 ld.lld's split of RW saves one maxpagesize alignment and can make the linked image smaller.
 This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment".
+- If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
+- `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
+- AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
+- In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
 - https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
+- https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
+### `--sort-common`
+- Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
+- Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
+- https://maskray.me/blog/2022-02-06-all-about-common-symbols
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html

@@ -3,7 +3,7 @@ title: Default Software
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- [`aws-lc`](https://github.com/aws/aws-lc): TLS library
+- [`libressl`](https://libressl.org/): TLS library
 - [`bc-gh`](https://git.gavinhoward.com/gavin/bc): bc implementation
 - [`booster`](https://github.com/anatol/booster): initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/): yacc implementation

@@ -83,6 +83,7 @@ should only be able to access what is strictly required, and nothing more.
 - requires passing `-I/pass/to/usr/include/fortify`
 - Does not work on `musl`: https://wiki.musl-libc.org/future-ideas
 - https://github.com/jvoisin/fortify-headers
+- https://maskray.me/blog/2022-11-06-fortify-source
 
 ## Misc
 - `-z,defs` and` -Wl,-pie` break packages like `nsss`
