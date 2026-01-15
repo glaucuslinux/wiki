@@ -65,3 +65,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - simplecpp: https://github.com/danmar/simplecpp
 - tinycpp: https://github.com/rofl0r/tinycpp
 - ucpp: https://github.com/lpsantil/ucpp
+
+## References
+- https://maskray.me/blog/2023-05-08-assemblers

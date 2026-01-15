@@ -74,8 +74,12 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
 ```
 Note that the location of the compiler originated plugins is different from the place where the ar, nm and ranlib programs search for their plugins. In order for those commands to make use of a compiler based plugin it must first be copied into the ${libdir}/bfd-plugins directory. All gcc based linker plugins are backward compatible, so it is sufficient to just copy in the newest one.
 ```
+- Graphite is no longer being developed/maintained as it used to be
+- Baseline gcc optimizes performs better loop optimizations without graphite (isl) than with it
+- Installing the linker plugin into $libdir/bfd-plugins has the same effect as usage of the command wrappers (gcc-ar, gcc-nm and gcc-ranlib)
 
 ## References
+- https://dl.acm.org/doi/full/10.1145/3674735
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html

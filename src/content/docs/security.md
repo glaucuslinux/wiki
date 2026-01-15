@@ -17,3 +17,4 @@ should only be able to access what is strictly required, and nothing more.
 - RELocation Read-Only (RELRO)
 - Stack Clash Protection (SCP)
 - Stack Smashing Protection (SSP)
+- Write XOR Execute (W^X)

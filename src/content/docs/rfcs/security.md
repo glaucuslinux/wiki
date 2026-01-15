@@ -17,8 +17,10 @@ should only be able to access what is strictly required, and nothing more.
 - RELocation Read-Only (RELRO)
 - Stack Clash Protection (SCP)
 - Stack Smashing Protection (SSP)
+- Write XOR Execute (W^X)
 
 ## References
+- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
 - https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc
 - https://dustri.org/b/security-features-of-musl.html
 - https://fedoraproject.org/wiki/Changes/Harden_All_Packages

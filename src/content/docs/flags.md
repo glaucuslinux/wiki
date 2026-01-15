@@ -42,13 +42,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### `-fno-plt`
 - Only applies to shared libraries and when dynamic linking
 - Arch and OpenWRT are using it by default
-- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; also `musl` does not have the greatest support for lazy binding anyways
+- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; `musl` does not support lazy binding and recommends immediate binding
 - Removes the ability to `prelink`; `prelink`ing is bad for ASLR
+- A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
 - https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
 - https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
 - https://github.com/InBetweenNames/gentooLTO/issues/302
 - https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
 - https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
+- https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
 - https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
 ### `-fuse-linker-plugin`
 - Enabled by default if `gcc` is built with `lto` enabled
@@ -90,9 +92,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### `-fira-loop-pressure`
 - Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it sometimes produces slower code: https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
 ### `-fno-semantic-interposition`
+- This option is only for shared libraries/dynamic linking and breaks static binaries and libraries
 - Makes code built with `-fPIC` and LTO faster, and improves performance in general; might cause subtle ABI breakages
 - Breaks `LD_PRELOAD` which in turn breaks custom memory allocators like `mimalloc`
-- Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang. This option is also only for shared libraries/dynamic linking and breaks static libraries
+- Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang
+- https://maskray.me/blog/2021-05-09-fno-semantic-interposition
 ### `-floop-parallelize-all`
 - Does not get activated unless `-ftree-parallelize-loops=4` is used; where a number is specified, and it is not a good idea to use `-floop-parallelize-all` because it does not check if it is profitable to parallelize a loop or not, also it requires OMP (OpenMP and libgomp)
 - https://bugs.launchpad.net/libmemcached/+bug/1232551
@@ -112,9 +116,9 @@ https://reviews.llvm.org/D4565
 - Enabled after decisions by PGO and shouldn't be manually used everywhere; may cause regressions and produce bigger code that may or may not be fast
 ### `-ffunction-sections`, `-fdata-sections` and `-Wl,--gc-sections`
 - These options affect code generation, and should only be used when there are significant benefits from doing so
-- They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files) and sometimes even executables
+- They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files); this is needed for the final binaries to be smaller
 - Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
-- Might cause subtle breakages by mistakenly removing necessary sections
+- Might cause subtle breakages by mistakenly removing necessary sections; use `-Wl,--no-gc-sections` when that happens
 - https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
 - https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
 - https://github.com/android/ndk/issues/748
@@ -131,6 +135,10 @@ https://reviews.llvm.org/D4565
 - It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
 - It is better to have `gcc` configured with `--enable-default-pie` so that it knows when to pass these options
 - These options do not contradict with `-fno-plt`
+- `-fno-pic` can only be used by executables
+- `-fpic` can be used by both executables and shared objects
+- `-fpie` can only be used by executables
+- https://maskray.me/blog/2021-01-09-copy-relocations-canonical-plt-entries-and-protected
 ### `-fno-var-tracking`
 - Speeds up compilation time when `-g` is used
 - Does not make sense when `-g` is not used
@@ -148,6 +156,8 @@ https://reviews.llvm.org/D4565
 
 ### `-mtls-dialect=gnu2`
 - `musl` supports `gnu2` for `x86-64` as of `1.1.3`
+- No need to specify `-ftls-model` as `gcc` automatically picks the most efficient based on the mode being used (`-fno-pic`, `-fpie`, `-fpic`..)
+- https://maskray.me/blog/2021-02-14-all-about-thread-local-storage
 
 ### `-momit-leaf-frame-pointer`
 - Redundant when `-fomit-frame-pointer` is used (which is the default with `-O2` and `-Os`)
@@ -156,13 +166,17 @@ https://reviews.llvm.org/D4565
 - Remove `-flto=auto -flto-compression-level=3 -fuse-linker-plugin `
 
 ## LDFLAGS
-### `-Wl,--gc-sections`
+### `-Wl,--gc-sections` and `-Wl,-z,start-stop-gc`
 - Useful only when `-ffunction-sections` and `-fdata-sections` are used
 - Removes unused code sections in libraries that enable the flags above
+- `-z,start-stop-gc` should make `--gc-sections` more accurate and should in theory result in a smaller final binary
 - https://community.nxp.com/t5/Kinetis-Microcontrollers/Optimization-without-quot-ffunction-sections-quot-and-quot-fdata/m-p/1280268
 - https://community.nxp.com/t5/LPCXpresso-IDE-FAQs/Unused-Section-Elimination/m-p/475002
 - https://courses.washington.edu/cp105/GCC/Removing%20unused%20functions%20and%20dead%20code.html
 - https://elinux.org/images/2/2d/ELC2010-gc-sections_Denys_Vlasenko.pdf
+- https://github.com/llvm/llvm-project/issues/51726
+- https://lld.llvm.org/ELF/start-stop-gc.html
+- https://maskray.me/blog/2021-01-31-metadata-sections-comdat-and-shf-link-order
 - https://stackoverflow.com/questions/31521326/gc-sections-discards-used-data
 - https://stackoverflow.com/questions/4274804/query-on-ffunction-section-fdata-sections-options-of-gcc
 ### `-Wl,-z,noexectack`
@@ -194,6 +208,7 @@ https://reviews.llvm.org/D4565
 - https://reviews.llvm.org/D75203
 - https://sourceware.org/bugzilla/show_bug.cgi?id=27837
 - https://www.sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
+- https://maskray.me/blog/2021-03-14-the-dark-side-of-riscv-linker-relaxation
 ### `-z,separate-code` and `--rosegment`
 - Using `-z,separate-code` is good for security
 - Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
@@ -209,12 +224,27 @@ This breaks some assumptions that the (so-called) "text segment" precedes the (s
 - `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
 - AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
 - In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
+- ld.bfd's -z separate-code is essentially split into two options in lld: -z separate-code and --rosegment.
+- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 - https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
 - https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
+### `--hash-style=gnu`
+- `gnu` is the more modern style
+- https://maskray.me/blog/2022-08-21-glibc-and-dt-gnu-hash
+### `-z,pack-relative-relocs`
+- https://maskray.me/blog/2021-10-31-relative-relocations-and-relr
+### `--build-id=none`
+- smaller executables and faster link time
+- https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
+### `--no-copy-dt-needed-entries`
+- Stops the linker from resolving symbols in the produced binary to transitive library dependencies
+- Enforces that the binary must explicitly link against all of its actual dependencies
+- Enabled by default behavior in `ld.bfd` since 2.22
+- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html
