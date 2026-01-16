@@ -78,6 +78,7 @@ Note that the location of the compiler originated plugins is different from the 
 - Baseline gcc optimizes performs better loop optimizations without graphite (isl) than with it
 - Installing the linker plugin into $libdir/bfd-plugins has the same effect as usage of the command wrappers (gcc-ar, gcc-nm and gcc-ranlib)
 - `--with-cross-host` is deprecated (according to a `FIXME` comment in `configure`)
+- Configure `libstdc++-v3` with `--enable-libstdcxx-time` as `musl` has `clock_gettime`
 
 ## References
 - https://dl.acm.org/doi/full/10.1145/3674735
@@ -85,6 +86,7 @@ Note that the location of the compiler originated plugins is different from the 
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html
 - https://gcc.gnu.org/install/specific.html
+- https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html
 - https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 - https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
