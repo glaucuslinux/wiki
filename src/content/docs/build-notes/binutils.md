@@ -7,7 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Depends on `zstd`
 - Do we need to depend on `jansson` with `--enable-jansson`, or is that for `gdb` only?
 - Alpine reverts `25882` for ARM and PowerPC
-- `--disable-separate-code` bloats every executable and shared library by at least 2 MB; `musl-cross-make` uses this
+- `--disable-separate-code` bloats every executable and shared library by at least 2 MB; `musl-cross-make` uses this for smaller binaries in some cases (while sacrificing a bit of security)
 - `--enable-64-bit-bfd` is needed to ensure 64-bit support even on hosts with narrower word sizes
 - Is `libbfd` even needed `--disable-install-libbfd` (same thing for `libiberty`, `--disable-install-libiberty`)?
 - `--enable-pgo-build=lto` requires `dejagnu` and the test suite?
@@ -20,6 +20,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `gold` has been deprecated
 - `--enable-new-dtags` allows the linker to use the "runpath" tag instead of the older rpath one
 - `--without-msgpack`: `msgpack` is not needed on glaucus (gentoo also disables this)
+- `--disable-default-stack` is an alias for `--enable-default-execstack=no`
 
 ## References
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882
+- https://sourceware.org/bugzilla/show_bug.cgi?id=32715

@@ -59,6 +59,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### `-fdevirtualize-at-ltrans`
 - `gcc` disables it by default as it increases the size of streamed data
 - In practice, it is buggy and really slow
+- https://forums.gentoo.org/viewtopic-t-1171518.html
 ### `-fipa-pta`
 - Abandoned and needs a major redesign
 - Does not scale, at least for now according to openSUSE
@@ -143,6 +144,35 @@ https://reviews.llvm.org/D4565
 - Speeds up compilation time when `-g` is used
 - Does not make sense when `-g` is not used
 
+### `-foptimize-strlen`
+- Enabled for `-O2` and disabled for `-Os` and `-Oz`
+
+### `-fgcse-sm`
+- Increases register pressure which can spills and increase code size
+
+### `-fgcse-las`
+- Removes redundant load instructions which can reduce register pressure by reusing loaded values
+- Might reduce code size
+
+### `-fcf-protection=full`
+- Requires Intel CET to be present
+- https://maskray.me/blog/2022-12-18-control-flow-integrity
+
+### `-fdelete-null-pointer-checks`
+- Enables simple constant folding optimizations
+- Enabled by default on most targets; no need to mess with it
+
+### `-flive-range-shrinkage`
+- Can increase code size with redundant push/pop
+- Might help decrease register pressure
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116027
+
+### `-fdelayed-branch`
+- `x86-64` does not have delay slots rendering this "legacy" optimization irrelevant
+
+### `-fsched2-use-superblocks`
+- Experimental option that might produce unreliable results and increase code size
+
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life
 
@@ -201,6 +231,7 @@ https://reviews.llvm.org/D4565
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
 - `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
  - `mold` uses `--relax` by default
+- https://github.com/gentoo-haskell/gentoo-haskell/issues/704
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
 - https://reviews.llvm.org/D100835
 - https://reviews.llvm.org/D113615

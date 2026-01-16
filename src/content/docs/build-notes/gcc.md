@@ -77,6 +77,7 @@ Note that the location of the compiler originated plugins is different from the 
 - Graphite is no longer being developed/maintained as it used to be
 - Baseline gcc optimizes performs better loop optimizations without graphite (isl) than with it
 - Installing the linker plugin into $libdir/bfd-plugins has the same effect as usage of the command wrappers (gcc-ar, gcc-nm and gcc-ranlib)
+- `--with-cross-host` is deprecated (according to a `FIXME` comment in `configure`)
 
 ## References
 - https://dl.acm.org/doi/full/10.1145/3674735
