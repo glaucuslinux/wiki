@@ -381,6 +381,13 @@ This breaks some assumptions that the (so-called) "text segment" precedes the (s
 - AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
 - In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
 - ld.bfd's -z separate-code is essentially split into two options in lld: -z separate-code and --rosegment.
+- GitHub actions for `rad` uses `ubuntu-latest` which does not recognize `--rosegment`:
+```
+Nim Output /usr/bin/ld: unrecognized option '--rosegment'
+       ... /usr/bin/ld: use the --help option for usage information
+       ... collect2: error: ld returned 1 exit status
+```
+- glaucus's toolchain uses `--rosegment` by default even if the flag was not provided in LDFLAGS
 - https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 - https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
 - https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
