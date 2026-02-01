@@ -80,6 +80,15 @@ Note that the location of the compiler originated plugins is different from the 
 - `--with-cross-host` is deprecated (according to a `FIXME` comment in `configure`)
 - Configure `libstdc++-v3` with `--enable-libstdcxx-time` as `musl` has `clock_gettime`
 
+## Not Relocatable
+  - https://github.com/cross-tools/musl-cross
+
+## Relocatable:
+  - http://musl.cc/
+  - https://github.com/firasuke/mussel
+  - https://github.com/richfelker/musl-cross-make
+  - https://skarnet.org/toolchains/
+
 ## References
 - https://dl.acm.org/doi/full/10.1145/3674735
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162

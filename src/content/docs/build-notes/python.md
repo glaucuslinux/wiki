@@ -35,7 +35,8 @@ sed -i 's/__APPLE__/LIBEDIT_SUPPORT/g' Modules/readline.c
 sed -i 's/HAVE_SETLOCALE/HAVE_SETLOCALE) \&\& !defined(LIBEDIT_SUPPORT/g' Modules/readline.c
 sed -i 's@return readline@return feedline@' configure
 ```
-- Support for `libressl` was dropped
+- Support for `libressl` was dropped but then added again?
+- Does `python` depend on `zstd`?
 
 ## References
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
