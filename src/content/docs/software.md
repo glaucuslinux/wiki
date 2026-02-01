@@ -29,7 +29,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
 - [`pigz`](https://zlib.net/pigz/): gzip implementation
 - [`plocate`](https://plocate.sesse.net/): locate implementation
-- [`plzip`](https://www.nongnu.org/lzip/plzip.html): lzip implementation
 - [`reflex`](https://invisible-island.net/reflex/): lex implementation
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager

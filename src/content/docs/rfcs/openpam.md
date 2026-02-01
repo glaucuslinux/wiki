@@ -16,7 +16,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/fim/openpam-modules
 - https://github.com/glaucuslinux/core/issues/8
 - https://lwn.net/Articles/992948/
+- https://openpam.org/downloads/openpam-20230627.tar.gz
 - https://skarnet.org/software/pamela/
 - https://sourceforge.net/projects/openpam/files/openpam/Ximenia/
-- https://www.openpam.org/downloads/openpam-20230627.tar.gz
-- https://www.youtube.com/watch?v=INjCiHUIjgg
+- https://youtube.com/watch?v=-CXp3byvI1g
+- https://youtube.com/watch?v=INjCiHUIjgg

@@ -54,6 +54,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
 - https://github.com/eweOS/packages/blob/busybox/mdev.conf
 - https://github.com/fff7d1bc/mdev-like-a-boss/blob/master/mdev.conf
+- https://github.com/illiliti/libudev-zero/blob/master/contrib/mdev.conf
 - https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
 - https://wiki.archlinux.org/title/Udev

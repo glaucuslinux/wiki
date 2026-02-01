@@ -19,16 +19,17 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `findutils`; `toybox`'s `find` is approximately two times slower
 - `libarchive`; only `bsdcpio`
 - `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default
-- `procps-ng`; provide `pidwait`, `tload` and `slabtop`?
-- `psmisc`
+- `procps-ng`; `toybox` does not provide `hugetop`, `pidwait`, `slabtop` (though planned) and `tload` (not planned)
+- `psmisc`; `toybox` is planning on providing `fuser`, `pstree`, `peekfd` and `prtstat` (but not `pslog` or `pstree.x11`)
 - `sed`
 
 ## Does Not Replace
 - `dhcp` / `sdhcp`
 - `file`
+- `fping`
 - `grep` / `ugrep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
-- `iputils` / `fping`
+- `iputils`
 - `kbd`; busybox has better implementations
 - `man-db` / `mandoc`; bad implementation
 - `more` / `less`; bad implementation

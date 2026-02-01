@@ -29,7 +29,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - After mounting overlay all previous mounts need to be moved using `mount --move` to identical mountpoints inside the overlay, otherwise `switch_root` will error out with `failed to unlink` and `directory not empty`
 - ISOs should be hybrid; can be written directly to CD/DVD/BD media OR to USB sticks
 - Distributions with good ISOs include Arch and eweOS
-- Distributions with not so great ISOs include Chimera and Void
+- Distributions with mediocre ISOs include Chimera and Void
 - Do not forget to generate the `initramfs` before generating the `iso`
 - Do not forget to have `dash` installed before generating the `initramfs`
 - Let the kernel use the defaults for its command-line parameters (e.g. `loglevel` and `ro`/`rw`)

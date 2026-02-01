@@ -59,6 +59,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
 - https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
 - https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
+- https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
 
 ### `-fuse-linker-plugin`
 - Enabled by default if `gcc` is built with `lto` enabled
@@ -289,6 +290,9 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/onlinedocs/gccint/Anchored-Addresses.html
 - https://gcc.gnu.org/onlinedocs/gccint/Special-Accessors.html
 - https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/issues/287
+
+### `--param=min-crossjump-insns=<1,65536>`
+- `-O2` uses the value `5`, while `-Os` uses `1` which is more aggressive
 
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life

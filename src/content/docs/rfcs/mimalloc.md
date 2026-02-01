@@ -34,3 +34,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://www.linkedin.com/pulse/testing-alternative-c-memory-allocators-pt-2-musl-mystery-gomes/
 - https://www.openwall.com/lists/musl/2020/05/13/1
 - https://www.tweag.io/blog/2023-08-10-rust-static-link-with-mimalloc/
+- https://jasone.github.io/2025/06/12/jemalloc-postmortem/
+- https://github.com/pola-rs/polars/issues/23222
+- https://github.com/facebook/jemalloc/wiki/Development-Status

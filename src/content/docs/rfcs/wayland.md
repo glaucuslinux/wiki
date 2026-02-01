@@ -122,6 +122,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - FreeBSD has a lot of wayland ports
 - https://arewewaylandyet.com/
 - https://en.opensuse.org/Portal:OpenSUSEway
+- https://eylenburg.github.io/de_comparison.htm
 - https://fedoraproject.org/spins/sway/
 - https://github.com/natpen/awesome-wayland
 - https://github.com/openSUSE/openSUSEway
