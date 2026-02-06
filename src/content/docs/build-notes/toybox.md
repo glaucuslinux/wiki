@@ -24,6 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sed`
 
 ## Does Not Replace
+- `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
 - `dhcp` / `sdhcp`
 - `file`
 - `fping`
@@ -80,3 +81,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://packages.gentoo.org/categories/app-alternatives
 - https://tools.suckless.org/9base/
 - https://www.openwall.com/lists/musl/2013/11/09/3
+- https://youtube.com/@roblandley1154
+- https://youtube.com/watch?v=Sk9TatW9ino

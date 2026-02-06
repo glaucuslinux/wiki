@@ -24,6 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Some build systems might misinterpret `-g0` as `-g`; this is a bug and should be reported to the relative upstream
 
 ### `-flto=auto`
+- Without the plugin lto will not happen (particularly for static libraries as you will get the same code as without `-flto`)
 - Will spawn N threads based on the number of threads; similar to `make -j`
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
@@ -157,6 +158,7 @@ https://reviews.llvm.org/D4565
 - They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files); this is needed for the final binaries to be smaller
 - Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
 - Might cause subtle breakages by mistakenly removing necessary sections; use `-Wl,--no-gc-sections` when that happens
+- Might help reduce attack surface by removing unused sections
 - https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
 - https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
 - https://github.com/android/ndk/issues/748
@@ -165,7 +167,7 @@ https://reviews.llvm.org/D4565
 ### `-fvisibility-inlines-hidden`
 - Breaks a lot of packages (particularly C++ packages), and many suggest disabling it to allow `libstdc++` to detect its symbols
 - Its behavior is already covered by `-fvisibility=hidden`
-- Do not use `-fvisibility=hidden` in `CFLAGS` (only in `CXXFLAGS`) as it breaks stuff for C programs (unlike -inlines- because that is C++ only)
+- Do not use `-fvisibility=hidden` in `CFLAGS` (only in `CXXFLAGS`) as it breaks stuff for C programs (unlike -inlines- because that is C++ only) (despite being somewhat useful for PIC libraries)
 - https://bugs.gentoo.org/69342
 - https://forums.gentoo.org/viewtopic-p-8604744.html?sid=eb649881fb22afe89b2160b9dd4f89f9
 - https://gcc.gnu.org/wiki/Visibility
@@ -179,6 +181,10 @@ https://reviews.llvm.org/D4565
 - `-fpic` can be used by both executables and shared objects
 - `-fpie` can only be used by executables
 - https://maskray.me/blog/2021-01-09-copy-relocations-canonical-plt-entries-and-protected
+
+### `-fno-common`
+- Default as of GCC 10
+- https://gcc.gnu.org/gcc-10/porting_to.html
 
 ### `-fno-var-tracking`
 - Speeds up compilation time when `-g` is used
@@ -359,15 +365,16 @@ https://reviews.llvm.org/D4565
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
 - `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
  - `mold` uses `--relax` by default
+- https://fzakaria.com/2026/01/30/crazy-shit-linkers-do-relaxation
 - https://github.com/gentoo-haskell/gentoo-haskell/issues/704
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
+- https://maskray.me/blog/2021-03-14-the-dark-side-of-riscv-linker-relaxation
 - https://reviews.llvm.org/D100835
 - https://reviews.llvm.org/D113615
 - https://reviews.llvm.org/D157020
 - https://reviews.llvm.org/D75203
 - https://sourceware.org/bugzilla/show_bug.cgi?id=27837
 - https://www.sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
-- https://maskray.me/blog/2021-03-14-the-dark-side-of-riscv-linker-relaxation
 
 ### `-z,separate-code` and `--rosegment`
 - Using `-z,separate-code` is good for security

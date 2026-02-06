@@ -29,3 +29,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## First Release
 - First release was in August 31st, 2019
+
+## References
+- https://youtube.com/watch?v=F7V8DRfZBQI

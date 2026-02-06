@@ -29,6 +29,8 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
 - Use libudev helper in `mdev.conf`
 - Does `mdevd` work with `udev` directories and rules or should we delete them?
+- `devices` is the default value for `udevadm trigger -t`
+- with `udevadm` you have to `udevadm hwdb --update`
 
 ## mdev.conf
 - `mdevd` parses `mdev.conf` when a new device event occurs
@@ -46,6 +48,27 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `/dev/sr0` has replaced `/dev/cdrom`
 - `/dev/sda` has replaced `/dev/cciss` and `/dev/ida`
 
+## udevd and libudev replacements criteria
+- handles ~10k devices (under one minute?)
+- parallel processing (worker queues) and not linear processing
+- cache `regcomp()` results for speed in large device trees
+- `s6-uevent-listener` (deprecated, see `mdevd`) provides standalone netlink monitoring
+- pipeline approach (listener > data gatherer > event dispatcher)
+- each process replaceable if same api
+- spawns per-event handlers (e.g. `mdev` instances)
+- use unix socket client-server model; single publisher, multiple subscribers
+- implement filters server-side: dispatcher only links unfiltered events to client directories
+- avoid dbus: simple client-server, not symmetrical peer messaging
+- server-side filtering prevents unnecessary client wake-ups
+- never lose events; filesystem storage ensures this
+- filter at kernel/server level when possible
+- maintain replaceable components
+- avoid technical debt of message bus dependencies
+- `libudev`:
+  - `udev_monitor_set_receive_buffer_size()` irrelevant for filesystems as events persist
+  - inefficient client-side filtering; wakes process for filtered events
+  - current socketpair emulation loses filesystem advantage (events can be lost)
+
 ## References
 - https://codeberg.org/emmett1/alicelinux/src/branch/main/repos/core/busybox/mdev.conf
 - https://codeberg.org/kiss-community/repo/src/branch/master/core/busybox/files/mdev.conf
@@ -62,3 +85,5 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB/automount
 - https://www.linuxfromscratch.org/lfs/view/development/chapter08/udev.html
+- https://youtube.com/watch?v=k_TGPNN7QY0
+- https://youtube.com/watch?v=xhfEET46sGA

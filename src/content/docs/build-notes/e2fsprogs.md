@@ -3,6 +3,7 @@ title: e2fsprogs
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- upstream recommends building in a separate directory
 - glaucus uses `chattr` and `lsattr` from `toybox`
 - Depends on `texi2dvi`
 - `e2initrd_helper` is enabled by default

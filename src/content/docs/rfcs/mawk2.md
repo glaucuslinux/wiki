@@ -24,3 +24,6 @@ real    0m18.384s
 user    0m18.099s
 sys     0m0.238s
 ```
+
+## References
+- https://youtube.com/watch?v=mf-_ZRUBc5g

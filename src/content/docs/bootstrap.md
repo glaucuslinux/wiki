@@ -87,7 +87,8 @@ help2man \
 ldconfig \
 makeinfo \
 po4a \
-texi2dvi texi2pdf; do
+texi2dvi texi2pdf \
+yodl2man; do
   sudo cp -fPp core/musl/files/true /usr/bin/$i
 done
 ```

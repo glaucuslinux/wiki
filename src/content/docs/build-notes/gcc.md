@@ -75,10 +75,16 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
 Note that the location of the compiler originated plugins is different from the place where the ar, nm and ranlib programs search for their plugins. In order for those commands to make use of a compiler based plugin it must first be copied into the ${libdir}/bfd-plugins directory. All gcc based linker plugins are backward compatible, so it is sufficient to just copy in the newest one.
 ```
 - Graphite is no longer being developed/maintained as it used to be
-- Baseline gcc optimizes performs better loop optimizations without graphite (isl) than with it
+- Baseline gcc optimizes performs better loop optimizations without graphite (isl, and cloog/ppl previously) than with it
 - Installing the linker plugin into $libdir/bfd-plugins has the same effect as usage of the command wrappers (gcc-ar, gcc-nm and gcc-ranlib)
 - `--with-cross-host` is deprecated (according to a `FIXME` comment in `configure`)
 - Configure `libstdc++-v3` with `--enable-libstdcxx-time` as `musl` has `clock_gettime`
+- `mudflap` removed since `4.9`
+- intel `mpx` and `sfi` are unmaintained and were dropped from both the kernel and `gcc`
+- `libcilkrts` removed since 2017
+- a custom tuple like `x86_64-glaucus-linux-musl` is good for cross-compilation otherwise it is bad because it assumes the compiler is failing for many tests; it is better to have `x86_64-pc-linux-musl` as the final target
+- Uses `~2GB` of memory per `make` job
+- test suite takes a lot of time (several hours)
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

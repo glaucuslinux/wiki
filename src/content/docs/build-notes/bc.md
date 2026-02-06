@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Rely on `github` for `url` as `gavinhoward.com` frequently goes down
+- `busybox` and `toybox` versions of `bc` and `dc` are based on gavin's version
 - `configure.sh` does not support `editline` and `readline` together
 - `configure.sh` does not support short and long option types together
 - `--localedir` has been deprecated

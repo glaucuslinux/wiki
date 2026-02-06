@@ -3,6 +3,9 @@ title: booster
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- zstd is the default compression algorithm for booster
+- Do we still need the `modules: e1000` in `booster.yaml`?
+
 ## References
 - https://git.alpinelinux.org/aports/tree/community/booster/APKBUILD
 - https://github.com/void-linux/void-packages/blob/master/srcpkgs/booster/template

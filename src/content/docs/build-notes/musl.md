@@ -13,6 +13,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does `musl` conflict/replace `libssp` (the standalone package)
 - `gencat` requires `queue.h`
 - Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
+- `musl`'s `mallocng` was inspired by OpenBSD malloc and `hardened_malloc`
 - Alpaquita has patches to fix `ldd` output for `static-pie` executables
 - Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
 - `LC_ALL` overrides category-specific variables, and `LANG` provides a default for any category not set
@@ -33,6 +34,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `musl` does not implement legacy functions operating on `ucontext_t` (`getcontext`, `setcontext`, `makecontext`, `swapcontext`); no longer part of POSIX, but cooperative multi-tasking applications use them, `ucontext_t` also appears as an argument to sigaction handlers which cannot be used portably
 - `musl` does not have (or want) NSS; consider `musl-nscd` from pikhq if this functionality is needed
 - bellsoft's `musl` provides `glibc-string` with optimized asm string implementations for `x86-64-v2`
+- musl already defines `STDC_ISO` as `201206L` as of `1.1.15`: `__STDC_ISO_10646__ 201206L`
+- `musl` does not build with `gold` without `pie`
 
 ## References
 - https://git.2f30.org/fortify-headers/
@@ -67,3 +70,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://wiki.musl-libc.org/guidelines-for-distributions
 - https://wiki.musl-libc.org/open-issues
 - https://wiki.musl-libc.org/roadmap
+- https://youtube.com/watch?v=NoU0y8et6Zc

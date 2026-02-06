@@ -37,6 +37,7 @@ sed -i 's@return readline@return feedline@' configure
 ```
 - Support for `libressl` was dropped but then added again?
 - Does `python` depend on `zstd`?
+- Building out-of-tree errors out as `python` attempts to clean the directory `./build` post compilation (and maybe installation)
 
 ## References
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
