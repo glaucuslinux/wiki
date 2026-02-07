@@ -34,7 +34,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `dosfstools`
 - `erofs-utils`
 - `findutils` (or `toybox`)
-- `flex` (or `reflex`)
+- `flex`
 - `gawk` (or `mawk`)
 - `gcc`
 - `gettext` (or `gettext-tiny`)

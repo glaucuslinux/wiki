@@ -23,5 +23,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--disable-default-stack` is an alias for `--enable-default-execstack=no`
 
 ## References
+- https://bugs.archlinux.org/task/42540
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882
 - https://sourceware.org/bugzilla/show_bug.cgi?id=32715

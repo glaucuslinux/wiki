@@ -3,11 +3,11 @@ title: Default Software
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- [`libressl`](https://libressl.org/): TLS library
 - [`bc-gh`](https://git.gavinhoward.com/gavin/bc): bc implementation
 - [`booster`](https://github.com/anatol/booster): initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/): yacc implementation
 - [`catppuccin`](https://catppuccin.com/): color scheme
+- [`flex`](https://github.com/westes/flex): lex implementation
 - [`fping`](https://fping.org/): ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny): gettext implementation
 - [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2): networking utilities
@@ -16,6 +16,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`less`](https://greenwoodsoftware.com/less/): terminal pager
 - [`libarchive`](https://libarchive.org/): archive and compression library
 - [`libedit`](https://thrysoee.dk/editline/): command line editor library
+- [`libressl`](https://libressl.org/): TLS library
 - [`libudev-zero`](https://github.com/illiliti/libudev-zero): libudev implementation
 - [`limine`](https://limine-bootloader.org/): boot loader and manager
 - [`linux-cachyos`](https://github.com/CachyOS/linux-cachyos): kernel
@@ -23,16 +24,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`mawk`](https://invisible-island.net/mawk/): awk implementation
 - [`mdevd`](https://skarnet.org/software/mdevd/): udevd implementation
 - [`muon`](https://sr.ht/~lattis/muon/): meson implementation
+- [`muon's samurai`](https://git.sr.ht/~lattis/muon/tree/master/item/src/external/samurai): ninja implementation
 - [`musl`](https://musl.libc.org/): C standard library
 - [`neatvi`](https://github.com/aligrudi/neatvi): text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
 - [`pigz`](https://zlib.net/pigz/): gzip implementation
 - [`plocate`](https://plocate.sesse.net/): locate implementation
-- [`reflex`](https://invisible-island.net/reflex/): lex implementation
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
-- [`samurai`](https://github.com/michaelforney/samurai): ninja implementation
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
 - [`sway`](https://swaywm.org/): tiling Wayland compositor

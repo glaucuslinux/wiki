@@ -36,6 +36,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - bellsoft's `musl` provides `glibc-string` with optimized asm string implementations for `x86-64-v2`
 - musl already defines `STDC_ISO` as `201206L` as of `1.1.15`: `__STDC_ISO_10646__ 201206L`
 - `musl` does not build with `gold` without `pie`
+- `musl` only relies on `libgcc` for the `__muldc3` and `__muldxc3` symbols and its `configure` can be patched to support `--fast-math` so that it does not depend on `libgcc` (this of course breaks the ABI and is recommended against by Rich Felker); `libgcc` is almost never utilised on 64-bit architectures like `x86-64`
 
 ## References
 - https://git.2f30.org/fortify-headers/

@@ -27,6 +27,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Specify additional flags?
 ```
 -Aappend:optimize="$CFLAGS"
+-Accflags
 -Adefine:ccflags="$CFLAGS"
 -Adefine:lddflags="$LDFLAGS"
 -Adefine:ldflags="$LDFLAGS"

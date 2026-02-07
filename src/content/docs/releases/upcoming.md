@@ -8,4 +8,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`live`](https://github.com/glaucuslinux/live) now uses `dash` by default!
 - [`fping`](https://fping.org/) is now the default ping implementation!
 - [`u-config`](https://github.com/skeeto/u-config) is now the default pkg-config implementation!
+- [`flex`](https://github.com/westes/flex) is the default lex implementation as [`reflex`](https://invisible-island.net/reflex/) can't build `kbd`, `wget2` and a lot of packages..
 - Updated cerata

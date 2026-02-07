@@ -4,7 +4,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Replaces `musl`
-- Requires `cosmocc` which is a zip file containing 2 GB worth of binaries to bootstrap itself
+- Poor bootstrappability; requires `cosmocc` which is a zip file containing 2 GB worth of binaries to bootstrap itself
+- Provides a platform independent libc (c standard library) that gets statically compiled into your app
+- Fast implementations of functions (e.g. `memcpy()` and `strcpy()`) given it is very focused on `x86-64` and optimizations
 
 ## References
 - https://github.com/jart/cosmopolitan

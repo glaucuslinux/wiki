@@ -7,6 +7,32 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Use a different `libexecdir`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `--with-build-config=bootstrap-lto-lean` has to be used with `make profiledbootstrap`
+- Personal testing showed negligible differences between `disable-bootstrap` and `bootstrap-lean`, with notable differences against `bootstrap-native` (latter is `~5%` smaller):
+```
+                      bootstrap-native  disable-bootstrap        diff       %
+lto-dump                    40,730,072         42,812,208  +2,082,136  +5.11%
+g++                          1,094,704          1,098,840      +4,136  +0.38%
+gcc                          1,094,704          1,094,744         +40  +0.00%
+gcov                           358,904            358,944         +40  +0.01%
+gcc-ar                          26,424             30,544      +4,120  +15.59%
+
+cc1plus                     44,880,264         46,822,920  +1,942,656  +4.33%
+cc1                         42,226,152         44,263,176  +2,037,024  +4.82%
+lto1                        40,730,072         42,812,272  +2,082,200  +5.11%
+libgcc.a                     8,233,264          8,253,544     +20,280  +0.25%
+lto-wrapper                    866,808            862,744      -4,064  -0.47%
+libgcov.a                      378,410            381,562      +3,152  +0.83%
+collect2                       313,848            309,784      -4,064  -1.29%
+liblto_plugin.so                67,192             75,536      +8,344  +12.42%
+g++-mapper-server               55,040             51,112      -3,928  -7.14%
+
+libstdc++.so.6.0.33          2,427,408          2,501,200     +73,792  +3.04%
+libgcc_s.so.1                  169,904            826,832    +656,928  +386.65%
+libquadmath.so.0.0.0           296,488            296,632        +144  +0.05%
+libgomp.so.1.0.0               277,064            277,120         +56  +0.02%
+libitm.so.1.0.0                 71,456             79,704      +8,248  +11.54%
+libatomic.so.1.2.0              22,056             22,120         +64  +0.29%
+```
 - `bootstrap-debug-lean` is slower and bigger compared to `bootstrap-debug`
 - `BOOT_CFLAGS`, `BOOT_LDFLAGS` and `--with-boot-ldflags` only make sense when bootstrapping gcc; applies to stages 2 and 3
 - `LD_FOR_TARGET`, `STAGE1_CFLAGS` and `STAGE1_LDFLAGS` apply to stage 1
@@ -79,12 +105,15 @@ Note that the location of the compiler originated plugins is different from the 
 - Installing the linker plugin into $libdir/bfd-plugins has the same effect as usage of the command wrappers (gcc-ar, gcc-nm and gcc-ranlib)
 - `--with-cross-host` is deprecated (according to a `FIXME` comment in `configure`)
 - Configure `libstdc++-v3` with `--enable-libstdcxx-time` as `musl` has `clock_gettime`
-- `mudflap` removed since `4.9`
-- intel `mpx` and `sfi` are unmaintained and were dropped from both the kernel and `gcc`
+- `mudflap` removed since `4.9` (`musl` does not support `libmudflag` anyways)
+- intel `mpx` and `sfi` are unmaintained and were dropped from both the kernel and `gcc` (`musl` does not support `libmpx` anyways as it lacks `secure_getenv` and `struct _libc_fpstate`)
 - `libcilkrts` removed since 2017
 - a custom tuple like `x86_64-glaucus-linux-musl` is good for cross-compilation otherwise it is bad because it assumes the compiler is failing for many tests; it is better to have `x86_64-pc-linux-musl` as the final target
+- `config.guess` and `config.sub` prefer `x86_64-pc` to `x86_64-unknown` (or not specifying anything though for `musl` it is sufficient)
 - Uses `~2GB` of memory per `make` job
 - test suite takes a lot of time (several hours)
+- LTO is not a default language, but is built by default because `--enable-lto` is enabled by default
+- `--disable-libstdcxx-pch` prevents the precompiled headers from being built (which is the default behavior); we don't use these headers and they take up space
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross
