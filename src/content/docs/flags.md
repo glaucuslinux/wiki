@@ -19,6 +19,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Uses more RAM but reduces disk usage
 - Does it get ignored by `clang`?
 
+### `-O3`
+- Will certainly beat `-O2` in microbenchmarks, but when you benchmark an entire distribution you will see that `-O2` beats it in terms of size and performance
+- Can cause executables to run slower because it would generate more machine code than `-O2` which would then make the program bigger and unable to fit in the L1 cache causing cache misses for instructions
+- openSUSE says that `cmake` enabling `-O3` "by default" is not a good idea
+- https://sunnyflunk.github.io/2023/01/15/x86-64-v3-Mixed-Bag-of-Performance.html
+- https://sunnyflunk.github.io/2023/01/29/GCCs-O3-Can-Transform-Performance.html
+
 ### `-g0`
 - Compiling with `-g0` or without `-g` at all results in no debugging information in the binaries
 - Some build systems might misinterpret `-g0` as `-g`; this is a bug and should be reported to the relative upstream
@@ -30,7 +37,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
 
 ### `-flto-compression-level=3`
-- Available when using `zstd` as a backend for LTO as it results in smaller binaries
+- Available when using `zstd` as a backend for LTO as it results in "smaller" binaries
+- `clang` does not support `-flto-compression-level`
+
+### `-fuse-linker-plugin`
+- Enabled by default if `gcc` is built with `lto` enabled
+- There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
+- This means that not using this flag in the case above, it might resort to `-fwhole-program` which is not a good idea, so use it instead so it can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
+- Ignored by `clang`
 
 ### `-fgraphite-identity`
 - Graphite is not well maintained in `gcc` and will likely end up being removed entirely
@@ -46,26 +60,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - A new way to implement Graphite.
 - Replaces `-floop-interchange`, `-ftree-loop-linear`, `-floop-strip-mine` and `-floop-block`
 - Still considered experimental?
-
-### `-fno-plt`
-- Only applies to shared libraries and when dynamic linking
-- Arch and OpenWRT are using it by default
-- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; `musl` does not support lazy binding and recommends immediate binding
-- Removes the ability to `prelink`; `prelink`ing is bad for ASLR
-- A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
-- https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
-- https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
-- https://github.com/InBetweenNames/gentooLTO/issues/302
-- https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
-- https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
-- https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
-- https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
-- https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
-
-### `-fuse-linker-plugin`
-- Enabled by default if `gcc` is built with `lto` enabled
-- There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
-- This means that not using this flag in the case above, it might resort to `-fwhole-program` which is not a good idea, so use it instead so it can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
 
 ### `-fdevirtualize-at-ltrans`
 - `gcc` disables it by default as it increases the size of streamed data
@@ -93,12 +87,20 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://lists.busybox.net/pipermail/busybox/2012-September/078331.html
 - https://lists.busybox.net/pipermail/busybox/2012-September/078326.html
 
-### `-O3`
-- Will certainly beat `-O2` in microbenchmarks, but when you benchmark an entire distribution you will see that `-O2` beats it in terms of size and performance
-- Can cause executables to run slower because it would generate more machine code than `-O2` which would then make the program bigger and unable to fit in the L1 cache causing cache misses for instructions
-- openSUSE says that `cmake` using `-O3` by default is stupid
-- https://sunnyflunk.github.io/2023/01/15/x86-64-v3-Mixed-Bag-of-Performance.html
-- https://sunnyflunk.github.io/2023/01/29/GCCs-O3-Can-Transform-Performance.html
+### `-fno-plt`
+- Only applies to shared libraries and when dynamic linking
+- Arch and OpenWRT are using it by default
+- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; `musl` does not support lazy binding and recommends immediate binding
+- Removes the ability to `prelink`; `prelink`ing is bad for ASLR
+- A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
+- https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
+- https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
+- https://github.com/InBetweenNames/gentooLTO/issues/302
+- https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
+- https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
+- https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
+- https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
+- https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
 
 ### `-fmerge-all-constants`
 - Causes miscompilations, due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
@@ -192,6 +194,7 @@ https://reviews.llvm.org/D4565
 
 ### `-foptimize-strlen`
 - Enabled for `-O2` and disabled for `-Os` and `-Oz`
+- `clang` does not support `-foptimize-strlen`; `clang` implicitly performs this optimization?
 
 ### `-fgcse-sm`
 - Increases register pressure which can spills and increase code size
@@ -199,6 +202,7 @@ https://reviews.llvm.org/D4565
 ### `-fgcse-las`
 - Removes redundant load instructions which can reduce register pressure by reusing loaded values
 - Might reduce code size
+- Ignored by `clang`
 
 ### `-fcf-protection=full`
 - Requires Intel CET to be present
@@ -211,6 +215,7 @@ https://reviews.llvm.org/D4565
 ### `-flive-range-shrinkage`
 - Can increase code size with redundant push/pop
 - Might help decrease register pressure
+- `clang` does not support `-flive-range-shrinkage`
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116027
 
 ### `-fdelayed-branch`
@@ -309,6 +314,7 @@ https://reviews.llvm.org/D4565
 ### `-malign-data=abi`
 - `compat` is the default value
 - `cacheline` is bloat, but might increase performance in some cases
+- `clang` does not support `-malign-data`; however, it provides `-malign-branch-boundary`, `-malign-branch` and `-malign-double`
 - https://github.com/InBetweenNames/gentooLTO/issues/164
 
 ### `-mtls-dialect=gnu2`
@@ -327,11 +333,14 @@ https://reviews.llvm.org/D4565
 - Useful only when `-ffunction-sections` and `-fdata-sections` are used
 - Removes unused code sections in libraries that enable the flags above
 - `-z,start-stop-gc` should make `--gc-sections` more accurate and should in theory result in a smaller final binary
+- `lld` defaults to `-z,start-stop-gc`
+- `mold` does not support `-z,start-stop-gc`
 - https://community.nxp.com/t5/Kinetis-Microcontrollers/Optimization-without-quot-ffunction-sections-quot-and-quot-fdata/m-p/1280268
 - https://community.nxp.com/t5/LPCXpresso-IDE-FAQs/Unused-Section-Elimination/m-p/475002
 - https://courses.washington.edu/cp105/GCC/Removing%20unused%20functions%20and%20dead%20code.html
 - https://elinux.org/images/2/2d/ELC2010-gc-sections_Denys_Vlasenko.pdf
 - https://github.com/llvm/llvm-project/issues/51726
+- https://github.com/rui314/mold/issues/596
 - https://lld.llvm.org/ELF/start-stop-gc.html
 - https://maskray.me/blog/2021-01-31-metadata-sections-comdat-and-shf-link-order
 - https://stackoverflow.com/questions/31521326/gc-sections-discards-used-data
@@ -343,7 +352,8 @@ https://reviews.llvm.org/D4565
 
 ### `-Wl,-O1`
 - Enables linker optimizations which can reduce code size
-- No higher value
+- `bfd` optimizes if a non-zero value was given with no differences between the values
+- `lld` has a higher level `-O2`, and it uses `-O1` by default
 - Ignored by `mold`
 
 ### `--compress-debug-sections=zstd`
@@ -351,6 +361,7 @@ https://reviews.llvm.org/D4565
 
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
+- `lld` and `mold` do not support `--reduce-memory-overheads`
 
 ### `-x, --discard-all` and `-X, --discard-locals`
 - `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
@@ -364,7 +375,7 @@ https://reviews.llvm.org/D4565
 - `gcc` also has `-mrelax-cmpxchg-loop` for x86
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
 - `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
- - `mold` uses `--relax` by default
+ - `mold` enables `--relax` by default
 - https://fzakaria.com/2026/01/30/crazy-shit-linkers-do-relaxation
 - https://github.com/gentoo-haskell/gentoo-haskell/issues/704
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
@@ -388,6 +399,7 @@ Placing all R before RX is preferable because it can save one program header and
 ld.lld's split of RW saves one maxpagesize alignment and can make the linked image smaller.
 This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment".
 - If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
+- `lld` defaults to `noseparate-code`
 - `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
 - AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
 - In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
@@ -406,6 +418,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
+- Ignored by `lld` and `mold`
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
 
 ### `--hash-style=gnu`
@@ -424,6 +437,13 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - Enforces that the binary must explicitly link against all of its actual dependencies
 - Enabled by default behavior in `ld.bfd` since 2.22
 - https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
+
+### `-z,text`
+- Enforces `Write XOR Execute (W^X)`
+- `lld` defaults to `-z,text`
+
+### `-z,x86-64-v3`
+- `lld` does not support `-z,x86-64-v3`
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html

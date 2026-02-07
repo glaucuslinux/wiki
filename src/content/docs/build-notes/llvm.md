@@ -122,4 +122,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://muxup.com/building-testing-and-distributing-llvm-clang-and-friends
 - https://rocm.docs.amd.com/projects/llvm-project/en/latest/LLVM/llvm/html/CMake.html
 - https://wiki.musl-libc.org/building-llvm.html
-- https://www.youtube.com/watch?v=NMQrnVDf-rY
+- https://youtube.com/watch?v=NMQrnVDf-rY
