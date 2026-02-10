@@ -332,7 +332,7 @@ https://reviews.llvm.org/D4565
 ### `-Wl,--gc-sections` and `-Wl,-z,start-stop-gc`
 - Useful only when `-ffunction-sections` and `-fdata-sections` are used
 - Removes unused code sections in libraries that enable the flags above
-- `-z,start-stop-gc` should make `--gc-sections` more accurate and should in theory result in a smaller final binary
+- `-z,start-stop-gc` makes `--gc-sections` more accurate and should in theory result in a smaller binary
 - `lld` defaults to `-z,start-stop-gc`
 - `mold` does not support `-z,start-stop-gc`
 - https://community.nxp.com/t5/Kinetis-Microcontrollers/Optimization-without-quot-ffunction-sections-quot-and-quot-fdata/m-p/1280268

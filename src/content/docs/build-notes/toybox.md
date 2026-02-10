@@ -12,12 +12,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `toybox`'s `sysctl —system` vs `-p`
 - `sysctl.d` directory is better than `sysctl.conf` file as you're just dropping files in there instead of editing a file in place
 - `sysctl` configuration: https://github.com/k4yt3x/sysctl
+- prefer `toybox`'s `groups` to `shadow`'s
+- This symbol is always set: `TOYBOX_UTMPX=y`
 
 ## Replaces
 - `coreutils`
 - `diffutils`
 - `findutils`; `toybox`'s `find` is approximately two times slower
-- `libarchive`; only `bsdcpio`
+- `libarchive`'s `bsdcpio`
 - `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default
 - `procps-ng`; `toybox` does not provide `hugetop`, `pidwait`, `slabtop` (though planned) and `tload` (not planned)
 - `psmisc`; `toybox` is planning on providing `fuser`, `pstree`, `peekfd` and `prtstat` (but not `pslog` or `pstree.x11`)
@@ -25,20 +27,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Does Not Replace
 - `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
-- `dhcp` / `sdhcp`
 - `file`
 - `fping`
-- `grep` / `ugrep`; toybox's `grep` is at least 10 times slower
+- `grep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
-- `iputils`
 - `kbd`; busybox has better implementations
-- `man-db` / `mandoc`; bad implementation
-- `more` / `less`; bad implementation
+- `less`; bad implementation
+- `mandoc`; bad implementation
+- `neatvi`; bad implementation
 - `pciutils`
+- `sdhcp`
 - `shadow`
 - `util-linux`; bad implementations like `swapon`
-- `vim` / `neatvi`; bad implementation
-- `wget`; bad implementation
+- `wget2`; bad implementation
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
@@ -59,6 +60,55 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 16. `unexpand`
 17. `users` (provided by `shadow`)
 18. `vdir`
+
+## Shell Builtins
+- `:` (POSIX) (bash, dash, oksh, yash)
+- `.` (POSIX) (bash, dash, oksh, yash)
+- `alias`/`unalias` (bash, dash, oksh, yash)
+- `bg` (bash, dash, oksh, yash)
+- `break` (POSIX) (bash, dash, oksh, yash)
+- `cd` (bash, dash, oksh, yash)
+- `command` (bash, dash, oksh, yash)
+- `continue` (POSIX) (bash, dash, oksh, yash)
+- `echo` (bash, dash, oksh) (yash: substitutive built-in for `/usr/bin/echo`)
+- `eval` (POSIX) (bash, dash, oksh, yash)
+- `exec` (POSIX) (bash, dash, oksh, yash)
+- `exit` (POSIX) (bash, dash, oksh, yash)
+- `export` (POSIX) (bash, dash, oksh, yash)
+- `fg` (bash, dash, oksh, yash)
+- `getopts` (bash, dash, oksh, yash)
+- `jobs` (bash, dash, oksh, yash)
+- `kill` (bash, dash, oksh, yash)
+- `pwd` (bash, dash, oksh) (yash: substitutive built-in for `/usr/bin/pwd`)
+- `read` (bash, dash, oksh, yash)
+- `readonly` (POSIX) (bash, dash, oksh, yash)
+- `return` (POSIX) (bash, dash, oksh, yash)
+- `set` (POSIX) (bash, dash, oksh, yash)
+- `shift` (POSIX) (bash, dash, oksh, yash)
+- `test`/`[` (bash, dash, oksh) (yash: substitutive built-in for `/usr/bin/test` and `/usr/bin/[` respectively)
+- `times` (POSIX) (bash, dash, oksh, yash)
+- `trap` (POSIX) (bash, dash, oksh, yash)
+- `type` (bash, dash, oksh, yash)
+- `ulimit` (bash, dash, oksh, yash)
+- `umask` (bash, dash, oksh, yash)
+- `unset` (POSIX) (bash, dash, oksh, yash)
+- `wait` (bash, dash, oksh, yash)
+
+### Shell Builtins Provided by toybox
+- `echo`
+- `help`
+- `kill`
+- `pwd`
+- `test`
+- `ulimit`
+
+### Shell Builtins Not Found in
+- `abbr` (bash, dash, oksh, yash)
+- `alloc` (bash, dash, oksh, yash)
+- `autoload` (bash, dash, yash) (oksh: alias for `typeset -fu`)
+- `bindkey` (bash, dash, oksh) (yash: elective built-in)
+- `bye` (bash, dash, oksh, yash)
+- `cap` (bash, dash, oksh, yash)
 
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
