@@ -102,13 +102,25 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `test`
 - `ulimit`
 
-### Shell Builtins Not Found in
+### Shell Builtins Not Found in the shells (not yet searched for in toybox)
 - `abbr` (bash, dash, oksh, yash)
 - `alloc` (bash, dash, oksh, yash)
 - `autoload` (bash, dash, yash) (oksh: alias for `typeset -fu`)
-- `bindkey` (bash, dash, oksh) (yash: elective built-in)
+- `bindkey` (bash, dash, oksh) (yash: elective builtin)
 - `bye` (bash, dash, oksh, yash)
 - `cap` (bash, dash, oksh, yash)
+- `clone` (bash, dash, oksh, yash)
+- `chdir` (bash, oksh, yash) (`dash` surprisingly provides this builtin)
+- `comparguments` (bash, dash, oksh, yash)
+- `compcall` (bash, dash, oksh, yash)
+- `compctl` (bash, dash, oksh, yash)
+- `compdescribe` (bash, dash, oksh, yash)
+- `compfiles` (bash, dash, oksh, yash)
+- `compound` (bash, dash, oksh, yash)
+- `compquote` (bash, dash, oksh, yash)
+- `comptags` (bash, dash, oksh, yash)
+- `comptry` (bash, dash, oksh, yash)
+- `compvalues` (bash, dash, oksh, yash)
 
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
