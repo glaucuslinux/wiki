@@ -100,6 +100,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `kill`
 - `pwd`
 - `test`
+- `time`
 - `ulimit`
 
 ### Shell Builtins Not Found in the shells and on the system (not yet checked for in toybox)
@@ -139,8 +140,27 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `repeat` (bash, dash, oksh, yash)
 - `savehistory` (bash, dash, oksh, yash)
 - `setenv` (bash, dash, oksh, yash)
+- `stop` (bash, dash, yash) (oksh: alias for `kill -STOP`)
 - `unhash` (bash, dash, oksh, yash)
 - `unlimit` (bash, dash, oksh, yash)
+
+### Shell Keywords
+- `case` (bash, dash, oksh, yash)
+- `do` (bash, dash, oksh, yash)
+- `done` (bash, dash, oksh, yash)
+- `elif` (bash, dash, oksh, yash)
+- `else` (bash, dash, oksh, yash)
+- `esac` (bash, dash, oksh, yash)
+- `fi` (bash, dash, oksh, yash)
+- `for` (bash, dash, oksh, yash)
+- `function` (bash, oksh, yash)
+- `if` (bash, dash, oksh, yash)
+- `in` (bash, dash, oksh, yash)
+- `select` (bash, oksh)
+- `then` (bash, dash, oksh, yash)
+- `time` (bash, oksh)
+- `until` (bash, dash, oksh, yash)
+- `while` (bash, dash, oksh, yash)
 
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
