@@ -171,6 +171,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `readarray`
 - `shopt`
 
+### Custom Builtins
+- `bind` (bash, oksh)
+- `builtin` (bash, oksh)
+- `complete` (bash, yash)
+- `dirs` (bash, yash)
+- `disown` (bash, yash)
+
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
 - https://codeberg.org/sewn/kiss-repo/commit/c7449c660d048034b3da358efe0a4d8526c8019b
