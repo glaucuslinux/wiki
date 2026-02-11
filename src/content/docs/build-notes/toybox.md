@@ -162,6 +162,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `until` (bash, dash, oksh, yash)
 - `while` (bash, dash, oksh, yash)
 
+### Bashisms Builtins
+- `caller`
+- `compgen`
+- `declare`
+- `enable`
+- `mapfile`
+- `readarray`
+- `shopt`
+
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
 - https://codeberg.org/sewn/kiss-repo/commit/c7449c660d048034b3da358efe0a4d8526c8019b
