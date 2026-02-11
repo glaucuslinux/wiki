@@ -62,8 +62,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 18. `vdir`
 
 ## Shell Builtins
-- `:` (POSIX) (bash, dash, oksh, yash)
 - `.` (POSIX) (bash, dash, oksh, yash)
+- `:` (POSIX) (bash, dash, oksh, yash)
 - `alias`/`unalias` (bash, dash, oksh, yash)
 - `bg` (bash, dash, oksh, yash)
 - `break` (POSIX) (bash, dash, oksh, yash)
@@ -75,20 +75,29 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `exec` (POSIX) (bash, dash, oksh, yash)
 - `exit` (POSIX) (bash, dash, oksh, yash)
 - `export` (POSIX) (bash, dash, oksh, yash)
+- `false` (bash, dash, oksh, yash)
+- `fc` (bash, dash, oksh, yash)
 - `fg` (bash, dash, oksh, yash)
 - `getopts` (bash, dash, oksh, yash)
+- `hash` (bash, dash, yash) (oksh: alias for `alias -t`)
+- `history` (bash, oksh, yash) (oksh: alias for `fc -l`)
 - `jobs` (bash, dash, oksh, yash)
 - `kill` (bash, dash, oksh, yash)
+- `local` (bash, dash, yash) (oksh: alias for `typeset`)
+- `printf` (bash, dash, oksh, yash)
 - `pwd` (bash, dash, oksh) (yash: substitutive built-in for `/usr/bin/pwd`)
 - `read` (bash, dash, oksh, yash)
 - `readonly` (POSIX) (bash, dash, oksh, yash)
 - `return` (POSIX) (bash, dash, oksh, yash)
 - `set` (POSIX) (bash, dash, oksh, yash)
 - `shift` (POSIX) (bash, dash, oksh, yash)
+- `suspend` (bash, oksh, yash)
 - `test`/`[` (bash, dash, oksh) (yash: substitutive built-in for `/usr/bin/test` and `/usr/bin/[` respectively)
 - `times` (POSIX) (bash, dash, oksh, yash)
 - `trap` (POSIX) (bash, dash, oksh, yash)
+- `true` (bash, dash, oksh, yash)
 - `type` (bash, dash, oksh, yash)
+- `typeset` (bash, oksh, yash)
 - `ulimit` (bash, dash, oksh, yash)
 - `umask` (bash, dash, oksh, yash)
 - `unset` (POSIX) (bash, dash, oksh, yash)
@@ -167,9 +176,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `compgen`
 - `declare`
 - `enable`
+- `logout`
 - `mapfile`
 - `readarray`
 - `shopt`
+- `source`
+
+### Okshisms Builtins
+- `integer` (alias for `typeset -i`)
+- `print`
+- `whence`
 
 ### Custom Builtins
 - `bind` (bash, oksh)
@@ -177,6 +193,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `complete` (bash, yash)
 - `dirs` (bash, yash)
 - `disown` (bash, yash)
+- `help` (bash, yash)
+- `let` (bash, oksh)
+- `popd` (bash, yash)
+- `pushd` (bash, yash)
 
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
