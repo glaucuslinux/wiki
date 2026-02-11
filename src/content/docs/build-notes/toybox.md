@@ -104,12 +104,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `wait` (bash, dash, oksh, yash)
 
 ### Shell Builtins Provided by toybox
+- `[`
 - `echo`
+- `false`
 - `help`
 - `kill`
+- `printf`
 - `pwd`
 - `test`
 - `time`
+- `true`
 - `ulimit`
 
 ### Shell Builtins Not Found in the shells and on the system (not yet checked for in toybox)
