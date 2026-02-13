@@ -13,28 +13,47 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 -Wl,-O1,--rosegment,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
 ```
 
-## CFLAGS
+## CFLAGS (Ordered based on appearance in the GCC manual)
 ### `-pipe`
-- Use pipes over temporary files
-- Uses more RAM and reduces disk usage
+- Use pipes over temporary files; more RAM but less disk usage
 - Ignored by `clang`
 
 ### `-g0`
 - Compiling with `-g0` or without `-g` at all should in theory result in no debugging information in the binaries
 - Some build systems misinterpret `-g0` as `-g` leaving debugging information in the binaries; this is a bug to be reported to the relative upstream
 
+### `-fno-var-tracking`
+- Speeds up compilation time when `-g` is used
+- Does not make sense when `-g` is not used
+
 ### `-O3`
-- Might beat `-O2` in microbenchmarks, but in the context of a distribution `-O2` beats `-O3` in terms of code size and overall performance
+- Might beat `-O2` in microbenchmarks, but in the context of a distribution `-O3` loses in terms of code size and overall performance
 - Can cause executables to run slower as it would generate more machine code than `-O2` which would make programs bigger and thus unable to fit in the L1 cache causing cache misses for instructions
 - openSUSE says that `cmake` enabling `-O3` "by default" is not a good idea
 - https://sunnyflunk.github.io/2023/01/15/x86-64-v3-Mixed-Bag-of-Performance.html
 - https://sunnyflunk.github.io/2023/01/29/GCCs-O3-Can-Transform-Performance.html
 
+### `-foptimize-strlen`
+- Enabled for `-O2` and disabled for `-Os` and `-Oz`
+- `clang` does not support `-foptimize-strlen`; `clang` implicitly performs this optimization
+
 ### `-fmerge-all-constants`
 - Causes miscompilations due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
 
-### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves`, `-fgcse-sm` and `-fgcse-las`
-- Aggressive common subexpression elimination (cse) and scheduling (particularly modulo scheduling) can dramatically increase register pressure leading to more loads and stores, making performance worse than it would be without them, especially on register-starved machines like x86 it makes sense to have some of these off by default
+### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves` and `-fgcse-sm`
+- Aggressive common subexpression elimination (cse) and scheduling (particularly modulo scheduling) can dramatically increase register pressure
+- This leads to more loads and stores, causing spills and increasing code size
+- This makes performance worse than without them
+- It makes sense to have these off by default on register-starved machines like `x86`
+
+### `-fgcse-las`
+- Removes redundant load instructions which can reduce register pressure by reusing loaded values
+- Might reduce code size
+- Ignored by `clang`
+
+### `-fdelete-null-pointer-checks`
+- Enables simple constant folding optimizations
+- Enabled by default on most targets; no need to mess with it
 
 ### `-fdevirtualize-at-ltrans`
 - `gcc` disables it by default as it increases the size of streamed data
@@ -43,12 +62,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ### `-flive-range-shrinkage`
 - Can increase code size with redundant push/pop
-- Might help decrease register pressure
+- Might decrease register pressure
 - `clang` does not support `-flive-range-shrinkage`
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116027
 
 ### `-fira-loop-pressure`
-- Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it sometimes produces slower code: https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
+- Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it might produce slower code
+- https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
+
+### `-fdelayed-branch`
+- `x86-64` does not have delay slots rendering this "legacy" optimization irrelevant
 
 ### `-fsched-pressure`
 - Should in theory decrease register pressure before allocation
@@ -65,11 +88,23 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Similar to `-fsched-spec-load`
 - Avoid options with `dangerous` in the name..
 
-### `-fipa-pta`
-- Abandoned and needs a major redesign
-- Does not scale, at least for now (according to openSUSE)
-- Increases memory usage and compilation time
-- Prone to having the compiler segfault with an internal compiler error which leads to all kinds of weird errors like `duplicate case value` (affected packages: `bash`, `gcc`, `inetutils`, `libarchive`, `libedit`, `netbsd-curses`, `util-linux`)
+### `-fsched2-use-superblocks`
+- Experimental option that might produce unreliable results and increase code size
+
+### `-fspeculatively-call-stored-functions`
+- Enabled by default at `-O2`
+- Do not enable manually; let PGO decide
+
+### `-freschedule-modulo-scheduled-loops`
+- Modulo scheduling is a software pipelining technique; thus it might increase code size with no proved performance gain
+- Most of `x86-64-v3` have hardware pipelining
+
+### `-fselective-scheduling`, `-fselective-scheduling2`, `-fsel-sched-pipelining` and `-fsel-sched-pipelining-outer-loops`
+- IA64 is probably the only target left requiring selective scheduling
+- Selective scheduling itself is in a poor state nowadays
+- `-fsel-sched-pipelining` has no effect without `-fselective-scheduling` or `-fselective-scheduling2`
+- `-fsel-sched-pipelining-outer-loops` has no effect without `-fsel-sched-pipelining`
+- https://gcc.gnu.org/pipermail/gcc-patches/2025-August/692322.html
 
 ### `-fno-semantic-interposition`
 - This option is only for shared libraries/dynamic linking and breaks static binaries and libraries
@@ -77,6 +112,45 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Breaks `LD_PRELOAD` which in turn breaks custom memory allocators like `mimalloc`
 - Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang
 - https://maskray.me/blog/2021-05-09-fno-semantic-interposition
+
+### `-fipa-reorder-for-locality`
+- Minimizes branch distances between frequently called functions
+- Involves function cloning which might increase code size
+- Not compatible with `-flto-partition`
+- Let PGO decide whether to enable this option or not
+- https://mirrors.git.embecosm.com/mirrors/gcc/-/commit/6d9fdf4bf57353f9260a2e0c8774854fb50f5128
+- https://inbox.sourceware.org/gcc-patches/26EB1960-A1D8-45F3-9646-4DBFFD39970A@nvidia.com/
+- https://developer.arm.com/community/arm-community-blogs/b/tools-software-ides-blog/posts/gcc-15-continuously-improving
+
+### `-fipa-pta`
+- Abandoned and needs a major redesign
+- Does not scale, at least for now (according to openSUSE)
+- Increases memory usage and compilation time
+- Prone to having the compiler segfault with an internal compiler error which leads to all kinds of weird errors like `duplicate case value` (affected packages: `bash`, `gcc`, `inetutils`, `libarchive`, `libedit`, `netbsd-curses`, `util-linux`)
+
+### `-flive-patching`
+- Prevents a lot of optimizations from gcc to produce output suitable for live-patching
+- Does not work with `-flto`
+
+### `-fisolate-erroneous-paths-attribute`
+- Isolates UB paths from main control and turns them into a trap
+- A clever trick but still a workaround not a solution
+- `gcc`'s `-O2` might enable this in the future
+- Might increase code size
+- https://inbox.sourceware.org/gcc-patches/5f3028ab-dae1-e8d6-772c-3dbea0885df2@suse.de/T/
+
+### `-ftree-cselim`
+- Not enabled by default on any optimization level even when the target has `cmov`; the manual claims otherwise
+- Often hurts performance on modern `x86-64-v3` by creating instruction dependencies that serialize execution
+- Might reduce code size?
+- https://yarchive.net/comp/linux/cmov.html
+- https://inbox.sourceware.org/gcc-patches/5f3028ab-dae1-e8d6-772c-3dbea0885df2@suse.de/T/
+
+### `-ffinite-loops`
+- Can incorrectly remove infinite loops used for event polling or main loops causing potential breakages in various software
+- Risky assumption with minimal benefit
+- Mainly intended for C++ code
+- https://forum.dlang.org/thread/aejdlmkvuwgbtxktpjby@forum.dlang.org
 
 ### `-fgraphite-identity`
 - Graphite is not well maintained in `gcc` and will likely end up being removed entirely
@@ -99,15 +173,36 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/InBetweenNames/gentooLTO/issues/158
 - https://github.com/InBetweenNames/gentooLTO/issues/638
 
+### `-ftrivial-auto-var-init=zero`
+- Reduce the risk of a logic bug leading to a security vulnerability
+- Increases code size considerably and degrades performance
+- Only applies to variables with automatic storage duration
+- Does not apply to objects with dynamic storage duration (`new` and `delete`)
+- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111523
+- https://github.com/ossf/wg-best-practices-os-developers/issues/245
+- https://stackoverflow.com/questions/75061576/using-ftrivial-auto-var-init-to-guarantee-the-initialization-of-padding-bytes
+
 ### `-fvariable-expansion-in-unroller`
 - This takes a number and by default GCC only enables it for PowerPC, but disables it for other architectures, also it is not supported by clang apparently:
 https://reviews.llvm.org/D4565
+
+### `-freorder-blocks-algorithm=simple`
+- Enabled by default when using `-Os`
+- `-O2` uses `stc` instead of `simple`
+- `simple` does not increase code size and works well with LTO
+- `stc` duplicates code to minimize the number of executed branches
+- https://developers.redhat.com/blog/2015/12/07/octobernovember-2015-gnu-toolchain-update
+- https://github.com/riscvarchive/riscv-gcc/issues/144
 
 ### `-falign-functions=32`
 - Not important for AMD CPUs, but for Intel you'd have to use 64 to get the fastest performance, and it bloats by trying to resize into chunks that may be huge, and if it is not specified or is zero, then it will use a machine-dependent default (as it is enabled on O2 and O3)
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66240
 - https://lkml.org/lkml/2015/5/19/1142
 - https://www.reddit.com/r/Gentoo/comments/11iv2tl/need_advice_kernel_optimization_low_latency_max/
+
+### `-flimit-function-alignment`
+- Has no use when `-falign-functions` is not used
 
 ### `-flto=auto`
 - Without the linker plugin LTO will not happen (particularly for static libraries as you will get the same code without `-flto`)
@@ -125,6 +220,24 @@ https://reviews.llvm.org/D4565
 - This means that not using this flag as in the case above might cause `-fwhole-program` to be picked which is not a good idea; use `-fuse-linker-plugin` so programs can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
 - Ignored by `clang`
 
+### `-ftracer` and `-funroll-loops`
+- Enabled after decisions by PGO and shouldn't be manually used everywhere; may cause regressions and produce bigger code that may or may not be fast
+
+### `-ffunction-sections`, `-fdata-sections` and `-Wl,--gc-sections`
+- These options affect code generation, and should only be used when there are significant benefits from doing so
+- They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files); this is needed for the final binaries to be smaller
+- Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
+- Might cause subtle breakages by mistakenly removing necessary sections; use `-Wl,--no-gc-sections` when that happens
+- Might help reduce attack surface by removing unused sections
+- https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
+- https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
+- https://github.com/android/ndk/issues/748
+- https://lists.freebsd.org/pipermail/freebsd-current/2013-September/044561.html
+
+### `-fcf-protection=full`
+- Requires Intel CET to be present
+- https://maskray.me/blog/2022-12-18-control-flow-integrity
+
 ### `-fno-unwind-tables`
 - `gcc` enables `-funwind-tables` by default and its documentation says that you normally do not need to enable this; instead, a language processor that needs this handling enables it on your behalf
 
@@ -139,6 +252,19 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/legacy-ml/gcc-help/2016-10/msg00023.html
 - https://lists.busybox.net/pipermail/busybox/2012-September/078331.html
 - https://lists.busybox.net/pipermail/busybox/2012-September/078326.html
+
+### `-fno-common`
+- Default as of GCC 10
+- https://gcc.gnu.org/gcc-10/porting_to.html
+
+### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
+- It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
+- It is better to have `gcc` configured with `--enable-default-pie` so that it knows when to pass these options
+- These options do not contradict with `-fno-plt`
+- `-fno-pic` can only be used by executables
+- `-fpic` can be used by both executables and shared objects
+- `-fpie` can only be used by executables
+- https://maskray.me/blog/2021-01-09-copy-relocations-canonical-plt-entries-and-protected
 
 ### `-fno-plt`
 - Only applies to shared libraries and dynamic linking
@@ -155,23 +281,6 @@ https://reviews.llvm.org/D4565
 - https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
 - https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
 
-### `-flimit-function-alignment`
-- Has no use when `-falign-functions` is not used
-
-### `-ftracer` and `-funroll-loops`
-- Enabled after decisions by PGO and shouldn't be manually used everywhere; may cause regressions and produce bigger code that may or may not be fast
-
-### `-ffunction-sections`, `-fdata-sections` and `-Wl,--gc-sections`
-- These options affect code generation, and should only be used when there are significant benefits from doing so
-- They make the assembler and linker create larger and slower objects (larger `.o` and `.a` files); this is needed for the final binaries to be smaller
-- Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
-- Might cause subtle breakages by mistakenly removing necessary sections; use `-Wl,--no-gc-sections` when that happens
-- Might help reduce attack surface by removing unused sections
-- https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
-- https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
-- https://github.com/android/ndk/issues/748
-- https://lists.freebsd.org/pipermail/freebsd-current/2013-September/044561.html
-
 ### `-fvisibility-inlines-hidden`
 - Breaks a lot of packages (particularly C++ packages), and many suggest disabling it to allow `libstdc++` to detect its symbols
 - Its behavior is already covered by `-fvisibility=hidden`
@@ -180,118 +289,6 @@ https://reviews.llvm.org/D4565
 - https://forums.gentoo.org/viewtopic-p-8604744.html?sid=eb649881fb22afe89b2160b9dd4f89f9
 - https://gcc.gnu.org/wiki/Visibility
 - https://stackoverflow.com/questions/59469822/how-fvisibility-inlines-hidden-differs-from-fvisibility-hidden-in-gcc
-
-### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
-- It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
-- It is better to have `gcc` configured with `--enable-default-pie` so that it knows when to pass these options
-- These options do not contradict with `-fno-plt`
-- `-fno-pic` can only be used by executables
-- `-fpic` can be used by both executables and shared objects
-- `-fpie` can only be used by executables
-- https://maskray.me/blog/2021-01-09-copy-relocations-canonical-plt-entries-and-protected
-
-### `-fno-common`
-- Default as of GCC 10
-- https://gcc.gnu.org/gcc-10/porting_to.html
-
-### `-fno-var-tracking`
-- Speeds up compilation time when `-g` is used
-- Does not make sense when `-g` is not used
-
-### `-foptimize-strlen`
-- Enabled for `-O2` and disabled for `-Os` and `-Oz`
-- `clang` does not support `-foptimize-strlen`; `clang` implicitly performs this optimization?
-
-### `-fgcse-sm`
-- Increases register pressure which can spills and increase code size
-
-### `-fgcse-las`
-- Removes redundant load instructions which can reduce register pressure by reusing loaded values
-- Might reduce code size
-- Ignored by `clang`
-
-### `-fcf-protection=full`
-- Requires Intel CET to be present
-- https://maskray.me/blog/2022-12-18-control-flow-integrity
-
-### `-fdelete-null-pointer-checks`
-- Enables simple constant folding optimizations
-- Enabled by default on most targets; no need to mess with it
-
-### `-fdelayed-branch`
-- `x86-64` does not have delay slots rendering this "legacy" optimization irrelevant
-
-### `-fsched2-use-superblocks`
-- Experimental option that might produce unreliable results and increase code size
-
-### `-fspeculatively-call-stored-functions`
-- Do not enable manually; let PGO decide
-
-### `-freschedule-modulo-scheduled-loops`
-- Modulo scheduling is a software pipelining technique; thus it might increase code size with no proved performance gain
-- Most of `x86-64-v3` have hardware pipelining
-
-### `-fselective-scheduling`, `-fselective-scheduling2`, `-fsel-sched-pipelining` and `-fsel-sched-pipelining-outer-loops`
-- IA64 is probably the only target left requiring selective scheduling
-- Selective scheduling itself is in a poor state nowadays
-- `-fsel-sched-pipelining` has no effect without `-fselective-scheduling` or `-fselective-scheduling2`
-- `-fsel-sched-pipelining-outer-loops` has no effect without `-fsel-sched-pipelining`
-- https://gcc.gnu.org/pipermail/gcc-patches/2025-August/692322.html
-
-### `-fipa-reorder-for-locality`
-- Minimizes branch distances between frequently called functions
-- Involves function cloning which might increase code size
-- Not compatible with `-flto-partition`
-- Let PGO decide whether to enable this option or not
-- https://mirrors.git.embecosm.com/mirrors/gcc/-/commit/6d9fdf4bf57353f9260a2e0c8774854fb50f5128
-- https://inbox.sourceware.org/gcc-patches/26EB1960-A1D8-45F3-9646-4DBFFD39970A@nvidia.com/
-- https://developer.arm.com/community/arm-community-blogs/b/tools-software-ides-blog/posts/gcc-15-continuously-improving
-
-### `-flive-patching`
-- Prevents a lot of optimizations from gcc to produce output suitable for live-patching
-- Does not work with `-flto`
-
-### `-fisolate-erroneous-paths-attribute`
-- Isolates UB paths from main control and turns them into a trap
-- `gcc`'s `-O2` might enabled this in the future
-
-### `-fisolate-erroneous-paths-attribute`
-- Isolates UB paths from main control and turns them into a trap
-- A clever trick but still a workaround not a solution
-- `gcc`'s `-O2` might enabled this in the future
-- Might increase code size
-- https://inbox.sourceware.org/gcc-patches/5f3028ab-dae1-e8d6-772c-3dbea0885df2@suse.de/T/
-
-### `-ftree-cselim`
-- Not enabled by default on any optimization level even when the target has `cmov`; the manual claims otherwise
-- Often hurts performance on modern `x86-64-v3` by creating instruction dependencies that serialize execution
-- Might reduce code size?
-- https://yarchive.net/comp/linux/cmov.html
-- https://inbox.sourceware.org/gcc-patches/5f3028ab-dae1-e8d6-772c-3dbea0885df2@suse.de/T/
-
-### `-ffinite-loops`
-- Can incorrectly remove infinite loops used for event polling or main loops causing potential breakages in various software
-- Risky assumption with minimal benefit
-- Mainly intended for C++ code
-- https://forum.dlang.org/thread/aejdlmkvuwgbtxktpjby@forum.dlang.org
-
-### `-ftrivial-auto-var-init=zero`
-- Reduce the risk of a logic bug leading to a security vulnerability
-- Increases code size considerably and degrades performance
-- Only applies to variables with automatic storage duration
-- Does not apply to objects with dynamic storage duration (`new` and `delete`)
-- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
-- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111523
-- https://github.com/ossf/wg-best-practices-os-developers/issues/245
-- https://stackoverflow.com/questions/75061576/using-ftrivial-auto-var-init-to-guarantee-the-initialization-of-padding-bytes
-
-### `-freorder-blocks-algorithm=simple`
-- Enabled by default when using `-Os`
-- `-O2` uses `stc` instead of `simple`
-- `simple` does not increase code size and works well with LTO
-- `stc` duplicates code to minimize the number of executed branches
-- https://developers.redhat.com/blog/2015/12/07/octobernovember-2015-gnu-toolchain-update
-- https://github.com/riscvarchive/riscv-gcc/issues/144
 
 ### `-fsection-anchors`
 - Section anchors are enabled by default with `-Os`?
@@ -326,7 +323,7 @@ https://reviews.llvm.org/D4565
 - Redundant when `-fomit-frame-pointer` is used (which is the default with `-O2` and `-Os`)
 
 ### Disable LTO
-- Remove `-flto=auto -flto-compression-level=3 -fuse-linker-plugin`
+- Remove `-flto=auto -fuse-linker-plugin` (and `-flto-compression-level=3` if being used)
 
 ## LDFLAGS
 ### `-Wl,--gc-sections` and `-Wl,-z,start-stop-gc`
