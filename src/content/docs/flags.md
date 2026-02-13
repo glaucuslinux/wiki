@@ -10,7 +10,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS` (`CFLAGS` are added for more effective LTO):
 ```
--Wl,-O1,--rosegment,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
+-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
 ```
 
 ## CFLAGS (Ordered based on appearance in the GCC manual)
@@ -328,9 +328,70 @@ https://reviews.llvm.org/D4565
 ### Disable LTO
 - Remove `-flto=auto -fuse-linker-plugin` (and `-flto-compression-level=3` if being used)
 
-## LDFLAGS
+## LDFLAGS (Ordered based on appearance in the GNU linker manual)
+### `-O1`
+- Enables linker optimizations which can reduce code size
+- `bfd` optimizes if a non-zero value was given with no differences between the values
+- `lld` has a higher level `-O2`, and it uses `-O1` by default
+- Ignored by `mold`
+
+### `-x, --discard-all` and `-X, --discard-locals`
+- `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
+- for `-x` and `-X` to work, `.symtab` needs to exist, which means using them alongside `-s` is redundant
+- `-X` is the default behavior for gnu ld `ld --help`
+- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
+
+### `-z,separate-code` and `--rosegment`
+- Using `-z,separate-code` is good for security
+- Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
+- Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB (for better huge page support)
+- With traditional `-z,noseparate-code`, `bfd` defaults to a `RX/R/RW` program header layout
+- With `-z,separate-code` (default on Linux/x86 from binutils 2.31 onwards), `bfd` defaults to a `R/RX/R/RW` program header layout
+- `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)`
+- With `--rosegment`, `lld` uses `RX/RW(RELRO)/RW(non-RELRO)`
+- Placing all `R` before `RX` is preferable as it can save one program header and reduce alignment costs
+- `lld`'s split of `RW` saves one maxpagesize alignment and can make the linked image smaller
+- This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment"
+- If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
+- `lld` defaults to `noseparate-code`
+- `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
+- AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
+- In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
+- ld.bfd's -z separate-code is essentially split into two options in lld: -z separate-code and --rosegment.
+- GitHub actions for `rad` uses `ubuntu-latest` which does not recognize `--rosegment`:
+```
+Nim Output /usr/bin/ld: unrecognized option '--rosegment'
+       ... /usr/bin/ld: use the --help option for usage information
+       ... collect2: error: ld returned 1 exit status
+```
+- glaucus's toolchain uses `--rosegment` by default even if the flag was not provided in LDFLAGS
+- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
+- https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
+- https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
+
+### `-z,noexectack`
+- Provides "Stack Execution Protection"
+- Should be the default behavior by `gcc`; does not mark the stack as executable by default, and warns when that happens
+
+### `-z,pack-relative-relocs`
+- https://maskray.me/blog/2021-10-31-relative-relocations-and-relr
+
+### `-z,text`
+- Enforces `Write XOR Execute (W^X)`
+- `lld` defaults to `-z,text`
+- `hardened_malloc` builds with `-z,text` and `-z,defs` by default
+
+### `-z,x86-64-v3`
+- `lld` does not support `-z,x86-64-v3`
+
+### `--no-copy-dt-needed-entries`
+- Stops the linker from resolving symbols in the produced binary to transitive library dependencies
+- Enforces that the binary must explicitly link against all of its actual dependencies
+- Enabled by default behavior in `ld.bfd` since 2.22
+- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
+
 ### `-Wl,--gc-sections` and `-Wl,-z,start-stop-gc`
-- Useful only when `-ffunction-sections` and `-fdata-sections` are used
+- Only useful when `-ffunction-sections` and `-fdata-sections` are used
 - Removes unused code sections in libraries that enable the flags above
 - `-z,start-stop-gc` makes `--gc-sections` more accurate and should in theory result in a smaller binary
 - `lld` defaults to `-z,start-stop-gc`
@@ -346,28 +407,9 @@ https://reviews.llvm.org/D4565
 - https://stackoverflow.com/questions/31521326/gc-sections-discards-used-data
 - https://stackoverflow.com/questions/4274804/query-on-ffunction-section-fdata-sections-options-of-gcc
 
-### `-Wl,-z,noexectack`
-- Provides "Stack Execution Protection"
-- Should be the default behavior by `gcc`; does not mark the stack as executable by default, and warns when that happens
-
-### `-Wl,-O1`
-- Enables linker optimizations which can reduce code size
-- `bfd` optimizes if a non-zero value was given with no differences between the values
-- `lld` has a higher level `-O2`, and it uses `-O1` by default
-- Ignored by `mold`
-
-### `--compress-debug-sections=zstd`
-- It does not make sense to compress "nonexistant" debug sections as we're stripping everything with `-s`
-
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
 - `lld` and `mold` do not support `--reduce-memory-overheads`
-
-### `-x, --discard-all` and `-X, --discard-locals`
-- `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
-- for `-x` and `-X` to work, `.symtab` needs to exist, which means using them alongside `-s` is redundant
-- `-X` is the default behavior for gnu ld `ld --help`
-- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 
 ### `--relax`
 - Performs some optimizations (instruction relaxation) for certain targets
@@ -387,34 +429,6 @@ https://reviews.llvm.org/D4565
 - https://sourceware.org/bugzilla/show_bug.cgi?id=27837
 - https://www.sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
 
-### `-z,separate-code` and `--rosegment`
-- Using `-z,separate-code` is good for security
-- Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
-- Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB (for better huge page support)
-> Default program headers:
-With traditional -z noseparate-code, GNU ld defaults to a RX/R/RW program header layout.
-With -z separate-code (default on Linux/x86 from binutils 2.31 onwards), GNU ld defaults to a R/RX/R/RW program header layout.
-ld.lld defaults to R/RX/RW(RELRO)/RW(non-RELRO). With --rosegment, ld.lld uses RX/RW(RELRO)/RW(non-RELRO).
-Placing all R before RX is preferable because it can save one program header and reduce alignment costs.
-ld.lld's split of RW saves one maxpagesize alignment and can make the linked image smaller.
-This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment".
-- If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
-- `lld` defaults to `noseparate-code`
-- `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
-- AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
-- In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
-- ld.bfd's -z separate-code is essentially split into two options in lld: -z separate-code and --rosegment.
-- GitHub actions for `rad` uses `ubuntu-latest` which does not recognize `--rosegment`:
-```
-Nim Output /usr/bin/ld: unrecognized option '--rosegment'
-       ... /usr/bin/ld: use the --help option for usage information
-       ... collect2: error: ld returned 1 exit status
-```
-- glaucus's toolchain uses `--rosegment` by default even if the flag was not provided in LDFLAGS
-- https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
-- https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
-- https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
-
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
@@ -425,25 +439,12 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - `gnu` is the more modern style
 - https://maskray.me/blog/2022-08-21-glibc-and-dt-gnu-hash
 
-### `-z,pack-relative-relocs`
-- https://maskray.me/blog/2021-10-31-relative-relocations-and-relr
+### `--compress-debug-sections=zstd`
+- It does not make sense to compress "nonexistant" debug sections as we're stripping everything with `-s`
 
 ### `--build-id=none`
 - smaller executables and faster link time
 - https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
-
-### `--no-copy-dt-needed-entries`
-- Stops the linker from resolving symbols in the produced binary to transitive library dependencies
-- Enforces that the binary must explicitly link against all of its actual dependencies
-- Enabled by default behavior in `ld.bfd` since 2.22
-- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
-
-### `-z,text`
-- Enforces `Write XOR Execute (W^X)`
-- `lld` defaults to `-z,text`
-
-### `-z,x86-64-v3`
-- `lld` does not support `-z,x86-64-v3`
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html
