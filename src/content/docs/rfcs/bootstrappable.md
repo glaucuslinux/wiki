@@ -18,3 +18,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/vasi/mid-kid-bootstrap
 - https://hacktivis.me/articles/bootstrap-initrd
 - https://stagex.tools/
+- https://xorvoid.com/sectorc.html

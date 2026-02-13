@@ -4,113 +4,55 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Current `CFLAGS`:
-```c
--pipe -O2 -flto=auto -flto-compression-level=3 -fuse-linker-plugin -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-plt -march=x86-64-v3 -malign-data=cacheline -mtls-dialect=gnu2
+```
+-pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
-- Current `LDFLAGS`:
-```c
--Wl,-O1,-s,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,x86-64-v3,--as-needed,--gc-sections,--sort-common,--hash-style=gnu
+- Current `LDFLAGS` (`CFLAGS` are added for more effective LTO):
+```
+-Wl,-O1,--rosegment,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
 ```
 
 ## CFLAGS
 ### `-pipe`
-- Use pipes rather than temporary files
-- Uses more RAM but reduces disk usage
-- Does it get ignored by `clang`?
+- Use pipes over temporary files
+- Uses more RAM and reduces disk usage
+- Ignored by `clang`
+
+### `-g0`
+- Compiling with `-g0` or without `-g` at all should in theory result in no debugging information in the binaries
+- Some build systems misinterpret `-g0` as `-g` leaving debugging information in the binaries; this is a bug to be reported to the relative upstream
 
 ### `-O3`
-- Will certainly beat `-O2` in microbenchmarks, but when you benchmark an entire distribution you will see that `-O2` beats it in terms of size and performance
-- Can cause executables to run slower because it would generate more machine code than `-O2` which would then make the program bigger and unable to fit in the L1 cache causing cache misses for instructions
+- Might beat `-O2` in microbenchmarks, but in the context of a distribution `-O2` beats `-O3` in terms of code size and overall performance
+- Can cause executables to run slower as it would generate more machine code than `-O2` which would make programs bigger and thus unable to fit in the L1 cache causing cache misses for instructions
 - openSUSE says that `cmake` enabling `-O3` "by default" is not a good idea
 - https://sunnyflunk.github.io/2023/01/15/x86-64-v3-Mixed-Bag-of-Performance.html
 - https://sunnyflunk.github.io/2023/01/29/GCCs-O3-Can-Transform-Performance.html
 
-### `-g0`
-- Compiling with `-g0` or without `-g` at all results in no debugging information in the binaries
-- Some build systems might misinterpret `-g0` as `-g`; this is a bug and should be reported to the relative upstream
-
-### `-flto=auto`
-- Without the plugin lto will not happen (particularly for static libraries as you will get the same code as without `-flto`)
-- Will spawn N threads based on the number of threads; similar to `make -j`
-- Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs
-- `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
-
-### `-flto-compression-level=3`
-- Available when using `zstd` as a backend for LTO as it results in "smaller" binaries
-- `clang` does not support `-flto-compression-level`
-
-### `-fuse-linker-plugin`
-- Enabled by default if `gcc` is built with `lto` enabled
-- There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
-- This means that not using this flag in the case above, it might resort to `-fwhole-program` which is not a good idea, so use it instead so it can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
-- Ignored by `clang`
-
-### `-fgraphite-identity`
-- Graphite is not well maintained in `gcc` and will likely end up being removed entirely
-- Most of its developers have moved to Polly in LLVM/Clang
-- Graphite cannot effectively optimize compared to the baseline gcc
-- The optimizations it was supposed to make are just being implemented via other methods
-- It's not necessarily buggy, but its benefits are rather doubtful
-- https://dl.acm.org/doi/full/10.1145/3674735
-
-### `-floop-nest-optimize`
-- Required for `isl` to work
-- Used to be known as `-floop-optimize-isl`
-- A new way to implement Graphite.
-- Replaces `-floop-interchange`, `-ftree-loop-linear`, `-floop-strip-mine` and `-floop-block`
-- Still considered experimental?
-
-### `-fdevirtualize-at-ltrans`
-- `gcc` disables it by default as it increases the size of streamed data
-- In practice, it is buggy and really slow
-- https://forums.gentoo.org/viewtopic-t-1171518.html
-
-### `-fipa-pta`
-- Abandoned and needs a major redesign
-- Does not scale, at least for now according to openSUSE
-- Increases memory usage and compilation time
-- Prone to having the compiler segfault with an internal compiler error which leads to all kinds of weird errors like `duplicate case value` (affected packages: `bash`, `gcc`, `inetutils`, `libarchive`, `libedit`, `netbsd-curses`, `util-linux`)
-
-### `-fno-unwind-tables`
-- `-funwind-tables` is enabled by default, but `gcc`'s documentation says that you normally do not need to enable this option; instead, a language processor that needs this handling enables it on your behalf
-
-### `-fno-asynchronous-unwind-tables`
-- Refer to `-fno-unwind-tables`; similar behavior
-- `-fasynchronous-unwind-tables` is required for many debugging and performance tools to work on most architectures (armhfp, ppc, ppc64, ppc64le do not need these tables due to architectural differences in stack management)
-- Even though it is necessary on aarch64, upstream gcc does not enable it by default?
-- `.eh_frame` is back as of `8.1.0` and both `-fasynchronous-unwind-tables` and `-funwind-tables` were made the default for aarch64
-- RHEL and Fedora patch `gcc` to enable it by default
-- https://code.forksand.com/qemu/edk2/commit/cbf00651eda6818ca3c76115b8a18e3f6b23eef4?lang=zh-HK
-- https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc/
-- https://gcc.gnu.org/legacy-ml/gcc-help/2016-10/msg00023.html
-- https://lists.busybox.net/pipermail/busybox/2012-September/078331.html
-- https://lists.busybox.net/pipermail/busybox/2012-September/078326.html
-
-### `-fno-plt`
-- Only applies to shared libraries and when dynamic linking
-- Arch and OpenWRT are using it by default
-- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` for immediate binding; `musl` does not support lazy binding and recommends immediate binding
-- Removes the ability to `prelink`; `prelink`ing is bad for ASLR
-- A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
-- https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
-- https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
-- https://github.com/InBetweenNames/gentooLTO/issues/302
-- https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
-- https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
-- https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
-- https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
-- https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
-
 ### `-fmerge-all-constants`
-- Causes miscompilations, due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
+- Causes miscompilations due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
 
 ### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves`, `-fgcse-sm` and `-fgcse-las`
 - Aggressive common subexpression elimination (cse) and scheduling (particularly modulo scheduling) can dramatically increase register pressure leading to more loads and stores, making performance worse than it would be without them, especially on register-starved machines like x86 it makes sense to have some of these off by default
 
+### `-fdevirtualize-at-ltrans`
+- `gcc` disables it by default as it increases the size of streamed data
+- Buggy and slow in practice
+- https://forums.gentoo.org/viewtopic-t-1171518.html
+
+### `-flive-range-shrinkage`
+- Can increase code size with redundant push/pop
+- Might help decrease register pressure
+- `clang` does not support `-flive-range-shrinkage`
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116027
+
+### `-fira-loop-pressure`
+- Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it sometimes produces slower code: https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
+
 ### `-fsched-pressure`
-- Should in theory help decrease register pressure before allocation
-- Can decrease code size by preventing register pressure  and subsequent spills in register allocation
+- Should in theory decrease register pressure before allocation
+- Can decrease code size by preventing register pressure and subsequent spills in register allocation
 - No idea if it works with `-fschedule-insns` (which is not enabled by default at `-O2` and `-Os`)
 - No idea if it works with `-fschedule-insns2` (which is enabled by default at `-O2` and `-Os`)
 
@@ -123,8 +65,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Similar to `-fsched-spec-load`
 - Avoid options with `dangerous` in the name..
 
-### `-fira-loop-pressure`
-- Do not force use this flag as it is enabled by default on `-O3` for appropriate targets, also it sometimes produces slower code: https://paperswithcode.com/paper/a-collective-knowledge-workflow-for/review/
+### `-fipa-pta`
+- Abandoned and needs a major redesign
+- Does not scale, at least for now (according to openSUSE)
+- Increases memory usage and compilation time
+- Prone to having the compiler segfault with an internal compiler error which leads to all kinds of weird errors like `duplicate case value` (affected packages: `bash`, `gcc`, `inetutils`, `libarchive`, `libedit`, `netbsd-curses`, `util-linux`)
 
 ### `-fno-semantic-interposition`
 - This option is only for shared libraries/dynamic linking and breaks static binaries and libraries
@@ -132,6 +77,21 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Breaks `LD_PRELOAD` which in turn breaks custom memory allocators like `mimalloc`
 - Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang
 - https://maskray.me/blog/2021-05-09-fno-semantic-interposition
+
+### `-fgraphite-identity`
+- Graphite is not well maintained in `gcc` and will likely end up being removed entirely
+- Most of its developers moved to LLVM's Polly
+- Can't effectively optimize compared to baseline gcc
+- The optimizations it is supposed to perform are being implemented via other methods
+- Not necessarily buggy, but its benefits are rather doubtful nowadays
+- https://dl.acm.org/doi/full/10.1145/3674735
+
+### `-floop-nest-optimize`
+- Required for `isl` to work
+- Previously called `-floop-optimize-isl`
+- The newer way to implement Graphite
+- Replaces `-floop-interchange`, `-ftree-loop-linear`, `-floop-strip-mine` and `-floop-block`
+- Still considered experimental
 
 ### `-floop-parallelize-all`
 - Does not get activated unless `-ftree-parallelize-loops=4` is used; where a number is specified, and it is not a good idea to use `-floop-parallelize-all` because it does not check if it is profitable to parallelize a loop or not, also it requires OMP (OpenMP and libgomp)
@@ -148,6 +108,52 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66240
 - https://lkml.org/lkml/2015/5/19/1142
 - https://www.reddit.com/r/Gentoo/comments/11iv2tl/need_advice_kernel_optimization_low_latency_max/
+
+### `-flto=auto`
+- Without the linker plugin LTO will not happen (particularly for static libraries as you will get the same code without `-flto`)
+- Will spawn `n` threads based on the number of threads; similar to `make -j`
+- Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs message
+- `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
+
+### `-flto-compression-level=3`
+- Available when `zstd` is the backend for LTO and it should in theory result in smaller binaries
+- `clang` does not support `-flto-compression-level`
+
+### `-fuse-linker-plugin`
+- Enabled by default if `gcc` is built with `lto` enabled
+- There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
+- This means that not using this flag as in the case above might cause `-fwhole-program` to be picked which is not a good idea; use `-fuse-linker-plugin` so programs can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
+- Ignored by `clang`
+
+### `-fno-unwind-tables`
+- `gcc` enables `-funwind-tables` by default and its documentation says that you normally do not need to enable this; instead, a language processor that needs this handling enables it on your behalf
+
+### `-fno-asynchronous-unwind-tables`
+- Refer to `-fno-unwind-tables`; similar behavior
+- `-fasynchronous-unwind-tables` is required by many debugging and performance tools on most architectures (`armhfp`, `ppc`, `ppc64` and `ppc64le` do not need these tables due to architectural differences in stack management)
+- `gcc` does not enable `-fasynchronous-unwind-tables` by default despite being necessary on `aarch64`?
+- `.eh_frame` is back as of `8.1.0` and both `-fasynchronous-unwind-tables` and `-funwind-tables` were made the default for aarch64
+- RHEL and Fedora patch `gcc` to enable it by default
+- https://code.forksand.com/qemu/edk2/commit/cbf00651eda6818ca3c76115b8a18e3f6b23eef4?lang=zh-HK
+- https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc/
+- https://gcc.gnu.org/legacy-ml/gcc-help/2016-10/msg00023.html
+- https://lists.busybox.net/pipermail/busybox/2012-September/078331.html
+- https://lists.busybox.net/pipermail/busybox/2012-September/078326.html
+
+### `-fno-plt`
+- Only applies to shared libraries and dynamic linking
+- Arch and OpenWRT use it by default
+- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` which `musl` does not support in favor of immediate binding which `musl` recommends
+- Removes the ability to `prelink`; `prelink`ing is bad for ASLR
+- A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
+- https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
+- https://github.com/archlinux/svntogit-packages/search?q=%22-fno-plt%22
+- https://github.com/InBetweenNames/gentooLTO/issues/302
+- https://github.com/openwrt/openwrt/commit/fb713ddd4dd49fb60ee4ab732071abf2c3ad5fc5
+- https://lists.alpinelinux.org/~alpine/devel/%3C1628515011.zujvcn248v.none%40localhost%3E
+- https://maskray.me/blog/2021-09-19-all-about-procedure-linkage-table
+- https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
+- https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
 
 ### `-flimit-function-alignment`
 - Has no use when `-falign-functions` is not used
@@ -211,12 +217,6 @@ https://reviews.llvm.org/D4565
 ### `-fdelete-null-pointer-checks`
 - Enables simple constant folding optimizations
 - Enabled by default on most targets; no need to mess with it
-
-### `-flive-range-shrinkage`
-- Can increase code size with redundant push/pop
-- Might help decrease register pressure
-- `clang` does not support `-flive-range-shrinkage`
-- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116027
 
 ### `-fdelayed-branch`
 - `x86-64` does not have delay slots rendering this "legacy" optimization irrelevant

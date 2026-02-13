@@ -14,7 +14,7 @@ space to install glaucus.
 1. `acl`
 2. `attr`
 3. `bzip2`
-4. `cerata`
+4. `core`
 5. `e2fsprogs`
 6. `execline`
 7. `expat`

@@ -23,6 +23,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does not support recursive downloads, metalinks and same file multiconnect for security reasons
 - Check if we need to copy `scripts/cd2nroff` to `/usr/bin` (or maybe `ac_cv_path_NROFF=/usr/bin/mandoc`)
 - Do we need `ac_cv_path_PERL=true`?
+- Support for NSS was removed as of `8.3.0`
 
 ## References
 - http://bugs.alpinelinux.org/issues/16980

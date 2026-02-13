@@ -114,6 +114,7 @@ Note that the location of the compiler originated plugins is different from the 
 - test suite takes a lot of time (several hours)
 - LTO is not a default language, but is built by default because `--enable-lto` is enabled by default
 - `--disable-libstdcxx-pch` prevents the precompiled headers from being built (which is the default behavior); we don't use these headers and they take up space
+- `--disable-libstdcxx-visibility` causes missing symbols from `libstdc++` when linking and running programs that depend on it
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

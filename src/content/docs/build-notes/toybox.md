@@ -104,6 +104,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `wait` (bash, dash, oksh, yash)
 
 ### Shell Builtins Provided by toybox
+- Providing these as standalone binaries is mandated by POSIX (with the exception of `help` and `time`?)
+- Without these `exec $tool` (e.g. `$tool` is `true`) fails as shell builtins can not be `exec`ed into
 - `[`
 - `echo`
 - `false`
@@ -116,7 +118,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `true`
 - `ulimit`
 
-### Shell Builtins Not Found in the shells and on the system (not yet checked for in toybox)
+### Uncommon Builtins Not Found in Different shells
 - `abbr` (bash, dash, oksh, yash)
 - `alloc` (bash, dash, oksh, yash)
 - `autoload` (bash, dash, yash) (oksh: alias for `typeset -fu`)
