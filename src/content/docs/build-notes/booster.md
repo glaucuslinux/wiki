@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - zstd is the default compression algorithm for booster
+- `booster` can unpack initramfs images
 - Do we still need the `modules: e1000` in `booster.yaml`?
 
 ## References

@@ -103,4 +103,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://linuxfromscratch.org/blfs/view/svn/postlfs/console-fonts.html
 - https://linuxfromscratch.org/lfs/view/development/chapter09/usage.html
 - https://programmingfonts.org/
+- https://wiki.alpinelinux.org/wiki/Fonts
+- https://wiki.archlinux.org/title/fonts
 - https://wiki.archlinux.org/title/Linux_console
+- https://wiki.archlinux.org/title/Localization/Arabic#Fonts
+- https://wiki.archlinux.org/title/Metric-compatible_fonts

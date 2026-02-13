@@ -7,7 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Depends on `flex`; does not support `reflex` (check derive patches)
 - `/usr/etc` does not get created when `vlock` is disabled
 - `openvt` runs interactive shells on virtual terminals
-- Add layouts from `kbd` to `bkeymaps`
+- `bkeymaps` is the older `kbd`
 
 ## References
 - https://kisslinux.org/wiki/console/bkeymaps

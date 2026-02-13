@@ -89,6 +89,9 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($target-gcc -print-libgcc-file-name)`/include/limits.h
 ```
 - `--enable-gnu-indirect-function` (ifunc) is only available for glibc and is enabled by default on glibc systems; it won't hurt to explicitly disable it on musl
+- `libat_cv_have_ifunc=no` explicitly disables `ifunc` for `libatomic`:
+  - creates conflicts on ARM as it `-march`/`-mcpu` expect it (Alpine)
+  - ifunc attributes detection is broken in configure scripts which makes sense to force disable it for non-glibc systems (it is used extensively by the Go language) (Alpine)
 - For bootstrap builds we hardcode `sysroot` because it is split from the `toolchain` and located in its own directory outside of the `toolchain` directory; this does not change with `build-sysroot` because `build-sysroot` controls where gcc finds its libaries, headers and stuff during its build, while `sysroot` controls where it finds them after the build when building stuff, in a sense this makes the toolchain not so relocatable (well it will still look under `sysroot` (which is `cross` in our condition) for stuff regardless of what the `toolchain` directory is named or located, meaning if we moved `glaucus/toolchain` over to `/tmp/someOtherDir` it will still look for stuff under `glaucus/cross` wherever that is, so that's a minor win), but it is not meant to be, this is because we want to keep `cross` (basically our `sysroot`) separate from the `toolchain` so we can populate it later on with stage 2 stuff and turn it into a bootable image; this is not `mussel` after all
 - `--with-libstdcxx-lock-policy=atomic` uses less memory and is simpler than `mutex`
 - `--enable-linker-build-id` is `off` by default
@@ -115,6 +118,8 @@ Note that the location of the compiler originated plugins is different from the 
 - LTO is not a default language, but is built by default because `--enable-lto` is enabled by default
 - `--disable-libstdcxx-pch` prevents the precompiled headers from being built (which is the default behavior); we don't use these headers and they take up space
 - `--disable-libstdcxx-visibility` causes missing symbols from `libstdc++` when linking and running programs that depend on it
+- `musl-gcc-cross` patches from Rich Felker were added to upstream `gcc` as of `10.2.0+`
+- `bootstrap-O3` might cause regressions
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross
@@ -127,6 +132,7 @@ Note that the location of the compiler originated plugins is different from the 
 
 ## References
 - https://dl.acm.org/doi/full/10.1145/3674735
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100537
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html
@@ -136,5 +142,7 @@ Note that the location of the compiler originated plugins is different from the 
 - https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 - https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
+- https://github.com/archlinux/svntogit-packages/commit/9c2de9ba1494f1dfd94e65e8814409814840618b
 - https://github.com/dslm4515/Musl-LFS/issues/74
+- https://lists.reproducible-builds.org/pipermail/rb-general/2018-June/001068.html
 - https://wiki.osdev.org/Building_GCC

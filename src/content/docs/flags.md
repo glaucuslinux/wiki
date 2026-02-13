@@ -168,8 +168,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Still considered experimental
 
 ### `-floop-parallelize-all`
-- Does not get activated unless `-ftree-parallelize-loops=4` is used; where a number is specified, and it is not a good idea to use `-floop-parallelize-all` because it does not check if it is profitable to parallelize a loop or not, also it requires OMP (OpenMP and libgomp)
+- Does not get activated unless `-ftree-parallelize-loops=4` is used (fixed at compile time); where a number is specified
+- It is not a good idea to use `-floop-parallelize-all` because it does not check if it is profitable to parallelize a loop or not
+- Requires OMP (OpenMP and libgomp)
 - https://bugs.launchpad.net/libmemcached/+bug/1232551
+- https://gcc.gnu.org/wiki/Graphite/Parallelization
 - https://github.com/InBetweenNames/gentooLTO/issues/158
 - https://github.com/InBetweenNames/gentooLTO/issues/638
 
@@ -184,8 +187,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://stackoverflow.com/questions/75061576/using-ftrivial-auto-var-init-to-guarantee-the-initialization-of-padding-bytes
 
 ### `-fvariable-expansion-in-unroller`
-- This takes a number and by default GCC only enables it for PowerPC, but disables it for other architectures, also it is not supported by clang apparently:
-https://reviews.llvm.org/D4565
+- Increases register pressure and should not be used without `-fsched-pressure`
+- This takes a number and by default GCC only enables it for PowerPC, but disables it for other architectures
+- Not supported by `clang`
+- https://reviews.llvm.org/D4565
 
 ### `-freorder-blocks-algorithm=simple`
 - Enabled by default when using `-Os`
@@ -324,6 +329,7 @@ https://reviews.llvm.org/D4565
 
 ### `-momit-leaf-frame-pointer`
 - Redundant when `-fomit-frame-pointer` is used (which is the default with `-O2` and `-Os`)
+- https://phoronix.com/review/fedora-frame-pointer
 
 ### Disable LTO
 - Remove `-flto=auto -fuse-linker-plugin` (and `-flto-compression-level=3` if being used)
@@ -445,6 +451,22 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--build-id=none`
 - smaller executables and faster link time
 - https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
+
+## Latest Experimental Flags
+- The following flags are still being studied/tested:
+```sh
+# CFLAGS
+-fgcse-las
+-fsched-pressure
+-fno-ident
+
+# LDFLAGS
+-z,defs
+-z,separate-code
+-z,text
+--no-keep-memory
+--build-id=none
+```
 
 ## References
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html

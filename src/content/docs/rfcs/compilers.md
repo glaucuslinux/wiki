@@ -68,5 +68,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - tinycpp: https://github.com/rofl0r/tinycpp
 - ucpp: https://github.com/lpsantil/ucpp
 
+## Assemblers
+- Only `llvm-mc` and `tcc as` are compatible with `gas` ATT syntax
+- `fasm` and `fasm2` are not compatible with `nasm` and `gas`
+- `yasm` is compatible with `nasm` only
+
 ## References
 - https://maskray.me/blog/2023-05-08-assemblers

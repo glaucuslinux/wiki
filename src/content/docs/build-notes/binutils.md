@@ -24,5 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://bugs.archlinux.org/task/42540
+- https://github.com/richfelker/musl-cross-make/commit/d969dea983a2cc54a1e0308a0cdeb6c3307e4bfa
+- https://reviews.llvm.org/D64903
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882
 - https://sourceware.org/bugzilla/show_bug.cgi?id=32715

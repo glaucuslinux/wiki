@@ -3,6 +3,7 @@ title: linux
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- SLOB and SLAB are deprecated; use SLUB instead
 - `bsdtar` patch: https://lore.kernel.org/lkml/87wn3g2qfk.fsf@gentoo.org/T/
 - `INSTALL_MOD_STRIP=1` for `make install`
 - Check `linux/kernel/gen_kheaders.sh`
@@ -16,5 +17,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/geirha/shbot-initramfs/blob/master/kernel-howto.md
 - https://lore.kernel.org/patchwork/patch/489972/
 - https://odi.ch/prog/kernel-config.php
-- https://www.mikrocontroller.net/attachment/413002/config-bpir2.txt
+- https://mikrocontroller.net/attachment/413002/config-bpir2.txt
+- https://phoronix.com/news/Linux-6.2-SLOB-Deprecated
 - https://youtube.com/watch?v=NVWVHiLx1sU

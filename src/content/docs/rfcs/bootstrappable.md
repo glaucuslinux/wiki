@@ -13,6 +13,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/davidar/bootsh
 - https://github.com/fosslinux/live-bootstrap
 - https://github.com/ironmeld/builder-hex0
+- https://github.com/sabotage-linux/sabotage/pull/742
 - https://github.com/vasi/bootstrappable-distros
 - https://github.com/vasi/bootstrappable-distros/blob/main/distros
 - https://github.com/vasi/mid-kid-bootstrap

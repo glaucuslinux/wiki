@@ -38,6 +38,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 -Dldflags="$LDFLAGS
 -Doptimize="-Wall $CFLAGS"
 ```
+- A custom memory allocator can be used with `usemymalloc`
 - Alpine further splits the package into `dev` and `utils` each with certain binaries
 - Compare `make` vs `make libperl.so && make`
 - Compare `make install` target vs `make install.perl`
