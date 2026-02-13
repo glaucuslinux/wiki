@@ -234,6 +234,18 @@ https://reviews.llvm.org/D4565
 - https://github.com/android/ndk/issues/748
 - https://lists.freebsd.org/pipermail/freebsd-current/2013-September/044561.html
 
+### `-fsection-anchors`
+- Section anchors are enabled by default with `-Os`?
+- Using `-Os` with `-fdata-sections` will result in worst code size due to section anchors; you either use `-fdata-sections` with `-fno-section-anchors` or nothing at all
+- `gcc -fsection-anchors` throws a not supported target error on `x86-64`
+- https://forum.dlang.org/thread/yjhogkcbegpsrxjkrfmh@forum.dlang.org
+- https://gcc.gnu.org/onlinedocs/gccint/Anchored-Addresses.html
+- https://gcc.gnu.org/onlinedocs/gccint/Special-Accessors.html
+- https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/issues/287
+
+### `--param=min-crossjump-insns=<1,65536>`
+- `-O2` uses the value `5`, while `-Os` uses `1` which is more aggressive
+
 ### `-fcf-protection=full`
 - Requires Intel CET to be present
 - https://maskray.me/blog/2022-12-18-control-flow-integrity
@@ -290,22 +302,10 @@ https://reviews.llvm.org/D4565
 - https://gcc.gnu.org/wiki/Visibility
 - https://stackoverflow.com/questions/59469822/how-fvisibility-inlines-hidden-differs-from-fvisibility-hidden-in-gcc
 
-### `-fsection-anchors`
-- Section anchors are enabled by default with `-Os`?
-- Using `-Os` with `-fdata-sections` will result in worst code size due to section anchors; you either use `-fdata-sections` with `-fno-section-anchors` or nothing at all
-- `gcc -fsection-anchors` throws a not supported target error on `x86-64`
-- https://forum.dlang.org/thread/yjhogkcbegpsrxjkrfmh@forum.dlang.org
-- https://gcc.gnu.org/onlinedocs/gccint/Anchored-Addresses.html
-- https://gcc.gnu.org/onlinedocs/gccint/Special-Accessors.html
-- https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/issues/287
-
-### `--param=min-crossjump-insns=<1,65536>`
-- `-O2` uses the value `5`, while `-Os` uses `1` which is more aggressive
-
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life
 
-### `-mfpmath=sse -mabi=sysv`
+### `-mfpmath=sse`
 - Automatically detected on modern 64-bit hosts and Linux targets
 
 ### `-malign-data=abi`
@@ -313,6 +313,9 @@ https://reviews.llvm.org/D4565
 - `cacheline` is bloat, but might increase performance in some cases
 - `clang` does not support `-malign-data`; however, it provides `-malign-branch-boundary`, `-malign-branch` and `-malign-double`
 - https://github.com/InBetweenNames/gentooLTO/issues/164
+
+### `-mabi=sysv`
+- Automatically detected on modern 64-bit hosts and Linux targets
 
 ### `-mtls-dialect=gnu2`
 - `musl` supports `gnu2` for `x86-64` as of `1.1.3`
