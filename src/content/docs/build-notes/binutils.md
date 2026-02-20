@@ -21,6 +21,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--enable-new-dtags` allows the linker to use the "runpath" tag instead of the older rpath one
 - `--without-msgpack`: `msgpack` is not needed on glaucus (gentoo also disables this)
 - `--disable-default-stack` is an alias for `--enable-default-execstack=no`
+- `--enable-shared` enables the shared libraries of `libbfd` and `libopcodes` and makes tools like `ar` and `as` depend on them
 
 ## References
 - https://bugs.archlinux.org/task/42540
@@ -28,3 +29,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://reviews.llvm.org/D64903
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882
 - https://sourceware.org/bugzilla/show_bug.cgi?id=32715
+- https://youtube.com/watch?v=Dlw_ULTdEYs

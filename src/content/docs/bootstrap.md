@@ -70,8 +70,7 @@ cd glaucus
 
 sudo mkdir -p \
   /var/cache/rad \
-  /var/lib/rad/repo \
-  /var/tmp/rad
+  /var/lib/rad/repo
 
 sudo ln -fs $PWD/core /var/lib/rad/repo
 sudo ln -fs $PWD/log /var/log/rad

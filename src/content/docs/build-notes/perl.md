@@ -50,7 +50,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Modify `CPAN/FirstTime.pm` for site directories?
 - Might require a permission fix to `644`?
 - Do we need to explicitly define `static_inline`? Or does `perl`'s build system automatically detect it?
-- `musl-locale` patches are for `perl-cross` which glaucus does not use
+- `musl-locale` patches are for `perl-cross` which glaucus does not use as we natively build `perl` early in a bootable `cross` environment
 - `siteprefix` is automatically set equal to `prefix`
 - `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin`
 

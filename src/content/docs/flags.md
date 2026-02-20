@@ -469,6 +469,8 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ```
 
 ## References
+- https://agner.org/optimize/optimizing_cpp.pdf
+- https://aykevl.nl/2018/04/codesize
 - https://documentation.suse.com/sbp/devel-tools/html/SBP-GCC-14/index.html
 - https://forums.gentoo.org/viewtopic-t-1171518.html?sid=259e0b60fe8784f498bb919b83beb3fb
 - https://gcc.gnu.org/install/build.html
@@ -477,8 +479,8 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 - https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
+- https://gentoo.org/news/2024/02/04/x86-64-v3.html
+- https://phoronix.com/news/Gentoo-x86-64-v3-Binaries
 - https://serpentos.com/blog/2024/01/19/january-updates/
 - https://wiki.ubuntu.com/ToolChain/CompilerFlags
-- https://www.gentoo.org/news/2024/02/04/x86-64-v3.html
-- https://www.phoronix.com/news/Gentoo-x86-64-v3-Binaries
-- https://www.youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef
+- https://youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef

@@ -7,5 +7,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `btyacc` is enabled by default
 
 ## References
+- https://aur.archlinux.org/packages/byacc-bison
 - https://c9x.me/yacc/
 - https://github.com/ibara/yacc

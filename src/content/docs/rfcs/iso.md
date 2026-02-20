@@ -167,6 +167,8 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 
 ## References
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)
+- https://bkhome.org/news/202112/why-iso-was-retired.html
+- https://bkhome.org/news/202112/why-iso-was-retired-part-2.html
 - https://codeberg.org/emmett1/mkinitrd
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software
 - https://fedoraproject.org/wiki/LiveOS_image

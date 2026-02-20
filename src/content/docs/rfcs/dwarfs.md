@@ -12,10 +12,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - There are user space and kernel space union file systems:
   - AUFS and Overlayfs are both in the kernel and thus have lover overhead
   - DwarFS is FUSE-only and uses the latest and greatest C++ features
+- Composefs uses OverlayFS and EROFS
 
 ## References
 - https://gist.github.com/tanmyid/de3a4f1c25ade5d9d686ea8398537b6f
 - https://github.com/mhx/dwarfs#comparison
 - https://github.com/trapexit/mergerfs
 - https://reddit.com/r/programming/comments/w76w1v/dwarfs_a_fast_high_compression_readonly_file/
+- https://trapexit.github.io/mergerfs/latest/project_comparisons/
 - https://unix.stackexchange.com/questions/382326/unionfs-vs-aufs-vs-overlayfs-vs-mhddfs-which-one-do-i-use

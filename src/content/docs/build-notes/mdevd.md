@@ -16,15 +16,18 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this problem seems to not exist when using `dash`
 - `mdev.conf` syntax:
 ```
-<device regex> <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
+[-]<device regex> <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
+# [-]$ENVVAR=regex   
+# [-]@maj,min[-min2] 
 
+- [-] do not stop on this match and continue reading the configuration file
 - =path moves to path
-- >path symlinks device to path
+- >path moves to path and creates a symlink
 - ! prevents device from being created
 
-- @ Run after creating the device.
-- $ Run before removing the device.
-- * Run both after creating and before removing the device.
+- @ run after creating the device or if $ACTION=remove
+- $ run before removing the device or if $ACTION=add
+- * run both after creating and before removing the device or in all cases
 ```
 - The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
 - Use libudev helper in `mdev.conf`
@@ -70,6 +73,8 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
   - current socketpair emulation loses filesystem advantage (events can be lost)
 
 ## References
+- https://alpine-devel.alpinelinux.narkive.com/K5nRHm3j/udev-replacement-in-alpine-linux
+- https://alpine-devel.alpinelinux.narkive.com/Tto4DqlQ/udev-replacement-on-alpine-linux
 - https://codeberg.org/emmett1/alicelinux/src/branch/main/repos/core/busybox/mdev.conf
 - https://codeberg.org/kiss-community/repo/src/branch/master/core/busybox/files/mdev.conf
 - https://codeberg.org/smj/mdevd-as-an-admin

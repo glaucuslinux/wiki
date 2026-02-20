@@ -13,10 +13,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does `musl` conflict/replace `libssp` (the standalone package)
 - `gencat` requires `queue.h`
 - Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
-- `musl`'s `mallocng` was inspired by OpenBSD malloc and `hardened_malloc`
+- `musl`'s default allocator `mallocng` was inspired by OpenBSD malloc and `hardened_malloc` and is good enough
 - Alpaquita has patches to fix `ldd` output for `static-pie` executables
 - Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
-- `LC_ALL` overrides category-specific variables, and `LANG` provides a default for any category not set
 - `MUSL_LOCPATH` - Colon-separated list of paths that will be searched for locale definitions. The requested locale name string will used as a filename and searched in each path component. If unset, locale files are not loaded and only the "C" locale is available. This variable is completely ignored in programs invoked setuid, setgid, or with other elevated capabilities
 - musl provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead as they are the modern implementation (this means that `gcc` and `binutils` should be configured with `--enable-initfini-array`)
 - Log messages will be discarded if `/dev/log` is absent
@@ -37,13 +36,17 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - musl already defines `STDC_ISO` as `201206L` as of `1.1.15`: `__STDC_ISO_10646__ 201206L`
 - `musl` does not build with `gold` without `pie`
 - `musl` only relies on `libgcc` for the `__muldc3` and `__muldxc3` symbols and its `configure` can be patched to support `--fast-math` so that it does not depend on `libgcc` (this of course breaks the ABI and is recommended against by Rich Felker); `libgcc` is almost never utilised on 64-bit architectures like `x86-64`
+- `musl-cross-make` native support is broken meaning that you need a cross `mcm` toolchain first before you can build a native one with `NATIVE=1` which is understandable
 
 ## References
+- https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html
+- https://brightrain.aerifal.cx/~niklata/PORTING
 - https://git.2f30.org/fortify-headers/
 - https://github.com/AppImage/type2-runtime/issues/116
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
 - https://github.com/orgs/chimera-linux/discussions/2480
+- https://github.com/richfelker/musl-cross-make/blob/master/README.md
 - https://github.com/richfelker/musl-cross-make/issues/101
 - https://github.com/richfelker/musl-cross-make/issues/102
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58

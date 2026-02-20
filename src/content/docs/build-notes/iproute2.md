@@ -14,3 +14,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://gitlab.archlinux.org/archlinux/packaging/packages/iproute2/-/issues/2
 - https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-apps/iproute2/files
+- https://lwn.net/Articles/710533/
+- https://phoronix.com/scan.php?page=news_item&px=GNU-inetutils-2.0

@@ -14,6 +14,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sysctl` configuration: https://github.com/k4yt3x/sysctl
 - prefer `toybox`'s `groups` to `shadow`'s
 - This symbol is always set: `TOYBOX_UTMPX=y`
+- Provides better SELinux support compared to `busybox`
 
 ## Replaces
 - `coreutils`
@@ -27,19 +28,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Does Not Replace
 - `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
-- `file`
-- `fping`
+- `file`; limited file` implementation
+- `fping`; limited `ping` implementation
 - `grep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
 - `kbd`; busybox has better implementations
-- `less`; bad implementation
-- `mandoc`; bad implementation
-- `neatvi`; bad implementation
+- `less`; limited implementation
+- `mandoc`; limited `man` implementation
+- `neatvi`; limited `vi` implementation
 - `pciutils`
 - `sdhcp`
 - `shadow`
-- `util-linux`; bad implementations like `swapon`
-- `wget2`; bad implementation
+- `util-linux`; limited implementations like `swapon`
+- `wget2`; limited `wget` implementation
 
 ## Additional binaries provided by `coreutils`
 1. `b2sum`
@@ -206,6 +207,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
+- https://apertis.org/concepts/distribution/coreutils-replacement/
 - https://codeberg.org/sewn/kiss-repo/commit/c7449c660d048034b3da358efe0a4d8526c8019b
 - https://core.suckless.org/sbase/
 - https://core.suckless.org/ubase/
@@ -223,6 +225,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
 - https://packages.gentoo.org/categories/app-alternatives
+- https://source.android.com/security/selinux/device-policy
 - https://tools.suckless.org/9base/
 - https://www.openwall.com/lists/musl/2013/11/09/3
 - https://youtube.com/@roblandley1154

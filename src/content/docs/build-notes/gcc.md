@@ -120,6 +120,7 @@ Note that the location of the compiler originated plugins is different from the 
 - `--disable-libstdcxx-visibility` causes missing symbols from `libstdc++` when linking and running programs that depend on it
 - `musl-gcc-cross` patches from Rich Felker were added to upstream `gcc` as of `10.2.0+`
 - `bootstrap-O3` might cause regressions
+- Architectures of interest that require `libgcc` include `arm64` and `riscv64`
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

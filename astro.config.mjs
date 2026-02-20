@@ -13,7 +13,6 @@ export default defineConfig({
       },
       social: [
         { icon: 'codeberg', label: 'Codeberg', href: 'https://codeberg.org/glaucuslinux/glaucus' },
-        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/nDKNmNc' },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/glaucuslinux/glaucus' },
         { icon: 'reddit', label: 'Reddit', href: 'https://reddit.com/r/glaucus' },
         { icon: 'telegram', label: 'Telegram', href: 'https://t.me/glaucuslinux' },

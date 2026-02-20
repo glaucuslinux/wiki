@@ -38,6 +38,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - zig:
   - uses clang and musl under the hood, has its own compiler-rt port from LLVM
   - not capable of building a full Linux distro: https://www.youtube.com/watch?v=1N85yU6RMcY
+  - https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html
 
 ### Inactive (ordered by personal preference)
 - pcc-revived:

@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `macos` uses `libedit` as its default line editing and history library
 
 ## References
+- https://bbs.archlinux.org/viewtopic.php?id=201654
 - https://github.com/chimera-linux/cports/blob/master/main/libedit
 - https://github.com/chimera-linux/libedit-chimera
 - https://github.com/CTSRD-CHERI/cheribsd/blob/master/bin/sh/dot.shrc

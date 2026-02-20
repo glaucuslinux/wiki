@@ -11,3 +11,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://github.com/LinuxStandardBase/lsb-samples
 - https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-generic/LSB-Core-generic/lsbrelease.html
+- https://0pointer.de/blog/projects/os-release.html
+- https://www.2uo.de/myths-about-urandom/

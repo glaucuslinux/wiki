@@ -16,5 +16,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Tests are disabled on Alpine
 
 ## References
+- https://autotools.info/autoconf/macros.html
 - https://invisible-island.net/autoconf/autoconf.html
 - https://wiki.debian.org/Autoreconf
