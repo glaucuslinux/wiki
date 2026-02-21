@@ -4,44 +4,47 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## Disclaimer
-- **You are encouraged to bootstrap glaucus** from stage 0 at least once
-- You are not expected to start from stage 0 every time; most distributions start from stage 2
-- **This may not always work** as glaucus is a moving target
-- It is not recommended to bootstrap glaucus on a live environment if starting from stage 1
+- It is recommended that you bootstrap glaucus at least once
+- This may not always work as glaucus is a moving target
+- You are not expected to start from stage 0 every time
 
 ## Introduction
-- To truly bootstrap a distribution is to generate a self-hosting image file capable of rebuilding itself under itself **from nothing**
-- Relying on an available host system does not count as a true full bootstrap as it starts from stage 1
+- To truly bootstrap a distribution is to generate a self-hosting image file capable of rebuilding itself under itself from nothing
+- Relying on an existing host does not count as a true full bootstrap as it starts from stage 1
 
 ## Stages
-- **Optional Stage 0 (Nothing)**:
-  - **NOT SUPPORTED YET**
-  - Starts from nothing
-  - Does not rely on an available host system
-- **Stage 1 (Toolchain)**:
-  - Leverages tools from stage 0 or the host system to build a cross-compilation toolchain that will build stage 2
-  - **This stage is not optimized** as it needs to be correct, fast and reproducible
-  - **This stage is built on the host system** and should typically not take more than 15 minutes to complete on a relatively modern system
-- **Stage 2 (Cross)**:
-  - Leverages tools from stage 1 to cross-compile the packages required to self-host glaucus
-  - **This stage is optimized for `x86-64-v3`** and is independant from the host system
-  - **This stage is built on the host system** and should typically not take more than 25 minutes to complete on a relatively modern system
-  - An image file `.img` is generated after a successful build
-- **Stage 3 (Native)**:
-  - Leverages a stage 2 image file `.img` to perform a rebuild of glaucus
-  - **This stage is fully offline**
-  - **This stage is optimized for `x86-64-v3`** and is independant from the host system
-  - **This stage is built under QEMU** and should typically not take more than 45 minutes to complete on a relatively modern system
-  - An image file `.iso` is generated after a successful build
-- **Optional Stage 4 (Real)**:
-  - **NOT SUPPORTED YET**
-  - Leverages a stage 3 `rootfs` or `iso` file to perform a native rebuild of glaucus after install
-  - **This stage is optimized for `native` and will only run on your machine**
+### Optional Stage 0 (Nothing):
+- Starts from nothing
+- Does not rely on an existing host
+- Not supported yet
+
+### Stage 1 (Toolchain):
+- Leverages tools from the host or stage 0 to build a cross-compilation toolchain that will build stage 2
+- This stage is not optimized as it needs to be correct, fast and reproducible
+- This stage is built on the host in under 15 minutes on a relatively modern system
+
+### Stage 2 (Cross):
+- Uses stage 1 toolchain to cross-compile the packages required to self-host glaucus
+- This stage is optimized for `x86-64-v3` (an early sanity check)
+- This stage is built on the host system in under 25 minutes on a relatively modern system
+- An image file `.img` is generated after a successful build
+
+### Stage 3 (Native):
+- Uses stage 2 image file to perform a native rebuild of glaucus
+- This stage is fully offline
+- This stage is optimized for `x86-64-v3`
+- This stage is built under QEMU in under 45 minutes on a relatively modern system
+- An image file `.iso` is generated after a successful build
+
+### Optional Stage 4 (Real):
+- Uses stage 3 image file to perform a native rebuild of glaucus after install
+- This stage is optimized for `native` and will only run on your machine
+- Not supported yet
 
 ## Host System Requirements
-- Arch, Fedora and Linux From Scratch (LFS) can be used to bootstrap glaucus
-- It is recommended to have a minimum of 4 GB of memory and 10 GB of storage space
-- It is required to have an `x86-64-v3` system
+- A relatively modern `x86-64-v3` system with a minimum of 4 GB of memory and 10 GB of storage space
+- Arch and Linux From Scratch (LFS) can be used to bootstrap glaucus
+- It is not recommended to bootstrap glaucus in a live environment
 
 ### Required Packages (Automatically Checked)
 - `autoconf`
@@ -107,9 +110,9 @@ git -C glaucus submodule foreach 'git checkout main'
 ```
 - Bootstrap stages 1 and 2 (toolchain and cross):
 ```sh
-cd glaucus
+cd glaucus/live
 
-sudo ./live/bootstrap
+sudo ./bootstrap
 ```
 - Bootstrap stage 3 (native) **under QEMU**:
 ```sh
