@@ -12,6 +12,6 @@ sudo s6-linux-init-maker -c /etc/s6/current -L -f /etc/s6/skel someRandomDir
 - Do not use `-n` and `-N` with `s6-linux-init-maker` as we have a clean initramfs
 - Do not use `-1` with `s6-linux-init-maker` because it pollutes `/dev/console`
 - Do not use `-f /etc/s6/skel` with `s6-linux-init-maker` if `s6-linux-init` has already been configured; on glaucus
-- `s6-linux-init-maker` does not create early utmpd scripts anymore and users are expected to handle utmpd with wtmpd (first thing in stage 2)
+- `s6-linux-init-maker` does not create early utmpd scripts anymore and users are expected to handle utmpd with wtmpd
 - We have a new `-V boot_verbosity`  for `s6-linux-init-maker` which adds `-v boot_verbosity` to `s6-linux-init` (Default is **1**, which means that only important warnings will be printed. Increasing this value may yield more, but usually harmless, warning messages.)
 - There is no test suite

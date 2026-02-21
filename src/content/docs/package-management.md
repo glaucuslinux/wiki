@@ -263,3 +263,4 @@ patch -p0 ...
 - https://www.gnu.org/software/make/manual/html_node/Testing.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
+- https://venam.nixers.net/blog/unix/2020/03/29/distro-pkgs.html

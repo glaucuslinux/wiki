@@ -3,7 +3,7 @@ title: gcc
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Disable bootstrap; stage1 is good enough
+- Disable bootstrap; stage 1 is good enough
 - Use a different `libexecdir`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `--with-build-config=bootstrap-lto-lean` has to be used with `make profiledbootstrap`
@@ -49,7 +49,7 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 - `BOOT_CXXFLAGS` has been deprecated
 - `CFLAGS`, `CXXFLAGS`, `CFLAGS_FOR_TARGET` and `CXXFLAGS_FOR_TARGET` are being picked up from the environment; the latter two are automatically assigned to the former two
 - Check `clocale` to use for `libstdc++`; `generic` vs `--disable-clocale`?
-- `libgcc_s.so.1` size dramatically reduced when using stage1 flags (from ~ 830k to ~ 170k)
+- `libgcc_s.so.1` size dramatically reduced when using stage 1 flags (from ~ 830k to ~ 170k)
 - `otool` is for mach os, and is part of LLVM; the `otool` not found error is normal for `gcc`
 - Move cpp from lib to bin?
 - The following (ignored) errors occur when building `libstdc++-v3` (in all stages):

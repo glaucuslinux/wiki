@@ -40,14 +40,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### `-fmerge-all-constants`
 - Causes miscompilations due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
 
-### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves` and `-fgcse-sm`
+### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves` and `-fgcse-sm` (store motion)
 - Aggressive common subexpression elimination (cse) and scheduling (particularly modulo scheduling) can dramatically increase register pressure
 - This leads to more loads and stores, causing spills and increasing code size
 - This makes performance worse than without them
 - It makes sense to have these off by default on register-starved machines like `x86`
 
-### `-fgcse-las`
-- Removes redundant load instructions which can reduce register pressure by reusing loaded values
+### `-fgcse-las` (load after store)
+- `-fgcse` is enabled by default at `-O2` and `-Os`
+- `-fgcse-lm` (load motion) is enabled by default when `-fgcse` is enabled
+- `-fgcse-las` removes redundant load instructions which can reduce register pressure by reusing loaded values
 - Might reduce code size
 - Ignored by `clang`
 
