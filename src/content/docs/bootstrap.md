@@ -14,22 +14,29 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Relying on an available host system does not count as a true full bootstrap as it starts from stage 1
 
 ## Stages
-- **Stage 0 (Nothing)**: starts from absolutely nothing and does not rely on an available host system (not supported yet)
+- **Optional Stage 0 (Nothing)**:
+  - **NOT SUPPORTED YET**
+  - Starts from nothing
+  - Does not rely on an available host system
 - **Stage 1 (Toolchain)**:
   - Leverages tools from stage 0 or the host system to build a cross-compilation toolchain that will build stage 2
   - **This stage is not optimized** as it needs to be correct, fast and reproducible
-  - **This stage is built on the host machine** and should typically not take more than 15 minutes to complete on a relatively modern system
+  - **This stage is built on the host system** and should typically not take more than 15 minutes to complete on a relatively modern system
 - **Stage 2 (Cross)**:
   - Leverages tools from stage 1 to cross-compile the packages required to self-host glaucus
   - **This stage is optimized for `x86-64-v3`** and is independant from the host system
-  - **This stage is built on the host machine** and should typically not take more than 25 minutes to complete on a relatively modern system
-  - An image file is generated after a successful build
+  - **This stage is built on the host system** and should typically not take more than 25 minutes to complete on a relatively modern system
+  - An image file `.img` is generated after a successful build
 - **Stage 3 (Native)**:
+  - Leverages a stage 2 image file `.img` to perform a rebuild of glaucus
   - **This stage is fully offline**
-  - **This stage is optimized for x86-64-v3** and is independant from the host system
+  - **This stage is optimized for `x86-64-v3`** and is independant from the host system
   - **This stage is built under QEMU** and should typically not take more than 45 minutes to complete on a relatively modern system
-- **Stage 4 (Real)**:
-  - Leverages a stage 3 `rootfs` or `iso` file to perform a native rebuild of the glaucus system upon installation (think gentoo); **This stage is optimized for `native` and will only run on your machine**, it has not been implemented yet as it is closely tied to the install process which is not yet ready, also the previous 3 stages are enough to validate the sanity of the entire process and its artefacts
+  - An image file `.iso` is generated after a successful build
+- **Optional Stage 4 (Real)**:
+  - **NOT SUPPORTED YET**
+  - Leverages a stage 3 `rootfs` or `iso` file to perform a native rebuild of glaucus after install
+  - **This stage is optimized for `native` and will only run on your machine**
 
 ## Host System Requirements
 - Arch, Fedora and Linux From Scratch (LFS) can be used to bootstrap glaucus
