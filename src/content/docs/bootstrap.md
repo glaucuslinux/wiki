@@ -105,26 +105,24 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `yodl2man`
 
 ## Steps
-- Clone the `glaucus` repository:
+### Clone the `glaucus` Repository
 ```sh
 git clone --recurse-submodules https://github.com/glaucuslinux/glaucus
 git -C glaucus submodule foreach 'git checkout main'
 ```
-- Bootstrap stages 1 and 2 (toolchain and cross):
+### Bootstrap Stages 1 and 2 (Toolchain and Cross)
 ```sh
 cd glaucus/live
 
 sudo ./bootstrap
 ```
-- Bootstrap stage 3 (native) **under QEMU**:
+### Bootstrap Stage 3 (Native)
 ```sh
 ./qemu-img
 
-rad bootstrap 3
+rad bootstrap 3 # Under QEMU
 
-poweroff
-```
-- Create a stage 3 (native) iso:
-```sh
+poweroff # Under QEMU
+
 sudo ./iso
 ```
