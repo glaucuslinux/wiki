@@ -13,30 +13,32 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Relying on an existing host does not count as a true full bootstrap as it starts from stage 1
 
 ## Stages
-### Optional Stage 0 (Nothing):
+### Stage 0 (Nothing)
+- This stage is optional
 - Starts from nothing
 - Does not rely on an existing host
 - Not supported yet
 
-### Stage 1 (Toolchain):
+### Stage 1 (Toolchain)
 - Leverages tools from the host or stage 0 to build a cross-compilation toolchain that will build stage 2
 - This stage is not optimized as it needs to be correct, fast and reproducible
 - This stage is built on the host in under 15 minutes on a relatively modern system
 
-### Stage 2 (Cross):
+### Stage 2 (Cross)
 - Uses stage 1 toolchain to cross-compile the packages required to self-host glaucus
 - This stage is optimized for `x86-64-v3` (an early sanity check)
 - This stage is built on the host system in under 25 minutes on a relatively modern system
 - An image file `.img` is generated after a successful build
 
-### Stage 3 (Native):
+### Stage 3 (Native)
 - Uses stage 2 image file to perform a native rebuild of glaucus
 - This stage is fully offline
 - This stage is optimized for `x86-64-v3`
 - This stage is built under QEMU in under 45 minutes on a relatively modern system
 - An image file `.iso` is generated after a successful build
 
-### Optional Stage 4 (Real):
+### Stage 4 (Real)
+- This stage is optional
 - Uses stage 3 image file to perform a native rebuild of glaucus after install
 - This stage is optimized for `native` and will only run on your machine
 - Not supported yet
