@@ -41,6 +41,8 @@ DESTDIR=../../../toolchain \
 - https://github.com/nim-lang/csources_v2
 - https://github.com/nim-lang/csources_v3
 - https://github.com/nim-lang/Nim
+- https://github.com/nim-lang/Nim/issues/19026
+- https://github.com/nim-lang/Nim/issues/21595
 - https://github.com/void-linux/void-packages/blob/master/srcpkgs/choosenim/template
 - https://github.com/void-linux/void-packages/blob/master/srcpkgs/nim/template
 - https://gitlab.archlinux.org/archlinux/packaging/packages/nim/-/blob/main/PKGBUILD
