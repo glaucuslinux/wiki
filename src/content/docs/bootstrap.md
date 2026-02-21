@@ -109,7 +109,7 @@ git -C glaucus submodule foreach 'git checkout main'
 ```sh
 cd glaucus
 
-sudo ./bootstrap
+sudo ./live/bootstrap
 ```
 - Bootstrap stage 3 (native) **under QEMU**:
 ```sh
