@@ -3,6 +3,7 @@ title: tmux
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Originally from OpenBSD
 - `tmux` does better multiplexing compared to `dtach`, `mtm` and built-in terminal multiplexers (e.g. `wezterm`)
 - Void applies a `reallocarray.patch`
 - `--enable-sixel` is needed to prevent crashes in sixel terminals

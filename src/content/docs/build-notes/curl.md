@@ -28,8 +28,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - http://bugs.alpinelinux.org/issues/16980
 - https://curl.se/changes.html
+- https://curl.se/docs/caextract.html
 - https://curl.se/docs/comparison-table.html
 - https://curl.se/docs/install.html
+- https://curl.se/docs/sslcerts.html
 - https://daniel.haxx.se/blog/2024/01/10/psl-in-curl/
 - https://daniel.haxx.se/docs/curl-vs-wget.html
 - https://everything.curl.dev/build/deps.html

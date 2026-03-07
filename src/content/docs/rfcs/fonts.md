@@ -30,6 +30,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - galmuri:
   - https://github.com/quiple/galmuri
   - https://quiple.dev/galmuri
+- go:
+  - https://go.dev/blog/go-fonts
 - greybeard:
   - https://github.com/flowchartsman/greybeard
 - M PLUS:

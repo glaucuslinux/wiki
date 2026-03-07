@@ -15,8 +15,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://gist.github.com/kinoshita-lab/809b60e08b3d236b9e1db8978b748cda
 - https://github.com/chipsalliance/rocket-chip/issues/1011
 - https://github.com/geirha/shbot-initramfs/blob/master/kernel-howto.md
+- https://kspp.github.io/Recommended_Settings
 - https://lore.kernel.org/patchwork/patch/489972/
-- https://odi.ch/prog/kernel-config.php
 - https://mikrocontroller.net/attachment/413002/config-bpir2.txt
+- https://odi.ch/prog/kernel-config.php
 - https://phoronix.com/news/Linux-6.2-SLOB-Deprecated
 - https://youtube.com/watch?v=NVWVHiLx1sU

@@ -20,6 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `clang` by design is a full fledged cross compiler
 - `clang` always ignores `-pipe`
 - `clang` uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
+- `clang -cc1 --help` shows all supported options by the C compiler driver
 - Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
 - Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
 - Clang defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
@@ -43,7 +44,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do we need `LLVM_USE_SANITIZER=OFF`? It defaults to an empty string "" so no?
 - Do we need this early on `LLVM_ENABLE_LIBXML2`?
 - Not all LLVM projects require LLVM; `compiler-rt` can be built without `llvm`
-- `LLVM_ENABLE_LTO=Thin` does not work if you are using `gcc` to build `llvm` obviously
+- `LLVM_ENABLE_LTO=Thin` (or even `Full`) does not work if you are using `gcc` to build `llvm` obviously
 - `CLANG_VENDOR_UTI` is a macOS only option
 - `CLANG_LINK_CLANG_DYLIB` is set to `LLVM_LINK_LLVM_DYLIB` value
 - Do we need `CLANG_BUILD_TOOLS=ON`? Are the tools really needed for just building software?
@@ -122,4 +123,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://muxup.com/building-testing-and-distributing-llvm-clang-and-friends
 - https://rocm.docs.amd.com/projects/llvm-project/en/latest/LLVM/llvm/html/CMake.html
 - https://wiki.musl-libc.org/building-llvm.html
+- https://youtube.com/watch?v=gOq1sCKSD80
 - https://youtube.com/watch?v=NMQrnVDf-rY

@@ -83,7 +83,7 @@ which means that the first `@-grep` is working, while the latter two are not cau
 - Do we need to remove `usr/lib/gcc/x86_64-glaucus-linux-musl/$ver/install-tools/` (and `include-fixed/`)?
 - Patching `gcc` to link `libatomic` to everything is not needed on `x86_64` (Alpine enables it for `riscv64`)
 - If you are not building a C library in the same source tree as GCC, you should also provide the target libraries and headers before configuring GCC, specifying the directories with --with-sysroot or --with-headers and --with-libs. Many targets also require “start files” such as crt0.o and crtn.o which are linked into each executable. There may be several alternatives for crt0.o, for use with profiling or other compilation options. Check your target’s definition of STARTFILE_SPEC to find out what start files it uses.
-- No need to perform this maneuver from LFS thanks to our toolchain design:
+- This is no longer needed:
 ```
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($target-gcc -print-libgcc-file-name)`/include/limits.h
@@ -121,11 +121,15 @@ Note that the location of the compiler originated plugins is different from the 
 - `musl-gcc-cross` patches from Rich Felker were added to upstream `gcc` as of `10.2.0+`
 - `bootstrap-O3` might cause regressions
 - Architectures of interest that require `libgcc` include `arm64` and `riscv64`
+- Explicitly specifying `--enable-plugin` breaks cross `gcc` with an `fPIC` error; current understanding is that `--enable-plugin` is enabled by default eitherways so don't bother
+- No need to set `AR_FOR_TARGET`, `RANLIB_FOR_TARGET`, `NM_FOR_TARGET` with the `-gcc-X` versions
+- `cpp` is not a symlink to `gcc`: `cpp -x c -v != gcc -x c -v`
+
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross
 
-## Relocatable:
+## Relocatable (sysroot+toolchain combined):
   - http://musl.cc/
   - https://github.com/firasuke/mussel
   - https://github.com/richfelker/musl-cross-make
@@ -133,17 +137,23 @@ Note that the location of the compiler originated plugins is different from the 
 
 ## References
 - https://dl.acm.org/doi/full/10.1145/3674735
+- https://gcc.gcc.gnu.narkive.com/huHx5Sfp/7-2-0-error-no-include-path-in-which-to-search-for-stdc-predef-h
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100537
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html
 - https://gcc.gnu.org/install/specific.html
+- https://gcc.gnu.org/legacy-ml/gcc/2017-12/msg00001.html
 - https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html
 - https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 - https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
 - https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 - https://gcc.gnu.org/onlinedocs/libstdc++/manual/configure.html
+- https://gcc.gnu.org/wiki/Building_Cross_Toolchains_with_gcc
 - https://github.com/archlinux/svntogit-packages/commit/9c2de9ba1494f1dfd94e65e8814409814840618b
 - https://github.com/dslm4515/Musl-LFS/issues/74
+- https://github.com/glaucuslinux/glaucus/issues/8
+- https://github.com/riscv-collab/riscv-gnu-toolchain/issues/1422
 - https://lists.reproducible-builds.org/pipermail/rb-general/2018-June/001068.html
+- https://wiki.debian.org/toolchain/BootstrapIssues#stdc-predef.h_not_found
 - https://wiki.osdev.org/Building_GCC

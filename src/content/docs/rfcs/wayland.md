@@ -146,6 +146,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/openSUSE/openSUSEway
 - https://github.com/rcalixte/awesome-wayland
 - https://github.com/solarkraft/awesome-wlroots
+- https://intestinate.com/pilfs/beyond.html#wayland
 - https://wayland.freedesktop.org/building.html
 - https://wayland.fyi/
 - https://wiki.archlinux.org/title/XDG_Desktop_Portal

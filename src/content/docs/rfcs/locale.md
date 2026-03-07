@@ -20,3 +20,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## `POSIXLY_CORRECT` should be unset
 ```
+- Do not set `MUSL_LOCPATH` for `musl-locales` as it messes up install path (relative `$PWD`)
+
+## References
+- https://git.adelielinux.org/adelie/musl-locales
+- https://github.com/TFSThiagoBR98/musl-locale
+- https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/musl-locales

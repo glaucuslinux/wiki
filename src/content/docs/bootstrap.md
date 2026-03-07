@@ -37,7 +37,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - This stage is built under QEMU in under 45 minutes on a relatively modern system
 - An image file `.iso` is generated after a successful build
 
-### Stage 4 (Real)
+### Stage 4 (Metal)
 - This stage is optional
 - Uses stage 3 image file to perform a native rebuild of glaucus after install
 - This stage is optimized for `native` and will only run on your machine

@@ -201,6 +201,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://unix.stackexchange.com/questions/224277/is-it-better-to-use-cat-dd-pv-or-another-procedure-to-copy-a-cd-dvd/224314#224314
 - https://unix.stackexchange.com/questions/364262/freeing-initramfs-ram-after-switching-root-when-using-overlayfs
 - https://wiki.archlinux.org/title/Optical_disc_drive
+- https://wiki.archlinux.org/title/QEMU
 - https://wiki.archlinux.org/title/USB_flash_installation_medium
 - https://www.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
 - https://www.linux.org.ru/forum/linux-install/10720020

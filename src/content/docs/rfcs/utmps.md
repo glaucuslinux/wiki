@@ -22,6 +22,7 @@ utmps is a solution to systems using s6, and won't work for systemd, and it impl
 - https://github.com/thkukuk/utmpx/blob/main/Y2038.md
 - https://www.reddit.com/r/voidlinux/comments/g2wyon/musl_people_how_do_you_do_user_accounting_without/
 - https://unix.stackexchange.com/questions/567012/how-can-i-add-lastlog-support-to-alpine-linux
+- https://gitlab.com/procps-ng/procps/-/merge_requests/67
 - https://github.com/util-linux/util-linux/issues/2088
 - https://wiki.musl-libc.org/roadmap.html
 - https://en.wikipedia.org/wiki/Utmp

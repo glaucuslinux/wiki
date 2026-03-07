@@ -18,6 +18,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Design Changes
 - Cross-compiling vs native chroot
+  - chroot has longer build times
+  - chroot has added complexity
+  - cross achieves maximum host isolation
 - "/usr" merge
 - Switch to libarchive as the default archive and compression library
 - Switch to LibreSSL as the default TLS library; then to AWS-LC

@@ -221,6 +221,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://heirloom.sourceforge.net/devtools.html
 - https://heirloom.sourceforge.net/sh.html
 - https://heirloom.sourceforge.net/tools.html
+- https://landley.net/notes.html
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html

@@ -5,7 +5,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## DHCP
 - busybox udhcpc: https://udhcp.busybox.net/README.udhcpc
-- ISC dhcp
 - sdhcp: https://github.com/michaelforney/sdhcp
 - toybox dhcp: https://github.com/landley/toybox/blob/master/toys/pending/dhcp.c
 
@@ -24,6 +23,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - eiwd: https://github.com/illiliti/eiwd
 
 ## Excluded
+- ISC dhcp: reached EOL use `kea` instead
 - bcnm (skarnet recommends using ifupdown-ng): https://skarnet.org/software/bcnm/
 - iwd (Wireless Daemon): https://iwd.wiki.kernel.org/
 - s6-networking (irrelevant): https://skarnet.org/software/s6-networking/
@@ -31,3 +31,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://busybox.net/~vda/no_ifup.txt
+- https://linuxfromscratch.org/lfs/view/development/chapter09/network.html

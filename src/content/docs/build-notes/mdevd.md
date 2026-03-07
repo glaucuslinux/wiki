@@ -16,9 +16,9 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this problem seems to not exist when using `dash`
 - `mdev.conf` syntax:
 ```
-[-]<device regex> <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
-# [-]$ENVVAR=regex   
-# [-]@maj,min[-min2] 
+# [-]<device regex>  <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
+# [-]$ENVVAR=regex   <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
+# [-]@maj,min[-min2] <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
 
 - [-] do not stop on this match and continue reading the configuration file
 - =path moves to path
@@ -28,6 +28,10 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - @ run after creating the device or if $ACTION=remove
 - $ run before removing the device or if $ACTION=add
 - * run both after creating and before removing the device or in all cases
+
+- The $DEVNAME variable specify the path to the device in /dev (can be used in helper scripts as well)
+- The $DEVPATH variable specify the path to the device in /sys (can be used in helper scripts as well)
+- The $MDEV variable represents the name of the device that triggered the rule
 ```
 - The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
 - Use libudev helper in `mdev.conf`

@@ -7,33 +7,32 @@ glaucus uses the filesystem tree as its database to store package information an
 
 ## Anatomy of a Package
 ### The `info` file
-- An `info` file is a TOML file that stores package information (aka metadata)
-- `info` files are also valid POSIX shell scripts due to the way they are written; can be sourced by `.`
-- To create a new package, create a directory with the package name under a repository (`core` or `extra`), then create an `info` file
-- The following is a list of all the variables supported by `info` files:
-  - `ver`: package version number, or commit number if `url` is a git repository
-  - `url`: package source url
-    - Prefer `https` over `http` and `ftp`
-    - Order of tarball preference: `.zst` > `.gz` > `.xz` > `.bz2`
-    - Prefer cdn mirrors when available:
-      - GNU packages should use: `https://ftpmirror.gnu.org/`
-      - Kernel packages should use: `https://cdn.kernel.org/pub/linux/`
-      - Non GNU packages should use: `https://download.savannah.nongnu.org/releases/`
-      - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
-  - `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
-  - `bld`: package build time dependencies sorted alphabetically
-    - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
-  - `run`: package run time dependencies sorted alphabetically
-  - `opt`: package options and includes:
-    - `bootstrap`: install package to `/`; only relevant in bootstrap stage cross
-    - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
-    - `doc`, `man`: do not remove documentation
-    - `empty`: do not remove empty directories
-    - `la`, `libtool`: do not remove libtool archives (`.la` files) in native; they are deleted either ways in cross
-    - `no-lto`: do not use LTO
-    - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
-    - `no-purge`/`no-prune`: do not remove unwanted files
-    - `static`: do not remove static libraries (.a files)
+- An `info` file stores package information or metadata
+- It is a polyglot file that is simultaneously valid POSIX shell and TOML
+#### Required Variables
+- `ver`: package version number, or commit number if `url` is a git repository
+- `url`: package source url
+  - Prefer `https` over `http` and `ftp`
+  - Prefer `.zst` > `.gz` > `.xz` > `.bz2` for tarballs
+  - Prefer cdn mirrors when available:
+    - GNU packages should use: `https://ftpmirror.gnu.org/`
+    - Kernel packages should use: `https://cdn.kernel.org/pub/linux/`
+    - Non GNU packages should use: `https://download.savannah.nongnu.org/releases/`
+    - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
+- `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
+- `bld`: package build time dependencies sorted alphabetically
+  - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
+- `run`: package run time dependencies sorted alphabetically
+- `opt`: package options and includes:
+  - `bootstrap`: install package to `/`; only relevant in bootstrap stage cross
+  - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
+  - `doc`, `man`: do not remove documentation
+  - `empty`: do not remove empty directories
+  - `la`, `libtool`: do not remove libtool archives (`.la` files) in native; they are deleted either ways in cross
+  - `no-lto`: do not use LTO
+  - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
+  - `no-purge`/`no-prune`: do not remove unwanted files
+  - `static`: do not remove static libraries (.a files)
 ### The `build` file
 - A `build` file is a POSIX shell script that includes the build instructions of a package
 - The build process of a package is split into 5 different phases:
@@ -252,7 +251,7 @@ patch -p0 ...
 - https://wiki.alpinelinux.org/wiki/Package_policies
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages
-- https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries
+- https://wiki.archlinux.org/title/Makepkg
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Official_repositories
 - https://wiki.archlinux.org/title/Pacman/Rosetta
