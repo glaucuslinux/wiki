@@ -124,7 +124,10 @@ Note that the location of the compiler originated plugins is different from the 
 - Explicitly specifying `--enable-plugin` breaks cross `gcc` with an `fPIC` error; current understanding is that `--enable-plugin` is enabled by default eitherways so don't bother
 - No need to set `AR_FOR_TARGET`, `RANLIB_FOR_TARGET`, `NM_FOR_TARGET` with the `-gcc-X` versions
 - `cpp` is not a symlink to `gcc`: `cpp -x c -v != gcc -x c -v`
-
+- `--with-native-system-header-dir=/include` (gets prefixed by sysroot automatically) fixes:
+```
+cc1: error: no include path in which to search for stdc-predef.h
+```
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

@@ -22,6 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 \U: similar to \u
 ```
 - Allow picking different ASCII artwork for glaucus from the repo upon install
+- `/usr/lib/issue` can be used as a backup location for `/etc/issue`
 
 ## References
-- http://ascii-table.com/ansi-escape-sequences-vt-100.php
+- https://cyberciti.biz/faq/howto-change-login-message/

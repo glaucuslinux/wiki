@@ -3,7 +3,9 @@ title: toybox
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Depends on `linux-headers`
 - `toybox`'s `cpio` defaults to `newc`, and is as fast as `bsdcpio`
+- `toybox`'s `chgrp` is `chown` as well
 - Do we need to run `scripts/genconfig.sh` before `make`?
 - `scripts/genconfig.sh` and tests depend on `bash`
 - `find` from `findutils` is about twice as fast as the one from `toybox`

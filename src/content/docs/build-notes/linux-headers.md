@@ -5,6 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Provide before `musl-headers` in stage 1 (toolchain) to prevent overwriting libc headers
 - `INSTALL_HDR_PATH="$CRSD"/usr` only works with `headers_install` target (not `headers`)
+- `headers_install` requires `rsync`
 - `find usr/include -name '.*' -delete` does not remove `Makefile` and `headers_check.pl`
 - Remove `usr/include/drm` to use headers from `libdrm`
 - The `headers_check` target runs a few trivial sanity checks on the headers before install
