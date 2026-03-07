@@ -335,6 +335,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ### Disable LTO
 - Remove `-flto=auto -fuse-linker-plugin` (and `-flto-compression-level=3` if being used)
+- Packages that might fail with LTO (based on outdated information from Fedora, Gentoo and gentooLTO):
+```
+0ad alsa-lib amsn apt argyllcms aspell atk avahi bcc binutils boost cairo cbmc cdrdao cdrtools ceph chromium chrony clang clisp community-mysql coreutils crash criu curl cvs dialog dolphin-emu dotnet dovecot dvisvgm e2fsprogs efivar elfutils espresso ffmpeg findutils firebird firefox flatpak FlightGear foo2zjs fwts gawk gcl gdb giac glib gnucobol gpm grpc grub gtk guitarix hdparm hedgewars hpx hwinfo hyperscan icecat iperf java js8call kdelibs kdepim-runtime keepassxc kernel kernel-tools libav libbpf libcxxabi libfplll libguestfs libint2 libkgapi libomp libpostproc libreoffice libvirt libxc lld llvm luatex lyx mame mandoc mariadb mesa mlpack mono mozjs78 mplayer mplayer2 muffin mupdf musl nest NetworkManager nheko nmap nodejs notify-python nss numactl nx okular oniguruma openblas opencv openjdk openssh ostree papi paraview pciutils pdns-recursor perl php polkit polly polymake postgresql primecount prusa-slicer pulseaudio python python-pyfastnoisesimd python-pyside2 qemu qsstv qt5-qt3d qt5-qtbase qt5-qtlocation qt5-qtscript qt5-qtwebkit qtcore qt-declarative qt-script qt-webkit rarian rpm-ostree rsync ruby scummvm seabios seamonkey sleuthkit spidermonkey strigi sudo systemd sysvinit texlive-base texmaker thunderbird tk tkrzw tremulous v8 valgrind wavpack webkit wine wireshark wsjtx wxGTK x264 xen xf86-video-intel xfconf xkbcomp xorg-server xrootd zam-plugins
+```
 
 ## LDFLAGS (Ordered based on appearance in the GNU linker manual)
 ### `-O1`

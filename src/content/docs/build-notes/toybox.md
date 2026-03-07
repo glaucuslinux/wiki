@@ -15,6 +15,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - prefer `toybox`'s `groups` to `shadow`'s
 - This symbol is always set: `TOYBOX_UTMPX=y`
 - Provides better SELinux support compared to `busybox`
+- `sbase` utilities (e.g. `rm`) do not work well with autotools
+- `sbase` and `ubase` utilities can be built as single binaries (`sbase-box` and `ubase-box` respectively) similar to busybox and toybox
 
 ## Replaces
 - `coreutils`
