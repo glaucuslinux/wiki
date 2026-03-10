@@ -6,6 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Depends on `linux-headers`
 - `toybox`'s `cpio` defaults to `newc`, and is as fast as `bsdcpio`
 - `toybox`'s `chgrp` is `chown` as well
+- `toybox`'s `base32` is bundled with `base64`
 - Do we need to run `scripts/genconfig.sh` before `make`?
 - `scripts/genconfig.sh` and tests depend on `bash`
 - `find` from `findutils` is about twice as fast as the one from `toybox`
@@ -17,6 +18,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - prefer `toybox`'s `groups` to `shadow`'s
 - This symbol is always set: `TOYBOX_UTMPX=y`
 - Provides better SELinux support compared to `busybox`
+- `toybox`'s commands for android only show when cross-compiling for android
 - `sbase` utilities (e.g. `rm`) do not work well with autotools
 - `sbase` and `ubase` utilities can be built as single binaries (`sbase-box` and `ubase-box` respectively) similar to busybox and toybox
 
@@ -221,6 +223,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/ibara/baseutils
 - https://github.com/matijaskala/coreutils-bsd
 - https://github.com/oracle/solaris-userland
+- https://github.com/ryanwoodsmall/toybox-misc/blob/master/scripts/toybox_config_script.sh
 - https://heirloom-ng.pindorama.net.br
 - https://heirloom.sourceforge.net/devtools.html
 - https://heirloom.sourceforge.net/sh.html

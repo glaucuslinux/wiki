@@ -128,6 +128,8 @@ Note that the location of the compiler originated plugins is different from the 
 ```
 cc1: error: no include path in which to search for stdc-predef.h
 ```
+- `-fvisibility=hidden` and `attribute((visibility("default")))` export only necessary functions from the library and hide the rest allowing `gcc` to optimize hidden functions more aggressively which break most packages (e.g. skarnet software); do not add to `CFLAGS` and `CXXFLAGS`
+- `_ZSt11_Hash_bytesPKvmm` (`std::unordered_map`) is a C++11 feature that requires `libstdc++-v3` and `-std=c++11` (`-D_GLIBCXX_USE_CXX11_ABI=1`)
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross
@@ -158,5 +160,7 @@ cc1: error: no include path in which to search for stdc-predef.h
 - https://github.com/glaucuslinux/glaucus/issues/8
 - https://github.com/riscv-collab/riscv-gnu-toolchain/issues/1422
 - https://lists.reproducible-builds.org/pipermail/rb-general/2018-June/001068.html
+- https://stackoverflow.com/questions/15861759/how-much-overhead-can-the-fpic-flag-add
+- https://stackoverflow.com/questions/42747821/symbol-lookup-in-shared-libraries
 - https://wiki.debian.org/toolchain/BootstrapIssues#stdc-predef.h_not_found
 - https://wiki.osdev.org/Building_GCC

@@ -24,6 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check if we need to copy `scripts/cd2nroff` to `/usr/bin` (or maybe `ac_cv_path_NROFF=/usr/bin/mandoc`)
 - Do we need `ac_cv_path_PERL=true`?
 - Support for NSS was removed as of `8.3.0`
+- `curl` dropped support for TLS libraries that do not support `TLSv1.3` (e.g. `bearssl`)
 
 ## References
 - http://bugs.alpinelinux.org/issues/16980
@@ -38,3 +39,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://git.alpinelinux.org/aports/commit/main/curl?id=5c35191091b85b1d10b96de568e5824d02a670e3
 - https://github.com/curl/curl/pull/14059
 - https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html
+- https://github.com/curl/curl/pull/12900
+- https://github.com/curl/curl/pull/13544

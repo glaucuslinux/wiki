@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Depends on `mawk`
+- Do not build with `LTO`
 - `install-tools` is for the wrapper `musl-gcc`
 - Do not set the prefix to `/usr`, `/usr/local`, or `/` unless upgrading libc on an existing musl-based system (this will break your existing system after running `make install` making it difficult to recover)
 - The dynamic linker searches for shared libraries at run time under directories listed in `/etc/ld-musl-$ARCH.path` separated by colons or newlines
@@ -38,6 +39,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `musl` only relies on `libgcc` for the `__muldc3`, `__muldxc3`,`__mulsc3` and `__powidf2` symbols and its `configure` can be patched to support `--fast-math` so that it does not depend on `libgcc` (this of course breaks the ABI and is recommended against by Rich Felker); `libgcc` is almost never utilised on 64-bit architectures like `x86-64`
 - `musl-cross-make` native support is broken meaning that you need a cross `mcm` toolchain first before you can build a native one with `NATIVE=1` which is understandable
 - Some `musl-headers` from `bits/` depend on `linux-headers`
+- Do we need parts from glibc (substitute by linking to libraries like `libiconv`, `libintl`, `libxcrypt`, `utmps`...)?
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html

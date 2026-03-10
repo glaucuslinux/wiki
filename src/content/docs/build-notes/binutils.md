@@ -23,6 +23,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--without-msgpack`: `msgpack` is not needed on glaucus (gentoo also disables this)
 - `--disable-default-stack` is an alias for `--enable-default-execstack=no`
 - `--enable-shared` enables the shared libraries of `libbfd` and `libopcodes` and makes tools like `ar` and `as` depend on them
+- `--with-lib-path` controls ld's library search path
 
 ## gold
 - `gold` has been deprecated

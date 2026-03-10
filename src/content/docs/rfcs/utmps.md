@@ -69,3 +69,6 @@ For further reading:
 
 When these are removed, distros are using systemd journal and logind to replace them:
 https://gitlab.archlinux.org/archlinux/packaging/packages/procps-ng/-/commit/749fd577af6fe8ca6218822039078a0c75e3d459
+
+## References
+- https://gitlab.alpinelinux.org/alpine/aports/issues/3282

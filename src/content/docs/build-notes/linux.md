@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check `linux/kernel/gen_kheaders.sh`
 - Check `linux/scripts/package/buildtar`
 - `modules.*.bin` and `modules.pcimap` should be automatically generated
+- Check `CONFIG_UEVENT_HELPER` for `hotplug`
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html
