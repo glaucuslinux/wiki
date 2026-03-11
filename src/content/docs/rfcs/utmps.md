@@ -14,18 +14,19 @@ skarnet: "All in all, I believe the flexibility it offers overweighs the inconve
 
 utmps is a solution to systems using s6, and won't work for systemd, and it implements utmpx safely using a daemon
 
+- https://en.wikipedia.org/wiki/Utmp
+- https://github.com/thkukuk/lastlog2
+- https://github.com/thkukuk/utmpx/blob/main/Y2038.md
+- https://github.com/thkukuk/wtmpdb
+- https://github.com/util-linux/util-linux/issues/2088
+- https://gitlab.com/procps-ng/procps/-/merge_requests/67
+- https://skarnet.org/software/utmps/utmps-utmpd.html
+- https://unix.stackexchange.com/questions/567012/how-can-i-add-lastlog-support-to-alpine-linux
+- https://wiki.musl-libc.org/roadmap.html
+- https://www.reddit.com/r/voidlinux/comments/g2wyon/musl_people_how_do_you_do_user_accounting_without/
+- https://www.thkukuk.de/blog/Y2038_glibc_lastlog_64bit/
 - https://www.thkukuk.de/blog/Y2038_glibc_utmp_64bit/
 - https://www.thkukuk.de/blog/Y2038_glibc_wtmp_64bit/
-- https://www.thkukuk.de/blog/Y2038_glibc_lastlog_64bit/
-- https://github.com/thkukuk/lastlog2
-- https://github.com/thkukuk/wtmpdb
-- https://github.com/thkukuk/utmpx/blob/main/Y2038.md
-- https://www.reddit.com/r/voidlinux/comments/g2wyon/musl_people_how_do_you_do_user_accounting_without/
-- https://unix.stackexchange.com/questions/567012/how-can-i-add-lastlog-support-to-alpine-linux
-- https://gitlab.com/procps-ng/procps/-/merge_requests/67
-- https://github.com/util-linux/util-linux/issues/2088
-- https://wiki.musl-libc.org/roadmap.html
-- https://en.wikipedia.org/wiki/Utmp
 
 * utmp.h has been deprecated in 2001 in favor of utmpx.h
 * On Glibc systems the former utmp.h is just an alias (or a symlink) for the latter utmpx.h
@@ -56,10 +57,13 @@ For further reading:
 * https://gitlab.com/procps-ng/procps/-/merge_requests/67
 * https://code.foxkit.us/adelie/packages/blob/master/system/procps/use-utmpx.patch
 * https://irclogs.alpinelinux.org/%23alpine-linux-2019-03.log
+* https://github.com/dermotbradley/alpine-misc-notes/blob/main/utmp-status.md
 
  https://github.com/dslm4515/Musl-LFS/issues/33
 
 - w, getty, tmux, libutempter, shadow, util-linux, procps-ng all use utmp/utmpx (For utmps)
+- ubase's getty doesn't add an entry to utmp
+- It's recommended to have a `utmp` user and group according to upstream
 
 ## DEPRECATE UTMP, UTMPX, UTMPS, WTMP, BTMP AND LASTLOG
 - https://github.com/glaucuslinux/core/commit/2173b4c9944027ba69dc5b31b22b6955307c112a

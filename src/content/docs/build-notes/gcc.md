@@ -148,6 +148,7 @@ cc1: error: no include path in which to search for stdc-predef.h
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106162
 - https://gcc.gnu.org/install/build.html
 - https://gcc.gnu.org/install/configure.html
+- https://gcc.gnu.org/install/finalinstall.html
 - https://gcc.gnu.org/install/specific.html
 - https://gcc.gnu.org/legacy-ml/gcc/2017-12/msg00001.html
 - https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html

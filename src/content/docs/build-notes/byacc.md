@@ -11,4 +11,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://aur.archlinux.org/packages/byacc-bison
 - https://c9x.me/yacc/
 - https://github.com/ibara/yacc
+- https://github.com/iglunix/iglunix/blob/main/base/linux/kernel-byacc.patch
 - https://github.com/wyvertux/wyverkiss/wiki/Building-the-kernel

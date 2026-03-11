@@ -63,6 +63,39 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `e1000` provides internet access inside QEMU, and has been added to the default booster configuration
 - After install, booster should be rerun to generate a native non-universal build
 
+## Dracut
+- Hardcodes `bash` and `coreutils`
+- The following command works on a host that provides the above:
+```
+dracut -f --early-microcode --strip -q -N --zstd initramfs
+```
+- dmsquash-live supports live environments
+```
+rd.live.dir=/boot rd.live.squashimg=rootfs.squashfs
+```
+- `mksquashfs "$root" "$image" -e dev -e proc -e sys`
+- old way:
+  - generate a dracut initramfs that contains `dmsquash-live`
+  - create an ext4 filesystem image named `rootfs.img` that contains the real root
+  - create a squashfs image that contains `/rootfs.img`
+  - put the squashfs image in the initramfs at `/squashfs.img`
+  - boot with `root=live:/squashfs.img`
+- with overlayfs:
+  - create an overlay file in tmpfs to use as the write device
+```
+  squashfs.img -> /rootfs.img -> /dev/loop0
+  tmpfs -> /overlay -> /dev/loop1
+  /dev/loop0 + /dev/loop1 -> /dev/mapper/live-rw
+```
+- check:
+```sh
+dracut -a dmsquash-live -N -m "kernel-modules base" --filesystems "squashfs" /dracut/initrd.dracut.img
+# root=live:<URL> in kernel cmdline
+# rd.live.ram=1 # to boot from RAM?
+linux /vmlinuz root=live:UUID=xxxxxxx-xxxx debug rd.live.debug=1 rd.live.overlay.overlayfs=1 # replace UUID with LABEL?
+```
+- having `systemd` in dracut modules interferes with overlayfs (#1820)
+
 ## GRUB
 - Do not use `--disable-shim-lock` to disable `shim_lock` as it would render the iso not bootable when Secure Boot is enabled
 - Arch images do not support Secure Boot; disable Secure Boot to boot the install medium, and if desired, it can be set up after install
@@ -177,6 +210,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://github.com/archlinux/archiso
 - https://github.com/chimera-linux/chimera-live
 - https://github.com/coreos/bootengine
+- https://github.com/dracutdevs/dracut/blob/master/man/dracut.cmdline.7.asc#booting-live-images
 - https://github.com/dslm4515/mlfs-linux-live
 - https://github.com/eudaldgr/kiss-live/blob/master/kiss-live
 - https://github.com/eudaldgr/kiss-live/blob/master/kiss-live#L197
@@ -203,6 +237,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://wiki.archlinux.org/title/Optical_disc_drive
 - https://wiki.archlinux.org/title/QEMU
 - https://wiki.archlinux.org/title/USB_flash_installation_medium
+- https://wiki.gentoo.org/wiki/Dracut
 - https://www.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
 - https://www.linux.org.ru/forum/linux-install/10720020
 - https://www.linuxquestions.org/questions/linux-from-scratch-13/create-an-iso-from-lfs-build-4175703319/
