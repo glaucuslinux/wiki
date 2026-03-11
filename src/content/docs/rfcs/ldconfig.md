@@ -11,7 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - smaeul (most complete, uses scanelf, requires PAX):
   - https://github.com/smaeul/musl-utils
   - https://git.adelielinux.org/adelie/packages/-/merge_requests/57/diffs?commit_id=c631e4fc5ab64a9ad668ed5f753348ce8eae5219
-- alpine (uses scanelf, requires PAX): https://github.com/libertine-linux-packages/musl_ldconfig
+- alpine (uses scanelf, requires PAX): https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/musl/ldconfig
 - libertine (identical to alpine, uses scanelf, requires PAX): https://github.com/libertine-linux-packages/musl_ldconfig
 - gentoo (does not use scanelf from PAX, but has BASHisms): https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-libs/musl/files/
 - Debian `ld-musl-config` is for appending paths to `/etc/ld-musl-x86_64.path` and not an `ldconfig` replacement

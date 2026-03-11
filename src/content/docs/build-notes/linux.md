@@ -10,6 +10,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check `linux/scripts/package/buildtar`
 - `modules.*.bin` and `modules.pcimap` should be automatically generated
 - Check `CONFIG_UEVENT_HELPER` for `hotplug`
+- Consider stripping the kernel with:
+```
+strip --strip-debug -o vmlinux.stripped vmlinux
+```
+- To strip kernel modules use `INSTALL_MOD_STRIP=1` (which does a `--strip-debug`):
+```
+make modules_install INSTALL_MOD_STRIP=1
+```
+- Do not use `INSTALL_MOD_STRIP="--strip-all"` as it breaks the modules
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html

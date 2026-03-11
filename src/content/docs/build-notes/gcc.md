@@ -4,7 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Disable bootstrap; stage 1 is good enough
-- Use a different `libexecdir`
+- Uses a different `libexecdir` (`/usr/lib` instead of `/usr/lib/gcc`)
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `--with-build-config=bootstrap-lto-lean` has to be used with `make profiledbootstrap`
 - Personal testing showed negligible differences between `disable-bootstrap` and `bootstrap-lean`, with notable differences against `bootstrap-native` (latter is `~5%` smaller):
@@ -130,6 +130,7 @@ cc1: error: no include path in which to search for stdc-predef.h
 ```
 - `-fvisibility=hidden` and `attribute((visibility("default")))` export only necessary functions from the library and hide the rest allowing `gcc` to optimize hidden functions more aggressively which break most packages (e.g. skarnet software); do not add to `CFLAGS` and `CXXFLAGS`
 - `_ZSt11_Hash_bytesPKvmm` (`std::unordered_map`) is a C++11 feature that requires `libstdc++-v3` and `-std=c++11` (`-D_GLIBCXX_USE_CXX11_ABI=1`)
+- `--with-local-prefix=/path/to/toolchain` Where gcc will search for locally installed include files, which might be useful for minimizing the effect of the host system on cross builds
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

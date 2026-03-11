@@ -7,6 +7,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prefer `/usr/bin/nologin` to `/usr/bin/false` for `nologin` users shell
 - Prefer `/nonexistent` to `/var/empty` and `/dev/null` for `nologin` users home location, as the latter is not a directory and shouldn't be used as one
 - What should the version of `LSB_VERSION` be? `1.4`? `2.0`? `5.0`? (What even is the latest version? isn't it obsolete?)
+- `/etc/os-release` takes precedence over `/usr/lib/os-release`
+- `/etc/os-release` should be a relative symlink to `/usr/lib/os-release` (not an absolute symlink to avoid breaking chroot or initramfs)
+- Check `DISTRIB_ID=glaucus` for os-release?
 
 ## References
 - https://github.com/LinuxStandardBase/lsb-samples

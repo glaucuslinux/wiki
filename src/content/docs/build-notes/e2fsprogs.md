@@ -16,6 +16,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - To get rid of current warnings:
   - Try `-j1` for both build and install
   - Try `MKDIR_P=mkdir -p`, because `install-sh` is buggy and only creates one directory according to Chimera
+- Requires `uuid` and `blkid` from `util-linux`
 - Explicitly disable `--without-udev-rules-dir`/`--without-systemd-unit-dir` to prevent the installation of `udev` and `systemd` directories
 - `install-libs` is identical to `install-libs-recursive` and both install static libraries
 - `install-strip-libs-recursive` also installs static libraries and headers

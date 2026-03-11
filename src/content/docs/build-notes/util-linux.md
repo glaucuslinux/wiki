@@ -9,7 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Depends on `libcap-ng` to build `setpriv`; glaucus already provides `s6-setuidgid`: https://forum.artixlinux.org/index.php/topic,3360.0.html
 - Use `autoreconf -vfis` as `./autogen.sh` requires GNU `gettext`, `gtkdocize` and `bison`
 - `tools/all_syscalls` hardcodes `gawk`
-- Explicitly specify `--bindir`
+- Explicitly specify `--bindir` and `--libdir` as it defaults to `/bin` and `/lib` even with `--prefix=/usr`
 - Use `kill` from `util-linux` instead of `procps-ng` (mainstream)
 - `/etc/adjtime` should be `/var/lib/hwclock/adjtime` according to FHS (both Alpine and Arch are using an old directory version) https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s08.html#varlibhwclockStateDirectoryForHwclo
 - If the `adjtime` file does not exist, the default is `utc`
@@ -33,4 +33,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://bugzilla.redhat.com/show_bug.cgi?id=1984771
 - https://github.com/sabotage-linux/sabotage/commit/1f3b7032769f0ce27cde3ac7490d02f0393c9a5a
+- https://github.com/shadow-maint/shadow/issues/464
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/11730
