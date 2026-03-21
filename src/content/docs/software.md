@@ -7,25 +7,33 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`booster`](https://github.com/anatol/booster): initramfs generator
 - [`byacc`](https://invisible-island.net/byacc/): yacc implementation
 - [`catppuccin`](https://catppuccin.com/): color scheme
+- [`clang`](https://clang.llvm.org/): c compiler
+- [`clang++`](https://clang.llvm.org/): c++ compiler
+- [`compiler-rt`](https://compiler-rt.llvm.org/): runtime compiler support libraries implementation
 - [`flex`](https://github.com/westes/flex): lex implementation
 - [`fping`](https://fping.org/): ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny): gettext implementation
 - [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2): networking utilities
-- [`labwc`](https://labwc.github.io/): stacking Wayland compositor
+- [`labwc`](https://labwc.github.io/): stacking wayland compositor
 - [`lbzip2`](https://github.com/kjn/lbzip2): bzip2 implementation
 - [`less`](https://greenwoodsoftware.com/less/): terminal pager
 - [`libarchive`](https://libarchive.org/): archive and compression library
-- [`libedit`](https://thrysoee.dk/editline/): command line editor library
-- [`libressl`](https://libressl.org/): TLS library
+- [`libc++`](https://libcxx.llvm.org/): c++ standard library
+- [`libc++abi`](https://libcxxabi.llvm.org/): c++ standard library support
+- [`libedit`](https://thrysoee.dk/editline/): command line editing library
+- [`libressl`](https://libressl.org/): tls library
 - [`libudev-zero`](https://github.com/illiliti/libudev-zero): libudev implementation
+- [`libunwind`](https://www.nongnu.org/libunwind/): stack unwinding library
 - [`limine`](https://limine-bootloader.org/): boot loader and manager
 - [`linux-cachyos`](https://github.com/CachyOS/linux-cachyos): kernel
+- [`lld`](https://lld.llvm.org/): linker
+- [`llvm binary utilities`](https://llvm.org/docs/CommandGuide/#gnu-binutils-replacements): binutils implementation
 - [`mandoc`](https://mandoc.bsd.lv/): manual pages reader
 - [`mawk`](https://invisible-island.net/mawk/): awk implementation
 - [`mdevd`](https://skarnet.org/software/mdevd/): udevd implementation
 - [`muon`](https://sr.ht/~lattis/muon/): meson implementation
-- [`muon's samurai`](https://git.sr.ht/~lattis/muon/tree/master/item/src/external/samurai): ninja implementation
-- [`musl`](https://musl.libc.org/): C standard library
+- [`muon samurai`](https://git.sr.ht/~lattis/muon/tree/master/item/src/external/samurai): ninja implementation
+- [`musl`](https://musl.libc.org/): c standard library
 - [`neatvi`](https://github.com/aligrudi/neatvi): text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
@@ -35,7 +43,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
-- [`sway`](https://swaywm.org/): tiling Wayland compositor
+- [`sway`](https://swaywm.org/): tiling wayland compositor
 - [`toybox`](https://landley.net/toybox/): unix user space
 - [`u-config`](https://github.com/skeeto/u-config): pkg-config implementation
 - [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation

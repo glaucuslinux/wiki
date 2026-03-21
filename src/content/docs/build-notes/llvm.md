@@ -112,6 +112,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://llvm.org/docs/BuildingADistribution.html
 - https://llvm.org/docs/CMake.html
 - https://llvm.org/docs/CMakePrimer.html
+- https://llvm.org/docs/CommandGuide/
 - https://llvm.org/docs/genindex.html
 - https://llvm.org/docs/GettingStarted.html
 - https://llvm.org/docs/GoldPlugin.html

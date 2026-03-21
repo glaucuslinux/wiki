@@ -82,15 +82,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `pkg-config` (or `pkgconf`) (not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
 - `sed` (or `toybox`)
 - `tar` (or `libarchive`)
+- `xxhash`
 - `xz`
 - `zlib` (or `zlib-ng`)
 - `zstd`
-
-### Required Paths (Automatically Created)
-- `/var/cache/rad`
-- `/var/lib/rad`
-- `/var/log/rad`
-- `/var/tmp/rad`
 
 ### Required Stubs (Automatically Provided)
 - `a2x`
@@ -101,6 +96,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `makeinfo`
 - `po4a`
 - `texi2dvi`
+- `texi2html`
 - `texi2pdf`
 - `yodl2man`
 
