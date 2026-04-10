@@ -14,7 +14,6 @@ export default defineConfig({
       social: [
         { icon: 'codeberg', label: 'Codeberg', href: 'https://codeberg.org/glaucuslinux/glaucus' },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/glaucuslinux/glaucus' },
-        { icon: 'twitter', label: 'X', href: 'https://x.com/glaucuslinux' },
         { icon: 'youtube', label: 'YouTube', href: 'https://youtube.com/@glaucuslinux' },
       ],
       editLink: {
