@@ -3,11 +3,6 @@ title: Community
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- [Reddit](https://reddit.com/r/glaucus)
-- [Telegram](https://t.me/glaucuslinux)
-- [X](https://x.com/glaucuslinux)
-- [YouTube](https://youtube.com/@glaucuslinux)
-
 ## Rules
 The following rules apply to ALL social spaces:
 1. BE RESPECTFUL - Disagreements are not an excuse for poor behavior.
