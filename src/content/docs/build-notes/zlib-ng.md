@@ -10,7 +10,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Parts of sortix's `libz` made their way into `zlib-ng`
 
 ## References
+- https://github.com/ebiggers/libdeflate
 - https://github.com/gentoo/gentoo/pull/17167
 - https://github.com/zlib-ng/zlib-ng/issues/3
 - https://news.ycombinator.com/item?id=37270631
 - https://quixdb.github.io/squash-benchmark/?visible-plugins=zlib,zlib-ng
+- https://sortix.org/libdeflate/

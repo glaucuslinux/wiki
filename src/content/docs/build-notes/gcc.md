@@ -142,6 +142,7 @@ cc1: error: no include path in which to search for stdc-predef.h
   - https://skarnet.org/toolchains/
 
 ## References
+- https://briancallahan.net/blog/20240122.html
 - https://dl.acm.org/doi/full/10.1145/3674735
 - https://gcc.gcc.gnu.narkive.com/huHx5Sfp/7-2-0-error-no-include-path-in-which-to-search-for-stdc-predef-h
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100537

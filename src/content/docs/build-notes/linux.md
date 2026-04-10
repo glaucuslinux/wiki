@@ -22,6 +22,7 @@ make modules_install INSTALL_MOD_STRIP=1
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html
+- https://docs.kernel.org/kbuild/llvm.html
 - https://gist.github.com/12101111/b6978a114c9acca23a67fd064e57f040
 - https://gist.github.com/kinoshita-lab/809b60e08b3d236b9e1db8978b748cda
 - https://github.com/chipsalliance/rocket-chip/issues/1011

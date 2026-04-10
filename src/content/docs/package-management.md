@@ -13,11 +13,13 @@ glaucus uses the filesystem tree as its database to store package information an
 - `ver`: package version number, or commit number if `url` is a git repository
 - `url`: package source url
   - Prefer `https` over `http` and `ftp`
-  - Prefer `.zst` > `.gz` > `.xz` > `.bz2` for tarballs
+  - Prefer smallest available tarball (`.zst` > `.xz` > `.bz2` > `.gz`); network is the slowest bottleneck
   - Prefer cdn mirrors when available:
     - GNU packages should use: `https://ftpmirror.gnu.org/`
     - Kernel packages should use: `https://cdn.kernel.org/pub/linux/`
     - Non GNU packages should use: `https://download.savannah.nongnu.org/releases/`
+      - Avoid `download-mirror.savannah.*` as it provides direct downloads (despite the legacy name)
+      - Avoid `download.savannah.gnu.org` for Non GNU packages (even if it works, it is not explicit)
     - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
 - `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
 - `bld`: package build time dependencies sorted alphabetically
@@ -28,7 +30,7 @@ glaucus uses the filesystem tree as its database to store package information an
   - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
   - `doc`, `man`: do not remove documentation
   - `empty`: do not remove empty directories
-  - `la`, `libtool`: do not remove libtool archives (`.la` files) in native; they are deleted either ways in cross
+  - `la`, `libtool`: do not remove libtool archives (`.la` files) otherwise they are deleted unconditionally
   - `no-lto`: do not use LTO
   - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
   - `no-purge`/`no-prune`: do not remove unwanted files
@@ -66,7 +68,9 @@ glaucus uses the filesystem tree as its database to store package information an
 - Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`
 ###### Disable
 - It is preferred to disable the following options:
+  - acl
   - assert
+  - attr
   - audit
   - dbus
   - debug
@@ -92,6 +96,7 @@ glaucus uses the filesystem tree as its database to store package information an
   - systemd
   - tests
   - x11
+  - xattr
   - year2038
 ###### Enable
 - It is also preferred to enable the following options:

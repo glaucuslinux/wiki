@@ -225,6 +225,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://github.com/venomlinux/mkinitramfs
 - https://github.com/void-linux/void-mklive/blob/master/mklive.sh
 - https://hacktivis.me/articles/bootstrap-initrd
+- https://inconsolation.wordpress.com/2013/09/24/cdrtools-cdrkit-and-cdrskin-untying-the-knot/
 - https://landley.net/writing/rootfs-howto.html
 - https://landley.net/writing/rootfs-intro.html
 - https://landley.net/writing/rootfs-programming.html
@@ -232,12 +233,15 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://notabug.org/arsv/minibase-artix
 - https://roscopeco.com/2013/08/12/creating-a-bootable-hard-disk-image-with-grub2/
 - https://superuser.com/questions/130955/how-to-install-grub-into-an-img-file
+- https://superuser.com/questions/573650/how-to-boot-into-a-root-filesystem-stored-as-partition-image-file-on-a-bootable
 - https://unix.stackexchange.com/questions/224277/is-it-better-to-use-cat-dd-pv-or-another-procedure-to-copy-a-cd-dvd/224314#224314
 - https://unix.stackexchange.com/questions/364262/freeing-initramfs-ram-after-switching-root-when-using-overlayfs
+- https://unix.stackexchange.com/questions/675211/mkisofs-error-boot-image-efibot-img-not-an-allowable-size
 - https://wiki.archlinux.org/title/Optical_disc_drive
 - https://wiki.archlinux.org/title/QEMU
 - https://wiki.archlinux.org/title/USB_flash_installation_medium
 - https://wiki.gentoo.org/wiki/Dracut
+- https://wiki.osdev.org/Mkisofs
 - https://www.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
 - https://www.linux.org.ru/forum/linux-install/10720020
 - https://www.linuxquestions.org/questions/linux-from-scratch-13/create-an-iso-from-lfs-build-4175703319/

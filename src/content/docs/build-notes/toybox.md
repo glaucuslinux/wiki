@@ -21,11 +21,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `toybox`'s commands for android only show when cross-compiling for android
 - `sbase` utilities (e.g. `rm`) do not work well with autotools
 - `sbase` and `ubase` utilities can be built as single binaries (`sbase-box` and `ubase-box` respectively) similar to busybox and toybox
+- `chattr` and `lsattr` use `ioctl()` and not `xattr()`; unlike `getfattr` and `setfattr`
 
 ## Replaces
+- `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
 - `coreutils`
 - `diffutils`
 - `findutils`; `toybox`'s `find` is approximately two times slower
+- `grep`; toybox's `grep` is at least 10 times slower
 - `libarchive`'s `bsdcpio`
 - `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default
 - `procps-ng`; `toybox` does not provide `hugetop`, `pidwait`, `slabtop` (though planned) and `tload` (not planned)
@@ -33,10 +36,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sed`
 
 ## Does Not Replace
-- `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
 - `file`; limited file` implementation
 - `fping`; limited `ping` implementation
-- `grep`; toybox's `grep` is at least 10 times slower
 - `iproute2`
 - `kbd`; busybox has better implementations
 - `less`; limited implementation
