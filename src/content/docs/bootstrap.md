@@ -52,11 +52,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `autoconf`
 - `automake`
 - `bash`
-- `binutils`
 - `bison` (or `byacc`)
-- `booster`
 - `bzip2`
+- `clang`
 - `coreutils` (or `toybox`)
+- `cpio` (or `libarchive` or `toybox`)
 - `curl`
 - `diffutils` (or `toybox`)
 - `dosfstools`
@@ -64,15 +64,15 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `findutils` (or `toybox`)
 - `flex`
 - `gawk` (or `mawk`)
-- `gcc`
 - `gettext` (or `gettext-tiny`)
 - `git`
 - `gperf`
-- `grep`
+- `grep` (or `toybox`)
 - `gzip` (or `pigz`)
 - `libcap`
 - `libtool` (or `slibtool`)
 - `limine`
+- `lld`
 - `m4`
 - `make`
 - `meson` (or `muon`)
