@@ -12,7 +12,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`fping`](https://fping.org/): ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny): gettext implementation
 - [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2): networking utilities
-- [`labwc`](https://labwc.github.io/): stacking wayland compositor
+- [`labwc`](https://labwc.github.io/): wayland compositor
 - [`less`](https://greenwoodsoftware.com/less/): terminal pager
 - [`libarchive`](https://libarchive.org/): archive and compression library
 - [`libc++`](https://libcxx.llvm.org/): c++ standard library
@@ -33,13 +33,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`neatvi`](https://github.com/aligrudi/neatvi): text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
-- [`plocate`](https://plocate.sesse.net/): locate implementation
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
 - [`sortix libz`](https://sortix.org/libz/): zlib implementation
-- [`sway`](https://swaywm.org/): tiling wayland compositor
 - [`toybox`](https://landley.net/toybox/): unix user space
 - [`u-config`](https://github.com/skeeto/u-config): pkg-config implementation
 - [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation
