@@ -25,7 +25,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`linux-cachyos`](https://github.com/CachyOS/linux-cachyos): kernel
 - [`lld`](https://lld.llvm.org/): linker
 - [`llvm binary utilities`](https://llvm.org/docs/CommandGuide/#gnu-binutils-replacements): binutils implementation
-- [`mawk`](https://invisible-island.net/mawk/): awk implementation
 - [`mdevd`](https://skarnet.org/software/mdevd/): udevd implementation
 - [`muon`](https://sr.ht/~lattis/muon/): meson implementation
 - [`muon samurai`](https://git.sr.ht/~lattis/muon/tree/master/item/src/external/samurai): ninja implementation
@@ -41,6 +40,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`toybox`](https://landley.net/toybox/): unix user space
 - [`u-config`](https://github.com/skeeto/u-config): pkg-config implementation
 - [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation
+- [`wak`](https://github.com/raygard/wak): awk implementation
 - [`wayland`](https://wayland.freedesktop.org/): display server protocol
 - [`yash`](https://magicant.github.io/yash/): unix shell
 - [`zstd`](https://facebook.github.io/zstd/): compression algorithm
