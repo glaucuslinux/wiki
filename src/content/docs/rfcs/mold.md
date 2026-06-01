@@ -7,6 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Uses 12 GB when building and basically freezes the build process (mold should speed up linking times and reduce the overall bootstrap time but building mold takes up all the saved time and more...)
 - Segfaults at random
 - Used to add `libgcc` to all linked binaries
+- Does not support linker scripts
 - Unable to link the kernel
 - Used to not support LTO
 - Don't forget to include `mold` in your compiler's custom search directory

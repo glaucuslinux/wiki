@@ -131,6 +131,23 @@ cc1: error: no include path in which to search for stdc-predef.h
 - `-fvisibility=hidden` and `attribute((visibility("default")))` export only necessary functions from the library and hide the rest allowing `gcc` to optimize hidden functions more aggressively which break most packages (e.g. skarnet software); do not add to `CFLAGS` and `CXXFLAGS`
 - `_ZSt11_Hash_bytesPKvmm` (`std::unordered_map`) is a C++11 feature that requires `libstdc++-v3` and `-std=c++11` (`-D_GLIBCXX_USE_CXX11_ABI=1`)
 - `--with-local-prefix=/path/to/toolchain` Where gcc will search for locally installed include files, which might be useful for minimizing the effect of the host system on cross builds
+- `gcc` build fails with `--with-cpu=x86-64-v3`/`--with-tune=x86-64-v3` as they disallow their use under `gcc/config.gcc`:
+```sh
+...
+*" ${val} "*)
+  # Disallow x86-64-v* for --with-cpu=/--with-tune=
+  case "x$which$val" in
+  xcpu*x86-64-v*|xtune*x86-64-v*)
+    echo "Unknown CPU given in --with-$which=$val." 1>&2
+    exit 1
+    ;;
+...
+```
+- `zstd` it the faster LTO compression algorithm as the speed of LTO is mainly determined by decompression at link-time unlike compression which happens at compile-time
+- To properly build `libgcc` and `libstdc++-v3` so that software that depend on them work (e.g. `ugrep`) do not use in `CXXFLAGS`:
+  - `-fno-exceptions`
+  - `-fno-rtti` (thread and _Z stuff not found)
+  - `-fvisibility-inlines-hidden`
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross
@@ -143,6 +160,7 @@ cc1: error: no include path in which to search for stdc-predef.h
 
 ## References
 - https://briancallahan.net/blog/20240122.html
+- https://briancallahan.net/blog/20250817.html
 - https://dl.acm.org/doi/full/10.1145/3674735
 - https://gcc.gcc.gnu.narkive.com/huHx5Sfp/7-2-0-error-no-include-path-in-which-to-search-for-stdc-predef-h
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100537

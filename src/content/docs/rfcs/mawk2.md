@@ -23,6 +23,8 @@ mawk2
 real    0m18.384s
 user    0m18.099s
 sys     0m0.238s
+
+# nawk is ~2 times slower than gawk
 ```
 
 ## References

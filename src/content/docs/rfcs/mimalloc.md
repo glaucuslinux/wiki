@@ -14,6 +14,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `musl` allocator `malloc-ng` is based on `hardened_malloc` and OpenBSD `malloc`
 - All allocators should be secure by default; having a secure version does not make sense
 - Alpaquita, Chimera, eweOS, OpenMandriva and Void all have experimental `mimalloc` support
+- Nim and Nimony (Nim 3.0) use `mimalloc` by default
 
 ## References
 - https://chimera-linux.org/docs/configuration/musl

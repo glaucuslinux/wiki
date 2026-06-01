@@ -311,6 +311,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ### `-march=x86-64-v3`
 - x86-64-v3 provides better performance and battery life
+- `-mtune=generic` is implicitly enabled
 
 ### `-mfpmath=sse`
 - Automatically detected on modern 64-bit hosts and Linux targets

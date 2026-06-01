@@ -10,13 +10,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - A `console-setup`/`vconsole` service should check `/etc/default/console-setup` and `/etc/vconsole.conf`
 
 ## Final
+- maple: https://github.com/subframe7536/maple-font
+  - easier on the eyes compared to 0xProto
 - 0xProto: https://github.com/0xType/0xProto
 - fantasque-sans:
   - https://belluzj.github.io/projects/design/fantasquesansmono-font
   - https://github.com/belluzj/fantasque-sans
 - Fira Code: https://github.com/tonsky/FiraCode
 - JetBrainsMono: https://github.com/JetBrains/JetBrainsMono
-- maple: https://github.com/subframe7536/maple-font
 - terminus:
   - https://files.ax86.net/terminus-ttf/
   - https://terminus-font.sourceforge.net/
@@ -24,6 +25,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Curated
 - cherry: https://github.com/turquoise-hexagon/cherry
 - cozette: https://github.com/slavfox/Cozette
+- departure: https://github.com/rektdeckard/departure-mono
 - envypn:
   - https://github.com/hicolour/envypn-font
   - https://github.com/Sorixelle/envypn-powerline
@@ -54,6 +56,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - comic code (paid):
   - https://tosche.net/fonts/comic-code
   - https://coding-fonts.pages.dev/fonts/comic-code/
+- commit: https://github.com/eigilnikolajsen/commit-mono
 - consolas: https://github.com/pensnarik/consolas-font
 - dina: https://github.com/zshoals/Dina-Font-TTF-Remastered
 - eldur: https://github.com/molarmanful/eldur
@@ -63,9 +66,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - iansui: https://github.com/ButTaiwan/iansui
 - inconsolata: https://github.com/googlefonts/Inconsolata
 - iosevka Custom: https://github.com/be5invis/Iosevka
+  - huge
+- lilex: https://github.com/mishamyrt/Lilex
+  - IBM plex copy
 - monaco:
   - https://github.com/probil/Monaco-IDE-font
   - https://github.com/mps/fonts/blob/master/MONACO.TTF
+- mono: https://github.com/evilmartians/mono
 - moon Stars Kai: https://github.com/GuiWonder/MoonStarsKai
 - peep: https://github.com/greemo/peep-font
 - ponomar: https://github.com/slavonic/Ponomar
@@ -77,6 +84,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - https://netalive.org/tinkering/triskweline/
   - https://github.com/ideasman42/triskweline-code-font
 - ubuntu mono: https://github.com/canonical/Ubuntu-Sans-Mono-fonts
+- victor: https://github.com/rubjo/victor-mono
 - ysabeau infant: https://github.com/CatharsisFonts/Ysabeau
 
 ## Misc

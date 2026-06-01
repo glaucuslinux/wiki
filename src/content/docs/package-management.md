@@ -254,9 +254,11 @@ patch -p0 ...
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
 - https://wiki.alpinelinux.org/wiki/Package_policies
+- https://wiki.archlinux.org/title/Arch_build_system
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg
+- https://wiki.archlinux.org/title/Meson_package_guidelines
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Official_repositories
 - https://wiki.archlinux.org/title/Pacman/Rosetta

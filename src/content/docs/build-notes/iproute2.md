@@ -21,6 +21,8 @@ grep: TC_CONFIG_XT: No such file or directory
 ```
 - `include` should be `$PWD/include` according to iproute2 config file, and not `/usr/include`?
 - `libbpf` is not needed
+- disable building modules that require iptables:
+`sed -i 's/.m_ipt.o//' tc/Makefile`
 
 ## References
 - https://gitlab.archlinux.org/archlinux/packaging/packages/iproute2/-/issues/2

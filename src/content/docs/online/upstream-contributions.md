@@ -225,15 +225,18 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## nsss
 - [nsss Contributor](https://github.com/skarnet/nsss/blob/main/AUTHORS)
+- Commit ec85192: [Doc typo fix](https://github.com/skarnet/nsss/commit/ec85192dacc1bc1ca2efaad4e469d4d1831bce9c)
 - Commit 0d0417f: [Doc fixes (it's `grp.h`!)](https://github.com/skarnet/nsss/commit/0d0417f3226406fd4546d550bcf188b24b6f88ce)
 - Issue #3: [Implicit declarations when using `--enable-libc-includes`](https://github.com/skarnet/nsss/issues/3)
 - Issue #4: [Missing define in `nsss/shadow.h`](https://github.com/skarnet/nsss/issues/4)
 - Pull Request #5: [Rename `group.h` to `grp.h`](https://github.com/skarnet/nsss/pull/5)
 
 ## oksh
+- Commit 62d0e1b: [Make `BINDIR` and `MANDIR` actually depend on `PREFIX`](https://github.com/ibara/oksh/commit/62d0e1b97e0231044c8a0feef836d8e4dc9aaa18)
 - Issue #45: [Does `oksh` support cross compilation?](https://github.com/ibara/oksh/issues/45)
 
 ## om4
+- Commit db1c369: [Make `BINDIR` and `MANDIR` depend on `PREFIX`](https://github.com/ibara/m4/commit/db1c369dac8768fbbe26000614e27a42b08c8f56)
 - Pull Request #1: [Fixed unexpected ';' errors and manual's name](https://github.com/ibara/m4/pull/1)
 
 ## openresolv

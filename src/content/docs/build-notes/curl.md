@@ -25,6 +25,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do we need `ac_cv_path_PERL=true`?
 - Support for NSS was removed as of `8.3.0`
 - `curl` dropped support for TLS libraries that do not support `TLSv1.3` (e.g. `bearssl`)
+- `-J` does not make sense with `lastpathpart()`; archive changes from `v$ver` to `$nom-$ver`
 
 ## References
 - http://bugs.alpinelinux.org/issues/16980

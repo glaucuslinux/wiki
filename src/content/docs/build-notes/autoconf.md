@@ -11,6 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `binutils` does not provide `/usr/share/info/standards.info`
 - `autoreconf` runs all (`aclocal`, `autoconf`, `automake`, `autoheader`, `autopoint` and `libtoolize`) in the right order and when appropriate (repeatedly) to update the GNU Build System in the specified directories and their subdirectories (by default, it only remakes files that are older than their sources)
 - The environment variables AUTOM4TE, AUTOCONF, AUTOHEADER, AUTOMAKE, ACLOCAL, AUTOPOINT, LIBTOOLIZE, M4, and MAKE may be used to override the invocation of `autoreconf` and the respective tools
+- Explicitly specify `exec-prefix` in `glaucus-autoconf` because build systems are awful
 - Test suite requries GNU `m4`, and `perl` to run `autom4te` on `tests/wrapper.in`
 - Tests `227` and `351` are broken on Adelie and Arch
 - Tests are disabled on Alpine

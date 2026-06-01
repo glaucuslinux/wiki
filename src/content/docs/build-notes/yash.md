@@ -9,4 +9,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Patch to prevent warning when overwriting files (cp, mv...)
 
 ## References
+- https://github.com/magicant/yash/issues/48
+- https://github.com/magicant/yash/pull/203
 - https://yash.osdn.jp/doc/params.html
