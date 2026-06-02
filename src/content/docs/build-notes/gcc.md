@@ -148,6 +148,7 @@ cc1: error: no include path in which to search for stdc-predef.h
   - `-fno-exceptions`
   - `-fno-rtti` (thread and _Z stuff not found)
   - `-fvisibility-inlines-hidden`
+- `gcc`'s LTO does not work with `lld`
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

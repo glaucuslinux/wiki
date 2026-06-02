@@ -38,6 +38,7 @@ RAD_FLAGS_LINKER* = "-Wl,-O1,-s,-z,noexecstack,-z,now,-z,relro,-z,x86-64-v3,--as
 - The symbolic link was installed in `/custom/toolchain/tuple/bin` where `binutils` already keeps its hardlinks to `../../bin` including `ld.bfd`, which is why I issued the command `ln -fs ../../bin/mold /custom/toolchain/tuple/bin/ld.mold`.
 
 ## References
-- https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
+- https://github.com/rui314/mold/issues/1032
 - https://github.com/rui314/mold/issues/165
 - https://github.com/rui314/mold/issues/4
+- https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
