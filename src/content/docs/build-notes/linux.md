@@ -19,6 +19,7 @@ strip --strip-debug -o vmlinux.stripped vmlinux
 make modules_install INSTALL_MOD_STRIP=1
 ```
 - Do not use `INSTALL_MOD_STRIP="--strip-all"` as it breaks the modules
+- `headers_check` is obsolete (no-op)
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html
@@ -27,6 +28,8 @@ make modules_install INSTALL_MOD_STRIP=1
 - https://gist.github.com/kinoshita-lab/809b60e08b3d236b9e1db8978b748cda
 - https://github.com/chipsalliance/rocket-chip/issues/1011
 - https://github.com/geirha/shbot-initramfs/blob/master/kernel-howto.md
+- https://github.com/sn99/Optimizing-linux
+- https://github.com/torvalds/linux/commit/4fbce819337a6705559788ff7e9583a4703edcb7
 - https://kspp.github.io/Recommended_Settings
 - https://lore.kernel.org/patchwork/patch/489972/
 - https://mikrocontroller.net/attachment/413002/config-bpir2.txt

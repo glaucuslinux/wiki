@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Replaces `libressl`
+- Might require building with `CMAKE_C_STANDARD=11`
 
 ## References
 - https://news.ycombinator.com/item?id=34696769

@@ -118,7 +118,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://hacktivis.me/notes/pure-wayland
 - https://tilde.team/~kiedtl/blog/wayland/
 
-## Pure
+## Suckless
 - [libwayland](https://gitlab.freedesktop.org/wayland/wayland): the classic core wayland code and protocol
 - [freeway](https://git.sr.ht/~shrub900/freeway): a slightly smaller, simpler libwayland implementation with less dependencies and native NetBSD kqueue support
 - [nyctal](https://github.com/s-rah/nyctal): tiny wayland compositor implemented in Go
@@ -135,6 +135,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [swiv](https://git.sr.ht/~shrub900/swiv): tiny image viewer for wayland, using wld
 - [swclock](https://git.sr.ht/~shrub900/swclock): a xclock-like analog clock program for wayland, using neuwld
 - [wev](https://git.sr.ht/~sircmpwn/wev): small tool for debugging events on a wayland window
+
+## Other
+- https://github.com/stumpwm/mahogany
+- https://github.com/project-repo/cagebreak
+- https://github.com/Hjdskes/cage
 
 ## References
 - FreeBSD has a lot of wayland ports

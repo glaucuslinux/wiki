@@ -7,5 +7,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `cat` can be used instead of `less` (oasis)
 
 ## References
+- https://github.com/plp13/qman
 - https://lists.gnu.org/archive/html/gnunet-developers/2018-09/msg00017.html
 - https://undeadly.org/cgi?action=article&sid=20170304230520

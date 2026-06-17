@@ -123,6 +123,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://mcilloni.ovh/2021/02/09/cxx-cross-clang/
 - https://muxup.com/building-testing-and-distributing-llvm-clang-and-friends
 - https://rocm.docs.amd.com/projects/llvm-project/en/latest/LLVM/llvm/html/CMake.html
+- https://wiki.gentoo.org/wiki/LLVM#Bootstrapping_the_LLVM_toolchain
 - https://wiki.musl-libc.org/building-llvm.html
 - https://youtube.com/watch?v=gOq1sCKSD80
 - https://youtube.com/watch?v=NMQrnVDf-rY

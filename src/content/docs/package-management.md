@@ -26,15 +26,17 @@ glaucus uses the filesystem tree as its database to store package information an
   - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
 - `run`: package run time dependencies sorted alphabetically
 - `opt`: package options and includes:
-  - `bootstrap`: install package to `/`; only relevant in bootstrap stage cross
+  - `bootstrap`: install package to `/`; only relevant in bootstrap
   - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
+  - `debug`: do not remove debugging information
   - `doc`, `man`: do not remove documentation
   - `empty`: do not remove empty directories
-  - `la`, `libtool`: do not remove libtool archives (`.la` files) otherwise they are deleted unconditionally
+  - `la`, `libtool`: do not remove libtool archives (`.la` files)
   - `no-lto`: do not use LTO
   - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
   - `no-purge`/`no-prune`: do not remove unwanted files
   - `static`: do not remove static libraries (.a files)
+  - `no-strip`: do not strip binaries and libraries
 ### The `build` file
 - A `build` file is a POSIX shell script that includes the build instructions of a package
 - The build process of a package is split into 5 different phases:
@@ -66,6 +68,9 @@ glaucus uses the filesystem tree as its database to store package information an
 - Use the newer build system if a package has multiple officially supported and maintained build systems and/or is in the process of moving to a newer build system (e.g. `kmod`)
 - For developers who are bootstrapping the `toolchain` and `cross` stages use full paths to `glaucus-*` in `build-toolchain` and `build-cross` respectively
 - Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`
+- `autoconf` options should be in order of appearance in `./configure --help`
+- `meson`/`muon` options should be in order of appearance in `meson_build`/`meson.build`
+- `cmake` options should be in alphabetical order
 ###### Disable
 - It is preferred to disable the following options:
   - acl
@@ -100,8 +105,6 @@ glaucus uses the filesystem tree as its database to store package information an
   - year2038
 ###### Enable
 - It is also preferred to enable the following options:
-  - acl
-  - attr
   - ipv6
   - lto
   - pic
@@ -110,7 +113,6 @@ glaucus uses the filesystem tree as its database to store package information an
   - shared
   - threads=posix
   - tls
-  - xattr
 #### `build()` function
 - The general `build()` process is ran in parallel with the default number of jobs being `-j 5`
 - Pass`CFLAGS`, `CXXFLAGS` and `LDFLAGS` as arguments to `make` and not as environment variables, so they are propagated correctly:
@@ -243,6 +245,7 @@ patch -p0 ...
 - https://google.github.io/styleguide/shell.xml
 - https://linux.die.net/man/8/apt-get
 - https://linux.die.net/man/8/aptitude
+- https://linuxfromscratch.org/blfs/view/svn/introduction/la-files.html
 - https://man7.org/linux/man-pages/man8/dnf.8.html
 - https://man.archlinux.org/man/pacman.8.en
 - https://man.voidlinux.org/xbps-install.1
@@ -253,6 +256,7 @@ patch -p0 ...
 - https://pubs.opengroup.org/onlinepubs/9799919799/
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
+- https://venam.nixers.net/blog/unix/2020/03/29/distro-pkgs.html
 - https://wiki.alpinelinux.org/wiki/Package_policies
 - https://wiki.archlinux.org/title/Arch_build_system
 - https://wiki.archlinux.org/title/Arch_package_guidelines
@@ -269,4 +273,3 @@ patch -p0 ...
 - https://www.gnu.org/software/make/manual/html_node/Testing.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html
-- https://venam.nixers.net/blog/unix/2020/03/29/distro-pkgs.html

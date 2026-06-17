@@ -3,6 +3,7 @@ title: rust
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Not fully bootstrappable from source yet; check `mrustc`
 - Dynamic linking with `musl` is problematic (e.g. `libz-sys`, `openssl`, `tokio` and `zstd-sys`)
 - Always links with `-fPIC`
 - Check `RUSTFLAGS`

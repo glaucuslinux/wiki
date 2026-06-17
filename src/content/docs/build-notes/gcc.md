@@ -149,6 +149,7 @@ cc1: error: no include path in which to search for stdc-predef.h
   - `-fno-rtti` (thread and _Z stuff not found)
   - `-fvisibility-inlines-hidden`
 - `gcc`'s LTO does not work with `lld`
+- configure `gcc` to remove `libstdc++-v3` now that `libc++` is the default
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

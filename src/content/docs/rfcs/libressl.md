@@ -18,6 +18,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - libressl builds without errors when not using --disable-static
 - remove -g and -O2 from libressl configure
 - iproute2: don't use --with-openssl with wget2 as it won't work with libressl, only --with-ssl=libressl works
+- The release tarballs are already portable
 
 ## References
 - https://blog.hboeck.de/archives/851-LibreSSL-on-Gentoo.html

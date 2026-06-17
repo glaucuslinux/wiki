@@ -28,4 +28,5 @@ sys     0m0.238s
 ```
 
 ## References
+- https://awklab.com/practical-awk-benchmarking
 - https://youtube.com/watch?v=mf-_ZRUBc5g

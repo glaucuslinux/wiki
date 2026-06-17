@@ -19,28 +19,24 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does not rely on an existing host
 - Not supported yet
 
-### Stage 1 (Toolchain)
-- Leverages tools from the host or stage 0 to build a cross-compilation toolchain that will build stage 2
+### Stage 1 (Cross)
+- Leverages tools from the host or stage 0 to cross-compile the packages required to self-host glaucus
+- This stage targets `-march=x86-64-v3` (an early sanity check)
 - This stage is not optimized as it needs to be correct, fast and reproducible
-- This stage is built on the host in under 15 minutes on a relatively modern system
-
-### Stage 2 (Cross)
-- Uses stage 1 toolchain to cross-compile the packages required to self-host glaucus
-- This stage is optimized for `x86-64-v3` (an early sanity check)
 - This stage is built on the host system in under 25 minutes on a relatively modern system
-- An image file `.img` is generated after a successful build
+- An optional rootfs is generated after a successful build
 
-### Stage 3 (Native)
-- Uses stage 2 image file to perform a native rebuild of glaucus
+### Stage 2 (Native)
+- Uses stage 1 chroot to perform a native rebuild of glaucus
 - This stage is fully offline
-- This stage is optimized for `x86-64-v3`
+- This stage targets `-march=native` and can optionally target `-march=x86-64-v3` for some portability
 - This stage is built under QEMU in under 45 minutes on a relatively modern system
 - An image file `.iso` is generated after a successful build
 
-### Stage 4 (Metal)
+### Stage 3 (Metal)
 - This stage is optional
-- Uses stage 3 image file to perform a native rebuild of glaucus after install
-- This stage is optimized for `native` and will only run on your machine
+- Uses stage 2 image file to perform a native rebuild of glaucus after install
+- This stage is only optimized for `native` and will only run on your machine
 - Not supported yet
 
 ## Host System Requirements
@@ -52,6 +48,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `autoconf`
 - `automake`
 - `bash`
+- `binutils` (or `llvm binary utilities`)
 - `bison` (or `byacc`)
 - `bzip2`
 - `clang`
@@ -68,15 +65,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `git`
 - `gperf`
 - `grep` (or `toybox`)
-- `gzip` (or `pigz`)
+- `gzip` (or `pigz` or `toybox`)
 - `libcap`
+- `libgcc` (or `compiler-rt`)
 - `libtool` (or `slibtool`)
 - `limine`
 - `lld`
 - `m4`
 - `make`
 - `meson` (or `muon`)
-- `ninja` (or `samurai`)
+- `ninja` (or `samurai` or `muon samurai`)
 - `patch` (or `toybox`)
 - `perl`
 - `pkg-config` (or `pkgconf`) (not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
@@ -106,19 +104,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 git clone --recurse-submodules https://github.com/glaucuslinux/glaucus
 git -C glaucus submodule foreach 'git checkout main'
 ```
-### Bootstrap Stages 1 and 2 (Toolchain and Cross)
+### Bootstrap Stage 1 (Cross)
 ```sh
 cd glaucus/live
 
-sudo ./bootstrap
+./bootstrap
 ```
-### Bootstrap Stage 3 (Native)
+### Bootstrap Stage 2 (Native)
 ```sh
-./qemu-img
-
-rad bootstrap 3 # Under QEMU
-
-poweroff # Under QEMU
-
-sudo ./iso
+./bootstrap-native
 ```

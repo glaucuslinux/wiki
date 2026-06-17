@@ -104,6 +104,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## finit
 - Issue #133: [`finit` hangs at "Requesting subsystem events"](https://github.com/troglobit/finit/issues/133)
 
+## fribidi
+- Pull Request #234: [Fix typo in `configure.ac`](https://github.com/fribidi/fribidi/pull/234)
+
 ## gcc
 - Bug #98400: [GCC online docs "S/390 and zSeries Options" has a typo](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98400)
 

@@ -21,6 +21,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## `POSIXLY_CORRECT` should be unset
 ```
 - Do not set `MUSL_LOCPATH` for `musl-locales` as it messes up install path (relative `$PWD`)
+- POSIX.1 recommends restricting filenames to letters (a-z, A-Z), numbers (0-9), period (.), dash (-), and underscore(_)
 
 ## References
 - https://git.adelielinux.org/adelie/musl-locales

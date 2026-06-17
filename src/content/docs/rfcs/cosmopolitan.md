@@ -13,4 +13,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/jart/cosmopolitan/issues/50
 - https://github.com/jart/cosmopolitan/issues/820
 - https://github.com/jart/cosmopolitan/issues/1117
+- https://mike.fo/blog/nim-is-actually-portable
 - https://raymii.org/s/blog/Bare_Metal_Boot_to_Vi.html

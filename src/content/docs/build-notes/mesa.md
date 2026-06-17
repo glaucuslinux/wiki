@@ -3,6 +3,7 @@ title: mesa
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Depends on `mako`
 - The `vulkan` driver for `nouveau` requires `rust`
 - These `llvm` subprojects mention `mesa`:
   - `clang`

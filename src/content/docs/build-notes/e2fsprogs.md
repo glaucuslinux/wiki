@@ -17,9 +17,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - Try `-j1` for both build and install
   - Try `MKDIR_P=mkdir -p`, because `install-sh` is buggy and only creates one directory according to Chimera
 - Requires `uuid` and `blkid` from `util-linux`
+- Check `--with-root-prefix=/usr` and `--enable-largefile` (`musl` support)
 - Explicitly disable `--without-udev-rules-dir`/`--without-systemd-unit-dir` to prevent the installation of `udev` and `systemd` directories
 - `install-libs` is identical to `install-libs-recursive` and both install static libraries
 - `install-strip-libs-recursive` also installs static libraries and headers
 - `install-shlibs-libs-recursive` is identical to `install-shlibs-strip-libs-recursive` but the latter is stripped and smaller
 - `install-progs-recursive` is identical to `install-strip-progs-recursive` but the latter is stripped and smaller
 - `install-strip` strips binaries, shared libraries and does not install static libraries; so it is like `install-strip-progs-recursive` and `install-shlibs-strip-libs-recursive` combined
+
+## References
+- https://e2fsprogs.sourceforge.net/e2fsprogs-release.html#1.46.6
+- https://forum.openwrt.org/t/unable-to-build-openwrt-image/133225/12

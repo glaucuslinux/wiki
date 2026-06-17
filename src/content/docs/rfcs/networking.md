@@ -17,7 +17,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Network Managers
 - ifupdown-ng: https://github.com/ifupdown-ng/ifupdown-ng
-- ConnMan: git kernel link
+- ConnMan: git kernel link, has internal dhcp client
 
 ## Wireless Daemon
 - eiwd: https://github.com/illiliti/eiwd

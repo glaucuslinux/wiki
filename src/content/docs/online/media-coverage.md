@@ -21,6 +21,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## sysdfree
 - https://sysdfree.wordpress.com/2021/04/05/342/
 - https://sysdfree.wordpress.com/2024/12/28/363/
+- https://sysdfree.wordpress.com/2026/05/09/394/
 
 ## The Register
 - https://theregister.com/2025/01/14/the_end_of_absolute_linux/

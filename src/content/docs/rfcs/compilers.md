@@ -20,7 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - tcc:
   - https://github.com/TinyCC/tinycc
   - https://repo.or.cz/w/tinycc.git
-  - provides both an assembler and a linker
+  - provides both an assembler and a linker; assembler does not support `avx` (`x86-64-v3`)
   - it is still unable to build a wide range of software (even with minimal configurations and most options disabled)
 
 ## Compilers that can't build `grep`
@@ -71,6 +71,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Assemblers
 - Only `llvm-mc` and `tcc as` are compatible with `gas` ATT syntax
+- Only `llvm-mc` and `gas` support `avx` for `x86-64-v3`
 - `fasm` and `fasm2` are not compatible with `nasm` and `gas`
 - `yasm` is compatible with `nasm` only
 

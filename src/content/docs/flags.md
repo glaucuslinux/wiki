@@ -257,6 +257,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Requires Intel CET to be present
 - https://maskray.me/blog/2022-12-18-control-flow-integrity
 
+### `-fexceptions` and `-fno-exceptions`
+- `-fexceptions` requires either `libunwind` or `libgcc_s`
+
 ### `-fno-unwind-tables`
 - `gcc` enables `-funwind-tables` by default and its documentation says that you normally do not need to enable this; instead, a language processor that needs this handling enables it on your behalf
 

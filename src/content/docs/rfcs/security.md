@@ -84,6 +84,7 @@ should only be able to access what is strictly required, and nothing more.
 - `-Wp,-D_FORTIFY_SOURCE=3` (3 recently added to GCC 12 with glibc)
 - requires passing `-I/pass/to/usr/include/fortify`
 - Does not work on `musl`: https://wiki.musl-libc.org/future-ideas
+- https://android.googlesource.com/platform/bionic/+/HEAD/docs/clang_fortify_anatomy.md
 - https://github.com/jvoisin/fortify-headers
 - https://maskray.me/blog/2022-11-06-fortify-source
 
