@@ -7,4 +7,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Now it is slightly faster than `gawk` and a tad bit slower than `mawk` while being smaller
 
 ## References
+- https://github.com/onetrueawk/awk
 - https://github.com/raygard/wak

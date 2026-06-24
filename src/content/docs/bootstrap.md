@@ -52,6 +52,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `bison` (or `byacc`)
 - `bzip2`
 - `clang`
+- `cmake`
 - `coreutils` (or `toybox`)
 - `cpio` (or `libarchive` or `toybox`)
 - `curl`

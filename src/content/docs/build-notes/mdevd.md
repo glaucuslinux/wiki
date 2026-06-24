@@ -89,10 +89,10 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://github.com/illiliti/libudev-zero/blob/master/contrib/mdev.conf
 - https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
+- https://linuxfromscratch.org/lfs/view/development/chapter08/udev.html
 - https://wiki.archlinux.org/title/Udev
 - https://wiki.gentoo.org/wiki/Mdev
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB/automount
-- https://www.linuxfromscratch.org/lfs/view/development/chapter08/udev.html
 - https://youtube.com/watch?v=k_TGPNN7QY0
 - https://youtube.com/watch?v=xhfEET46sGA

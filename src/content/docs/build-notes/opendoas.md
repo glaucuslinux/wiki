@@ -8,9 +8,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Owner and group of `/etc/doas.conf` should be `0`, and permissions `400`
 - There is no test suite
 - There exists another port called `slicer69/doas` that requires PAM
+- `persist` is OpenBSD specific and is disabled by default; it can be enabled for Linux systems using `--with-timestamp` which uses timestamp files similar to sudo
 
 ## References
 - https://codeberg.org/thejessesmith/doas
 - https://codeberg.org/TotallyLeGIT/doasedit
 - https://codeberg.org/wezen/pdoasedit
+- https://github.com/duncaen/opendoas
 - https://github.com/koalagang/doasedit

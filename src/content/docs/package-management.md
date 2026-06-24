@@ -242,6 +242,10 @@ patch -p0 ...
 - https://github.com/pibuxd/vanilla
 - https://github.com/venomlinux/scratchpkg
 - https://github.com/void-linux/void-packages/blob/master/Manual.md
+- https://gnu.org/prep/standards/html_node/Command-Variables.html#Command-Variables
+- https://gnu.org/prep/standards/html_node/Non_002dGNU-Standards.html#Non_002dGNU-Standards
+- https://gnu.org/prep/standards/html_node/Utilities-in-Makefiles.html#Utilities-in-Makefiles
+- https://gnu.org/software/make/manual/html_node/Testing.html
 - https://google.github.io/styleguide/shell.xml
 - https://linux.die.net/man/8/apt-get
 - https://linux.die.net/man/8/aptitude
@@ -270,6 +274,5 @@ patch -p0 ...
 - https://wiki.debian.org/ReduceDebian
 - https://wiki.gentoo.org/wiki/Stage_file
 - https://www.debian.org/releases/bookworm/amd64/ch03s04.en.html
-- https://www.gnu.org/software/make/manual/html_node/Testing.html
 - https://www.tldp.org/LDP/abs/html/unofficialst.html
 - https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html

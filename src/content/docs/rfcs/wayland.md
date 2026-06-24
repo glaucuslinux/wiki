@@ -11,7 +11,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - dam: https://codeberg.org/sewn/dam
 - deburr: https://github.com/gitRaiku/deburr
 - sfwbar: https://github.com/LBCrion/sfwbar
-- yambar: https://codeberg.org/dnkl/yambar
 
 ## Brightness Control
 - clight: https://github.com/FedeDP/Clight
@@ -25,7 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - croissant: https://codeberg.org/vyivel/croissant
 - dwl: https://codeberg.org/dwl/dwl
 - labwc: https://github.com/labwc/labwc (Disable librsvg)
-- mango: https://github.com/DreamMaoMao/mangowc
+- mango: https://github.com/mangowm/mango
 - scroll: https://github.com/dawsers/scroll
 - sway: https://github.com/swaywm/sway
 - volare: https://codeberg.org/raboof/volare
@@ -50,7 +49,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - ydotool: https://github.com/ReimuNotMoe/ydotool
 
 ## Launchers
-- basket: https://github.com/xTrayambak/basket
 - bemenu: https://github.com/Cloudef/bemenu
 - emenu: https://codeberg.org/fbushstone/emenu
 - fuzzel: https://codeberg.org/dnkl/fuzzel
@@ -121,13 +119,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Suckless
 - [libwayland](https://gitlab.freedesktop.org/wayland/wayland): the classic core wayland code and protocol
 - [freeway](https://git.sr.ht/~shrub900/freeway): a slightly smaller, simpler libwayland implementation with less dependencies and native NetBSD kqueue support
-- [nyctal](https://github.com/s-rah/nyctal): tiny wayland compositor implemented in Go
 - [wld](https://github.com/michaelforney/wld): a primitive drawing library that targets wayland
 - [swc](https://github.com/michaelforney/swc): a wonderful library for creating simple tiling wayland compositors, using wld
 - [neuwld](https://git.sr.ht/~shrub900/neuwld): a fork of wld with proper font rendering, and more features in the works
 - [neuswc](https://git.sr.ht/~shrub900/neuswc): a fork of swc with many more features and fixes implemented, including wallpapers, screenshots, and better cursor handling
 - [velox](https://github.com/michaelforney/velox): a simple tiling compositor based on swc
 - [hevel](https://git.sr.ht/~dlm/hevel): a scrollable, floating compositor inspired by plan9 UX paradigms, based on neuswc
+- [howl](https://git.sr.ht/~wf/howl): a small, extensible Wayland compositor written with the neuswc library
 - [st-wl](https://github.com/michaelforney/st): a port of the suckless terminal emulator to wayland, using wld
 - [hst](https://git.sr.ht/~dlm/hst): a pre-patched and freeway-compatible version of st-wl with better font rendering using neuwld
 - [havoc](https://github.com/ii8/havoc): a minimal and modern wayland terminal emulator

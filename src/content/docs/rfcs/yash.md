@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://diva-portal.org/smash/get/diva2:1985766/FULLTEXT01.pdf
 - https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425
 - https://github.com/carpentries-incubator/shell-extras/issues/30
+- https://github.com/dylanaraps/pure-bash-bible
 - https://github.com/dylanaraps/pure-sh-bible
 - https://github.com/koalaman/shellcheck
 - https://github.com/mgree/smoosh

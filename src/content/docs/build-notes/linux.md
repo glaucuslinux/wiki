@@ -20,6 +20,7 @@ make modules_install INSTALL_MOD_STRIP=1
 ```
 - Do not use `INSTALL_MOD_STRIP="--strip-all"` as it breaks the modules
 - `headers_check` is obsolete (no-op)
+- `make xconfig` is a bit more ergonomic but it requires `qt`; check `make gconfig`
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html

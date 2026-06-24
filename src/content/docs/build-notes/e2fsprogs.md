@@ -24,6 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `install-shlibs-libs-recursive` is identical to `install-shlibs-strip-libs-recursive` but the latter is stripped and smaller
 - `install-progs-recursive` is identical to `install-strip-progs-recursive` but the latter is stripped and smaller
 - `install-strip` strips binaries, shared libraries and does not install static libraries; so it is like `install-strip-progs-recursive` and `install-shlibs-strip-libs-recursive` combined
+- Configure `/etc/mke2fs.conf`
 
 ## References
 - https://e2fsprogs.sourceforge.net/e2fsprogs-release.html#1.46.6

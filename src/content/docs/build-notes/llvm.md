@@ -63,6 +63,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `-Wno-dev` suppresses developer warnings
 - To build `mesa` you only need `libllvm` and maybe `clang` (and `libclc`?)
 - It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
+- `clang` has a better loop optimizer than `gcc`
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf
@@ -107,6 +108,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://libcxx.llvm.org/TestingLibcxx.html
 - https://libcxx.llvm.org/UserDocumentation.html
 - https://libcxx.llvm.org/VendorDocumentation.html
+- https://linuxfromscratch.org/blfs/view/svn/general/llvm.html
 - https://llvm.org/devmtg/2023-10/slides/tutorials/Hosek-UnderstandingtheLLVMbuild.pdf
 - https://llvm.org/docs/AdvancedBuilds.html
 - https://llvm.org/docs/BuildingADistribution.html

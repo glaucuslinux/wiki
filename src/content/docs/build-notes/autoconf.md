@@ -19,5 +19,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://autotools.info/autoconf/macros.html
 - https://gnu.org/software/autoconf/
+- https://gnu.org/software/autoconf/manual/
 - https://invisible-island.net/autoconf/autoconf.html
 - https://wiki.debian.org/Autoreconf

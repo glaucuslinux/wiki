@@ -41,6 +41,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Some `musl-headers` from `bits/` depend on `linux-headers`
 - Do we need parts from glibc (substitute by linking to libraries like `libiconv`, `libintl`, `libxcrypt`, `utmps`...)?
 - `exec_prefix` is defined before `prefix` and should be explicitly specified when running `make` manually without `configure`
+- `musl` lacks `cdefs.h`, `error.h`, `queue.h`, `stab.h` and `tree.h`; patch software to remove these headers
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html

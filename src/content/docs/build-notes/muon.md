@@ -18,10 +18,19 @@ exec muon meson setup \
 ```
 - `muon` provides their own fork of `samurai` that is enabled by default; therefore, there is no need to maintain a separate version or use `CFLAGS=-DBOOTSTRAP_NO_SAMU`
 - `muon` defaults to `$prefix/com` for `sharedstatedir`, while `meson` defaults to `/var/lib` if `prefix=/usr`
+- Check the following options:
+```
+prefer_static (default false on meson and muon)
+default_both_libraries (default shared on meson and auto on muon)
+default_library (default shared on meson and static on muon)
+```
+- `muon`, `meson` and `cmake` do not support `exec-prefix`
 
 ## References
 - https://codeberg.org/sewn/repo/src/branch/muon
+- https://docs.muon.build/differences.html
 - https://docs.muon.build/intro.html
+- https://docs.muon.build/reference
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/16133
 - https://git.sr.ht/~lattis/muon/tree/master/item/src/meson_opts.c
 - https://git.sr.ht/~lattis/muon/tree/master/item/src/script/options/global.meson

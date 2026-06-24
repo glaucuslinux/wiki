@@ -34,6 +34,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do not forget to have `dash` installed before generating the `initramfs`
 - Let the kernel use the defaults for its command-line parameters (e.g. `loglevel` and `ro`/`rw`)
 - `fakeroot` can be used instead of `sudo` for generating images, managing mounts and `make install`s for `DESTDIR`s that require root
+- `-eltorito-alt-boot` separates the settings for the bios boot image from the efi boot image
 
 ## Software
 - `cdrtools` (includes `mkisofs`)

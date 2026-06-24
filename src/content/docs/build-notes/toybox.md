@@ -24,7 +24,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `chattr` and `lsattr` use `ioctl()` and not `xattr()`; unlike `getfattr` and `setfattr`
 
 ## Replaces
-- `bc`; toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
+- `bc`
+  - toybox's `bc` is at least 20 times slower for larger numbers despite being based on gavin's implementation
+  - toybox also does not provide `dc`
 - `coreutils`
 - `diffutils`
 - `findutils`; `toybox`'s `find` is approximately two times slower

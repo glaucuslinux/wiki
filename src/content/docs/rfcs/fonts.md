@@ -3,6 +3,7 @@ title: Fonts
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- `psfu` are a form of binaries; consider that for full source bootstraps
 - `setfont` from `kbd` is used to set console fonts (`psf` or `psfu`)
 - `spleen` has better punctuation marks, symbols and brackets/braces compared to `terminus`
 - PC Screen Font (PSF) is a bitmap font format currently employed by the Linux kernel for console fonts

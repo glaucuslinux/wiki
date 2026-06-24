@@ -8,5 +8,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check state directory and different users (also having /dev under var/lib?)
 
 ## References
+- https://github.com/firasuke/ndhc/tree/master/examples
 - https://github.com/niklata/ndhc?tab=readme-ov-file#installation
 - https://github.com/void-linux/void-packages/blob/master/srcpkgs/ndhc/template
