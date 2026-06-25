@@ -92,6 +92,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://discourse.llvm.org/t/trying-to-build-clang-and-runtimes-but-linking-fails-need-help/72851/20
 - https://discourse.llvm.org/t/trying-to-create-a-pure-llvm-toolchain-on-musl-based-distribution/51545/3
 - https://github.com/clang-musl-overlay/clang-musl-overlay
+- https://github.com/cross-tools/clang-cross
 - https://github.com/dslm4515/CMLFS
 - https://github.com/gottaeat/apathy
 - https://github.com/gottaeat/bootstrap-standalone-llvm
@@ -101,6 +102,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/kraj/meta-clang
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
 - https://github.com/llvm/llvm-zorg
+- https://github.com/Matrix3600/clang-cross
 - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
 - https://libcxx.llvm.org/Hardening.html
 - https://libcxx.llvm.org/index.html

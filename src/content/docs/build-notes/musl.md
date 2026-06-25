@@ -46,10 +46,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html
 - https://brightrain.aerifal.cx/~niklata/PORTING
+- https://codeberg.org/emmett1/crux-musl
+- https://codeberg.org/hoatzinx/musl-clang
+- https://crux.nu/Wiki/MuslOverlay
 - https://git.2f30.org/fortify-headers/
 - https://github.com/AppImage/type2-runtime/issues/116
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
+- https://github.com/cross-tools/musl-cross
+- https://github.com/jopamo/musl-bsd
+- https://github.com/Matrix3600/musl-cross
 - https://github.com/orgs/chimera-linux/discussions/2480
 - https://github.com/richfelker/musl-cross-make/blob/master/README.md
 - https://github.com/richfelker/musl-cross-make/issues/101

@@ -261,6 +261,7 @@ patch -p0 ...
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
 - https://venam.nixers.net/blog/unix/2020/03/29/distro-pkgs.html
+- https://wiki.alpinelinux.org/wiki/Architecture
 - https://wiki.alpinelinux.org/wiki/Package_policies
 - https://wiki.archlinux.org/title/Arch_build_system
 - https://wiki.archlinux.org/title/Arch_package_guidelines

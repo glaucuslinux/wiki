@@ -84,12 +84,16 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://codeberg.org/smj/mdevd-as-an-admin
 - https://git.busybox.net/busybox/plain/docs/mdev.txt
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
+- https://github.com/alpinelinux/mkinitfs/blob/master/nlplug-findfs/init.sh
 - https://github.com/eweOS/packages/blob/busybox/mdev.conf
 - https://github.com/fff7d1bc/mdev-like-a-boss/blob/master/mdev.conf
 - https://github.com/illiliti/libudev-zero/blob/master/contrib/mdev.conf
 - https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
 - https://linuxfromscratch.org/lfs/view/development/chapter08/udev.html
+- https://manned.org/man/nlplug-findfs
+- https://wiki.alpinelinux.org/wiki/Mdevd
+- https://wiki.alpinelinux.org/wiki/User:Sertonix/Freedom_of_choice
 - https://wiki.archlinux.org/title/Udev
 - https://wiki.gentoo.org/wiki/Mdev
 - https://wiki.gentoo.org/wiki/Mdev/Automount_USB
