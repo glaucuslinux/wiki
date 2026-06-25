@@ -22,6 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Compositors
 - croissant: https://codeberg.org/vyivel/croissant
+- doors: https://dawn.wine/CreeperFace/doors
 - dwl: https://codeberg.org/dwl/dwl
 - labwc: https://github.com/labwc/labwc (Disable librsvg)
 - mango: https://github.com/mangowm/mango
@@ -117,22 +118,25 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://tilde.team/~kiedtl/blog/wayland/
 
 ## Suckless
-- [libwayland](https://gitlab.freedesktop.org/wayland/wayland): the classic core wayland code and protocol
-- [freeway](https://git.sr.ht/~shrub900/freeway): a slightly smaller, simpler libwayland implementation with less dependencies and native NetBSD kqueue support
-- [wld](https://github.com/michaelforney/wld): a primitive drawing library that targets wayland
-- [swc](https://github.com/michaelforney/swc): a wonderful library for creating simple tiling wayland compositors, using wld
-- [neuwld](https://git.sr.ht/~shrub900/neuwld): a fork of wld with proper font rendering, and more features in the works
-- [neuswc](https://git.sr.ht/~shrub900/neuswc): a fork of swc with many more features and fixes implemented, including wallpapers, screenshots, and better cursor handling
-- [velox](https://github.com/michaelforney/velox): a simple tiling compositor based on swc
-- [hevel](https://git.sr.ht/~dlm/hevel): a scrollable, floating compositor inspired by plan9 UX paradigms, based on neuswc
-- [howl](https://git.sr.ht/~wf/howl): a small, extensible Wayland compositor written with the neuswc library
-- [st-wl](https://github.com/michaelforney/st): a port of the suckless terminal emulator to wayland, using wld
-- [hst](https://git.sr.ht/~dlm/hst): a pre-patched and freeway-compatible version of st-wl with better font rendering using neuwld
-- [havoc](https://github.com/ii8/havoc): a minimal and modern wayland terminal emulator
-- [hack](https://git.sr.ht/~shrub900/hack): a native-wayland version of plan9port’s acme editor with theming support, using wld
-- [swiv](https://git.sr.ht/~shrub900/swiv): tiny image viewer for wayland, using wld
-- [swclock](https://git.sr.ht/~shrub900/swclock): a xclock-like analog clock program for wayland, using neuwld
-- [wev](https://git.sr.ht/~sircmpwn/wev): small tool for debugging events on a wayland window
+- bswc: https://codeberg.org/binkd/bswc
+- freeway: https://git.sr.ht/~shrub900/freeway
+- hack: https://git.sr.ht/~shrub900/hack
+- havoc: https://github.com/ii8/havoc
+- hevel: https://git.sr.ht/~dlm/hevel
+- howl: https://git.sr.ht/~wf/howl
+- hst: https://git.sr.ht/~dlm/hst
+- libwayland: https://gitlab.freedesktop.org/wayland/wayland
+- neuipc: https://codeberg.org/binkd/neuipc
+- neuswc: https://git.sr.ht/~shrub900/neuswc
+- neuwld: https://git.sr.ht/~shrub900/neuwld
+- st-wl: https://github.com/michaelforney/st
+- swc: https://github.com/michaelforney/swc
+- swclock: https://git.sr.ht/~shrub900/swclock
+- swiv: https://git.sr.ht/~shrub900/swiv
+- velox: https://github.com/michaelforney/velox
+- wev: https://git.sr.ht/~sircmpwn/wev
+- wld: https://github.com/michaelforney/wld
+- wsxwm: https://git.sr.ht/~uint/wsxwm
 
 ## Other
 - https://github.com/stumpwm/mahogany
@@ -147,6 +151,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://fedoraproject.org/spins/sway/
 - https://github.com/natpen/awesome-wayland
 - https://github.com/openSUSE/openSUSEway
+- https://github.com/orahcio/void-packages
 - https://github.com/rcalixte/awesome-wayland
 - https://github.com/solarkraft/awesome-wlroots
 - https://intestinate.com/pilfs/beyond.html#wayland

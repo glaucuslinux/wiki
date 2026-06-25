@@ -216,7 +216,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Will spawn `n` threads based on the number of threads; similar to `make -j`
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs message
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
-- `-flto=auto`
 - `clang`'s `-flto`, `-flto=auto` and `-flto=jobserver` are all equivalent to `-flto=full`
 
 ### `-flto-compression-level=3`

@@ -5,6 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Disable bootstrap; stage 1 is good enough
 - Uses a different `libexecdir` (`/usr/lib` instead of `/usr/lib/gcc`)
+- Disable `libstdc++-v3` as glaucus now uses `libc++`
 - `bootstrap-lto` build configuration adjusts `CFLAGS` and `LDFLAGS`
 - `--with-build-config=bootstrap-lto-lean` has to be used with `make profiledbootstrap`
 - Personal testing showed negligible differences between `disable-bootstrap` and `bootstrap-lean`, with notable differences against `bootstrap-native` (latter is `~5%` smaller):

@@ -5,6 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Does not allow `autoreconf` and does not have `runstatedir`
 - Depends on `zstd`
+- Disable `bfd` as glaucus now uses `lld`
 - Do we need to depend on `jansson` with `--enable-jansson`, or is that for `gdb` only?
 - Alpine reverts `25882` for ARM and PowerPC
 - `--disable-separate-code` bloats every executable and shared library by at least 2 MB; `musl-cross-make` uses this for smaller binaries in some cases (while sacrificing a bit of security)
