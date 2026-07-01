@@ -3,7 +3,17 @@ title: Variables
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- We don't need any LD variables as we default to bfd
+## Reconsider
+- `ARFLAGS`
+- `CCLD`: overriden internally in autotools?
+- `CPPFLAGS`: for skarnet packages?
+- `LFLAGS`: lex flags
+- `SFLAGS`
+- `STRIPPROG`
+- `YFLAGS`: yacc flags
+
+## Rejected
+- Do we need any LD variables as glaucus now defaults to `lld`?
 
 ```sh
 # To cross-compile mawk we can pass `--with-build-cc` and others, but it is better to let the build system decide

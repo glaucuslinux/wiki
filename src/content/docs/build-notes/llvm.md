@@ -59,11 +59,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do we need `LIBCXX_ENABLE_TIME_ZONE_DATABASE=OFF`?
 - Do not set `LIBCXX_ENABLE_PEDANTIC=ON` and `LIBCXXABI_ENABLE_PEDANTIC=ON` as `#include_next` is used everywhere
 - Do not mix `libstdc++` and `libc++` as they export the same symbols...
+- `-stdlib=libc++` is not required on systems where `libc++` is the default library (e.g. openbsd, freebsd and macos); it is better to specify it otherwise
 - Arch does not provide `clang-tblgen`
 - `-Wno-dev` suppresses developer warnings
 - To build `mesa` you only need `libllvm` and maybe `clang` (and `libclc`?)
 - It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
 - `clang` has a better loop optimizer than `gcc`
+- Do we need to build an llvm distribution?
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf

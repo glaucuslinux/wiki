@@ -225,6 +225,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/evilusean/Pysean/blob/main/NoBloatTools
 - https://github.com/ibara/baseutils
 - https://github.com/matijaskala/coreutils-bsd
+- https://github.com/mayfrost/guides/blob/master/ALTERNATIVES.md
 - https://github.com/oracle/solaris-userland
 - https://github.com/ryanwoodsmall/toybox-misc/blob/master/scripts/toybox_config_script.sh
 - https://heirloom-ng.pindorama.net.br

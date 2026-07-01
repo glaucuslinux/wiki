@@ -41,3 +41,4 @@ chmod +x rust.sh
 - https://github.com/rust-lang/compiler-team/issues/422
 - https://guix.gnu.org/en/blog/2018/bootstrapping-rust/
 - https://ntecs.de/blog/2026-02-01-bootstrapping-rust-considered-harmful/
+- https://wiki.gentoo.org/wiki/Bootstrapping_Rust_via_stage_file

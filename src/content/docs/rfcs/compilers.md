@@ -9,7 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Currently only clang and gcc are capable of building modern versions of gcc, so it appears the better approach would be to either leverage clang's cross compilation capabilities (which requires having `compiler-rt` and `libunwind` and `libc++` compiled for the target prior) or keep the current gcc cross compilation toolchain but utilize `-O0` or `-O1` to speed up build times early on; an important consideration to be made is that the time saved from early stages of the bootstrap process (stages 1 and 2) should exceed the time wasted by an unoptimized stage 2 gcc that will attempt to compile the rest of the bootstrap stages (3 and 4) with optimizations (quality of the final stages will not be affected, but compilation time will be)
 
 ## Compilers that can build `grep`
-- clang
+- clang (and Fil-C)
 - cproc (QBE):
   - https://git.sr.ht/~mcf/cproc
   - https://man.sr.ht/~mcf/cproc/doc/software.md
@@ -22,6 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - https://repo.or.cz/w/tinycc.git
   - provides both an assembler and a linker; assembler does not support `avx` (`x86-64-v3`)
   - it is still unable to build a wide range of software (even with minimal configurations and most options disabled)
+  - `pnut` (`c` -> `sh`) is capable of translating `tcc` to shell
 
 ## Compilers that can't build `grep`
 ### Active

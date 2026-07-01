@@ -9,11 +9,15 @@ glaucus uses the filesystem tree as its database to store package information an
 ### The `info` file
 - An `info` file stores package information or metadata
 - It is a polyglot file that is simultaneously valid POSIX shell and TOML
+- Prefer simple and readable formats:
+  - a package builder/manager spends most of its time downloading or building packages
+  - this renders the parsing time somewhat negligible
+  - regardless `rad` still manages to parse over 100k packages under a minute (2 to 3k / second)
 #### Required Variables
 - `ver`: package version number, or commit number if `url` is a git repository
 - `url`: package source url
   - Prefer `https` over `http` and `ftp`
-  - Prefer smallest available tarball (`.zst` > `.xz` > `.bz2` > `.gz`); network is the slowest bottleneck
+  - Prefer smallest available tarball (`.zst` > `.xz` > `.bz2` > `.gz`); network is usually the bottleneck when compared to cpu, ram and storage
   - Prefer cdn mirrors when available:
     - GNU packages should use: `https://ftpmirror.gnu.org/`
     - Kernel packages should use: `https://cdn.kernel.org/pub/linux/`

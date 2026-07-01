@@ -11,6 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `lld`
   - `llvm`
   - `mlir`
+- Does not build with `reflex`; requires `bison-bridge` and `extra-type` support which `flex` provides
 
 ## References
 - https://docs.mesa3d.org/install.html

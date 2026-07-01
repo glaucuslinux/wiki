@@ -8,6 +8,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check if we need a service file?
 - Do we need `chmod u+s` (suid) on `bin/seatd-launch`?
 - Group name `video` vs `seat` (prefer the former as it already exists)
+- Do we need a seatd service file:
+```
+#!/bin/sh
+exec seatd -g video 2>&1
+```
 
 ## References
 - https://cgit.freebsd.org/ports/tree/sysutils/seatd/files/pkg-message.in
