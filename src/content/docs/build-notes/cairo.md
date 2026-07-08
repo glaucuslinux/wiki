@@ -3,6 +3,7 @@ title: cairo
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Build against `freetype-harfbuzz` and not `freetype` alone
 - Does it depend on `expat` and `python`?
 - Disable `dwrite` (Microsoft's DirectWrite)
 - `xlib-xcb` is disabled by default

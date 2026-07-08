@@ -29,7 +29,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - toybox also does not provide `dc`
 - `coreutils`
 - `diffutils`
-- `findutils`; `toybox`'s `find` is approximately two times slower
+- `findutils`
+  - `toybox`'s `find` is approximately two times slower
+  - `find -delete` is not POSIX but `toybox find` supports it still
 - `grep`; toybox's `grep` is at least 10 times slower
 - `libarchive`'s `bsdcpio`
 - `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default

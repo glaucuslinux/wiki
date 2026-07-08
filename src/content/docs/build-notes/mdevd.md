@@ -38,6 +38,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - Does `mdevd` work with `udev` directories and rules or should we delete them?
 - `devices` is the default value for `udevadm trigger -t`
 - with `udevadm` you have to `udevadm hwdb --update`
+- Does `mdevd -C` remove the need for `modprobe loop`?
 
 ## mdev.conf
 - `mdevd` parses `mdev.conf` when a new device event occurs

@@ -61,6 +61,32 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
 - Do we need to build an llvm distribution?
 - `llvm-lipo` is `macos` specific for fat binaries
+- Do we need the following symlinks:
+```
+ln -fs llvm-as as
+ln -fs llvm-rtdyld rtdyld
+ln -fs ld.lld ld
+ln -fs clang c89
+ln -fs clang c99
+ln -fs clang cc
+ln -fs clang cpp
+ln -fs clang++ c++
+
+for i in llvm-*; do ln -fs "$i" "${i#llvm-}"; done
+for i in llvm-*; do ln -fs "$i" "$TGT-${i#llvm-}"; done
+```
+- Do we need the following environment variables (not used in the previous gcc toolchain):
+```
+export ADDR2LINE=llvm-addr2line
+export AS=clang # compared to using `llvm-mc` or even `clang -c`
+export CLANG=clang
+export CLANGXX=clang++
+export CROSS_COMPILE=llvm-
+export CXXFILT=llvm-cxxfilt
+export HOSTCC=clang
+export LDFLAGS="-fuse-ld=lld"
+export STRINGS=llvm-strings
+```
 
 ## clang
 - `clang` by design is a full fledged cross compiler

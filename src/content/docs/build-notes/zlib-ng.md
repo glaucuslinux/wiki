@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Use `--without-vpclmulqdq` for `x86-64-v3` as `VPCLMULQDQ` is part of `x86-64-v4` (`AVX-512`)
 - Parts of sortix's `libz` made their way into `zlib-ng`
 - `zlib-ng` is api compatible with `zlib` when `zlib-compat` is used; however, it is not abi compatible meaning applications must be recompiled against it
+- Uses `CHOST` and `CROSS_PREFIX` internally?
 
 ## References
 - https://github.com/ebiggers/libdeflate
