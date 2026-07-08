@@ -24,6 +24,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - --bootstrap-system-jsoncpp
 - --bootstrap-system-librhash
 ```
+- `cmake` interprets `1/ON/YES/TRUE/Y` as `true` and `0/OFF/NO/FALSE/N/IGNORE/NOTFOUND` as `false`; use `ON` and `OFF`
+
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html

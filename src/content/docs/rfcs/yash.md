@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `time` is not a builtin command; use the one from `toybox` instead
+- To allow automatic file overwriting use `set +C`
 
 ## References
 - https://diva-portal.org/smash/get/diva2:1985766/FULLTEXT01.pdf

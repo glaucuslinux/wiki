@@ -17,13 +17,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Disable `CLANG_ENABLE_STATIC_ANALYZER` for `toolchain` and `cross`
 - To disable `LIBCXX_ENABLE_RTTI` disable `LIBCXX_ENABLE_EXCEPTIONS` first
 - What is the default value for `LIBCXX_CXX_ABI`?
-- `clang` by design is a full fledged cross compiler
-- `clang` always ignores `-pipe`
-- `clang` uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
-- `clang -cc1 --help` shows all supported options by the C compiler driver
 - Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
 - Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
-- Clang defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
 - Should we set `CMAKE_CXX_STANDARD` to `20` instead of `17`
 - `LLVM_BUILD_BENCHMARKS`, `LLVM_BUILD_DOCS`, `LLVM_BUILD_EXAMPLES` and `LLVM_BUILD_TESTS` are `OFF` by default
 - `LLVM_BUILD_LLVM_DYLIB` is used to build `llvm` as a single shared library; it can't be used with `BUILD_SHARED_LIBS`
@@ -64,8 +59,24 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `-Wno-dev` suppresses developer warnings
 - To build `mesa` you only need `libllvm` and maybe `clang` (and `libclc`?)
 - It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
-- `clang` has a better loop optimizer than `gcc`
 - Do we need to build an llvm distribution?
+- `llvm-lipo` is `macos` specific for fat binaries
+
+## clang
+- `clang` by design is a full fledged cross compiler
+- `clang` always ignores `-pipe`
+- `clang` uses LLVM’s integrated assembler (llvm-as) by default on all targets where it is supported
+- `clang -cc1 --help` shows all supported options by the C compiler driver
+- `clang` defaults to gnu99 mode while GCC defaults to gnu89 mode; try passing `-std=gnu89` to clang for weird link-time errors
+- `clang` has a better loop optimizer than `gcc`
+- `clang` is all of these with the exception of a linker:
+  - Preprocessor: `clang -E`
+  - Parser: `clang -precompile` (default if input is header file)
+  - Bitcode IR Generator: `clang -emit-llvm`
+  - Textual IR Generator: `clang -emit-llvm -S`
+  - Compiler Backend: `clang -S`
+  - Assembler: `clang -c`
+  - Bitcode Generator: `clang -flto`
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf

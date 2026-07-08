@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do we need `sysprof`?
 - Version `1.90` is now known as `pango2` which is experimental
 - When will the switch to `pango2` happen?
+- Disable X11 support for `pango`?
 
 ## References
 - https://blogs.gnome.org/mclasen/2022/06/22/pango-1-90/

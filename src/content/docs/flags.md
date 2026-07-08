@@ -217,6 +217,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs message
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
 - `clang`'s `-flto`, `-flto=auto` and `-flto=jobserver` are all equivalent to `-flto=full`
+- ThinLTO is basically "worse" LTO but makes compilation faster
 
 ### `-flto-compression-level=3`
 - Available when `zstd` is the backend for LTO and it should in theory result in smaller binaries

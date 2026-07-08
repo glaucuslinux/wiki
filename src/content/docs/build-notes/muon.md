@@ -25,6 +25,10 @@ default_both_libraries (default shared on meson and auto on muon)
 default_library (default shared on meson and static on muon)
 ```
 - `muon`, `meson` and `cmake` do not support `exec-prefix`
+- Check if we should set `$SAMUFLAGS` for `muon samu`:
+  - if `SAMUFLAGS=$MAKEFLAGS` then `$MAKEFLAGS` should only contain `-j X`
+  - glaucus adds an additional `-O` so this won't work
+  - still glaucus provides a `glaucus-muon` which pass the `-j X` to `muon samu` making this unnecessary?
 
 ## References
 - https://codeberg.org/sewn/repo/src/branch/muon

@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Test suite requries GNU `m4`, and `perl` to run `autom4te` on `tests/wrapper.in`
 - Tests `227` and `351` are broken on Adelie and Arch
 - Tests are disabled on Alpine
+- Explicitly specify `--libdir=/usr/lib` in `glaucus-configure` to prevent `lib64` contamination
 
 ## References
 - https://autotools.info/autoconf/macros.html

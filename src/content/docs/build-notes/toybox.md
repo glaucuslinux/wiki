@@ -33,7 +33,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `grep`; toybox's `grep` is at least 10 times slower
 - `libarchive`'s `bsdcpio`
 - `patch`; `toybox`'s `patch` already does `--no-backup-if-mismatch` by default
-- `procps-ng`; `toybox` does not provide `hugetop`, `pidwait`, `slabtop` (though planned) and `tload` (not planned)
+- `procps-ng`; `toybox` provides `top` but not `hugetop`, `pidwait`, `slabtop` (planned) and `tload` (not planned)
 - `psmisc`; `toybox` is planning on providing `fuser`, `pstree`, `peekfd` and `prtstat` (but not `pslog` or `pstree.x11`)
 - `sed`
 
@@ -48,7 +48,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `pciutils`
 - `sdhcp`
 - `shadow`
-- `util-linux`; limited implementations like `swapon`
+- `util-linux`:
+  - limited implementations like `swapon`
+  - `toybox mount` does `--bind` by default and auto detects `loop`
 - `wget2`; limited `wget` implementation
 
 ## Additional binaries provided by `coreutils`

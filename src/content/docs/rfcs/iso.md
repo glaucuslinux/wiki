@@ -36,6 +36,25 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `fakeroot` can be used instead of `sudo` for generating images, managing mounts and `make install`s for `DESTDIR`s that require root
 - `-eltorito-alt-boot` separates the settings for the bios boot image from the efi boot image
 
+### Working ISO Layout
+```
+- /dev/sda1:
+  - blkid: PARTLABEL="Gap0" PARTUUID="eb9e9ad5-3ed6-4047-bda7-d6c40b9d2089"
+  - file: data
+
+- /dev/sda2:
+  - blkid: SEC_TYPE="msdos" UUID="1234-5678" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI boot partition" PARTUUID="eb9e9ad5-3ed6-4047-bda4-d6c40b9d2089"
+  - file: DOS/MBR boot sector, code offset 0x3c+2, OEM-ID "MTOO4043", sectors/cluster 2, root entries 240, sectors 5760 (volumes <=32 MB), sectors/FAT 9, sectors/track 36, serial number 0x2777b81, unlabeled, FAT (12 bit), followed by FAT
+
+- /dev/sda3:
+  - blkid: BLOCK_SIZE="2048" LABEL="GLAUCUS" TYPE="hfsplus" PARTLABEL="HFSPLUS" PARTUUID="eb9e9ad5-3ed6-4047-bda5-d6c40b9d2089"
+  - file: Apple HFS Plus version 4 data (locked) last mounted by: 'liso', created: Sat May 11 23:55:00 2024, last modified: Sat May 11 20:55:00 2024, last checked: Sat May 11 20:55:00 2024, block size: 2048, number of blocks: 252631, free blocks: 0
+
+- /dev/sda4:
+  - blkid: PARTLABEL="Gap1" PARTUUID="eb9e9ad5-3ed6-4047-bda2-d6c40b9d2089"
+  - file: data
+```
+
 ## Software
 - `cdrtools` (includes `mkisofs`)
 - `libburnia` (includes `libisoburn`, `xorriso` and `cdrskin`)
@@ -210,6 +229,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://gitea.artixlinux.org/artix/iso-profiles
 - https://github.com/archlinux/archiso
 - https://github.com/chimera-linux/chimera-live
+- https://github.com/chimera-linux/cports/blob/master/Usage.md#bootstrapping-from-source
 - https://github.com/coreos/bootengine
 - https://github.com/dracutdevs/dracut/blob/master/man/dracut.cmdline.7.asc#booting-live-images
 - https://github.com/dslm4515/mlfs-linux-live
