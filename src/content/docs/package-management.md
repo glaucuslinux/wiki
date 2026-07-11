@@ -30,6 +30,7 @@ glaucus uses the filesystem tree as its database to store package information an
   - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
 - `run`: package run time dependencies sorted alphabetically
 - `opt`: package options and includes:
+  - `bin`: do not run `build()` as the package is a binary; only valid for trusted custom local packages
   - `bootstrap`: install package to `/`; only relevant in bootstrap
   - `no-check`: do not run `check()`; **mandatory if `build` does not have `check()`**
   - `debug`: do not remove debugging information
@@ -68,7 +69,7 @@ glaucus uses the filesystem tree as its database to store package information an
 - Use `glaucus-configure` for `autotools` build system
 - Use `glaucus-cmake` for `cmake` build system
 - Use `glaucus-muon` for `muon` and `meson` build systems
-- Use the officially supported build system by upstream; e.g. `zstd` has multiple third party build systems but the only officially maintained build system is `make`
+- Use the simplest officially supported build system by upstream; e.g. `zstd` has multiple third party build systems but the only officially maintained build system is `make`
 - Use the newer build system if a package has multiple officially supported and maintained build systems and/or is in the process of moving to a newer build system (e.g. `kmod`)
 - For developers who are bootstrapping the `toolchain` and `cross` stages use full paths to `glaucus-*` in `build-toolchain` and `build-cross` respectively
 - Avoid substituting flag strings with variables like `nom`; e.g. `pcre2` has a flag `--enable-pcre2-32`, do not type `--enable-$nom-32`

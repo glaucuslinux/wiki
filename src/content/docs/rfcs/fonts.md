@@ -9,6 +9,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - PC Screen Font (PSF) is a bitmap font format currently employed by the Linux kernel for console fonts
 - bitmap fonts are rendered really sharp
 - A `console-setup`/`vconsole` service should check `/etc/default/console-setup` and `/etc/vconsole.conf`
+- Default provider for `ttf-font`
 
 ## Final
 - maple: https://github.com/subframe7536/maple-font

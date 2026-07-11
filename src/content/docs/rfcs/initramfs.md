@@ -21,6 +21,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Without running `depmod` module dependencies won't be loaded
 - `blkid` is better than `findfs` in terms of finding block devices; better output
 - Do we need the following modules: `char/tpm`, `firewire`, `hid-generic` and `pcmcia`?
+- Consider the following fstab for automounts inside initramfs:
+```
+none /dev/pts devpts nosuid,noexec,relatime       0 0
+none /dev/shm tmpfs  nodev,nosuid,noexec          0 0
+none /proc    proc   nodev,noexec,nosuid,relatime 0 0
+none /tmp     tmpfs  nodev,nosuid,relatime        0 0
+```
+- Alpine provides the following fstab for their live iso:
+```
+/dev/cdrom    /media/cdrom   iso9660  noauto,ro 0 0
+/dev/fd0      /media/floppy  vfat     noauto    0 0
+/dev/usbdisk  /media/usb     vfat     noauto    0 0
+```
 
 ## References
 - https://github.com/hanh-linux/gen-initramfs

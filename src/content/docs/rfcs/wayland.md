@@ -13,6 +13,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - sfwbar: https://github.com/LBCrion/sfwbar
 
 ## Brightness Control
+- brightnessctl: https://github.com/Hummer12007/brightnessctl
 - clight: https://github.com/FedeDP/Clight
 - luminance: https://github.com/sidevesh/Luminance
 - wlsunset: https://git.sr.ht/~kennylevinsen/wlsunset
@@ -60,6 +61,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Login Managers
 - gtkgreet: https://git.sr.ht/~kennylevinsen/gtkgreet
+  - Depends on `greetd` which depends on `rust` and `pam`
 
 ## Notifications
 - fnott: https://codeberg.org/dnkl/fnott

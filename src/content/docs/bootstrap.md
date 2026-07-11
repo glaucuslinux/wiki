@@ -115,3 +115,6 @@ cd glaucus/live
 ```sh
 ./bootstrap-native
 ```
+
+## References
+- https://codeberg.org/stagex/whitepapers/raw/branch/main/out/stagex.pdf

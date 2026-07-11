@@ -51,7 +51,7 @@ configure: WARNING: required lex library not found; giving up on touch lex.yy.c
 - `CFLAGS`, `CXXFLAGS`, `CFLAGS_FOR_TARGET` and `CXXFLAGS_FOR_TARGET` are being picked up from the environment; the latter two are automatically assigned to the former two
 - Check `clocale` to use for `libstdc++`; `generic` vs `--disable-clocale`?
 - `libgcc_s.so.1` size dramatically reduced when using stage 1 flags (from ~ 830k to ~ 170k)
-- `otool` is for mach os, and is part of LLVM; the `otool` not found error is normal for `gcc`
+- `otool` is for macos, and is part of LLVM; the `otool` not found error is normal for `gcc`
 - Move cpp from lib to bin?
 - The following (ignored) errors occur when building `libstdc++-v3` (in all stages):
 ```

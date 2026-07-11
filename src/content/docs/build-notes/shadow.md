@@ -24,6 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sulogin` is being built, but not installed
 - Builds `login_nopam` correctly, but attempts to link xget pam when using `nsss` patch
 - Check `/etc/login.defs` for mail stuff and others
+- `FAIL_DELAY` vs `LOGIN_RETRIES` and `PASS_CHANGE_TRIES`
 - `src/useradd.c` can be patched to change default values; users can still use `/etc/default/useradd` to modify these values
 - `INACTIVE` is set to `-1` by default
 - `EXPIRE` is empty by default

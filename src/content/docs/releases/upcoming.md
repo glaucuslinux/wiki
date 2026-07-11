@@ -14,4 +14,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`fping`](https://fping.org/) is now the default ping implementation!
 - [`u-config`](https://github.com/skeeto/u-config) is now the default pkg-config implementation!
 - [`flex`](https://github.com/westes/flex) is now the default lex implementation ([`reflex`](https://invisible-island.net/reflex/) is unable to build `kbd`, `wget2` and a lot of packages)
+- `clang` by design is a full fledged cross compiler; this means that glaucus bootstrap is now faster as the stage previously known as `toolchain` is being skipped entirely!
 - Updated cerata

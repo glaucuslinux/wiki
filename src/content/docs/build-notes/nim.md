@@ -33,9 +33,14 @@ DESTDIR=../../../toolchain \
 ./koch install \
   /lib
 ```
+- To use `clang`:
+```
+nim c --cc:clang --clang.exe:clang --clang.linkerexe:clang ...
+```
 
 ## References
 - https://build.opensuse.org/package/view_file/openSUSE:Factory/nim/nim.spec?expand=1
+- https://codeberg.org/janAkali/nim_zigcc_guide
 - https://git.alpinelinux.org/aports/tree/community/nim/APKBUILD
 - https://git.alpinelinux.org/aports/tree/community/nimble/APKBUILD
 - https://github.com/nim-lang/csources_v2

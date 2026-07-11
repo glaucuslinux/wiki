@@ -3,7 +3,7 @@ title: libxml2
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- `--with-history` depends on `libedit` and `netbsd-curses`
+- `--with-history` depends on `libedit` and `netbsd-curses`; might require `libhistory` from `readline`?
 - Do not depend on `icu`; disabled by default
 - Multithreading support is on by default `--with-threads`
 - Some distributions enable `legacy` for ABI compatibility

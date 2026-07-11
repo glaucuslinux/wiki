@@ -3,12 +3,12 @@ title: llvm
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Do not set `BUILD_SHARED_LIBS`
+- Do not set `BUILD_SHARED_LIBS` as it disables static libraries for `llvm` and only works with `-DLLVM_BUILD_LLVM_DYLIB=ON` but not with `-DLLVM_LINK_LLVM_DYLIB=ON`
 - Do not depend on `PyYAML`; required for `llvm-libc`
 - `LLVM_ENABLE_ASSERTIONS` is `OFF` by default with `Release` builds
 - Do we need `LLVM_PARALLEL_COMPILE_JOBS`?
 - Do we need `LLVM_PARALLEL_TABLEGEN_JOBS`?
-- Do we need `LLVM_INSTALL_UTILS` for `FileCheck` and `not`?
+- Do we need `LLVM_INSTALL_UTILS` for `FileCheck` and `not`? or should we set `-DLLVM_INSTALL_UTILS=OFF`?
 - Do not set `LLVM_EXTERNAL_LIT` to allow the bundled `lit` to run; needed for standalone builds of subprojects
 - Do we need `LLVM_ROOT`?
 - Rely on the host's compiler instead of crafting our own for the `toolchain` stage
@@ -79,14 +79,25 @@ for i in llvm-*; do ln -fs "$i" "$TGT-${i#llvm-}"; done
 ```
 export ADDR2LINE=llvm-addr2line
 export AS=clang # compared to using `llvm-mc` or even `clang -c`
+export CC="clang -flto" # `-flto` here as well as in CFLAGS?
 export CLANG=clang
 export CLANGXX=clang++
 export CROSS_COMPILE=llvm-
+export CXX="clang++ -flto" # `-flto` here as well as in CXXFLAGS?
 export CXXFILT=llvm-cxxfilt
+export HOSTAR=llvm-ar
 export HOSTCC=clang
+export HOSTCXX=clang++
+export HOSTLD=ld.lld
 export LDFLAGS="-fuse-ld=lld"
 export STRINGS=llvm-strings
 ```
+- Check:
+  - `LLVM_UBSAN_FLAGS`
+  - `-DC_COMPILER` vs `-DCMAKE_C_COMPILER=clang`
+  - `-DCXX_COMPILER` vs `-DCMAKE_CXX_COMPILER=clang++`
+  - `-DLLVM_USE_LINKER=lld`
+- `-DLLVM_RUNTIME_TARGETS` breaks the build with weird runtimes-x86_64-pc-linux-musl paths
 
 ## clang
 - `clang` by design is a full fledged cross compiler
@@ -103,6 +114,7 @@ export STRINGS=llvm-strings
   - Compiler Backend: `clang -S`
   - Assembler: `clang -c`
   - Bitcode Generator: `clang -flto`
+- `clang-tools-extra` is not needed for earlier builds of `clang`
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf

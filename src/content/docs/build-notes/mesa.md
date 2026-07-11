@@ -12,6 +12,26 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `llvm`
   - `mlir`
 - Does not build with `reflex`; requires `bison-bridge` and `extra-type` support which `flex` provides
+- To build without `llvm`; this is not the case anymore as glaucus now provides llvm libraries and tools:
+```
+# amd
+-Dplatforms=wayland \
+-Dgallium-drivers=radeonsi \
+-Dvulkan-drivers=amd \
+-Dllvm=disabled \
+-Dglx=disabled \
+-Dglvnd=enabled \
+-Dgallium-va=disabled
+
+# qemu
+ -Dplatforms=wayland \
+-Dgallium-drivers=virgl \
+-Dvulkan-drivers=virtio \
+-Dllvm=disabled \
+-Dglx=disabled \
+-Dglvnd=enabled \
+-Dgallium-va=disabled
+```
 
 ## References
 - https://docs.mesa3d.org/install.html

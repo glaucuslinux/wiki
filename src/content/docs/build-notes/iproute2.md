@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - glaucus removes `ARPD` and `BDB`
+- Depends on `flex` (the 2017 release in particular); does not build with `reflex`
 - Set `make NETNS_RUN_DIR=/run/netns`; otherwise it defaults to `/var/run/netns`
 - There is no test suite
 - Do not install `libnetlink.a` or `libnetlink.h`; nothing depends on them

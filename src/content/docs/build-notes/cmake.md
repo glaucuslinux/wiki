@@ -25,7 +25,18 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - --bootstrap-system-librhash
 ```
 - `cmake` interprets `1/ON/YES/TRUE/Y` as `true` and `0/OFF/NO/FALSE/N/IGNORE/NOTFOUND` as `false`; use `ON` and `OFF`
+- Check:
+```
+-DCMAKE_SKIP_INSTALL_RPATH=ON
+-DBUILD_SHARED_LIBS=ON
+-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
 
+# only use headers and libraries from the syroot and avoid binaries
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+```
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html
