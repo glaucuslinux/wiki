@@ -10,8 +10,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does it depend on `setup-tools` from `python`?
 - When the prefix is `/usr`: `sysconfdir` defaults to `/etc`, `localstatedir` defaults to `/var`, and `sharedstatedir` defaults to `/var/lib`
 - Set `-Db_ndebug=true` to disable assertions
+- `meson` only understands `cpu_family` and not `cpu`
 
 ## References
+- https://github.com/mesonbuild/meson/issues/7037
 - https://mesonbuild.com/Builtin-options.html
 - https://mesonbuild.com/Commands.html
 - https://mesonbuild.com/Cross-compilation.html

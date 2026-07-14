@@ -217,6 +217,12 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 
 ## Misc
 - `perl` adds 83M to the iso if provided
+- most indie osdev projects provide `.iso` and `rootfs` in `.zst` format
+  - gloire requires at least 5 GB to boot
+  - serenity and skiftos do not provide an iso (they expect users to take part in development)
+- netbsd iso is 630 mb; fits on a single CD
+- openbsd iso is 750 mb; almost fits on a single CD
+- glaucus iso should be under 640 mb to fit on a single CD
 
 ## References
 - Mr. Jörg Schilling (GOAT of cd tools, died 2021)

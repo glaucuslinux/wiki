@@ -62,11 +62,14 @@ chown firasuke:firasuke glaucus.img
 
 ## References
 - https://bkhome.org/news/202312/limine-v6-has-dropped-support-for-ext4.html
+- https://github.com/CloverHackyColor/CloverBootloader
 - https://github.com/eweOS/packages/blob/limine/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/CONFIG.md
 - https://github.com/limine-bootloader/limine/blob/trunk/PHILOSOPHY.md
 - https://github.com/limine-bootloader/limine/blob/trunk/test/limine.cfg
 - https://github.com/limine-bootloader/limine/blob/trunk/USAGE.md
 - https://github.com/OS-1337/OS1337/issues/10
+- https://github.com/UltraOS/Hyper
+- https://git.pengutronix.de/cgit/barebox
 - https://limine-bootloader.org/
 - https://wiki.archlinux.org/title/Limine

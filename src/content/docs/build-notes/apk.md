@@ -3,6 +3,9 @@ title: apk
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Prefer alpine's `abuild` to arch's `makepkg`; the latter stores hidden files in tarballs `.BUILDINFO`, `.MTREE` and `.PKGINFO`
+- Generaet valid `.apk` tarballs from glaucus build files
+
 ## References
 - https://blog.orhun.dev/alpine-packaging-setup/
 - https://blog.packagecloud.io/packagecloud-a-well-suited-package-manager-for-alpine-linux/

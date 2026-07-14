@@ -6,8 +6,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Reconsider
 - `ARFLAGS`
 - `CCLD`: overriden internally in autotools?
+- `CPATH=$cross/usr/include`
 - `CPPFLAGS`: for skarnet packages?
+- `LD_LIBRARY_PATH=$cross/usr/lib`
 - `LFLAGS`: lex flags
+- `LIBRARY_PATH=$cross/usr/lib`
 - `SFLAGS`
 - `STRIPPROG`
 - `YFLAGS`: yacc flags

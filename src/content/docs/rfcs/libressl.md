@@ -11,7 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--enable-libtls-only` only installs `libtls` for systems that use `openssl`
 - Check `--enable-extratests`
 - Provides `/etc/ssl/cert.pem` by default; no need for `ca-certificates`
-- Provides `nc`; short for `netcat`
+- Provides `nc`; short for `netcat` (prefer `openbsd netcat` to `gnu netcat`)
 - No need to patch `cnf` or prefix with `libressl-` if used as the default TLS library
 - libressl: assembly acceleration of various algorithms for ELF (Linux, BSD, Solaris) and OS X systems are enabled for x86_64 CPU's. More optimizations may be enabled in later releases. These optimizations are disabled with the --disable-asm configure flag.
 - Libressl needs static and fat lto

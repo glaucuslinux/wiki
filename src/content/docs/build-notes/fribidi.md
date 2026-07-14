@@ -15,3 +15,4 @@ echo "cc='gcc -fpermissive -std=gnu17'" > c2man/config.sh`
 /* Don't build deprecated functionality */
 #define FRIBIDI_NO_DEPRECATED 1
 ```
+- static builds are already disabled by default (`--disable-deprecated`?)
