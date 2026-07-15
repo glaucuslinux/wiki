@@ -151,6 +151,7 @@ cc1: error: no include path in which to search for stdc-predef.h
   - `-fvisibility-inlines-hidden`
 - `gcc`'s LTO does not work with `lld`
 - configure `gcc` to remove `libstdc++-v3` now that `libc++` is the default
+- `gcc -s` is identical to `LDFLAGS -Wl,--strip-all,` as the former gets passed to the linker
 
 ## Not Relocatable
   - https://github.com/cross-tools/musl-cross

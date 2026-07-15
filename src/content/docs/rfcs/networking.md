@@ -32,3 +32,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://busybox.net/~vda/no_ifup.txt
 - https://linuxfromscratch.org/lfs/view/development/chapter09/network.html
+- https://linuxfromscratch.org/lfs/view/development/chapter09/symlinks.html

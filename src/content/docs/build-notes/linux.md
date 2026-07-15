@@ -22,6 +22,15 @@ make modules_install INSTALL_MOD_STRIP=1
 - `headers_check` is obsolete (no-op)
 - `make xconfig` is a bit more ergonomic but it requires `qt`; check `make gconfig`
 - Kernel builds can be further optimized with `KCFLAGS`?
+- `libelf` (or `elfutils-libelf`) is required for kernel orc unwinding
+- Examine:
+```sh
+dmesg -t > dmesg_current
+dmesg -t -k > dmesg_kernel
+for i in emerg alert crit err warn; do
+  dmesg -t -l $i > dmesg_current_$i
+done
+```
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html

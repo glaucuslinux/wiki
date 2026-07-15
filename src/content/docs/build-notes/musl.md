@@ -44,6 +44,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `musl` lacks `cdefs.h`, `error.h`, `queue.h`, `stab.h` and `tree.h`; patch software to remove these headers
 - `musl` provides `timer_create()`
 - `musl` does not provide `strndupa`
+- To set the timezone for the system set `TZ` (can also be done under `/etc/env.d/00musl`)
+```sh
+# e.g. Europe/Paris:
+echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
+```
+- The value of `TZ` is defined by the POSIX timezone specification; it can be in another format but it requires `sys-libs/timezone-data` (gentoo)
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html

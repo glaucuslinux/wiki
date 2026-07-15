@@ -22,6 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sbase` utilities (e.g. `rm`) do not work well with autotools
 - `sbase` and `ubase` utilities can be built as single binaries (`sbase-box` and `ubase-box` respectively) similar to busybox and toybox
 - `chattr` and `lsattr` use `ioctl()` and not `xattr()`; unlike `getfattr` and `setfattr`
+- consider enabling `tree` and other useful utilities without bloating the overall size of the final executable
 
 ## Replaces
 - `bc`

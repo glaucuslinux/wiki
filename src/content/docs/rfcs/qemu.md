@@ -21,3 +21,20 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 # `-netdev user,id=glaucus,hostname=glaucus`
 # `-nic model=e1000` if e1000 does not show
 ```
+- `raw` is faster than `qcow2` but not resizable
+- convert qemu raw images to virtual box:
+```
+VBoxManage convertfromraw glaucus.img glaucus.vdi
+```
+- To resize/grow it use:
+```
+VBoxManage modifymedium disk glaucus.vdi --resize $mb
+```
+- convert to vdi to run under qemu:
+```
+vbox-img convert \
+  --srcfilename glaucus.img \
+  --dstfilename glaucus.vdi \
+  --srcformat RAW \
+  --dstformat VDI
+```

@@ -98,6 +98,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Terminal Emulator
 - foot: https://codeberg.org/dnkl/foot
+  - does not build with `netbsd-curses`'s `tic`; missing `-e`
 
 ## Wallpaper
 - mpvpaper: https://github.com/GhostNaN/mpvpaper
