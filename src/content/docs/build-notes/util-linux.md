@@ -29,6 +29,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--disable-year2038`: check if it requires `logind` and `pam`
 - `--without-libmagic`: check if it requires `file`
 - `--with-cryptsetup`: check if it requires `systemd`; only works with `systemd`
+- Check:
+```sh
+--disable-use-tty-group" # Fix chgrp: changing group of 'wall': Operation not permitted
+--disable-makeinstall-chown # prevent changing ownership of mount to root
+--disable-makeinstall-setuid # not needed
+```
 
 ## References
 - https://bugzilla.redhat.com/show_bug.cgi?id=1984771

@@ -4,8 +4,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Explicitly specify `--bindir`
-- `faillog` failed login attempts for existing users
-- `btmp` lists every failed login attempt
+- `/var/log/wtmp` records all logins and logouts
+- `/var/log/lastlog` records when each user last logged in
+- `/var/log/faillog` records failed login attempts for existing users
+- `/var/log/btmp` records every failed login attempts; including "bad" ones for non-existing users
 - Create a `~/.hushlogin` file to disable `No mail.` message from `login` (`lib/mail.c`)
 - Disable `audit` support because it goes inline with utmp as it grants the ability to monitor users and failed logins and such
 - Disable `logind` because `shadow` switched to `systemd` to provide utmp-like functionality
@@ -58,7 +60,8 @@ Comparison of different implementations of the same tools by shadow and util-lin
 
 ## References
 - https://bugs.archlinux.org/task/31414
-- https://github.com/shadow-maint/shadow/issues/1082
+- https://github.com/shadow-maint/shadow/issues/464
 - https://github.com/shadow-maint/shadow/issues/999
+- https://github.com/shadow-maint/shadow/issues/1082
 - https://github.com/shadow-maint/shadow/pull/1174
 - https://linuxfromscratch.org/blfs/view/svn/postlfs/shadow.html

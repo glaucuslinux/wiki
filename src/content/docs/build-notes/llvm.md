@@ -61,6 +61,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - It's better to use `lld` because it can tap into private LLVM APIs instead of going back and forth through the generic linker plugin API; verify this?
 - Do we need to build an llvm distribution?
 - `llvm-lipo` is `macos` specific for fat binaries
+- This symlink is required for now `cross/usr/lib/x86_64-glaucus-linux-musl` to `cross/usr/lib`
 - Do we need the following symlinks:
 ```
 ln -fs llvm-as as
@@ -98,6 +99,7 @@ export STRINGS=llvm-strings
   - `-DCXX_COMPILER` vs `-DCMAKE_CXX_COMPILER=clang++`
   - `-DLLVM_USE_LINKER=lld`
 - `-DLLVM_RUNTIME_TARGETS` breaks the build with weird runtimes-x86_64-pc-linux-musl paths
+- Use `libunwind` and not `libexecinfo`
 
 ## clang
 - `clang` by design is a full fledged cross compiler

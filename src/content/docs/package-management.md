@@ -211,6 +211,16 @@ prepare() {
 - Group commands that deal with multiple arguments into one (e.g. `cp`, `rm`, `mkdir` (if same permissions)...)
 - Group commands that are repeated 3 or more times into `for` loops
 - Only quote shell variables with whitespace characters
+- The number of quotes used should not exceed `2`:
+```sh
+# Prefer this
+"$variable/some/static/path"
+"$variable/some/other/$variable/path"
+
+# To this
+"$variable"/some/static/path
+"$variable"/some/other/"$variable"/path
+```
 - Separate options that accept arguments from ones that do not; prefer this:
 ```
 mkdir -m 555 -p

@@ -50,6 +50,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
 ```
 - The value of `TZ` is defined by the POSIX timezone specification; it can be in another format but it requires `sys-libs/timezone-data` (gentoo)
+- Use `--disable-symvers` as `musl` does not support symbol versioning
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html
