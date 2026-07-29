@@ -31,6 +31,17 @@ for i in emerg alert crit err warn; do
   dmesg -t -l $i > dmesg_current_$i
 done
 ```
+- Previous build command:
+```sh
+CROSS_COMPILE=x86_64-glaucus-linux-musl- \
+CC="$toolchain/bin/x86_64-glaucus-linux-musl-gcc" \
+HOSTCC="$toolchain/bin/x86_64-glaucus-linux-musl-gcc" \
+PATH="$toolchain/bin:/usr/bin" \
+make \
+  O=$PWD/../build \ # needs to be changed
+  ARCH=x86_64 \
+  menuconfig
+```
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html

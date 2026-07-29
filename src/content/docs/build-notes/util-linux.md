@@ -35,6 +35,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 --disable-makeinstall-chown # prevent changing ownership of mount to root
 --disable-makeinstall-setuid # not needed
 ```
+- `lsblk` requires `/sys/dev/block`?
 
 ## References
 - https://bugzilla.redhat.com/show_bug.cgi?id=1984771

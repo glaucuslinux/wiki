@@ -3,6 +3,7 @@ title: libedit
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Depends on the `file` command?
 - musl defines `__STDC_ISO_10646__` in `stdc-predef.h` which gets included by `gcc` by default (unlike `clang`)
 - `readline/history.h` and `readline/tilde.h` can be symlinked to `editline/readline.h`
 - Prefer symlinks to `libedit.so` instead of linker scripts `INPUT(-ledit)`

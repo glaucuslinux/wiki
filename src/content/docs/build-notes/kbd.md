@@ -8,6 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `/usr/etc` does not get created when `vlock` is disabled
 - `openvt` runs interactive shells on virtual terminals
 - `bkeymaps` is the older `kbd`
+- Remove `resizecons`?
 
 ## References
 - https://kisslinux.org/wiki/console/bkeymaps

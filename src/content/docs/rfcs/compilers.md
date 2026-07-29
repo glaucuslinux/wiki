@@ -9,8 +9,18 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Currently only clang and gcc are capable of building modern versions of gcc, so it appears the better approach would be to either leverage clang's cross compilation capabilities (which requires having `compiler-rt` and `libunwind` and `libc++` compiled for the target prior) or keep the current gcc cross compilation toolchain but utilize `-O0` or `-O1` to speed up build times early on; an important consideration to be made is that the time saved from early stages of the bootstrap process (stages 1 and 2) should exceed the time wasted by an unoptimized stage 2 gcc that will attempt to compile the rest of the bootstrap stages (3 and 4) with optimizations (quality of the final stages will not be affected, but compilation time will be)
 
 ## Compilers that can build `grep`
-- clang (and Fil-C):
+- clang (and filc):
   - https://fil-c.org/pizlix
+  - filc is capable of building lfs
+    - up to 4 to 6 times slower
+    - up to 8 to 20 times bigger (example below); probably due to "InvisiCaps"
+    ```
+    library             filc-size  regular-size
+    libcurses.so        3.7M       246k
+    libexpat.so.1.11.1  4.2M       243k
+    libform.so          1.4M       82k
+    libterminfo.so      865K       111k
+    ```
 - cproc (QBE):
   - https://git.sr.ht/~mcf/cproc
   - https://man.sr.ht/~mcf/cproc/doc/software.md

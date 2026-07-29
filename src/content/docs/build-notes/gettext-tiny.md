@@ -6,6 +6,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Provides `autopoint`
 - Install `config.rpath` to `/usr/share/gettext` or `/usr/share/gettext-tiny`
 - Is `CC` being picked up for cross build?
+- `fPIC` gets overriden by `CFLAGS` under `config.mak`
+- build breaks with `lto` (optimux)
 - There is no test suite
 
 ## References

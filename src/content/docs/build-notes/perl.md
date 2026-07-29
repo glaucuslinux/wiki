@@ -3,6 +3,7 @@ title: perl
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- added `core_perl` to `$PATH` in bootstrap to prevent warnings about missing `pod2man`
 - Depends on `mawk`
 - Depends on `gdbm` or `db` on Alpine and Arch
 - Do not specify `scriptdir` or other dirs that might change where binaries are being installed (perl binaries and scripts are expected to be in `/usr/bin`)
@@ -10,7 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `Z_SOLO` on Alpine is used to compile and use zlib without external libraries
 - Check large file and usenm support
 - `installman1dir` and `installman3dir` are not portable and should only be used in Makefiles
-- Modules manpages are being removed on Adelie
+- `perl` manpages take 20 MB (a 1/3 of its entire install size); adelie removes manpages for modules
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
 - Unable to use upstream binaries; requires signing up with a third party vendor?
 - Does `perl` require a loopback `lo` network device and `/etc/hosts`?
@@ -18,6 +19,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `1p` for commands and `3pm` for modules
 - `-Dusesoname` is obsolete
 - It is recommended not to use `-Dusenm` on Linux
+- Check `dtrace` and threaded perl?
 - `miniperl` is not needed as we aren't bootstrapping `perl`
 - `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` and stack size patches for musl are needed for `s390x` on Alpine and Void
 - `PERL_TEST_HARNESS_ASAP=1` causes the test suite to finish somewhat earlier with less logical ordering of the tests
@@ -53,6 +55,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `musl-locale` patches are for `perl-cross` which glaucus does not use as we natively build `perl` early in a bootable `cross` environment
 - `siteprefix` is automatically set equal to `prefix`
 - `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin`
+- combine both `lib` and `share` into the same directory under `lib` for `core`, `site` and `vendor`
 
 ## References
 - https://bugs.gentoo.org/506818

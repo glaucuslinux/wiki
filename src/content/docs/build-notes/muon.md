@@ -29,6 +29,8 @@ default_library (default shared on meson and static on muon)
   - if `SAMUFLAGS=$MAKEFLAGS` then `$MAKEFLAGS` should only contain `-j X`
   - glaucus adds an additional `-O` so this won't work
   - still glaucus provides a `glaucus-muon` which pass the `-j X` to `muon samu` making this unnecessary?
+- Run `muon -C build` before configure options instead of providing `build` as the last argument?
+- `-Dcpp_std=c++17` vs `c++23` for `muon`?
 
 ## References
 - https://codeberg.org/sewn/repo/src/branch/muon

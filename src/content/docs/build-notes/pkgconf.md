@@ -18,6 +18,7 @@ SystemIncludePaths: /usr/include
 SystemLibraryPaths: /usr/lib
 ```
 - Also do we need another personality file for cross (`x86_64-glaucus-linux-musl`)?
+- We probably do not need personality files as we're not using multilib and no `lib32`?
 - `--with-pkg-config-dir` defaults to both `/usr/lib/pkgconfig` and `/usr/share/pkgconfig`
 
 ## References
