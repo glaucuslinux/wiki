@@ -8,11 +8,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `CCLD`: overriden internally in autotools?
 - `CPATH=$cross/usr/include`
 - `CPPFLAGS`: for skarnet packages?
+- `EDITOR`
 - `LD_LIBRARY_PATH=$cross/usr/lib`
 - `LFLAGS`: lex flags
 - `LIBRARY_PATH=$cross/usr/lib`
+- `PAGER`
 - `SFLAGS`
 - `STRIPPROG`
+- `VISUAL`
 - `YFLAGS`: yacc flags
 
 ## Rejected

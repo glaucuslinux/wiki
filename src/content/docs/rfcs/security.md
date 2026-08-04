@@ -52,7 +52,8 @@ should only be able to access what is strictly required, and nothing more.
 - https://wiki.ubuntu.com/ToolChain/CompilerFlags
 - http://www.stxletto.com/posts/%E6%BC%AB%E8%B0%88Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E7%BC%BA%E9%99%B7%E7%BC%93%E8%A7%A3%E6%9C%BA%E5%88%B6/
 
-## Smash Stack Protection (SSP) (Canary)
+## Stack Smashing Protection (SSP) (Canary)
+- Provides some protection against latent buffer overflows at the cost of a slight increase the executable size with a modest performance hit
 - `libssp` has been deprecated on modern systems: https://maskray.me/blog/2022-12-18-control-flow-integrity
 - musl no longer uses libssp (1877bc9d8f), it has internal support, so SSP_SUPPORT was disabled leading some packages to not use SSP: https://www.mail-archive.com/openwrt-devel@lists.openwrt.org/msg52869.html
 - Alpine Linux uses the `libssp_nonshared.a` library for architectures that do not support the required symbols for stack protection. Specifically, the `__stack_chk_fail` function is needed for stack protection, and some architectures may not have this function available in the libc or may have an incompatible implementation. `libssp_nonshared.a` provides the missing symbols needed for stack protection on such architectures. It is a standalone version of the SSP library that does not require linking against the shared version. The nonshared library is usually included in the package for the GCC compiler, along with the shared version of the library: https://github.com/golang/go/issues/58385

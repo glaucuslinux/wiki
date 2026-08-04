@@ -257,6 +257,8 @@ patch -p0 ...
 - https://github.com/pibuxd/vanilla
 - https://github.com/venomlinux/scratchpkg
 - https://github.com/void-linux/void-packages/blob/master/Manual.md
+- https://gitlab.alpinelinux.org/alpine/tsc/-/issues/39
+- https://gitlab.alpinelinux.org/alpine/tsc/-/issues/55
 - https://gnu.org/prep/standards/html_node/Command-Variables.html#Command-Variables
 - https://gnu.org/prep/standards/html_node/Non_002dGNU-Standards.html#Non_002dGNU-Standards
 - https://gnu.org/prep/standards/html_node/Utilities-in-Makefiles.html#Utilities-in-Makefiles

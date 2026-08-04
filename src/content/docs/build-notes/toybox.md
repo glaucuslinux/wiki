@@ -89,7 +89,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `eval` (POSIX) (bash, dash, oksh, yash)
 - `exec` (POSIX) (bash, dash, oksh, yash)
 - `exit` (POSIX) (bash, dash, oksh, yash)
-- `export` (POSIX) (bash, dash, oksh, yash)
+- `export` (POSIX) (bash, dash, oksh, yash); execline has an `export` builtin?
 - `false` (bash, dash, oksh, yash)
 - `fc` (bash, dash, oksh, yash)
 - `fg` (bash, dash, oksh, yash)
@@ -241,6 +241,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
+- https://lists.landley.net/pipermail/toybox/2024-February/009084.html
 - https://packages.gentoo.org/categories/app-alternatives
 - https://source.android.com/security/selinux/device-policy
 - https://tools.suckless.org/9base/

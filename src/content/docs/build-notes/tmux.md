@@ -12,6 +12,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check `/usr/share/doc/tmux/examples/tmux.conf` and install `tmux.conf`
 - Might backport some patches for `3.6a` to fix borders and colors (e.g. Gentoo)
 - Should we explicitly pass `--disable-cgroups` as it requires `systemd`? Or will `configure` automatically detect that systemd is not supported?
+- FAQ recommends setting `TERM` to one of the following: `screen` or `screen-256color` or `tmux` or `tmux-256color`; prefer `tmux-256color`
+- If `tmux` runs without `utf8` support remember to pass `tmux -u`; will substitute unicode glyphs with underscores if environment does support `utf8`
+- `tmux` server causes issues with locales and missing XDG variables (e.g. `XDG_RUNTIME_DIR`)
+- If colors are wrong add `set -as terminal-features ",*:RGB"` to `tmux.conf`
+- When in `chroot` set `$TERM` if `tmux` is being used
 
 ## References
 - https://github.com/tmux/tmux/issues/253
+- https://github.com/tmux/tmux/wiki/FAQ#how-do-i-use-rgb-colour

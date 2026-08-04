@@ -3,7 +3,7 @@ title: cmake
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Optimize `glaucus-cmake` for size (`glaucus-meson` and `glaucus-muon` are done)
+- Optimize `glaucus-cmake` for size (`glaucus-meson` and `glaucus-muon` are done); consider `-DCMAKE_BUILD_TYPE=MinSizeRel`
 - Use bundled version of `libuv` (for now)
 - Use bundled version of `rhash` (nothing depends on it)
 - Unset `$MAKE` as `cmake` expects `cmake_make_processor` to be equal to `$MAKE` which is `make` on glaucus, and that does not work when bootstrapping `cmake`
