@@ -53,6 +53,7 @@ echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
 - Use `--disable-symvers` as `musl` does not support symbol versioning
 - Provide a stub `libintl.a` like `libm` and `librt`
 - For full intl remove header stubs like `intl.h`/`libintl.h` along with the locale stuff and rely on gettext; this might not be needed as `gettext-tiny` won't install `libintl.h` if `musl` "flavor" is detected (and will instead complement musl?)
+- `musl` does not have `__gnuc_va_list` and gcc c++ requires it so use `__isoc_va_list` instead
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html

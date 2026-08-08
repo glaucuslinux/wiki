@@ -194,6 +194,10 @@ grub-mkrescue \
 /iso/fs /media/fs-ro erofs   defaults,loop                                                                        0 0
 overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-rw/upper,workdir=/media/fs-rw/work 0 0
 ```
+- `defaults` are `rw`, `suid`, `dev`, `exec`, `auto`, `nouser` and `async`
+  - `nosuid` and `nodev` prevent creation of suid and device files
+  - `noatime` does not write access times; minor speed up on hdd and ssd; irrelevant for `tmpfs`
+  - `mode` sets initial permissions of the root directory; useful if you did not set `1777` yourself
 
 ## OverlayFS (rw)
 - lower should be ro

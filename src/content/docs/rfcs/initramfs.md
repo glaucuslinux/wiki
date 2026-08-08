@@ -34,6 +34,7 @@ none /tmp     tmpfs  nodev,nosuid,relatime        0 0
 /dev/fd0      /media/floppy  vfat     noauto    0 0
 /dev/usbdisk  /media/usb     vfat     noauto    0 0
 ```
+- `toram` and `copytoram` are not standard kernel command-line parameters and are only supported by some initramfs generators
 
 ## References
 - https://github.com/hanh-linux/gen-initramfs

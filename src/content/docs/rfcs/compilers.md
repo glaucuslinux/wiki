@@ -37,6 +37,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Compilers that can't build `grep`
 ### Active
+- antcc: https://codeberg.org/lsof/antcc
 - c2m (MIR): https://github.com/vnmakarov/mir/tree/master/c2mir
 - cake: https://github.com/thradams/cake
 - cparser (libfirm): https://pp.ipd.kit.edu/firm/index.html

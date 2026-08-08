@@ -25,6 +25,8 @@ glaucus uses the filesystem tree as its database to store package information an
       - Avoid `download-mirror.savannah.*` as it provides direct downloads (despite the legacy name)
       - Avoid `download.savannah.gnu.org` for Non GNU packages (even if it works, it is not explicit)
     - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
+    - Packages from Debian should use: `https://deb.debian.org/`
+      - Avoid `ftp.debian.org` as it mainly exists for backwards compatibility
 - `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
 - `bld`: package build time dependencies sorted alphabetically
   - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
@@ -50,7 +52,6 @@ glaucus uses the filesystem tree as its database to store package information an
   - Compilation: handled by the function `build()`; not to be confused with the `build` file itself; for further reading, if `build` is used then we are addressing the script, otherwise if `build()` is used then the intention is the function
   - Checking: handled by the function `check()`
   - Packaging: handled by the function `package()`, **mandatory**
-- Some packages include special versions of the `build` file called `build-toolchain` and `build-cross`; these are only intended to be run in the bootstrap process during the `toolchain` and `cross` stages, and regular users should not bother with them
 #### `prepare()` function
 - glaucus package manager `rad` automatically does a `cd` into `$TMPD/$nom/$nom-$ver` if the package's `url` is not a git repository, and into `$TMPD/$nom` if it is a git repository
 - If extracting the source tarball provided by `url` does not follow the `$nom-$ver` rule then you are expected to manually `cd` into whatever the directory name is (e.g. for `python` we do a `cd "$TMPD"/$nom/Python-$ver`); only interact with `$TMPD`
@@ -137,6 +138,7 @@ foo=bar make
 - Try `ulimit -n 4096` before `make check`
 - Prefer `make -k check` to keep going until all tests are checked
 - If tests fail in parallel, try `-j1`
+- No need to optimize test builds so unset `CFLAGS`, `CXXFLAGS` and `LDFALGS` (even use `-O0`)
 - Compare failing tests with Alpine and LFS
 #### `package()` function
 - `package()` is the only required function to declare `build` files

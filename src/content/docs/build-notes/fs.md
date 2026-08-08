@@ -10,6 +10,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `/etc/os-release` takes precedence over `/usr/lib/os-release`
 - `/etc/os-release` should be a relative symlink to `/usr/lib/os-release` (not an absolute symlink to avoid breaking chroot or initramfs)
 - Check `DISTRIB_ID=glaucus` for os-release?
+- Prefer `/usr/share` to `/etc` for examples directory to lower maintenance overhead by reducing the number of entries under `/etc`
 
 ## References
 - https://0pointer.de/blog/projects/os-release.html

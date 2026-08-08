@@ -22,7 +22,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - wlsnarf: https://codeberg.org/notchoc/wlsnarf
 
 ## Compositors
-- croissant: https://codeberg.org/vyivel/croissant
 - doors: https://dawn.wine/CreeperFace/doors
 - dwl: https://codeberg.org/dwl/dwl
 - labwc: https://github.com/labwc/labwc (Disable librsvg)

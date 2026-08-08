@@ -3,6 +3,7 @@ title: pciutils
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- Depends on `libudev-zero` for `hwdb` support
 - You need to explicitly specify `CFLAGS` in `OPT` for it to get picked up
 - Builds with `lto` enabled on glaucus
 - Support for compressed ids is disabled on Dragora (`PCI_IDS=pci.ids PCI_COMPRESSED_IDS=0`)

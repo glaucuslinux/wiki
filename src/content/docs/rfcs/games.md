@@ -6,6 +6,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## chess
 - https://github.com/StewBC/cc65-Chess
 
+## pong
+- https://codeberg.org/catperson/pong-c
+- https://codeberg.org/deadbeef/npong
+
 ## snake
 - https://codeberg.org/dynnian/serpent
 - https://codeberg.org/elliowo/snake

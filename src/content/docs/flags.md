@@ -283,6 +283,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
 - It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
+- `-fPIC` generates much worse code on `x86` (32-bit in particular) for loads/stores of data; might be tolerable for libraries but is undesirable for executables
 - It is better to have `gcc` configured with `--enable-default-pie` so that it knows when to pass these options
 - These options do not contradict with `-fno-plt`
 - `-fno-pic` can only be used by executables
