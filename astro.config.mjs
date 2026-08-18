@@ -28,7 +28,7 @@ export default defineConfig({
         {
           label: "Build Notes",
           collapsed: true,
-          autogenerate: { directory: "build-notes" },
+          items: [{ autogenerate: { directory: "build-notes" } }],
         },
         {
           label: "Filesystem",
@@ -57,7 +57,7 @@ export default defineConfig({
         {
           label: "RFCs",
           collapsed: true,
-          autogenerate: { directory: "rfcs" },
+          items: [{ autogenerate: { directory: "rfcs" } }],
         },
         {
           label: "Security",
