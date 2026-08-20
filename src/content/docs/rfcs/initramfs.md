@@ -35,6 +35,9 @@ none /tmp     tmpfs  nodev,nosuid,relatime        0 0
 /dev/usbdisk  /media/usb     vfat     noauto    0 0
 ```
 - `toram` and `copytoram` are not standard kernel command-line parameters and are only supported by some initramfs generators
+- kernel requires `ext4` and `ata_piix` to be built-in in order to detect image file partitions (e.g. `sda1`) otherwise boot fails if an initramfs is unable to detect and probe these modules
+- qemu `.img` boots without an initramfs; `.iso` does not
+- Mount `proc` with `hidepid=2` and `gid=proc`?
 
 ## References
 - https://github.com/hanh-linux/gen-initramfs

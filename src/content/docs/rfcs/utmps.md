@@ -64,6 +64,7 @@ For further reading:
 - w, getty, tmux, libutempter, shadow, util-linux, procps-ng all use utmp/utmpx (For utmps)
 - ubase's getty doesn't add an entry to utmp
 - It's recommended to have a `utmp` user and group according to upstream
+- Are `lastlog`, `w` and `uptime` being used at all?
 
 ## DEPRECATE UTMP, UTMPX, UTMPS, WTMP, BTMP AND LASTLOG
 - https://github.com/glaucuslinux/core/commit/2173b4c9944027ba69dc5b31b22b6955307c112a

@@ -38,3 +38,5 @@ vbox-img convert \
   --srcformat RAW \
   --dstformat VDI
 ```
+- check which qemu display gtk vs sdl vs qxl is better, more general and less assuming
+- prefer terminal output to graphical `-nographic -append 'console=ttyS0'`

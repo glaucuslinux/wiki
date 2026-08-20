@@ -4,6 +4,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `locate` group is needed for `plocate`
+  - change its `gid` to 20?
+  - not needed anymore as glaucus no longer uses `plocate`
 - `input` group has been deprecated and `plugdev` should be used (e.g. QEMU)
 - `network` group has been deprecated and `netdev` should be used (e.g. QEMU)
 - `uucp` group has been deprecated and `dialout` should be used

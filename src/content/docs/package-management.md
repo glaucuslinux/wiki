@@ -150,6 +150,7 @@ foo=bar make
 - `DESTDIR` should be:
   - passed as an argument to `make DESTDIR="$dir" install`
   - passed as an environment variable to `samu/muon`
+  - a staging directory where stuff gets installed into before being copied to the sysroot
 - Consider removing the following files if unnecessary:
   - .a (static libraries whenever possible)
   - .alias
@@ -283,6 +284,7 @@ patch -p0 ...
 - https://wiki.alpinelinux.org/wiki/Architecture
 - https://wiki.alpinelinux.org/wiki/Package_policies
 - https://wiki.archlinux.org/title/Arch_build_system
+- https://wiki.archlinux.org/title/Arch_compared_to_other_distributions
 - https://wiki.archlinux.org/title/Arch_package_guidelines
 - https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg

@@ -5,6 +5,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Depends on `linux-headers`
 - `toybox`'s `cpio` defaults to `newc`, and is as fast as `bsdcpio`
+  - `-H newc` causes a kernel panic
+  - not using `-H newc` causes cpio magic coruption instead (does not panic though)
 - `toybox`'s `chgrp` is `chown` as well
 - `toybox`'s `base32` is bundled with `base64`
 - Do we need to run `scripts/genconfig.sh` before `make`?

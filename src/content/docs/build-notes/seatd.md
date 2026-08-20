@@ -3,7 +3,7 @@ title: seatd
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Do not depend on `logind` for `libseat`
+- Do not depend on `logind` (or `elogind`) for `libseat`
 - Does it depend on `basu` if we're not relying on `logind`/`systemd`?
 - Check if we need a service file?
 - Do we need `chmod u+s` (suid) on `bin/seatd-launch`?
@@ -13,6 +13,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 #!/bin/sh
 exec seatd -g video 2>&1
 ```
+- Without `seatd`, and given that glaucus does not use `pam` or `logind`, getting a compositor to work will require full suid?
 
 ## References
 - https://cgit.freebsd.org/ports/tree/sysutils/seatd/files/pkg-message.in

@@ -59,6 +59,7 @@ losetup -d $device
 
 chown firasuke:firasuke glaucus.img
 ```
+- syslinux does not support baud-rates above `56000`
 
 ## References
 - https://bkhome.org/news/202312/limine-v6-has-dropped-support-for-ext4.html
@@ -72,4 +73,5 @@ chown firasuke:firasuke glaucus.img
 - https://github.com/UltraOS/Hyper
 - https://git.pengutronix.de/cgit/barebox
 - https://limine-bootloader.org/
+- https://tldp.org/HOWTO/Remote-Serial-Console-HOWTO/preparation-setspeed.html
 - https://wiki.archlinux.org/title/Limine

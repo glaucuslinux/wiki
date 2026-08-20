@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - no pam
 - no systemd
 - no udev; hotplugd/devd/libudev-devd instead
+- relies on separate non-free firmware blobs not in `base`; hyperbola bsd aims to remove these blobs
 
 ## Security
 ### Somewhat "valid" criticism

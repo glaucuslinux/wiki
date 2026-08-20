@@ -35,6 +35,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Let the kernel use the defaults for its command-line parameters (e.g. `loglevel` and `ro`/`rw`)
 - `fakeroot` can be used instead of `sudo` for generating images, managing mounts and `make install`s for `DESTDIR`s that require root
 - `-eltorito-alt-boot` separates the settings for the bios boot image from the efi boot image
+- booting from live environments (e.g. `cd`, `dvd`, `iso`) uses more `ram` (due to `tmpfs`) compared to `hdd` installs
 
 ### Working ISO Layout
 ```
@@ -54,6 +55,31 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - blkid: PARTLABEL="Gap1" PARTUUID="eb9e9ad5-3ed6-4047-bda2-d6c40b9d2089"
   - file: data
 ```
+
+### Example Mountpoints
+#### Alpine
+- `/dev/sr0` mounted on `/media/cdrom` as `ro`
+- `tmpfs` mounted on `/` as `rw`
+- `/dev/loop0` mounted on `/.modloop` type `squashfs` as `ro`
+- adds `modules=loop,erofs,sd-mod,usb-storage` to `cmdline`
+#### Arch
+- `/dev/sr0` mounted on `/run/archiso/bootmnt` as `ro`
+- `cowspace` mounted on `/run/archiso/cowspace` as `rw`
+- `/dev/loop0` mounted on `/run/archiso/airootfs` as `ro`
+- `airootfs` mounted on `/` as `rw`
+  - `lowerdir=/run/archiso/airootfs`
+  - `upperdir=/run/archiso/cowspace/persistent_/x86_64/upperdir`
+  - `workdir=/run/archiso/cowspace/persistent_/x86_64/workdir`
+#### Hanh
+- `modprobe overlay iso9660 squashfs loop`
+- `/dev/sr0` mounted on `/run/cdrom` as `ro`
+- `/dev/loop0` mounted on `/run/fs/sys` as `ro` type `squashfs`
+- `overlay` mounted on `/` as `rw` type `overlay`
+  - `lowerdir=/run/fs/sys`
+  - `upperdir=/run/fs/write`
+  - `workdir=/run/fs/work`
+  - directories `/run/fs/{sys,write,work}` are created by the initramfs
+- `modprobe ata_generic ata_piix cdrom ehci_hcd hid_generic isofs mousedev ohci_hcd pata_acpi scsi_mod sd_mod sr_mod thermal uhci_hcd usbcore usbhid`
 
 ## Software
 - `cdrtools` (includes `mkisofs`)

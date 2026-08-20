@@ -42,6 +42,7 @@ make \
   ARCH=x86_64 \
   menuconfig
 ```
+- `utf8` is not recommended for `fat` filesystems: `CONFIG_FAT_DEFAULT_IOCHARSET`
 
 ## References
 - http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html

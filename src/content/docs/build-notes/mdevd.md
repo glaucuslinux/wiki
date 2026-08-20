@@ -49,12 +49,18 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `/dev/grsec` has been deprecated since `4.14`
 - `/dev/hd{a,b,c}` have been deprecated
 - `/dev/hwrng` has replaced `/dev/hwrandom` and `/dev/hw_random`
+- `/dev/kmem` and `/dev/mem` are unsafe bsd relics that provide unwanted access to raw memory (`xorg` and `dosemu` might use them)
 - `/dev/mixer` and `/dev/sequencer` have been deprecated as modern systems don't use OSS
 - `/dev/psaux` has been deprecated
 - `/dev/pty` has been deprecated since `2.6.4` (https://man7.org/linux/man-pages/man7/pty.7.html)
 - `/dev/snd` has replaced `/dev/sound`
 - `/dev/sr0` has replaced `/dev/cdrom`
 - `/dev/sda` has replaced `/dev/cciss` and `/dev/ida`
+### others
+- set `/dev/dri/render*` in `mdev.conf` to `render` group instead of `video`?
+- lsb recommends that `uid` and `gid` stay under `100`
+- `devpts` `gid` should match that of `tty` group; `3` or `5` according to `/etc/group`
+- Both `optical` and `cdrom` are still relevant today; `optical` is more up-to-date as it also includes dvd and bluray
 
 ## udevd and libudev replacements criteria
 - handles ~10k devices (under one minute?)
@@ -93,6 +99,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
 - https://linuxfromscratch.org/lfs/view/development/chapter08/udev.html
 - https://manned.org/man/nlplug-findfs
+- https://unix.stackexchange.com/questions/126608/kernel-disabling-dev-kmem-and-dev-mem
 - https://wiki.alpinelinux.org/wiki/Mdevd
 - https://wiki.alpinelinux.org/wiki/User:Sertonix/Freedom_of_choice
 - https://wiki.archlinux.org/title/Udev
