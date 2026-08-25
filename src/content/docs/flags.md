@@ -496,5 +496,6 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://gentoo.org/news/2024/02/04/x86-64-v3.html
 - https://phoronix.com/news/Gentoo-x86-64-v3-Binaries
 - https://serpentos.com/blog/2024/01/19/january-updates/
+- https://wiki.gentoo.org/wiki/Safe_CFLAGS
 - https://wiki.ubuntu.com/ToolChain/CompilerFlags
 - https://youtube.com/watch?v=c6csK4Z_U98&list=PL2saaWTUEfabOcP1xKb64KHNn9vKKPfef

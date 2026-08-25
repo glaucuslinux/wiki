@@ -51,6 +51,7 @@ echo "/etc/finit.d/         - Finit services"
 - https://github.com/glaucuslinux/glaucus/releases/tag/30092020
 - https://github.com/kernelkit/infix
 - https://github.com/medvid/make-rootfs/blob/master/pkg/files/finit/finit.conf
-- https://github.com/troglobit/finit/blob/master/doc/bootstrap.md#bootstrap
+- https://github.com/finit-project/finit/blob/master/doc/build.md
+- https://github.com/finit-project/finit/blob/master/doc/distro.md
 - https://github.com/xhebox/noname-linux/blob/master/archived/finit/finit.conf
 - https://troglobit.com/projects/finit/

@@ -234,12 +234,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/matijaskala/coreutils-bsd
 - https://github.com/mayfrost/guides/blob/master/ALTERNATIVES.md
 - https://github.com/oracle/solaris-userland
+- https://github.com/rofl0r/hardcore-utils
 - https://github.com/ryanwoodsmall/toybox-misc/blob/master/scripts/toybox_config_script.sh
 - https://heirloom-ng.pindorama.net.br
 - https://heirloom.sourceforge.net/devtools.html
 - https://heirloom.sourceforge.net/sh.html
 - https://heirloom.sourceforge.net/tools.html
 - https://landley.net/notes.html
+- https://landley.net/toybox/help.html
 - https://landley.net/toybox/index.html
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html

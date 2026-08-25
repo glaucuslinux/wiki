@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/koalaman/shellcheck
 - https://github.com/mgree/smoosh
 - https://github.com/shellspec/shellbench
+- https://grymoire.com/Unix/Quote.html
 - https://grymoire.com/Unix/Sh.html
 - https://news.ycombinator.com/item?id=13940322
 - https://pubs.opengroup.org/onlinepubs/9799919799/idx/shell.html

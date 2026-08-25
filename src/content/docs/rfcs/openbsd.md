@@ -51,5 +51,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `fork+exec` is effective for address space isolation
 
 ## References
-- https://isopenbsdsecu.re/mitigations/
 - https://allthatiswrong.wordpress.com/2010/01/20/the-insecurity-of-openbsd/
+- https://isopenbsdsecu.re/mitigations/
+- https://wiki.freebsd.org/GPLinBase

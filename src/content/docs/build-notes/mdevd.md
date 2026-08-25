@@ -89,6 +89,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://codeberg.org/emmett1/alicelinux/src/branch/main/repos/core/busybox/mdev.conf
 - https://codeberg.org/kiss-community/repo/src/branch/master/core/busybox/files/mdev.conf
 - https://codeberg.org/smj/mdevd-as-an-admin
+- https://gist.github.com/capezotte/03ee5548218e819b06459819bb120b4b
 - https://git.busybox.net/busybox/plain/docs/mdev.txt
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
 - https://github.com/alpinelinux/mkinitfs/blob/master/nlplug-findfs/init.sh

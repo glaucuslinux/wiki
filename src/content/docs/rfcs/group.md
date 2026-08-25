@@ -16,4 +16,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://linuxfromscratch.org/blfs/view/svn/postlfs/users.html
 - https://linuxfromscratch.org/lfs/view/development/chapter07/createfiles.html
 - https://wiki.archlinux.org/title/DeveloperWiki:UID_/_GID_Database
+- https://wiki.archlinux.org/title/Users_and_groups
 - https://wiki.debian.org/SystemGroups

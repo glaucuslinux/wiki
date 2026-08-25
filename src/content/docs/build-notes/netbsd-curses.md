@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://github.com/sabotage-linux/netbsd-curses/commit/5874f9b1ced9c29d7d590d95e254b252f657a160.patch
 - https://github.com/sabotage-linux/netbsd-curses/issues/39
+- https://github.com/sabotage-linux/netbsd-curses/wiki/List-of-ncurses-users-in-debian
 - https://implementality.blogspot.com/2020/04/thomas-e-dickey-on-netbsd-curses.html
 - https://invisible-island.net/ncurses/ncurses-netbsd.html
 - https://lists.alpinelinux.org/~alpine/devel/%3Ce12847f2-4cea-c3e8-84c3-e98b92553f8e%40dereferenced.org%3E

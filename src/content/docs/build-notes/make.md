@@ -8,3 +8,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/make/getopt-gcc15.patch
 - https://gitweb.gentoo.org/repo/gentoo.git/tree/dev-build/make/files/make-4.4.1-c23.patch
+- https://gnu.org/software/make/manual/make.html

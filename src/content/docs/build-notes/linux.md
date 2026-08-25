@@ -58,4 +58,5 @@ make \
 - https://mikrocontroller.net/attachment/413002/config-bpir2.txt
 - https://odi.ch/prog/kernel-config.php
 - https://phoronix.com/news/Linux-6.2-SLOB-Deprecated
+- https://usenix.org/system/files/conference/atc18/atc18-bouron.pdf
 - https://youtube.com/watch?v=NVWVHiLx1sU

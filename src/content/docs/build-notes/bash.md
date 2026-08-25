@@ -31,5 +31,8 @@ CFLAGS="-DSYS_BASHRC='\"/etc/bashrc\"' \
 
 ## References
 - https://glfs-book.github.io/glfs/introduction/bash-profile.html
-- https://www.gnu.org/software/bash/manual/html_node/Optional-Features.html
-- https://www.linuxfromscratch.org/blfs/view/svn/postlfs/profile.html
+- https://gnu.org/software/bash/manual/html_node/Command-Grouping.html
+- https://gnu.org/software/bash/manual/html_node/Optional-Features.html
+- https://linuxfromscratch.org/blfs/view/svn/postlfs/profile.html
+- https://mywiki.wooledge.org/BashPitfalls
+- https://mywiki.wooledge.org/BashWeaknesses

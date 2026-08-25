@@ -20,6 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://autotools.info/autoconf/macros.html
+- https://devmanual.gentoo.org/general-concepts/autotools/index.html
 - https://gnu.org/software/autoconf/
 - https://gnu.org/software/autoconf/manual/
 - https://invisible-island.net/autoconf/autoconf.html

@@ -157,6 +157,7 @@ export STRINGS=llvm-strings
 - https://github.com/llvm/llvm-zorg
 - https://github.com/Matrix3600/clang-cross
 - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
+- https://libc.llvm.org/
 - https://libcxx.llvm.org/Hardening.html
 - https://libcxx.llvm.org/index.html
 - https://libcxx.llvm.org/Modules.html
@@ -164,6 +165,7 @@ export STRINGS=llvm-strings
 - https://libcxx.llvm.org/UserDocumentation.html
 - https://libcxx.llvm.org/VendorDocumentation.html
 - https://linuxfromscratch.org/blfs/view/svn/general/llvm.html
+- https://lists.llvm.org/pipermail/cfe-dev/2016-July/049814.html
 - https://llvm.org/devmtg/2023-10/slides/tutorials/Hosek-UnderstandingtheLLVMbuild.pdf
 - https://llvm.org/docs/AdvancedBuilds.html
 - https://llvm.org/docs/BuildingADistribution.html

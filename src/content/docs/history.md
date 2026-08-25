@@ -23,7 +23,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - cross achieves maximum host isolation
 - "/usr" merge
 - Switch to libarchive as the default archive and compression library
-- Switch to LibreSSL as the default TLS library; then to AWS-LC
+- Switch to LibreSSL as the default TLS library
 - Switch to NetBSD's Editline Library and curses
 - Switch to toybox as the default unix user space
 - Switch to s6 as the default init system
