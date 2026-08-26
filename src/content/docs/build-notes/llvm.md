@@ -156,6 +156,7 @@ export STRINGS=llvm-strings
 - https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target
 - https://github.com/llvm/llvm-zorg
 - https://github.com/Matrix3600/clang-cross
+- https://github.com/metta-systems/metta/blob/develop/build_toolchain.sh
 - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
 - https://libc.llvm.org/
 - https://libcxx.llvm.org/Hardening.html
@@ -184,5 +185,6 @@ export STRINGS=llvm-strings
 - https://rocm.docs.amd.com/projects/llvm-project/en/latest/LLVM/llvm/html/CMake.html
 - https://wiki.gentoo.org/wiki/LLVM#Bootstrapping_the_LLVM_toolchain
 - https://wiki.musl-libc.org/building-llvm.html
+- https://wiki.osdev.org/LLVM_Cross-Compiler
 - https://youtube.com/watch?v=gOq1sCKSD80
 - https://youtube.com/watch?v=NMQrnVDf-rY

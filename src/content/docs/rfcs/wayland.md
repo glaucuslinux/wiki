@@ -151,12 +151,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://en.opensuse.org/Portal:OpenSUSEway
 - https://eylenburg.github.io/de_comparison.htm
 - https://fedoraproject.org/spins/sway/
+- https://gist.github.com/probonopd/9feb7c20257af5dd915e3a9f2d1f2277
 - https://github.com/natpen/awesome-wayland
 - https://github.com/openSUSE/openSUSEway
 - https://github.com/orahcio/void-packages
 - https://github.com/rcalixte/awesome-wayland
 - https://github.com/solarkraft/awesome-wlroots
 - https://intestinate.com/pilfs/beyond.html#wayland
+- https://itvision.altervista.org/why.linux.is.not.ready.for.the.desktop.final.html
 - https://wayland.freedesktop.org/building.html
 - https://wayland.fyi/
 - https://wiki.archlinux.org/title/XDG_Desktop_Portal

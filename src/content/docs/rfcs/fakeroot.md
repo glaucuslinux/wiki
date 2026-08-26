@@ -8,4 +8,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - https://github.com/kisslinux/kiss/pull/46
 - https://kisslinux.org/news/20190830a
+- https://linuxfromscratch.org/hints/downloads/files/fakeroot.txt
 - https://youtu.be/-CVuBLDpulo?t=841

@@ -15,3 +15,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://codeberg.org/Limine/Limine/src/branch/trunk/CONFIG.md
 - https://codeberg.org/Limine/Limine/src/branch/trunk/INSTALL.md
 - https://codeberg.org/Limine/Limine/src/branch/trunk/USAGE.md
+- https://iglunix.xyz/docs/boot/

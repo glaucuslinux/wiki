@@ -75,6 +75,7 @@ echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
 - https://git.musl-libc.org/cgit/musl/tree/INSTALL
 - https://git.musl-libc.org/cgit/musl/tree/WHATSNEW
+- https://gitweb.gentoo.org/proj/musl.git
 - https://maskray.me/blog/2021-11-07-init-ctors-init-array
 - https://molluscular.com/
 - https://musl.libc.org/about.html
@@ -83,6 +84,7 @@ echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
 - https://openwall.com/lists/musl/
 - https://rfc.archlinux.page/0023-pack-relative-relocs/
 - https://wiki.debian.org/musl
+- https://wiki.gentoo.org/wiki/Hardened/Toolchain
 - https://wiki.gentoo.org/wiki/Musl
 - https://wiki.gentoo.org/wiki/Musl_porting_notes
 - https://wiki.gentoo.org/wiki/Musl_porting_notes/1.2.4

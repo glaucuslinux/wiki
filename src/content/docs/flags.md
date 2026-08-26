@@ -238,10 +238,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prevent optimizations by the compiler and assembler using relative locations inside a translation unit since the locations are unknown until link time (e.g. relaxing calls to short call instructions)
 - Might cause subtle breakages by mistakenly removing necessary sections; use `-Wl,--no-gc-sections` when that happens
 - Might help reduce attack surface by removing unused sections
+- https://aykevl.nl/2018/04/codesize
 - https://flameeyes.blog/2009/11/21/garbage-collecting-sections-is-not-for-production/
 - https://forum.dlang.org/post/wfdjinmbaepkxxflqnxm@dfeed.kimsufi.thecybershadow.net
 - https://github.com/android/ndk/issues/748
 - https://lists.freebsd.org/pipermail/freebsd-current/2013-September/044561.html
+- https://wiki.wxwidgets.org/Reducing_Executable_Size
 
 ### `-fsection-anchors`
 - Section anchors are enabled by default with `-Os`?

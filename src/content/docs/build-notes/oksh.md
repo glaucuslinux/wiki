@@ -17,7 +17,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - musl provides `issetugid` which originates from OpenBSD while glibc does not?
 
 ## References
+- https://github.com/bijanebrahimi/ohmyksh
 - https://github.com/ibara/oksh/blob/master/ksh.kshrc
 - https://github.com/ibara/oksh/issues/45
 - https://github.com/ibara/oksh/issues/63
+- https://github.com/toxadx/ohmyksh
 - https://reddit.com/r/openbsd/comments/mansac/ksh_and_multiple_line_command_expansion/

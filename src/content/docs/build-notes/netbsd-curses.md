@@ -13,6 +13,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - or remove `--target` and `--sysroot` from `CFLAGS` if using host `clang`
 
 ## References
+- https://github.com/oasislinux/netbsd-curses
 - https://github.com/sabotage-linux/netbsd-curses/commit/5874f9b1ced9c29d7d590d95e254b252f657a160.patch
 - https://github.com/sabotage-linux/netbsd-curses/issues/39
 - https://github.com/sabotage-linux/netbsd-curses/wiki/List-of-ncurses-users-in-debian

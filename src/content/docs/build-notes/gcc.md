@@ -197,3 +197,4 @@ cc1: error: no include path in which to search for stdc-predef.h
 - https://wiki.debian.org/ToolChain/Cross
 - https://wiki.osdev.org/Building_GCC
 - https://wiki.osdev.org/GCC_Cross-Compiler
+- https://wiki.osdev.org/OS_Specific_Toolchain

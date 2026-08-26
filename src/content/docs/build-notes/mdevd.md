@@ -98,6 +98,8 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://github.com/illiliti/libudev-zero/blob/master/contrib/mdev.conf
 - https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
+- https://git.skarnet.org/cgit/mdevd/tree/examples
+- https://linuxfromscratch.org/hints/downloads/files/eudev-alt-hint.txt
 - https://linuxfromscratch.org/lfs/view/development/chapter08/udev.html
 - https://manned.org/man/nlplug-findfs
 - https://unix.stackexchange.com/questions/126608/kernel-disabling-dev-kmem-and-dev-mem

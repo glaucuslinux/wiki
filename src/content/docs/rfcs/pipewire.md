@@ -8,4 +8,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check `sndio`
 
 ## References
+- https://github.com/tinyalsa/tinyalsa
 - https://sndio.org/

@@ -22,6 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://man.archlinux.org/man/apk.8.en
 - https://wiki.alpinelinux.org/wiki/Abuild_and_Helpers
 - https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper
+- https://wiki.alpinelinux.org/wiki/APKBUILD_Reference
 - https://wiki.alpinelinux.org/wiki/Apk_spec
 - https://wiki.alpinelinux.org/wiki/Comparison_with_other_distros
 - https://wiki.alpinelinux.org/wiki/Creating_an_Alpine_package

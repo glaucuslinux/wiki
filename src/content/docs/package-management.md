@@ -258,6 +258,7 @@ patch -p0 ...
 - https://docs.voidlinux.org/xbps/index.html
 - https://github.com/kreatolinux
 - https://github.com/pibuxd/vanilla
+- https://github.com/sabotage-linux/sabotage/blob/master/COOKBOOK.md
 - https://github.com/venomlinux/scratchpkg
 - https://github.com/void-linux/void-packages/blob/master/Manual.md
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/39

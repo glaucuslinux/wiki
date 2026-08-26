@@ -28,7 +28,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## References
 - FHS 3.0
 - https://apertis.org/concepts/platform/filesystem_layout/
+- https://debian.org/doc/debian-policy/ch-opersys.html#s9.1
 - https://devmanual.gentoo.org/general-concepts/filesystem/index.html
+- https://gobolinux.org/doc/articles/clueless.html
 - https://lists.debian.org/debian-devel/2005/05/msg00401.html
 - https://musl.libc.org/doc/1.1.24/manual.html
 - https://wiki.debian.org/ReleaseGoals/RunDirectory

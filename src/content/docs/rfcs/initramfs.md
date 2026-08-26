@@ -50,6 +50,7 @@ none /tmp     tmpfs  nodev,nosuid,relatime        0 0
 - https://hacktivis.me/articles/bootstrap-initrd
 - https://landley.net/writing/rootfs-howto.html
 - https://landley.net/writing/rootfs-intro.html
+- https://linuxfromscratch.org/hints/downloads/files/initramfs.txt
 - https://wiki.gentoo.org/wiki/Custom_Initramfs
 - https://wiki.gentoo.org/wiki/Custom_Initramfs/Examples
 - https://wiki.gentoo.org/wiki/Early_Userspace_Mounting

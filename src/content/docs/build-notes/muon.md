@@ -33,6 +33,9 @@ default_library (default shared on meson and static on muon)
 - `-Dcpp_std=c++17` vs `c++23` for `muon`?
 
 ## References
+- https://codeberg.org/kiss-community/repo/pulls/126
+- https://codeberg.org/kiss-community/repo/pulls/148
+- https://codeberg.org/kiss-community/repo/pulls/51
 - https://codeberg.org/sewn/repo/src/branch/muon
 - https://docs.muon.build/differences.html
 - https://docs.muon.build/intro.html

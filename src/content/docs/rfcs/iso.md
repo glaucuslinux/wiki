@@ -261,6 +261,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://codeberg.org/emmett1/mkinitrd
 - https://en.m.wikipedia.org/wiki/Comparison_of_disc_image_software
 - https://fedoraproject.org/wiki/LiveOS_image
+- https://forum.puppylinux.com/viewtopic.php?t=4690
 - https://forums.gentoo.org/viewtopic-t-1110764-highlight-.html
 - https://gitea.artixlinux.org/artix/iso-profiles
 - https://github.com/archlinux/archiso
@@ -286,6 +287,7 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://landley.net/writing/rootfs-howto.html
 - https://landley.net/writing/rootfs-intro.html
 - https://landley.net/writing/rootfs-programming.html
+- https://linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
 - https://linux-live.org/
 - https://notabug.org/arsv/minibase-artix
 - https://roscopeco.com/2013/08/12/creating-a-bootable-hard-disk-image-with-grub2/

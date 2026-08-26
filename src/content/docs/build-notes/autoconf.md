@@ -24,4 +24,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://gnu.org/software/autoconf/
 - https://gnu.org/software/autoconf/manual/
 - https://invisible-island.net/autoconf/autoconf.html
+- https://ohse.de/uwe/articles/aal.html
 - https://wiki.debian.org/Autoreconf
