@@ -299,9 +299,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Issue #39: [Generate initramfs for live ISO](https://github.com/illiliti/tinyramfs/issues/39)
 
 ## toybox
-- [toybox 0.8.4 Contributor](http://landley.net/toybox/news.html#24-10-2020)
-- [toybox 0.8.5 Contributor](http://landley.net/toybox/news.html#19-05-2021)
-- [toybox 0.8.12 Contributor](http://landley.net/toybox/news.html#18-01-2025)
+- [toybox 0.8.4 Contributor](https://landley.net/toybox/news.html#24-10-2020)
+- [toybox 0.8.5 Contributor](https://landley.net/toybox/news.html#19-05-2021)
+- [toybox 0.8.12 Contributor](https://landley.net/toybox/news.html#18-01-2025)
 - Commit 2f07d87: [Add `hwdata` path to `lsusb`/`lspci`](https://github.com/landley/toybox/commit/2f07d87b26e85ad30926d17d379463de6a4fb0c9)
 - Issue #161: [`install` performs stripping regardless if files were executables or not](https://github.com/landley/toybox/issues/161)
 - Issue #168: [Some commands aren't listed on the website](https://github.com/landley/toybox/issues/168)

@@ -246,9 +246,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://landley.net/toybox/roadmap.html
 - https://landley.net/toybox/status.html
 - https://lists.landley.net/pipermail/toybox/2024-February/009084.html
+- https://openwall.com/lists/musl/2013/11/09/3
 - https://packages.gentoo.org/categories/app-alternatives
 - https://source.android.com/security/selinux/device-policy
 - https://tools.suckless.org/9base/
-- https://www.openwall.com/lists/musl/2013/11/09/3
 - https://youtube.com/@roblandley1154
 - https://youtube.com/watch?v=Sk9TatW9ino

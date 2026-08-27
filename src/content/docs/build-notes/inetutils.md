@@ -14,4 +14,4 @@ echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
 ```
 
 ## References
-- https://www.gnu.org/software/inetutils/manual/inetutils.html
+- https://gnu.org/software/inetutils/manual/inetutils.html

@@ -206,7 +206,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Not important for AMD CPUs, but for Intel you'd have to use 64 to get the fastest performance, and it bloats by trying to resize into chunks that may be huge, and if it is not specified or is zero, then it will use a machine-dependent default (as it is enabled on O2 and O3)
 - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66240
 - https://lkml.org/lkml/2015/5/19/1142
-- https://www.reddit.com/r/Gentoo/comments/11iv2tl/need_advice_kernel_optimization_low_latency_max/
+- https://reddit.com/r/Gentoo/comments/11iv2tl/need_advice_kernel_optimization_low_latency_max/
 
 ### `-flimit-function-alignment`
 - Has no use when `-falign-functions` is not used
@@ -447,8 +447,8 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://reviews.llvm.org/D113615
 - https://reviews.llvm.org/D157020
 - https://reviews.llvm.org/D75203
+- https://sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
 - https://sourceware.org/bugzilla/show_bug.cgi?id=27837
-- https://www.sifive.com/blog/all-aboard-part-3-linker-relaxation-in-riscv-toolchain
 
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits

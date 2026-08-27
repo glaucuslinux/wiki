@@ -20,7 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`libedit`](https://thrysoee.dk/editline/): command line editing library
 - [`libressl`](https://libressl.org/): tls library
 - [`libudev-zero`](https://github.com/illiliti/libudev-zero): libudev implementation
-- [`libunwind`](https://www.nongnu.org/libunwind/): stack unwinding library
+- [`libunwind`](https://nongnu.org/libunwind/): stack unwinding library
 - [`limine`](https://limine-bootloader.org/): boot loader and manager
 - [`linux-cachyos`](https://github.com/CachyOS/linux-cachyos): kernel
 - [`lld`](https://lld.llvm.org/): linker

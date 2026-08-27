@@ -19,4 +19,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Since the use of static libraries is not always obvious, the relevant programs (and the procedures needed to do the linking) may not even be known.
 
 ### BLFS
-- https://www.linuxfromscratch.org/blfs/view/svn/introduction/libraries.html
+- https://linuxfromscratch.org/blfs/view/svn/introduction/libraries.html

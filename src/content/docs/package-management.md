@@ -251,7 +251,9 @@ patch -p0 ...
 - `/var/tmp/rad`: Temporary store for build artefacts; `$tmp`
 
 ## References
+- https://community.unix.com/t/run-command-stored-in-variable/342447
 - https://crux.nu/doc/handbook.html
+- https://debian.org/releases/bookworm/amd64/ch03s04.en.html
 - https://devmanual.gentoo.org/general-concepts/dependencies/
 - https://devmanual.gentoo.org/general-concepts/dependencies/#implicit-system-dependency
 - https://devmanual.gentoo.org/quickstart/index.html
@@ -281,6 +283,7 @@ patch -p0 ...
 - https://pubs.opengroup.org/onlinepubs/9799919799/
 - https://superuser.com/questions/195826/bash-shebang-for-dummies
 - https://tincan-linux.github.io/wiki/arc
+- https://tldp.org/LDP/abs/html/unofficialst.html
 - https://venam.nixers.net/blog/unix/2020/03/29/distro-pkgs.html
 - https://wiki.alpinelinux.org/wiki/Architecture
 - https://wiki.alpinelinux.org/wiki/Package_policies
@@ -296,6 +299,3 @@ patch -p0 ...
 - https://wiki.archlinux.org/title/PKGBUILD
 - https://wiki.debian.org/ReduceDebian
 - https://wiki.gentoo.org/wiki/Stage_file
-- https://www.debian.org/releases/bookworm/amd64/ch03s04.en.html
-- https://www.tldp.org/LDP/abs/html/unofficialst.html
-- https://www.unix.com/unix-for-dummies-questions-and-answers/247059-run-command-stored-variable.html

@@ -22,7 +22,7 @@ It's not very important, but until nsss gets more widespread, I think the statu 
 - https://gitlab.alpinelinux.org/alpine/aports/-/issues/6711
 - https://karkhaz.github.io/tuscan/musl/nss.html
 - https://news.ycombinator.com/item?id=40703554
+- https://openwall.com/lists/musl/2024/03/06/4
 - https://patchwork.yoctoproject.org/project/oe-core/patch/20220823235624.2488133-6-andrei@gherzan.com/#4971
+- https://reddit.com/r/voidlinux/comments/xfkh8a/mdns_on_musl/
 - https://wiki.musl-libc.org/future-ideas
-- https://www.openwall.com/lists/musl/2024/03/06/4
-- https://www.reddit.com/r/voidlinux/comments/xfkh8a/mdns_on_musl/

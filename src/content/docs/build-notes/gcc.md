@@ -157,9 +157,9 @@ cc1: error: no include path in which to search for stdc-predef.h
   - https://github.com/cross-tools/musl-cross
 
 ## Relocatable (sysroot+toolchain combined):
-  - http://musl.cc/
   - https://github.com/firasuke/mussel
   - https://github.com/richfelker/musl-cross-make
+  - https://musl.cc/
   - https://skarnet.org/toolchains/
 
 ## References

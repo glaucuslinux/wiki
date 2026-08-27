@@ -9,4 +9,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Does not support parallel build
 
 ## References
-- https://www.isc.org/blogs/isc-dhcp-eol/
+- https://isc.org/blogs/isc-dhcp-eol/

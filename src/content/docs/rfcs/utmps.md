@@ -20,13 +20,13 @@ utmps is a solution to systems using s6, and won't work for systemd, and it impl
 - https://github.com/thkukuk/wtmpdb
 - https://github.com/util-linux/util-linux/issues/2088
 - https://gitlab.com/procps-ng/procps/-/merge_requests/67
+- https://reddit.com/r/voidlinux/comments/g2wyon/musl_people_how_do_you_do_user_accounting_without/
 - https://skarnet.org/software/utmps/utmps-utmpd.html
+- https://thkukuk.de/blog/Y2038_glibc_lastlog_64bit/
+- https://thkukuk.de/blog/Y2038_glibc_utmp_64bit/
+- https://thkukuk.de/blog/Y2038_glibc_wtmp_64bit/
 - https://unix.stackexchange.com/questions/567012/how-can-i-add-lastlog-support-to-alpine-linux
 - https://wiki.musl-libc.org/roadmap.html
-- https://www.reddit.com/r/voidlinux/comments/g2wyon/musl_people_how_do_you_do_user_accounting_without/
-- https://www.thkukuk.de/blog/Y2038_glibc_lastlog_64bit/
-- https://www.thkukuk.de/blog/Y2038_glibc_utmp_64bit/
-- https://www.thkukuk.de/blog/Y2038_glibc_wtmp_64bit/
 
 * utmp.h has been deprecated in 2001 in favor of utmpx.h
 * On Glibc systems the former utmp.h is just an alias (or a symlink) for the latter utmpx.h

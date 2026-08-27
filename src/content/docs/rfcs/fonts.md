@@ -90,7 +90,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - ysabeau infant: https://github.com/CatharsisFonts/Ysabeau
 
 ## Misc
-- http://mplus-fonts.osdn.jp/mplus-bitmap-fonts/index.html
 - https://github.com/cmvnd/fonts
 - https://github.com/hishamhm/lode-fonts
 - https://github.com/htayj/DEC-Fonts/tree/main/dist/fonts

@@ -4,6 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `fakeroot` (the binary) in `package()` can preserve ownership and permissions in `$SACD`; it also ensures that the host won't be tainted (won't be run as `root`)
+- `fakeroot` causes fifos to become regular files; pipes (fifos) can be copied, rsynced and tarred but can't be checksummed
 
 ## References
 - https://github.com/kisslinux/kiss/pull/46

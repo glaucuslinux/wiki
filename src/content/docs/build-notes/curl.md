@@ -28,7 +28,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `-J` does not make sense with `lastpathpart()`; archive changes from `v$ver` to `$nom-$ver`
 
 ## References
-- http://bugs.alpinelinux.org/issues/16980
+- https://bugs.alpinelinux.org/issues/16980
 - https://curl.se/changes.html
 - https://curl.se/docs/caextract.html
 - https://curl.se/docs/comparison-table.html
@@ -38,7 +38,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://daniel.haxx.se/docs/curl-vs-wget.html
 - https://everything.curl.dev/build/deps.html
 - https://git.alpinelinux.org/aports/commit/main/curl?id=5c35191091b85b1d10b96de568e5824d02a670e3
-- https://github.com/curl/curl/pull/14059
-- https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html
 - https://github.com/curl/curl/pull/12900
 - https://github.com/curl/curl/pull/13544
+- https://github.com/curl/curl/pull/14059
+- https://hacktivis.me/git/httpc/commit/eeecd47da1dd58e3ecb630f36fd360d78a6ed7ea.html

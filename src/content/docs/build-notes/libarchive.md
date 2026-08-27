@@ -17,4 +17,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prefer `bsdunzip` over unmaintained Info-ZIP `unzip`
 
 ## References
-- https://www.youtube.com/watch?v=M8NVBa3ZsE4
+- https://youtube.com/watch?v=M8NVBa3ZsE4

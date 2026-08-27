@@ -7,7 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Older versions with `parsetoml` parsed 100k packages in 3 minutes
 - For CPU/compute use || (via Weave or OpenMP)
 - For IO use `asyncdispatch`
-- https://www.youtube.com/watch?v=Ul8OO4vQMTw
+- https://youtube.com/watch?v=Ul8OO4vQMTw
 
 ## Compute Tasks (CPU)
 - scientific computing (solvers, linear algebra, physics, biology, statistics, …)

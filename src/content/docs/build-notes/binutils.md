@@ -36,10 +36,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://bugs.archlinux.org/task/42540
+- https://github.com/commercialhaskell/stack/issues/2387
 - https://github.com/richfelker/musl-cross-make/commit/d969dea983a2cc54a1e0308a0cdeb6c3307e4bfa
+- https://openwall.com/lists/musl/2015/05/01/5
 - https://reviews.llvm.org/D64903
 - https://sourceware.org/bugzilla/show_bug.cgi?id=25882
-- https://github.com/commercialhaskell/stack/issues/2387
-- https://www.openwall.com/lists/musl/2015/05/01/5
 - https://sourceware.org/bugzilla/show_bug.cgi?id=32715
 - https://youtube.com/watch?v=Dlw_ULTdEYs

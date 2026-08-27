@@ -7,4 +7,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - An outdated fork of `rsync`
 
 ## References
-- https://www.openrsync.org/
+- https://openrsync.org/

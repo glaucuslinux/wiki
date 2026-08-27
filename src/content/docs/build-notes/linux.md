@@ -45,7 +45,6 @@ make \
 - `utf8` is not recommended for `fat` filesystems: `CONFIG_FAT_DEFAULT_IOCHARSET`
 
 ## References
-- http://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html
 - https://docs.kernel.org/kbuild/llvm.html
 - https://elinux.org/Kernel_Size_Tuning_Guide
 - https://firasuke.github.io/DOTSLASHLINUX/
@@ -61,6 +60,7 @@ make \
 - https://kspp.github.io/Recommended_Settings
 - https://linuxfromscratch.org/blfs/view/cvs/postlfs/firmware.html
 - https://linuxfromscratch.org/hints/downloads/files/kernel-configuration.txt
+- https://lkml.iu.edu/hypermail/linux/kernel/1408.0/03049.html
 - https://lore.kernel.org/patchwork/patch/489972/
 - https://mikrocontroller.net/attachment/413002/config-bpir2.txt
 - https://odi.ch/prog/kernel-config.php

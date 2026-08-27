@@ -9,4 +9,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--enable-lto` only works for static builds with `--disable-shared`
 
 ## References
-- https://www.ibm.com/support/pages/decimal64-and-decimal128-decimal-data-types-support-db2-esqlc-applications-using-gcc-compiler
+- https://ibm.com/support/pages/decimal64-and-decimal128-decimal-data-types-support-db2-esqlc-applications-using-gcc-compiler

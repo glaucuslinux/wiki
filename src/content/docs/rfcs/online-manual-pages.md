@@ -12,7 +12,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ### Misc
 - https://man.cx/
-- http://man.he.net/
+- https://man.he.net/
 
 ### OpenBSD
 - https://man.openbsd.org/editline.7
