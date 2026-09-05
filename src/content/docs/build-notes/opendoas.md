@@ -6,6 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `sudo` also supports PAM-less builds and is quite configurable; Alpine no longer provides `sudo` as of 3.16
 - FreeBSD provides `su` by default; `sudo` and `doas` are not preinstalled
 - Owner and group of `/etc/doas.conf` should be `0`, and permissions `400`
+- `--without-pam` automatically sets `--with-shadow` as the auth method
 - There is no test suite
 - There exists another port called `slicer69/doas` that requires PAM
 - `persist` is OpenBSD specific and is disabled by default; it can be enabled for Linux systems using `--with-timestamp` which uses timestamp files similar to sudo

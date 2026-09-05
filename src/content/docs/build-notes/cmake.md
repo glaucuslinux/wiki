@@ -39,6 +39,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 ```
 - bootstrap script attempts to run cross compiled binaries on the host which obviously fails; use `CC_FOR_BUILD` and `CXX_FOR_BUILD` and `LD_FOR_BUILD`?
+- We might need to pass `CMAKE_C_COMPILER=clang` and `CMAKE_CXX_COMPILER=clang++`
+- Do we need to set `CMAKE_CROSSCOMPILING` in `glaucus-cmake`?
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html

@@ -17,7 +17,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Disable `CLANG_ENABLE_STATIC_ANALYZER` for `toolchain` and `cross`
 - To disable `LIBCXX_ENABLE_RTTI` disable `LIBCXX_ENABLE_EXCEPTIONS` first
 - What is the default value for `LIBCXX_CXX_ABI`?
-- Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`
+- Enable `LIBCXX_USE_COMPILER_RT` and `LIBCXXABI_USE_COMPILER_RT` to use `compiler-rt` over `libgcc_s`; `CMakeLists.txt` checks if `LIBCXX_USE_COMPILER_RT` is `ON` otherwise it checks for `LIBCXX_HAS_GCC_LIB` and `LIBCXX_HAS_GCC_S_LIB`
 - Enable `LIBCXXABI_USE_LLVM_UNWINDER` to use `libunwind` over `libgcc_s`
 - Should we set `CMAKE_CXX_STANDARD` to `20` instead of `17`
 - `LLVM_BUILD_BENCHMARKS`, `LLVM_BUILD_DOCS`, `LLVM_BUILD_EXAMPLES` and `LLVM_BUILD_TESTS` are `OFF` by default

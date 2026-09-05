@@ -45,6 +45,7 @@ make \
 - `utf8` is not recommended for `fat` filesystems: `CONFIG_FAT_DEFAULT_IOCHARSET`
 
 ## References
+- https://docs.kernel.org/kbuild/headers_install.html
 - https://docs.kernel.org/kbuild/llvm.html
 - https://elinux.org/Kernel_Size_Tuning_Guide
 - https://firasuke.github.io/DOTSLASHLINUX/
@@ -66,4 +67,6 @@ make \
 - https://odi.ch/prog/kernel-config.php
 - https://phoronix.com/news/Linux-6.2-SLOB-Deprecated
 - https://usenix.org/system/files/conference/atc18/atc18-bouron.pdf
+- https://wiki.gentoo.org/wiki/Kernel/Configuration/en
+- https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
 - https://youtube.com/watch?v=NVWVHiLx1sU

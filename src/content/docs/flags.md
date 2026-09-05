@@ -457,7 +457,9 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
 
 ### `--hash-style=gnu`
-- `gnu` is the more modern style
+- `.hash` (`sysv`) is an on-disk hash table
+- `.gnu.hash` (`gnu`) is more modern and has a bloom filter and a hash table to quickly skip DSOs
+- `--hash-style=both` is for for backwards compatibility
 - https://maskray.me/blog/2022-08-21-glibc-and-dt-gnu-hash
 
 ### `--compress-debug-sections=zstd`

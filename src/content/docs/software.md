@@ -29,12 +29,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`muon`](https://sr.ht/~lattis/muon/): meson implementation
 - [`muon samurai`](https://git.sr.ht/~lattis/muon/tree/master/item/src/external/samurai): ninja implementation
 - [`musl`](https://musl.libc.org/): c standard library
-- [`neatvi`](https://github.com/aligrudi/neatvi): text editor
+- [`neatvi`](https://github.com/aligrudi/neatvi): terminal text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
 - [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
+- [`sff`](https://codeberg.org/sylphenix/sff): terminal file manager
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
 - [`sortix libz`](https://sortix.org/libz/): zlib implementation
 - [`toybox`](https://landley.net/toybox/): unix user space
