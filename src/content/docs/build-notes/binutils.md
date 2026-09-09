@@ -26,6 +26,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--enable-shared` enables the shared libraries of `libbfd` and `libopcodes` and makes tools like `ar` and `as` depend on them
 - `--with-lib-path` controls ld's library search path
 - Environment variable `LD` should contain `ld.bfd` or `ld.lld` and not just `ld`
+- `binutils` does not provide `/usr/share/info/standards.info`
+
 
 ## gold
 - `gold` has been deprecated

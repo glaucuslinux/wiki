@@ -14,6 +14,7 @@ skarnet: "All in all, I believe the flexibility it offers overweighs the inconve
 
 utmps is a solution to systems using s6, and won't work for systemd, and it implements utmpx safely using a daemon
 
+- https://davmac.wordpress.com/2019/05/04/bad-utmp-implementations-in-glibc-and-freebsd/
 - https://en.wikipedia.org/wiki/Utmp
 - https://github.com/thkukuk/lastlog2
 - https://github.com/thkukuk/utmpx/blob/main/Y2038.md

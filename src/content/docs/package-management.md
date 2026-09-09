@@ -39,8 +39,10 @@ glaucus uses the filesystem tree as its database to store package information an
   - `doc`, `man`: do not remove documentation
   - `empty`: do not remove empty directories
   - `la`, `libtool`: do not remove libtool archives (`.la` files)
+  - `no-include`: remove include files
   - `no-lto`: do not use LTO
   - `no-parallel`: do not parallelize `build()`; force `-j 1` instead of the default `-j 5`
+  - `no-pc`: remove `.pc` files
   - `no-purge`/`no-prune`: do not remove unwanted files
   - `static`: do not remove static libraries (.a files)
   - `no-strip`: do not strip binaries and libraries

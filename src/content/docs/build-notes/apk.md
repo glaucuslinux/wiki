@@ -3,10 +3,14 @@ title: apk
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Prefer alpine's `abuild` to arch's `makepkg`; the latter stores hidden files in tarballs `.BUILDINFO`, `.MTREE` and `.PKGINFO`
-- Generaet valid `.apk` tarballs from glaucus build files
+## Configure
+- `-Dhelp=enabled` requires `lua`
+
+## Other
 - `apk` does not handle fifos correctly
-- `APKBUILD`s are not POSIX compliant
+- `APKBUILD` files are not POSIX compliant
+- Generate valid Alpine `.tar.X` packages from glaucus build files and avoid generating binary `.apk` packages
+- Prefer Alpine's `abuild` to Arch's `makepkg` as the latter stores hidden files in tarballs (e.g. `.BUILDINFO`, `.MTREE` and `.PKGINFO`)
 
 ## References
 - https://blog.orhun.dev/alpine-packaging-setup/
@@ -15,8 +19,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://git.alpinelinux.org/aports/tree/main/apk-tools
 - https://github.com/chimera-linux/cports/blob/master/main/apk-tools
 - https://github.com/chimera-linux/cports/blob/master/Usage.md
-- https://github.com/void-linux/void-packages/blob/master/srcpkgs/apk-tools/template
-- https://gitlab.archlinux.org/archlinux/packaging/packages/apk-tools/-/blob/main/PKGBUILD
 - https://lists.alpinelinux.org/~alpine/apk-tools/%3CD194B900-6A60-4A2C-B520-513D8F1263D6%40msys.ch%3E
 - https://man.archlinux.org/man/abuild.1
 - https://man.archlinux.org/man/apk.8.en
