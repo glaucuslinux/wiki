@@ -10,5 +10,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Replaces
 - `kbd`
-- `procps-ng`: `hugetop`, `pidwait`, `slabtop`, `tload`
-- `psmisc`: `fuser`, `pstree`
+- `hugetop`, `pidwait`, `slabtop` and `tload` from `procps-ng`
+- `fuser` and `pstree` from `psmisc`

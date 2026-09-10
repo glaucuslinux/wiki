@@ -4,8 +4,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - Replaces `bison -y`
-- `btyacc` is enabled by default
-- Remove `--program-prefix=b` if kernel fails to build? Also check if a patch is needed..
+
+## Configure
+- `btyacc` is enabled by default:
+  - This increases compatibility with `bison` and allows `byacc -B` to be used
+  - This also means that backtracking features like `%destructor` and `%locations` are now supported
+- Remove `--program-prefix=b`?
 
 ## References
 - https://aur.archlinux.org/packages/byacc-bison
