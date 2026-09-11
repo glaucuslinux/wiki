@@ -41,6 +41,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - If a project breaks with `-DCMAKE_SKIP_RPATH=ON` downgrade to `-DCMAKE_SKIP_INSTALL_RPATH=ON`
 - `CMake_BUILD_LTO` is only effective when bootstrapping the `cmake` executable; use `-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON` to enable `lto` for `glaucus-cmake`
 - There is no need to set `CMAKE_C_COMPILER`, `CMAKE_CXX_COMPILER`, `CMAKE_C_FLAGS`, `CMAKE_CXX_FLAGS` and `CMAKE_EXE_LINKER_FLAGS` as `cmake` automatically reads `CC`, `CXX`, `CFLAGS`, `CXXFLAGS` and `LDFLAGS` from the environment
+- `GNUInstallDirs` mentions that `SYSCONFDIR`, `LOCALSTATEDIR` and `RUNSTATEDIR` are special cases that accept absolute paths whereas other directories are relative paths to `PREFIX` which when set to `/usr` triggers this special case; do note that `cmake` does not treat `SHAREDSTATEDIR` as a special case and expects it to be `com` (relative to `/usr`, meaning `/usr/com`) which is not the case here as glaucus expects it to be `/var/lib` which is why we set it as an absolute value
 
 ## Build
 - `cmake` can be built with `make` without requiring `ninja`,`samu` or `muon`
@@ -57,7 +58,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html
+- https://cmake.org/cmake/help/latest/envvar/DESTDIR.html
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 - https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
 - https://cmake.org/cmake/help/latest/policy/CMP0192.html
+- https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html
 - https://linuxfromscratch.org/blfs/view/svn/kde/extra-cmake-modules.html
