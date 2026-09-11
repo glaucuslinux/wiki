@@ -3,44 +3,56 @@ title: cmake
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Optimize `glaucus-cmake` for size (`glaucus-meson` and `glaucus-muon` are done); consider `-DCMAKE_BUILD_TYPE=MinSizeRel`
-- Use bundled version of `libuv` (for now)
-- Use bundled version of `rhash` (nothing depends on it)
-- Unset `$MAKE` as `cmake` expects `cmake_make_processor` to be equal to `$MAKE` which is `make` on glaucus, and that does not work when bootstrapping `cmake`
-- Can be built with `make` only; without requiring `ninja`,`samu` or `muon`
-- Build `cmake` by itself to enable LTO (`BUILD_LTO=ON`)
-- Test suite might require `LC_ALL=en_US.UTF-8` on LFS
-- Builds takes a while (~10 minutes) even with jobs=2 and jobs=4; compare `make` against `samu`?
-- Absolute paths are allowed for `CMAKE_INSTALL_<dir>`, but are not recommended
-- Do we need the following:
+## Configure
+- `./bootstrap` accepts `cmake` variables after `--`
+- `-DBUILD_CursesDialog=OFF` prevents `ccmake` from being built
+- There is no configure option to prevent `cpack` and `ctest` from being built
+- Use bundled versions of `librhash` and `libuv`; no other package depends on them to justify providing them system-wide
+- `./bootstrap` passes the following by default:
 ```
-- -DBUILD_CursesDialog=OFF
-- -DCMAKE_MAKE_PROGRAM=/usr/bin/samu
-- -DCMake_TEST_NO_NETWORK=ON
-- rm -fR "$dir"/usr/share/emacs
+--no-system-libs
+--no-system-cppdap
+--no-system-curl
+--no-system-expat
+--no-system-jsoncpp
+--no-system-zlib
+--no-system-bzip2
+--no-system-liblzma
+--no-system-nghttp2
+--no-system-zstd
+--no-system-libarchive
+--no-system-librhash
+--no-system-libuv
+--no-qt-gui
+--debugger
 ```
-- Might consider these when we have more stuff:
+- glaucus passes `--system-libs` then turns off `cppdap`, `jsoncpp`, `nghttp2`, `librhash` and `libuv`
+- `--no-qt-gui` is equal to `-DBUILD_QtDialog=OFF`
+- These options allow the early bootstrapped version `Bootstrap.cmk/cmake` to link against system installed libaries (glaucus already passes `--no-system-` for all of them in the final version of `cmake`):
 ```
-- --bootstrap-system-libuv
-- --bootstrap-system-jsoncpp
-- --bootstrap-system-librhash
+--bootstrap-system-libuv
+--bootstrap-system-jsoncpp
+--bootstrap-system-librhash
 ```
-- `cmake` interprets `1/ON/YES/TRUE/Y` as `true` and `0/OFF/NO/FALSE/N/IGNORE/NOTFOUND` as `false`; use `ON` and `OFF`
-- Check:
-```
--DCMAKE_SKIP_INSTALL_RPATH=ON
--DBUILD_SHARED_LIBS=ON
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+- `BUILD_SHARED_LIBS` is forced `OFF` internally; do not change it
+- It does not make sense to use `CMake_TEST_NO_NETWORK` and `CMAKE_RUN_LONG_TESTS` when `-DBUILD_TESTING=OFF` is already set
+- It also does not make sense to use `CMAKE_USE_SYSTEM_FORM` when `-DBUILD_CursesDialog=OFF` is already set
+- There's no need to use `CMAKE_SKIP_BUILD_RPATH` and `CMAKE_SKIP_INSTALL_RPATH` when `-DCMAKE_SKIP_RPATH=ON` is already set as it omits `rpath` in both build and install targets
+- `CMake_BUILD_LTO` is only effective when bootstrapping the `cmake` executable; use `-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON` to enable `lto` for `glaucus-cmake`
+- There is no need to set `CMAKE_C_COMPILER`, `CMAKE_CXX_COMPILER`, `CMAKE_C_FLAGS` and `CMAKE_CXX_FLAGS` as `cmake` automatically reads `CC`, `CXX`, `CFLAGS` and `CXXFLAGS` from the environment
 
-# only use headers and libraries from the syroot and avoid binaries
-set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-```
-- bootstrap script attempts to run cross compiled binaries on the host which obviously fails; use `CC_FOR_BUILD` and `CXX_FOR_BUILD` and `LD_FOR_BUILD`?
-- We might need to pass `CMAKE_C_COMPILER=clang` and `CMAKE_CXX_COMPILER=clang++`
-- Do we need to set `CMAKE_CROSSCOMPILING` in `glaucus-cmake`?
+## Build
+- `cmake` can be built with `make` without requiring `ninja`,`samu` or `muon`
+
+## Package
+- Absolute paths are allowed for `CMAKE_INSTALL_<dir>`, but are not recommended
+
+## Other
+- `cmake` interprets `1/ON/YES/TRUE/Y` as `true`; glaucus recommends using `ON`
+- `cmake` interprets `0/OFF/NO/FALSE/N/IGNORE/NOTFOUND` as `false`; glaucus recommends using `OFF`
+
+## Old
+- Bootstrapping used to fail when `$MAKE` was set as it expects `cmake_make_processor=$MAKE` which is `make` on glaucus
 
 ## References
 - https://cmake.org/cmake/help/latest/command/install.html
