@@ -38,8 +38,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - It does not make sense to use `CMake_TEST_NO_NETWORK` and `CMAKE_RUN_LONG_TESTS` when `-DBUILD_TESTING=OFF` is already set
 - It also does not make sense to use `CMAKE_USE_SYSTEM_FORM` when `-DBUILD_CursesDialog=OFF` is already set
 - There's no need to use `CMAKE_SKIP_BUILD_RPATH` and `CMAKE_SKIP_INSTALL_RPATH` when `-DCMAKE_SKIP_RPATH=ON` is already set as it omits `rpath` in both build and install targets
+- If a project breaks with `-DCMAKE_SKIP_RPATH=ON` downgrade to `-DCMAKE_SKIP_INSTALL_RPATH=ON`
 - `CMake_BUILD_LTO` is only effective when bootstrapping the `cmake` executable; use `-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON` to enable `lto` for `glaucus-cmake`
-- There is no need to set `CMAKE_C_COMPILER`, `CMAKE_CXX_COMPILER`, `CMAKE_C_FLAGS` and `CMAKE_CXX_FLAGS` as `cmake` automatically reads `CC`, `CXX`, `CFLAGS` and `CXXFLAGS` from the environment
+- There is no need to set `CMAKE_C_COMPILER`, `CMAKE_CXX_COMPILER`, `CMAKE_C_FLAGS`, `CMAKE_CXX_FLAGS` and `CMAKE_EXE_LINKER_FLAGS` as `cmake` automatically reads `CC`, `CXX`, `CFLAGS`, `CXXFLAGS` and `LDFLAGS` from the environment
 
 ## Build
 - `cmake` can be built with `make` without requiring `ninja`,`samu` or `muon`
