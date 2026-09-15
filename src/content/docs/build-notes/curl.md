@@ -6,6 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `curl` does not support recursive downloads, metalinks and same file multiconnect for security reasons
 
 ## Configure
+- We have to be explicit as `curl` specifies both `--enable` and `--disable` for every option
 - Prefer POSIX threads to `c-ares`
 - `--disable-rt` as `musl` provides `clock_gettime` under `libc` itself
 - `--without-default-ssl-backend` is only relevant when multiple `ssl` backends are enabled
