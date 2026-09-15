@@ -12,11 +12,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Build system automatically sets `M4=/usr/bin/m4` and `EMACS=no`
 - `--without-lispdir` prevents `configure` from providing a location to store `.elc` files (defaults to `${datadir}/emacs/site-lisp`)
 
-## Check
-- Depends on GNU `m4`, and `perl` to run `autom4te` on `tests/wrapper.in`
-- Disabled on Alpine
-- Tests `227` and `351` are broken on Adelie and Arch
-
 ## `autoreconf`
 - Depends on `autopoint` from `gettext-tiny`
 - Runs `aclocal`, `autoconf`, `automake`, `autoheader`, `autopoint` and `libtoolize` in the right order and repeatedly when appropriate

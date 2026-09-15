@@ -7,6 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `./bootstrap` accepts `cmake` variables after `--`
 - `-DBUILD_CursesDialog=OFF` prevents `ccmake` from being built
 - There is no configure option to prevent `cpack` and `ctest` from being built
+- `ctest` is not only used for running `cmake`'s test suite, but also for running tests in other projects that use `cmake`
 - Use bundled versions of `librhash` and `libuv`; no other package depends on them to justify providing them system-wide
 - `./bootstrap` passes the following by default:
 ```

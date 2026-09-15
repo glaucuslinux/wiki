@@ -3,27 +3,22 @@ title: curl
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- `--with-gssapi`
-- `--with-libssh2` (https://gitlab.alpinelinux.org/alpine/aports/-/issues/10222)
-- `--with-nghttp2` vs `--with-nghttp3`
-- `--with-openssl-quic`; HTTP/3 uses QUIC
-- `--without-libpsl` vs `--with-libpsl`; BLFS recommends, Daniel says many don't use it
-- Prefer `--with-ca-embed`
-- Do we need `curldebug`?
-- symlink `/etc/ssl/certs/ca-certificates.crt` to `/etc/ssl/cert.pem`
+- `curl` does not support recursive downloads, metalinks and same file multiconnect for security reasons
+
+## Configure
+- Prefer POSIX threads to `c-ares`
+- `--disable-rt` as `musl` provides `clock_gettime` under `libc` itself
+- `--without-default-ssl-backend` is only relevant when multiple `ssl` backends are enabled
+- `--without-ldap` implicitly disables both `ldap` and `lber`
+- Disable `idn` as not many websites use internationalized domain names
+
+## Package
+- Symlink `/etc/ssl/certs/ca-certificates.crt` to `/etc/ssl/cert.pem`
 - `make install -C scripts` does nothing
-- Do we need `--with-random=/dev/urandom` if we're not cross-compiling?
-- `make test` check `nonflaky`
-- `curl` depends on `cmake` for `brotli` and `c-ares` on Alpine
-- `libidn2` and `c-ares` support are enabled on Alpine for better DNS performance
-- Does `musl` support `libidn2`?
-- Do we need `c-ares` because musl does not support DNS lookups?
-- `c-ares` support is disabled on Arch: https://bugs.archlinux.org/task/49962
-- Disable IDN; not many websites use internationalized domain names
-- Does not support recursive downloads, metalinks and same file multiconnect for security reasons
-- Check if we need to copy `scripts/cd2nroff` to `/usr/bin` (or maybe `ac_cv_path_NROFF=/usr/bin/mandoc`)
-- Do we need `ac_cv_path_PERL=true`?
-- Support for NSS was removed as of `8.3.0`
+
+## Other
+- `msh3` was removed as of `8.16.0`
+- `nss` was removed as of `8.3.0`
 - `curl` dropped support for TLS libraries that do not support `TLSv1.3` (e.g. `bearssl`)
 - `-J` does not make sense with `lastpathpart()`; archive changes from `v$ver` to `$nom-$ver`
 

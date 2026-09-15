@@ -15,6 +15,3 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Package
 - glaucus removes `cairo-trace` and associated libraries under `/usr/lib/cairo`
-
-## Check
-- Test suite is broken on LFS

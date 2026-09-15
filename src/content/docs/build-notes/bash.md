@@ -17,9 +17,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Build
 - Add `no-parallel` to `opt` in case of race conditions between `y.tab.c` and `builtins/libbuiltins.a`
 
-## Check
-- Disabled on glaucus as `bash` is not part of the final system
-
 ## Package
 - glaucus removes `bin/bashbug`
 
