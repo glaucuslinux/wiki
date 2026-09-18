@@ -12,6 +12,7 @@ SUBSYSTEM=input;.* root:input 660 *libudev-zero-helper
 - OpenWrt switched from `libudev-fbsd` to `libudev-zero`
 
 ## References
+- https://github.com/aanderse/libudev-zero
 - https://github.com/eweOS/packages/blob/libudev/sound-initialized.patch
 - https://github.com/illiliti/libudev-zero/pull/31
 - https://github.com/illiliti/libudev-zero/pull/69
