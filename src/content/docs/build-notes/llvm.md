@@ -117,6 +117,7 @@ export STRINGS=llvm-strings
   - Assembler: `clang -c`
   - Bitcode Generator: `clang -flto`
 - `clang-tools-extra` is not needed for earlier builds of `clang`
+- `clang` does not support `__builtin_va_arg_pack` and `__builtin_va_arg_pack_len` which is why we patch `fortify-headers`
 
 ## References
 - https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2555-building-a-linux-distro-with-llvm/slides/22812/chimera_fosdem_2024_llvm_DIVbHby.pdf
