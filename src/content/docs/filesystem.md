@@ -22,8 +22,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `/usr/share/pkgconfig` as a symlink to `/usr/lib/pkgconfig`
 - `/var/lock` as a symlink to `/run/lock`
 - `/var/run` as a symlink to `/run`
-- `/var/spool/mail` as a symlink to `/var/mail`
-- Sticky bit (`1777`) is set on `/dev/shm`, `/tmp` and `/var/tmp` (and `/var/mail`?)
+- Sticky bit (`1777`) is set on `/dev/shm`, `/tmp` and `/var/tmp`
 
 ## References
 - FHS 3.0

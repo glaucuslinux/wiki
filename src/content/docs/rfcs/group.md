@@ -3,12 +3,10 @@ title: Groups
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- `locate` group is needed for `plocate`
-  - change its `gid` to 20?
-  - not needed anymore as glaucus no longer uses `plocate`
-- `input` group has been deprecated and `plugdev` should be used (e.g. QEMU)
-- `network` group has been deprecated and `netdev` should be used (e.g. QEMU)
-- `uucp` group has been deprecated and `dialout` should be used
+- use `input` instead of `plugdev`
+- use `network` instead of `netdev`
+- use `dialout` instead of `uucp`
+- do not add a `locate` group; glaucus no longer provides `plocate`
 - `udevd` checks for the following missing groups: `kmem`, `input`, `lp`, `cdrom`, `tape`, `kvm` and `dialout`
 
 ## References

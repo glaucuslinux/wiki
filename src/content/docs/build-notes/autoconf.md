@@ -10,6 +10,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Configure
 - Build system automatically sets `M4=/usr/bin/m4` and `EMACS=no`
+- `configure` script uses the `hostname` command
 - `--without-lispdir` prevents `configure` from providing a location to store `.elc` files (defaults to `${datadir}/emacs/site-lisp`)
 
 ## `autoreconf`
