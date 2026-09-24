@@ -305,3 +305,4 @@ overlay /            overlay defaults,lowerdir=/media/fs-ro,upperdir=/media/fs-r
 - https://wiki.osdev.org/Mkisofs
 - https://www.linuxquestions.org/questions/linux-from-scratch-13/create-an-iso-from-lfs-build-4175703319/
 - https://www.phenix.bnl.gov/~purschke/RescueCD/
+- https://youtube.com/watch?v=WAoTKRJ6PNY

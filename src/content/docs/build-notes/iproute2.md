@@ -3,25 +3,28 @@ title: iproute2
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- glaucus removes `ARPD` and `BDB`
+## Configure
+- `arpd` is not built if `bdb` is not detected
 - Depends on `flex` (the 2017 release in particular); does not build with `reflex`
-- Set `make NETNS_RUN_DIR=/run/netns`; otherwise it defaults to `/var/run/netns`
-- There is no test suite
-- Do not install `libnetlink.a` or `libnetlink.h`; nothing depends on them
-- `ip` replaces other programs like `ifconfig` and `route`
-- `bridge` provides a superset of the functionality implemented by the `brctl` program from `bridge-utils`
-- `ss` aka "Socket Statistics" can replace `netstat` from `net-tools` as it provides more TCP and state information
-- upstream already applies ax25 as of 5.18.0
-- `-D_GNU_SOURCE` is already in the flags
-- Check `iproute2` docdir
 - `iproute2` uses `$YACC`
-- This `iproute2` issue is from upstream:
+- Upstream already applies ax25 as of 5.18.0
+
+## Build
+- We might have to pass `make CC=clang (or "$CC") HOSTCC=clang (or "$CC")`
+- Upstream issue (check if resolved):
 ```
 IPT  grep: grep: No such file or directory
 grep: TC_CONFIG_XT: No such file or directory
 ```
-- `include` should be `$PWD/include` according to iproute2 config file, and not `/usr/include`?
-- `libbpf` is not needed
+
+## Package
+- By default `libnetlink.a` and `libnetlink.h` are not installed
+- Set `make NETNS_RUN_DIR=/run/netns`; otherwise it defaults to `/var/run/netns`
+
+## Other
+- `ip` replaces `ifconfig` and `route`
+- `bridge` replaces `brctl` from `bridge-utils`
+- `ss` aka "socket statistics" replaces `netstat` from `net-tools`
 - disable building modules that require iptables:
 `sed -i 's/.m_ipt.o//' tc/Makefile`
 
