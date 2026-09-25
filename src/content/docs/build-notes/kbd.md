@@ -3,10 +3,15 @@ title: kbd
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Prepare
 - Depends on `bison`; does not support `byacc`
 - Depends on `flex`; does not support `reflex` (check derive patches)
-- `/usr/etc` does not get created when `vlock` is disabled
+
+## Configure
+- `vlock` requires `pam` and disabling it removes `/usr/etc`
 - `openvt` runs interactive shells on virtual terminals
+
+## Other
 - `bkeymaps` is the older `kbd`
 - Remove `resizecons`?
 
