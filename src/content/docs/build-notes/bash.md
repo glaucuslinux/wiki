@@ -23,7 +23,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Bashisms
 - `ld/genscripts.sh` from `binutils`; glaucus uses `llvm binary utilities` instead
 - `buildconf.sh` from `expat`
-- `libcap`
+- `libcap`:
+  - `mkcapshdoc.sh` at build time
+  - `capsh` falls back to `/bin/bash` at run time, can be configured with `CAPSH_SHELL` at build time
 - `libedit`
 - `toybox`: hard to patch
 - `zlib-ng`; glaucus uses `sortix libz` instead
