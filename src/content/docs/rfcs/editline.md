@@ -6,6 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Not to be confused with NetBSD's libedit (thrysoee)
 - Forked from Minix
 - Does not support `.editrc`
+- Does not require `curses` like `netbsd-curses` (unlike `libedit`)
 - Unable to replace gnu readline (unlike `libedit`)
 - Lacks the following:
 ```
