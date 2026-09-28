@@ -17,9 +17,30 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prefer symlinks to `libedit.so` instead of linker scripts `INPUT(-ledit)`
 
 ## `editrc`
+- `bind -e` and `bind -v` reset the bindings so run them as early as possible
 - `bind -k up ...` is identical to `bind "\e[A" ...`
 - `bind -k down ...` is identical to `bind "\e[B" ...`
 - Prefer `ed-search-prev-history` to `ed-prev-history` and `ed-search-next-history` to `ed-next-history` for friendlier incremental prefix search
+- We might need to append `history size 1024` and `history unique 1` lines to `editrc` unless they're the default behavior
+### Keys and Macros
+```
+"\e[1;5C" :: ctrl + right
+"\e[1;5D" :: ctrl + left
+"\e[1~"   :: home
+"\e[3;5~" :: ctrl + delete
+"\e[3~"   :: delete
+"\e[4~"   :: end
+"\e[5C"   :: ctrl + right
+"\e[5D"   :: ctrl + left
+"\e[5~"   :: page up
+"\e[6~"   :: page down
+"\e[7~"   :: home (rxvt)
+"\e[8~"   :: end (rxvt) 
+"\eOc"    :: ctrl + right (rxvt)
+"\eOd"    :: ctrl + left (rxvt)
+"^R"      :: ctrl + r
+"^W"      :: ctrl + w
+```
 
 ## References
 - https://github.com/chimera-linux/cports/blob/master/main/libedit
@@ -27,5 +48,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/ralish/dotfiles/blob/main/editline/.editrc
 - https://github.com/sabotage-linux/sabotage/blob/master/pkg/libedit
 - https://github.com/wikimedia/mediawiki-vagrant/blob/master/puppet/modules/misc/files/editrc
-- https://man.openbsd.org/editline.7
+- https://man.netbsd.org/editline.7
+- https://man.netbsd.org/editrc.5
 - https://unix.stackexchange.com/questions/548708/editrc-changing-keybindings-in-etc-editrc
