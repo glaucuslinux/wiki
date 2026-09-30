@@ -3,6 +3,9 @@ title: libevdev
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Prefer `autotools` over `meson`
+## Prepare
+- Avoid `./autogen.sh` as it runs `git config ...`
+
+## Configure
+- Configure and build with `muon` and not `autotools` as we can disable `tools`
 - `gcov` and `coverity` support are disabled by default
-- Test suite requires kernel option `CONFIG_INPUT_UINPUT` on Alpine

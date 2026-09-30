@@ -62,6 +62,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://cmake.org/cmake/help/latest/envvar/DESTDIR.html
 - https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 - https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
+- https://cmake.org/cmake/help/latest/policy/CMP0069.html
 - https://cmake.org/cmake/help/latest/policy/CMP0192.html
+- https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html
 - https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html
 - https://linuxfromscratch.org/blfs/view/svn/kde/extra-cmake-modules.html
