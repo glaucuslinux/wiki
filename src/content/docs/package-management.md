@@ -27,6 +27,9 @@ glaucus uses the filesystem tree as its database to store package information an
     - Packages from OpenBSD should use: `https://cdn.openbsd.org/pub/OpenBSD/`
     - Packages from Debian should use: `https://deb.debian.org/`
       - Avoid `ftp.debian.org` as it mainly exists for backwards compatibility
+    - Packages from Freedesktop.org should use the source with the smallest tarball:
+      - `https://gitlab.freedesktop.org/` (usually `.bz2` snapshots)
+      - or `https://xorg.freedesktop.org/releases/` (except when `.xz` are `autoreconf`ed)
 - `sum`: package `XXH3_128bits` checksum, **mandatory if `url` is not a git repository**; `xxhsum -H2 sourceTarball`
 - `bld`: package build time dependencies sorted alphabetically
   - Do not add common packages that are expected to exist at build time as build time dependencies (e.g. `make`, `linux-headers` and so on)
