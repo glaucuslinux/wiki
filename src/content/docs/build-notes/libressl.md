@@ -8,17 +8,21 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - clean
   - somewhat slower; some assembly removed
   - Not FIPS
+
+## Prepare
+- The release tarballs are already portable
+- No need to patch `cnf` or prefix with `libressl-` if used as the default TLS library
+
+## Configure
+- `asm` acceleration are enabled by default for `x86-64`
 - `--enable-libtls-only` only installs `libtls` for systems that use `openssl`
-- Check `--enable-extratests`
+
+## Package
 - Provides `/etc/ssl/cert.pem` by default; no need for `ca-certificates`
 - Provides `nc`; short for `netcat` (prefer `openbsd netcat` to `gnu netcat`)
-- No need to patch `cnf` or prefix with `libressl-` if used as the default TLS library
-- libressl: assembly acceleration of various algorithms for ELF (Linux, BSD, Solaris) and OS X systems are enabled for x86_64 CPU's. More optimizations may be enabled in later releases. These optimizations are disabled with the --disable-asm configure flag.
-- Libressl needs static and fat lto
-- libressl builds without errors when not using --disable-static
-- remove -g and -O2 from libressl configure
-- iproute2: don't use --with-openssl with wget2 as it won't work with libressl, only --with-ssl=libressl works
-- The release tarballs are already portable
+
+## Old
+- `wget2` does not work with `iproute2` if `--with-openssl` is used, only `--with-ssl=libressl` works
 
 ## References
 - https://blog.hboeck.de/archives/851-LibreSSL-on-Gentoo.html
