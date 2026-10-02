@@ -3,13 +3,21 @@ title: libudev-zero
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- There is no test suite
+## Configure
+- `usb-ids-path` defaults to `/usr/share/hwdata/usb.ids`
+
+## Build
+- No need to build the external helper as `mdevd` supports hotplugging by design `-O 4` (or `-O 0x4`)
+
+## Package
 - Might have to add the following to `/etc/mdev.conf`:
 ```
 SUBSYSTEM=drm;.*   root:video 660 *libudev-zero-helper
 SUBSYSTEM=input;.* root:input 660 *libudev-zero-helper
 ```
-- OpenWrt switched from `libudev-fbsd` to `libudev-zero`
+
+## Other
+- `openwrt` switched from `libudev-fbsd` to `libudev-zero`
 
 ## References
 - https://github.com/aanderse/libudev-zero
