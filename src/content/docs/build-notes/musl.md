@@ -3,57 +3,53 @@ title: musl
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Prepare
 - Depends on `mawk`
-- Do not build with `LTO`
+- Does not depend on `linux-headers`
+- Removing `memcpy.s` and `memmove.s` forces `musl` to use the `C` implementations
+
+## Configure
+- `--syslibdir=/usr/lib` breaks the ABI, we set it regardless as `/lib/ld-musl-x86_64.so.1` still gets hardcoded in the binaries (check with `readelf -p .interp /bin/toybox`)
+- The dynamic linker needs to reside at `../etc` relative to `syslibdir`
+- `exec_prefix` is defined before `prefix` and should be explicitly specified after `make` for `musl-headers`
+
+## Build
+- Do not build with `lto`
+
+## Package
+- Install `musl-headers` after `linux-headers` to prevent collisions
 - `install-tools` is for the wrapper `musl-gcc`
-- Do not set the prefix to `/usr`, `/usr/local`, or `/` unless upgrading libc on an existing musl-based system (this will break your existing system after running `make install` making it difficult to recover)
 - The dynamic linker searches for shared libraries at run time under directories listed in `/etc/ld-musl-$ARCH.path` separated by colons or newlines
-- If the dynamic linker has been installed in a non-default location, the path needs to reside at that location (`../etc` relative to the chosen `syslibdir`)
-- Do not use `--syslibdir=/usr/lib` as it will break the ABI; `/lib/ld-musl-x86_64.so.1` gets hardcoded in the binaries regardless of `syslibdir` (You can check with `readelf -p .interp /bin/toybox`)
+
+## Other
 - `DT_RELR` support (`-z pack-relative-relocs`) has been upstreamed, and reduces size by 5 - 8%
-- Does `musl` conflict/replace `libssp` (the standalone package)
-- `gencat` requires `queue.h`
-- Alpaquita statically links against `glibc-string`; a library that provides extra performance optimizations for string manipulation and memory functions
-- `musl`'s default allocator `mallocng` was inspired by OpenBSD malloc and `hardened_malloc` and is good enough
-- Alpaquita has patches to fix `ldd` output for `static-pie` executables
-- Chimera surgically removes `musl`'s `malloc-ng` and replaces it with `mimalloc`
-- `MUSL_LOCPATH` - Colon-separated list of paths that will be searched for locale definitions. The requested locale name string will used as a filename and searched in each path component. If unset, locale files are not loaded and only the "C" locale is available. This variable is completely ignored in programs invoked setuid, setgid, or with other elevated capabilities
-- musl provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead as they are the modern implementation (this means that `gcc` and `binutils` should be configured with `--enable-initfini-array`)
-- Log messages will be discarded if `/dev/log` is absent
-- musl treats all text as UTF-8, and all non-ASCII characters as first-class; no external locale files or conversion modules are needed
-- musl does not support DNS for non-ASCII domains (IDN); not complete yet but will be supported in the future
-- In the absence of the LANG and LC_* environment variables, POSIX leaves the default locale (used when "" is passed to setlocale) implementation-defined. Under glibc versions at least up through 2.26, this default is "C". musl on the other hand always uses "C.UTF-8" as the default. There has been discussion on the glibc side of possibly adopting the musl behavior here once the "C.UTF-8" locale is an established feature of glibc.
-- musl’s resolver queries nameservers in parallel and accepts whichever response arrives first
-- This can increase network load and is mitigated by only supporting up to three nameservers:
-  - Caching nameserver on localhost (near-zero latency for locally cached results, but typically smallest cache size, and slowest for queries not serviceable from cache)
-  - ISP nameserver (very low latency for cached results, typically moderate cache size, and moderate performance for queries not serviceable from cache)
-  - 8.8.8.8 (somewhat higher latency but tends to have the whole DNS tree cached)
-- `LD_PRELOAD` and `LD_LIBRARY_PATH` are completely ignored in programs that invoke `setuid`, `setgid`, or with other elevated capabilities
-- `musl` recommends building with recent versions of `gcc` (see INSTALL)
-- Linux kernel headers are not required to build `musl`, and might even collide with `musl` headers
-- `musl` does not implement legacy functions operating on `ucontext_t` (`getcontext`, `setcontext`, `makecontext`, `swapcontext`); no longer part of POSIX, but cooperative multi-tasking applications use them, `ucontext_t` also appears as an argument to sigaction handlers which cannot be used portably
-- `musl` does not have (or want) NSS; consider `musl-nscd` from pikhq if this functionality is needed
-- bellsoft's `musl` provides `glibc-string` with optimized asm string implementations for `x86-64-v2`
-- musl already defines `STDC_ISO` as `201206L` as of `1.1.15`: `__STDC_ISO_10646__ 201206L`
-- `musl` does not build with `gold` without `pie`
-- `musl` only relies on `libgcc` for the `__muldc3`, `__muldxc3`,`__mulsc3` and `__powidf2` symbols and its `configure` can be patched to support `--fast-math` so that it does not depend on `libgcc` (this of course breaks the ABI and is recommended against by Rich Felker); `libgcc` is almost never utilised on 64-bit architectures like `x86-64`
-- `musl-cross-make` native support is broken meaning that you need a cross `mcm` toolchain first before you can build a native one with `NATIVE=1` which is understandable
-- Some `musl-headers` from `bits/` depend on `linux-headers`
-- Do we need parts from glibc (substitute by linking to libraries like `libiconv`, `libintl`, `libxcrypt`, `utmps`...)?
-- `exec_prefix` is defined before `prefix` and should be explicitly specified when running `make` manually without `configure`
-- `musl` lacks `cdefs.h`, `error.h`, `queue.h`, `stab.h` and `tree.h`; patch software to remove these headers
-- `musl` provides `timer_create()`
+- If `LANG` and `LC_*` are unset, `setlocale(LC_ALL, "")` defaults to `C.UTF-8` under `musl` unliked `glibc` which defaults to `C`
+- If `MUSL_LOCPATH` is unset or `setuid`/`setgid` are set, locale files are not loaded and only the `C` locale is available
+- `musl` defines `__STDC_ISO_10646__` as `201206L` since `1.1.15` in `stdc-predef.h` which `gcc` includes by default unlike `clang`
+- `musl` does not provide `__gnuc_va_list`; use `__isoc_va_list` instead
+- `musl` does not provide legacy `ucontext` functions like `getcontext`, `setcontext`, `makecontext` and `swapcontext` (no longer POSIX)
+- `musl` does not provide `libiconv`, `libintl` and `libxcrypt` unlike `glibc`
+- `musl` does not provide `nss` to avoid `dlopen`; use `/etc/hosts` and `/etc/resolv.conf` instead
 - `musl` does not provide `strndupa`
-- To set the timezone for the system set `TZ` (can also be done under `/etc/env.d/00musl`)
-```sh
-# e.g. Europe/Paris:
-echo TZ="NFT-1DST,M3.5.0,M10.5.0" >> /etc/env.d/00musl
-```
-- The value of `TZ` is defined by the POSIX timezone specification; it can be in another format but it requires `sys-libs/timezone-data` (gentoo)
-- Use `--disable-symvers` as `musl` does not support symbol versioning
-- Provide a stub `libintl.a` like `libm` and `librt`
-- For full intl remove header stubs like `intl.h`/`libintl.h` along with the locale stuff and rely on gettext; this might not be needed as `gettext-tiny` won't install `libintl.h` if `musl` "flavor" is detected (and will instead complement musl?)
-- `musl` does not have `__gnuc_va_list` and gcc c++ requires it so use `__isoc_va_list` instead
+- `musl` does not support `dns` for non-ascii domains (`idn`)
+- `musl` does not support symbol versioning; use `--disable-symvers` for other packages
+- `musl` lacks `cdefs.h`, `error.h`, `queue.h`, `stab.h` and `tree.h`; patch software to remove these headers
+- `musl` provides empty `crti.o` and `crtn.o` for legacy `.init` and `.fini` support; use `.init_array` and `.fini_array` instead
+- `musl` provides `ssp` via `__stack_chk_guard` and `__stack_chk_fail` and `libssp_nonshared.a` is only required on 32-bit or `powerpc`
+- `musl` provides `timer_create()`
+- `musl` queries nameservers in `/etc/resolv.conf` in parallel (unlike `glibc`) and accepts the first valid response and network load is mitigated by only supporting three nameservers `MAXNS 3`
+  - caching nameserver on localhost (near-zero latency / smallest cache size / slowest for queries not from cache)
+  - `isp` nameserver (low latency for cached results / moderate cache size / moderate performance for queries not from cache)
+  - `8.8.8.8` (higher latency / caches the whole DNS tree)
+- `musl` does not build with `gold` without `pie`; glaucus uses `lld` and `llvm binary utilities` instead
+- `musl` parses POSIX timezone `TZ="NFT-1DST,M3.5.0,M10.5.0"`; however, `tzdata` is needed to parse geographical names `Asia/Damascus`
+- `musl` relies on `compiler-rt` (or `libgcc`) only for the `__muldc3`, `__muldxc3`,`__mulsc3` and `__powidf2` symbols
+- `musl`'s default allocator `mallocng` was inspired by `openbsd malloc` and `hardened_malloc` and is good enough
+- `musl`'s dynamic linker ignores `LD_PRELOAD` and `LD_LIBRARY_PATH` when `setuid`/`setgid` are set
+- `musl` silently discards log messages if `/dev/log` is absent
+- `musl` treats all text as `utf8` and all non-ascii characters as first-class; no external locale files or conversion modules are needed
+- No need to remove `intl.h`/`libintl.h` as `gettext-tiny` doesn't provide them and `libintl.a` when configured with `LIBINTL=NONE`
+- Rich Felker advises against patching `configure` to support `--fast-math` as it breaks the ABI
 
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html
