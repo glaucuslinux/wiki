@@ -3,9 +3,9 @@ title: python
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+- System `mpdecimal` is required as bundled version was removed as of `3.16`
 - `autoreconf` breaks build
 - Depends on `libgcov.a` from `gcc`
-- Use bundled `mpdecimal`?
 - Add `gdbm` as a build-time dependency: https://docs.python.org/3/using/configure.html
 - Test suite for Berkeley DB requires `tcl`
 - `--with-pymalloc` provides better performance
@@ -40,6 +40,7 @@ sed -i 's@return readline@return feedline@' configure
 - Building out-of-tree errors out as `python` attempts to clean the directory `./build` post compilation (and maybe installation)
 
 ## References
+- https://docs.python.org/3/using/configure.html
 - https://github.com/clearlinux-pkgs/python3/blob/main/README.clear
 - https://packaging.python.org/en/latest/specifications/externally-managed-environments/
 - https://peps.python.org/pep-0644/
