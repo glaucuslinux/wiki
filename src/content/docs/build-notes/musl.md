@@ -9,9 +9,25 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Removing `memcpy.s` and `memmove.s` forces `musl` to use the `C` implementations
 
 ## Configure
-- `--syslibdir=/usr/lib` breaks the ABI, we set it regardless as `/lib/ld-musl-x86_64.so.1` still gets hardcoded in the binaries (check with `readelf -p .interp /bin/toybox`)
-- The dynamic linker needs to reside at `../etc` relative to `syslibdir`
 - `exec_prefix` is defined before `prefix` and should be explicitly specified after `make` for `musl-headers`
+- `--syslibdir=/usr/lib` breaks the ABI, we set it regardless as `/lib/ld-musl-x86_64.so.1` still gets hardcoded in the binaries "for the sake of being able to share binaries between systems" (check with `readelf -p .interp /bin/toybox`)
+- The dynamic linker needs to reside at `../etc` relative to `syslibdir`
+- `--enable-optimize=size` builds everything with `-O2`:
+```
+checking for optimization settings... minimize size
+```
+- `--enable-optimize` and `--enable-optimize=yes` are identical and they only build `internal/*`, `malloc/*` and `string/*` with `-O3` and the rest with `-O2`:
+```
+checking for optimization settings... custom
+components to be optimized for speed: internal malloc string
+```
+- `--enable-optimize=*` globs and builds everything with `-O3` (injects `-O3` overriding the initial `-O2`):
+```
+checking for optimization settings... custom
+components to be optimized for speed: *
+```
+- `--enable-optimize=perf`, `--enable-optimize=performance` and `--enable-optimize=speed` glob nothing
+- Explicitly set `--enable-shared` and `--disable-static` as `configure` sets `shared=auto` and `static=yes` by default
 
 ## Build
 - Do not build with `lto`
@@ -27,7 +43,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - If `MUSL_LOCPATH` is unset or `setuid`/`setgid` are set, locale files are not loaded and only the `C` locale is available
 - `musl` defines `__STDC_ISO_10646__` as `201206L` since `1.1.15` in `stdc-predef.h` which `gcc` includes by default unlike `clang`
 - `musl` does not provide `__gnuc_va_list`; use `__isoc_va_list` instead
-- `musl` does not provide legacy `ucontext` functions like `getcontext`, `setcontext`, `makecontext` and `swapcontext` (no longer POSIX)
+- `musl` does not provide legacy `ucontext_t` functions like `getcontext`, `setcontext`, `makecontext` and `swapcontext` (no longer POSIX)
 - `musl` does not provide `libiconv`, `libintl` and `libxcrypt` unlike `glibc`
 - `musl` does not provide `nss` to avoid `dlopen`; use `/etc/hosts` and `/etc/resolv.conf` instead
 - `musl` does not provide `strndupa`
@@ -57,14 +73,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://codeberg.org/emmett1/crux-musl
 - https://codeberg.org/hoatzinx/musl-clang
 - https://crux.nu/Wiki/MuslOverlay
-- https://git.2f30.org/fortify-headers/
 - https://github.com/AppImage/type2-runtime/issues/116
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/musl-perf
 - https://github.com/chimera-linux/cports/tree/master/main/musl
-- https://github.com/cross-tools/musl-cross
 - https://github.com/jopamo/musl-bsd
-- https://github.com/Matrix3600/musl-cross
-- https://github.com/orgs/chimera-linux/discussions/2480
 - https://github.com/richfelker/musl-cross-make/blob/master/README.md
 - https://github.com/richfelker/musl-cross-make/issues/101
 - https://github.com/richfelker/musl-cross-make/issues/102
@@ -73,7 +85,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://git.musl-libc.org/cgit/musl/tree/WHATSNEW
 - https://gitweb.gentoo.org/proj/musl.git
 - https://maskray.me/blog/2021-11-07-init-ctors-init-array
-- https://molluscular.com/
 - https://musl.libc.org/about.html
 - https://musl.libc.org/manual.html
 - https://musl.libc.org/releases.html

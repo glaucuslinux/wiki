@@ -8,5 +8,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Remember to patch `clang` or update `CFLAGS` to include `usr/include/fortify`
 
 ## References
+- https://git.2f30.org/fortify-headers/
 - https://github.com/jvoisin/fortify-headers
 - https://github.com/sabotage-linux/kernel-headers
