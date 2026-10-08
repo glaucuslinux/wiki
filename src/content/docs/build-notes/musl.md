@@ -70,7 +70,6 @@ components to be optimized for speed: *
 ## References
 - https://blog.z3bra.org/2015/08/cross-compiling-with-pcc-and-musl.html
 - https://brightrain.aerifal.cx/~niklata/PORTING
-- https://codeberg.org/emmett1/crux-musl
 - https://codeberg.org/hoatzinx/musl-clang
 - https://crux.nu/Wiki/MuslOverlay
 - https://github.com/AppImage/type2-runtime/issues/116
@@ -83,7 +82,6 @@ components to be optimized for speed: *
 - https://gitlab.alpinelinux.org/alpine/tsc/-/issues/58
 - https://git.musl-libc.org/cgit/musl/tree/INSTALL
 - https://git.musl-libc.org/cgit/musl/tree/WHATSNEW
-- https://gitweb.gentoo.org/proj/musl.git
 - https://maskray.me/blog/2021-11-07-init-ctors-init-array
 - https://musl.libc.org/about.html
 - https://musl.libc.org/manual.html
