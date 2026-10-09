@@ -3,14 +3,22 @@ title: netbsd-curses
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Most packages set `-lcurses`; when things break add `-lterminfo` to `LIBS`
-- Only link against `terminfo` without `curses` when possible; `oksh` and `bash` only rely on `terminfo`?
-- Some packages link against `libtinfo` (e.g. `util-linux` and `yash`); check if `netbsd-curses` now provides `libtinfo` by default?
-- Sabotage does not add a `libtinfo` symlink to either `libncurses` or `libterminfo` and recommends using `LDFLAGS="-lcurses -lterminfo" ./configure` instead
-- Attempts to run cross-compiled `tic` (and `nbperf`) on the build system:
+## Build
+- `netbsd-curses` attempts to run cross-compiled `nbperf` and `tic` on the build system:
   - unset `HOSTCC`; does not work if host `clang` is being used with `--target` and `--sysroot` to cross-compile the rest of `netbsd-curses`
   - or set `HOSTCC=gcc` if you are using `clang` and the host is using `gcc`; easiest as host `gcc` is not a cross-compiler by default
   - or remove `--target` and `--sysroot` from `CFLAGS` if using host `clang`
+- If `CC` does not equal `HOSTCC` then `netbsd-curses` assumes we are cross-compiling and sets `CROSSCOMPILING=1`
+- `CROSSCOMPILING=1` does not allow `CFLAGS` to be in `CFLAGS_HOST` which are used for building `nbperf` and `tic` with `HOSTCC`
+
+## Package
+- Do not provide `captoinfo` or `infotocap` as symlinks to `tic` as `netbsd-curses`'s `tic` does not support `-I` or `-C`
+
+## Other
+- `--as-needed` ensures that only what is needed is being used from `libcurses.so` and `libterminfo.so`
+- Pass `-lcurses -lterminfo` in this order
+- `libedit`, `pcre2` and `util-linux` require explicitly passing `-lterminfo` to `LIBS` and `LDFLAGS`
+- `util-linux` and `yash` link against `libtinfo.so`; check if passing `-lterminfo` removes this need?
 
 ## References
 - https://github.com/oasislinux/netbsd-curses

@@ -3,7 +3,6 @@ title: neatvi
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Patch to support arrow keys
 - `neatvi` > `nextvi` > `vile` > `openvi` > `e3` > `mle/nvi/nvi2/xvi`
 
 ## References

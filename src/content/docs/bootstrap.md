@@ -75,7 +75,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `m4`
 - `make`
 - `meson` (or `muon`)
-- `ninja` (or `samurai` or `muon samurai`)
+- `samurai` (or `muon samurai`)
 - `patch` (or `toybox`)
 - `perl`
 - `pkg-config` (or `pkgconf`) (not `u-config` as it does not support `PKG_CONFIG_SYSROOT_DIR`)
