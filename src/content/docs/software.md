@@ -40,7 +40,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`sortix libz`](https://sortix.org/libz/): zlib implementation
 - [`toybox`](https://landley.net/toybox/): unix user space
 - [`u-config`](https://github.com/skeeto/u-config): pkg-config implementation
-- [`utmps`](https://skarnet.org/software/utmps/): utmpx implementation
 - [`wak`](https://github.com/raygard/wak): awk implementation
 - [`wayland`](https://wayland.freedesktop.org/): display server protocol
 - [`yash`](https://magicant.github.io/yash/): unix shell

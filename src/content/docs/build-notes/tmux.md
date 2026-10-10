@@ -3,20 +3,25 @@ title: tmux
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Originally from OpenBSD
-- `tmux` does better multiplexing compared to `dtach`, `mtm` and built-in terminal multiplexers (e.g. `wezterm`)
-- Void applies a `reallocarray.patch`
-- `--enable-sixel` is needed to prevent crashes in sixel terminals
+## Prepare
 - Depends on `libevent` and `netbsd-curses`; `libev` and `libuev` are not supported
-- Check if `--enable-utempter` works with `utmps` as it allows `tmux` to update `utmp` (requires `libutempter`)
+
+## Configure
+- `cgroups`, `sixel`, `systemd`, `utempter` and `utf8proc` support is disabled by default
+- Not passing `--with-TERM` lets `tmux` default to `screen` which we don't want as `tmux-256color` is better
+
+## Package
 - Check `/usr/share/doc/tmux/examples/tmux.conf` and install `tmux.conf`
-- Might backport some patches for `3.6a` to fix borders and colors (e.g. Gentoo)
-- Should we explicitly pass `--disable-cgroups` as it requires `systemd`? Or will `configure` automatically detect that systemd is not supported?
-- FAQ recommends setting `TERM` to one of the following: `screen` or `screen-256color` or `tmux` or `tmux-256color`; prefer `tmux-256color`
-- If `tmux` runs without `utf8` support remember to pass `tmux -u`; will substitute unicode glyphs with underscores if environment does support `utf8`
+
+## `tmux.conf`
+- `set -as terminal-features ",*:RGB"` fixes broken colors
+
+## Other
+- `tmux` originated from `openbsd`
+- `tmux` does better multiplexing compared to `dtach`, `mtm` and built-in terminal multiplexers (e.g. `wezterm`)
+- `tmux -u` enables `utf8` support and without it unicode glyphs will appear as underscores if the environment does not support `utf8`
 - `tmux` server causes issues with locales and missing XDG variables (e.g. `XDG_RUNTIME_DIR`)
-- If colors are wrong add `set -as terminal-features ",*:RGB"` to `tmux.conf`
-- When in `chroot` set `$TERM` if `tmux` is being used
+- Remember to set `$TERM` in `chroot` if `tmux` is being used
 
 ## References
 - https://github.com/tmux/tmux/issues/253
