@@ -3,6 +3,10 @@ title: tmux
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Other
+- Try `dvtm`
+
 ## Prepare
 - Depends on `libevent` and `netbsd-curses`; `libev` and `libuev` are not supported
 
