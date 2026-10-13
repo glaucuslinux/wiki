@@ -3,9 +3,6 @@ title: bash
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- glaucus only uses `bash` in the bootstrap process to build certain packages (see Bashisms section below)
-- glaucus does not provide `bash` in the final system
-
 ## Prepare
 - `autoreconf` breaks build
 
@@ -29,6 +26,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `libedit`
 - `toybox`: hard to patch
 - `zlib-ng`; glaucus uses `sortix libz` instead
+
+## Other
+- glaucus only uses `bash` in the bootstrap process to build certain packages (see Bashisms section below)
+- glaucus does not provide `bash` in the final system
 
 ## Old
 - `5.2.37` is broken; glaucus uses `5.3`

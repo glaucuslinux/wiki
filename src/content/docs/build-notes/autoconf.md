@@ -16,11 +16,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## `autoreconf`
 - Depends on `autopoint` from `gettext-tiny`
 - Runs `aclocal`, `autoconf`, `automake`, `autoheader`, `autopoint` and `libtoolize` in the right order and repeatedly when appropriate
-- It only remakes files that are older than their sources
+- Only remakes files that are older than their sources
 - Environment variables `AUTOM4TE`, `AUTOCONF`, `AUTOHEADER`, `AUTOMAKE`, `ACLOCAL`, `AUTOPOINT`, `LIBTOOLIZE`, `M4`, and `MAKE` can be used to override the invocation of `autoreconf` and the respective tools
 - `NOCONFIGURE=yes` (or any value) prevents `autogen.sh` from running `./configure`
 
 ## Other
+- Do not specify `--includedir=/usr/include` as it may override `/usr/include/$nom` for some packages
 - Explicitly specify `exec-prefix` in `glaucus-configure` because build systems are awful
 - Explicitly specify `--libdir=/usr/lib` in `glaucus-configure` to prevent `lib64` contamination
 

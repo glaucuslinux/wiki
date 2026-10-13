@@ -3,17 +3,19 @@ title: basu
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Provides a minimal bus from `systemd` to silence software that require it
+## TODO
+### Package
+- Consider purging the headers under `$dir/usr/include/basu` if nothing uses them
 
 ## Prepare
 - Depends on `gperf` and `python`
-- Do we need builtin server for `libseat`/`seatd`?
-- Requires nobody user to be `65534`?
 
 ## Configure
-- Check if `libseat_logind=systemd` is needed?
+- `-Dlibcap=disabled` prevents checking linux capabilities over `dbus` for services like `systemd` and maybe `wpa_supplicant` (which we both do not use)
+- `nobody` user should have uid `65534`
 
 ## Other
+- `basu` provides a minimal bus from `systemd` to silence software that require it
 - Chimera uses `tangle` instead of `basu`
 
 ## References
