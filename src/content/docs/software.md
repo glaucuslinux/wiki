@@ -31,7 +31,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`musl`](https://musl.libc.org/): c standard library
 - [`neatvi`](https://github.com/aligrudi/neatvi): terminal text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
-- [`opendoas`](https://github.com/Duncaen/OpenDoas): privilege escalation tool
+- [`please`](https://codeberg.org/retucio/please): privilege escalation tool
 - [`s6`](https://skarnet.org/software/s6/): init system
 - [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
