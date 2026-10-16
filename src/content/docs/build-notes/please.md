@@ -4,7 +4,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## Prepare
-- Only depends on `musl` for `shadow.h` and `libcrypt`
+- Depends on `musl` for `shadow.h` and `libcrypt`, also requires `/etc/shadow` be present
 
 ## Build
 - Rely on `LDLIBS` to sneakily pass `LDFLAGS` as `LDLIBS="$LDFLAGS -lcrypt"`
