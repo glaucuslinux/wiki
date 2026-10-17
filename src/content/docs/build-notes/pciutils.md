@@ -12,12 +12,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Builds with `lto` enabled on glaucus
 
 ## Package
-- `install` and `install-lib` targets are both needed to install all necessary files
+- Do not use `install-lib` target (headers and `.pc` file) as nothing in glaucus depends on `pciutils`
 
 ## Purge
 - `ids` are provided by `hwdata`
 
 ## Other
-- May replace with `toybox`?
+- `toybox` does not replace `pciutils`
 - `update-pciids` from `pciutils` does not update `pci.ids` from `hwdata`
 - Make use of `setpci` (e.g. gentoo's `pciparm` scripts)
