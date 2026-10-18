@@ -111,6 +111,7 @@ glaucus uses the filesystem tree as its database to store package information an
   - symvers
   - systemd
   - tests
+  - werror
   - x11
   - xattr
   - year2038
