@@ -7,12 +7,13 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### Configure
 - Check if `--enable-sandbox=landlock` fails at run-time on kernels configured with `CONFIG_SECURITY_LANDLOCK=n`
 - Check if `--enable-small` causes major performance regressions or not
+- Check if `SKIP_WERROR_CHECK=yes ./configure` and `./configure --disable-werror` are equivalent
 
 ## Configure
 - `alpine`'s patch is still needed even after `--disable-rpath`
 - `--enable-external-sha256` does not work with `musl` and is slower than the internal `sha256` implementation (see `INSTALL`)
 - `doxygen` is disabled by default
-- `lzma2` encoder requires that `lzma1` is also enabled
+- `lzma2` encoder requires that `lzma1` support is also enabled
 - Leave the default `decoders` and `checks` set to `all`
 - Match finders are only used when encoding (`bt2` and `bt3` are effectively unused variants hidden from presets `0` through `9`)
 - `lzma1` and `lzma2` encoders share the same set of match finders
@@ -22,7 +23,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - No need to pass `--enable-assume-ram`
 - `--enable-path-for-scripts` prepends `PREFIX` to `PATH` in `scripts` which we disable
 - `--enable-unaligned-access` is probably enabled by default
-- `SKIP_WERROR_CHECK=yes ./configure` and `./configure --disable-werror` are not identical
 
 ## Package
 - Shipping `xzdec` and `lzmadec` without size optimizations and statically-linked `liblzma` isn't very useful (see `PACKAGERS`)
