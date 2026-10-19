@@ -18,6 +18,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `ids` are provided by `hwdata`
 
 ## Other
-- `toybox` does not replace `pciutils`
 - `update-pciids` from `pciutils` does not update `pci.ids` from `hwdata`
 - Make use of `setpci` (e.g. gentoo's `pciparm` scripts)
