@@ -13,4 +13,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Package
 - `scanner=true` controls whether `$dir/usr/share/wayland/wayland.dtd` is installed or not
-- `wlroots` and compositors like `sway` and `weston` depend on `wayland-scanner`
+- `wayland-protocols`, `wlroots` and compositors like `sway` and `weston` depend on `wayland-scanner`
