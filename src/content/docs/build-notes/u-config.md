@@ -3,10 +3,16 @@ title: u-config
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- `pkg-config-linux-amd64` is a more optimized target compared to the more portable `pkg-config` target or manually building `main_posix.c`
-- According to "personal" "micro"benchmarks, `u-config` is around 1.5x faster than `pkgconf` with a slightly smaller footprint
-- Does not build with LTO enabled as upstream explicitly disables LTO
-- We can use `OPT="$CFLAGS"` instead of `LINUX_CFLAGS="$CFLAGS"` but then we'd lose access to PIE..
-- Does not support `PKG_CONFIG_SYSROOT_DIR` but seems to set `pc_sysrootdir` to `/` in `src/u-config.c` by default
-- `rad` still needs to set `PKG_CONFIG_SYSROOT_DIR` in `cross` as we can't guarantee what `pkg-config` implementation the host is using
-- Requires `pkg.m4` from `pkgconf`; otherwise several packages (`eiwd`, `libarchive` and `make`) will not build
+## Build
+- `pkg-config-linux-amd64` target is more optimized than the more portable `pkg-config` target or manually building `main_posix.c`
+- Does not build with `lto` and upstream explicitly disables `lto` as it directly uses raw `linux` syscalls
+- Override `LINUX_CFLAGS` and `LINUX_LIBS` instead of `OPT` as it allows us to dynamically link instead of the default static link
+
+## Package
+- `make install` target is `windows` only
+- Provide `pkg.m4` from `pkgconf` as some packages require it (e.g. `eiwd`, `libarchive` and `make`)
+
+## Other
+- `u-config` is around 1.5x faster than `pkgconf` with a slightly smaller footprint
+- `u-config` does not support `PKG_CONFIG_SYSROOT_DIR` but seems to set `pc_sysrootdir` to `/` in `src/u-config.c` by default
+- `glaucus` still sets `PKG_CONFIG_SYSROOT_DIR` in `cross` as we can't guarantee what `pkg-config` implementation the host is using

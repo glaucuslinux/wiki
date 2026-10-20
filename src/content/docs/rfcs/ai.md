@@ -17,4 +17,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `nim-csources`
   - `python`
   - `tmux`
+  - `u-config`
   - `util-linux`
