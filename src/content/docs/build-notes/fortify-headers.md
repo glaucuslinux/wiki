@@ -3,9 +3,12 @@ title: fortify-headers
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Other
+- Remember to patch `clang` or update `CFLAGS` to include `usr/include/fortify`
+
 ## Other
 - Kernel headers are backwards compatible but sabotage's `kernel-headers` are still very old (`4.19.88` with experimental `6.12.77`)
-- Remember to patch `clang` or update `CFLAGS` to include `usr/include/fortify`
 
 ## References
 - https://git.2f30.org/fortify-headers/

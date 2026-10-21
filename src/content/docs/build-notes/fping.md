@@ -3,11 +3,12 @@ title: fping
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Package
+- Requires `setcap cap_net_raw=+ep "$dir/usr/bin/fping"` to send raw icmp packets; do not use setuid `chmod 4755` or `chmod +s`
+
 ## Configure
 - `--enable-ipv4` and `--enable-ipv6` are on by default
-
-## Package
-- Requires `setcap cap_net_raw=+ep "$dir/usr/bin/fping"` to send raw icmp packets; do not use setuid `chmod 4755` or `chmod +s`
 
 ## References
 - https://bitwizard.nl/mtr/
