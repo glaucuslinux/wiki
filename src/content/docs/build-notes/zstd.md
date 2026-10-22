@@ -17,10 +17,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - The dynamic library is multithreaded and the static library is single-threaded by default
 - `make -C programs zstd-dll` builds `zstd` as a thin wrapper around the dynamic `libzstd.so` library that was just built
 - `make -C programs zstd-dll` target produces a much smaller `zstd` compared to `make zstd`
-- `HASH=xxhsum` uses the faster `xxhash` instead of the default `md5sum`
+- `HASH=xxhsum` uses the faster `xxhash` instead of the default `md5sum` but introduces a build-time only dependency on `xxhash`
 - `HAVE_ZLIB`, `HAVE_LZMA` and `HAVE_LZ4` are only relevant for `programs` and are enabled if detected so disable them explicitly
 - `ZSTD_LIB_MINIFY=1` overrides `CFLAGS` with `-Oz` if `CC` is set to `clang` which results in performance regressions
 - `ZSTD_NO_ASM=0` is set by default
+- `ZSTD_NOBENCH`, `ZSTD_NODICT` and `ZSTD_NOTRACE` are preprocessor macros that shouldn't be passed as `make` variables
+- Do not override `CFLAGS` to pass preprocessor macros, instead use `CPPFLAGS`
 - Do not override `CFLAGS` for `lib` with `make -C lib CFLAGS="$CFLAGS"` as it removes `-fPIC` and other default flags including warnings
 
 ## Package
