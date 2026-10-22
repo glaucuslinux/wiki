@@ -4,12 +4,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## Build
-- `netbsd-curses` attempts to run cross-compiled `nbperf` and `tic` on the build system:
-  - unset `HOSTCC`; does not work if host `clang` is being used with `--target` and `--sysroot` to cross-compile the rest of `netbsd-curses`
-  - or set `HOSTCC=gcc` if you are using `clang` and the host is using `gcc`; easiest as host `gcc` is not a cross-compiler by default
-  - or remove `--target` and `--sysroot` from `CFLAGS` if using host `clang`
-- If `CC` does not equal `HOSTCC` then `netbsd-curses` assumes we are cross-compiling and sets `CROSSCOMPILING=1`
-- `CROSSCOMPILING=1` does not allow `CFLAGS` to be in `CFLAGS_HOST` which are used for building `nbperf` and `tic` with `HOSTCC`
+- `netbsd-curses` attempts to run `nbperf` and `tic` on the build system even when "cross-compiled"
+- If `CC` equals `HOSTCC` then `netbsd-curses` assumes we are not cross-compiling and sets `CROSSCOMPILING=0`
+- While this is correct for `gcc`, this is wrong for `clang` as it is a cross-compiler by default given the right set of `CFLAGS`
+- `CROSSCOMPILING=1` prevents `CFLAGS` from leaking into `CFLAGS_HOST` causing `nbperf` and `tic` to be natively built with `HOSTCC`
 
 ## Package
 - Do not provide `captoinfo` or `infotocap` as symlinks to `tic` as `netbsd-curses`'s `tic` does not support `-I` or `-C`
