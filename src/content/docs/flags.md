@@ -3,14 +3,26 @@ title: Flags
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Current `CFLAGS`:
+## Current Flags
+- `CXXFLAGS` are identical to `CFLAGS`
+- `CFLAGS` are also appended at the end of `LDFLAGS` for more effective `lto`
+### LLVM (`clang` + `lld`)
+#### CFLAGS
 ```
 -O2 -flto=thin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
 ```
-- Current `CXXFLAGS` are identical to `CFLAGS`
-- Current `LDFLAGS` (`CFLAGS` are added for more effective LTO):
+#### LDFLAGS
 ```
--Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--relax,--enable-new-dtags,--hash-style=gnu,--build-id=none
+-Wl,-O2,--pack-dyn-relocs=relr,-s,-z,defs,-z,now,-z,separate-code,--as-needed,--gc-sections,--hash-style=gnu,--build-id=none
+```
+### GNU (`gcc` + `bfd`) (No Longer Used)
+#### CFLAGS
+```
+-pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
+```
+#### LDFLAGS
+```
+-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
 ```
 
 ## CFLAGS (Ordered based on appearance in the GCC manual)
@@ -292,6 +304,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Default as of GCC 10
 - https://gcc.gnu.org/gcc-10/porting_to.html
 
+### `-fno-ident`
+- `-Qy` and `-Qn` are obsolete synonyms for `-fident` and `-fno-ident` respectively
+
 ### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
 - It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
 - `-fPIC` generates much worse code on `x86` (32-bit in particular) for loads/stores of data; might be tolerable for libraries but is undesirable for executables
@@ -403,7 +418,8 @@ zam-plugins
 - Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB (for better huge page support)
 - With traditional `-z,noseparate-code`, `bfd` defaults to a `RX/R/RW` program header layout
 - With `-z,separate-code` (default on Linux/x86 from binutils 2.31 onwards), `bfd` defaults to a `R/RX/R/RW` program header layout
-- `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)` (see `lld/docs/ELF/linker_script.rst`)
+- `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)`
+- `lld` defaults to `-z,relro` (see `lld/docs/ELF/linker_script.rst`)
 - With `--rosegment`, `lld` uses `RX/RW(RELRO)/RW(non-RELRO)`
 - Placing all `R` before `RX` is preferable as it can save one program header and reduce alignment costs
 - `lld`'s split of `RW` saves one maxpagesize alignment and can make the linked image smaller
@@ -411,9 +427,9 @@ zam-plugins
 - If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
 - `lld` defaults to `noseparate-code`
 - `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
-- AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z noseparate-code` default ensures that they will not experience unnecessary size increase
-- In -z noseparate-code layouts waste half a huge page on unrelated content and switching to `-z separate-code` reclaims the benefits of the half huge page but increases the file size
-- ld.bfd's -z separate-code is essentially split into two options in lld: -z separate-code and --rosegment.
+- AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z,noseparate-code` default ensures that they will not experience unnecessary size increase
+- In `-z,noseparate-code` layouts waste half a huge page on unrelated content and switching to `-z,separate-code` reclaims the benefits of the half huge page but increases the file size
+- ld.bfd's `-z,separate-code` is essentially split into two options in lld: `-z,separate-code` and `--rosegment`.
 - GitHub actions for `rad` uses `ubuntu-latest` which does not recognize `--rosegment`:
 ```
 Nim Output /usr/bin/ld: unrecognized option '--rosegment'
@@ -421,21 +437,30 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
        ... collect2: error: ld returned 1 exit status
 ```
 - glaucus's toolchain uses `--rosegment` by default even if the flag was not provided in LDFLAGS
+- https://github.com/llvm/llvm-project/issues/47893
 - https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 - https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
 - https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
 
-### `-z,noexectack`
-- Provides "Stack Execution Protection"
+### `-z,noexecstack` and `-z,nognustack`
+- `-z,noexecstack` provides "Stack Execution Protection"
+- `lld` defaults to `-z,noexecstack`
 - Should be the default behavior by `gcc`; does not mark the stack as executable by default, and warns when that happens
+- `-z,nognustack` is `lld` specific and is for alternative systems like `netbsd` (using it on `linux` may default to an executable stack)
+- https://github.com/llvm/llvm-project/issues/57009
 
-### `-z,pack-relative-relocs`
+### `-z,pack-relative-relocs` and `--pack-dyn-relocs=relr`
+- `-z,pack-relative-relocs` injects `glibc` symbols if `glibc` is detected otherwise it is identical to `--pack-dyn-relocs=relr`
+- `lld` supports `--pack-dyn-relocs=relr` so use it instead
+- https://git.sceen.net/linux/linux-stable.git/commit/?h=v5.8.15&id=ccb2d173b983984bfa35398abed3f8a76c75f788
 - https://maskray.me/blog/2021-10-31-relative-relocations-and-relr
 
-### `-z,text`
-- Enforces `Write XOR Execute (W^X)`
+### `-z,defs` and `-z,text`
+- `-z,text` enforces `Write XOR Execute (W^X)`
 - `lld` defaults to `-z,text`
+- `lld` uses `-z,defs` by default when linking executables as `--no-allow-shlib-undefined` is enabled by default; however, when linking shared libraries `-shared` defaults to `--allow-shlib-undefined` which turns of `-z,defs`
 - `hardened_malloc` builds with `-z,text` and `-z,defs` by default
+- https://maskray.me/blog/dependency-related-linker-options
 
 ### `-z,x86-64-v3`
 - `lld` does not support `-z,x86-64-v3`
@@ -465,7 +490,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
-- Ignored by `lld` as it uses a memory model different from `bfd` (see `lld/test/ELF/silent-ignore.test`)
+- Ignored by `lld` as it uses a memory model different from `bfd` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
 - `lld` and `mold` do not support `--reduce-memory-overheads`
 
 ### `--relax`
@@ -474,7 +499,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - `gcc` also has `-mrelax-cmpxchg-loop` for x86
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
 - `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
- - `mold` enables `--relax` by default
+ - `lld` and `mold` use `--relax` by default for `x86_64` (see `lld/ELF/Options.td`)
 - https://fzakaria.com/2026/01/30/crazy-shit-linkers-do-relaxation
 - https://github.com/gentoo-haskell/gentoo-haskell/issues/704
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
@@ -489,8 +514,11 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
-- Ignored by `lld` and `mold` (see `lld/test/ELF/silent-ignore.test`)
+- Ignored by `lld` and `mold` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
+
+### `--enable-new-dtags`
+- `lld` defaults to `--enable-new-dtags` as it already emits `DT_RUNPATH` instead of the older `DT_RPATH` (see `lld/ELF/Options.td`)
 
 ### `--hash-style=gnu`
 - `.hash` (`sysv`) is an on-disk hash table
@@ -504,21 +532,6 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--build-id=none`
 - smaller executables and faster link time
 - https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
-
-## Latest Experimental Flags
-- The following flags are still being studied/tested:
-```sh
-# CFLAGS
--fsched-pressure
--fno-ident
-
-# LDFLAGS
--z,defs
--z,separate-code
--z,text
---no-keep-memory
---build-id=none
-```
 
 ## References
 - https://agner.org/optimize/optimizing_cpp.pdf
