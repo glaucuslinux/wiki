@@ -3,6 +3,12 @@ title: libcap
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+## Configure
+- Check if we need `libpsx.so` otherwise `PTHREADS=no`
+## Package
+- Check if `pam_cap.so`, `libcap.so` and `libpsx.so` should be executable like standalone binaries (`chmod +x`)?
+
 ## Prepare
 - Depends on `linux-headers`
 - `progs/mkcapshdoc.sh` depends on `bash`
@@ -20,9 +26,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Build
 - Does not support parallel build; complains about missing `cap_names.h` when it exists (a race condition probably..)
-
-## Package
-- Are `pam_cap.so`, `libcap.so` and `libpsx.so` runnable as standalone binaries (`chmod +x`)?
 
 ## References
 - https://sites.google.com/site/fullycapable/who-ordered-libpsx

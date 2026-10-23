@@ -11,3 +11,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Remove `ndisasm` as `llvm-objdump` and `llvm-mc` are already present
 - The `strip` target needs to be called separately before `install` to avoid race conditions with multiple `make` jobs
 - `--enable-lto` appends `-flto` to *FLAGS
+
+## Other
+- Only provided to satisfy `limine`'s `bios` for `iso`

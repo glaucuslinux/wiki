@@ -129,6 +129,7 @@ export STRINGS=llvm-strings
 - https://clang.llvm.org/docs/CrossCompilation.html
 - https://clang.llvm.org/docs/index.html
 - https://clang.llvm.org/docs/InternalsManual.html
+- https://clang.llvm.org/docs/ThinLTO.html
 - https://clang.llvm.org/docs/Toolchain.html
 - https://clang.llvm.org/docs/Tooling.html
 - https://clang.llvm.org/docs/UsersManual.html

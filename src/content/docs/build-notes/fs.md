@@ -3,6 +3,10 @@ title: fs
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Package
+- Check if we can remove `hwclock` and `adjtime`
+
 ## Package
 - Do not quote `PRETTY_NAME` in `lsb-release` and `os-release` otherwise `\S` in `/etc/issue` will show them with `agetty`
 - Prefer `/usr/bin/nologin` to `/usr/bin/false` for `nologin` users shell

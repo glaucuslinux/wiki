@@ -5,18 +5,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 - Current `CFLAGS`:
 ```
--pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
+-O2 -flto=thin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
 ```
 - Current `CXXFLAGS` are identical to `CFLAGS`
 - Current `LDFLAGS` (`CFLAGS` are added for more effective LTO):
 ```
--Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
+-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--relax,--enable-new-dtags,--hash-style=gnu,--build-id=none
 ```
 
 ## CFLAGS (Ordered based on appearance in the GCC manual)
 ### `-pipe`
 - Use pipes over temporary files; more RAM but less disk usage
-- Ignored by `clang`
+- Silently ignored by `clang` (see `clang/lib/Driver/Driver.cpp`)
+- https://discourse.llvm.org/t/clarification-on-pipe-in-clang/85784/3
 
 ### `-g0`
 - Compiling with `-g0` or without `-g` at all should in theory result in no debugging information in the binaries
@@ -26,10 +27,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Speeds up compilation time when `-g` is used
 - Does not make sense when `-g` is not used
 
-### `-O3`
-- Might beat `-O2` in microbenchmarks, but in the context of a distribution `-O3` loses in terms of code size and overall performance
-- Can cause executables to run slower as it would generate more machine code than `-O2` which would make programs bigger and thus unable to fit in the L1 cache causing cache misses for instructions
+### `-O3` vs `-O2` vs `-Os`
+- `-O2` with some cherry-picked flags is the way to go
+#### `gcc`
+- `-O3` may beat `-O2` in microbenchmarks, but in the context of a distribution it loses in terms of code size and overall performance
+- `-O3` can cause executables to run slower as it would generate more machine code than `-O2` which would make programs bigger and thus unable to fit in the L1 cache causing cache misses for instructions
 - openSUSE says that `cmake` enabling `-O3` "by default" is not a good idea
+- `gcc`'s `-Os` is surprisingly close to `-O2`
+#### `clang`
+- `clang`'s `-O3` is close to `-O2` and does not always result in bloated code like `gcc`'s `-O3`
+- `clang`'s `-Os` is much more aggressive than `gcc`'s `-Os` and causes severe performance regressions
 - https://sunnyflunk.github.io/2023/01/15/x86-64-v3-Mixed-Bag-of-Performance.html
 - https://sunnyflunk.github.io/2023/01/29/GCCs-O3-Can-Transform-Performance.html
 
@@ -45,13 +52,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - This leads to more loads and stores, causing spills and increasing code size
 - This makes performance worse than without them
 - It makes sense to have these off by default on register-starved machines like `x86`
+- Ignored by `clang` (see `clang/test/Driver/clang_f_opts.c`)
 
 ### `-fgcse-las` (load after store)
 - `-fgcse` is enabled by default at `-O2` and `-Os`
 - `-fgcse-lm` (load motion) is enabled by default when `-fgcse` is enabled
 - `-fgcse-las` removes redundant load instructions which can reduce register pressure by reusing loaded values
 - Might reduce code size
-- Ignored by `clang`
+- Ignored by `clang` (see `clang/test/Driver/clang_f_opts.c`)
 
 ### `-fdelete-null-pointer-checks`
 - Enables simple constant folding optimizations
@@ -217,7 +225,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Use instead of `-flto` alone to get rid of the 128 LTRANS serial jobs message
 - `gcc`'s version of ThinLTO is WHOPR, previously it was enabled by using `-fwhopr`, but now it has become the default mode for LTO and `-fwhopr` was removed from `gcc`'s options; `-fno-fat-lto-objects` is now the default
 - `clang`'s `-flto`, `-flto=auto` and `-flto=jobserver` are all equivalent to `-flto=full`
-- ThinLTO is basically "worse" LTO but makes compilation faster
+- ThinLTO is basically "slightly worse" LTO but makes compilation faster
+- https://clang.llvm.org/docs/ThinLTO.html
 
 ### `-flto-compression-level=3`
 - Available when `zstd` is the backend for LTO and it should in theory result in smaller binaries
@@ -227,7 +236,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Enabled by default if `gcc` is built with `lto` enabled
 - There is no actual guarantee that `-fuse-linker-plugin` will be used in cases where `gcc` is built without `lto` support and `binutils` is built without plugins support
 - This means that not using this flag as in the case above might cause `-fwhole-program` to be picked which is not a good idea; use `-fuse-linker-plugin` so programs can rely on a linker plugin and forward the `lto` stuff to some other linker (e.g. `mold`) successfully
-- Ignored by `clang`
+- Ignored by `clang` as `lld` does not rely on a plugin for `lto` to work, also `clang` passes `-plugin` and `-plugin-opt` automatically for `lto` to work with `bfd` and `gold` (see `clang/test/Driver/clang_f_opts.c` and `lld/ELF/Options.td`)
 
 ### `-ftracer` and `-funroll-loops`
 - Enabled after decisions by PGO and shouldn't be manually used everywhere; may cause regressions and produce bigger code that may or may not be fast
@@ -343,6 +352,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://phoronix.com/review/fedora-frame-pointer
 
 ### Disable LTO
+#### clang
+- Remove `-flto=thin`
+#### gcc
 - Remove `-flto=auto -fuse-linker-plugin` (and `-flto-compression-level=3` if being used)
 - Packages that might fail with LTO (based on outdated information from Fedora, Gentoo and gentooLTO):
 ```
@@ -385,13 +397,13 @@ zam-plugins
 - `-X` is the default behavior for gnu ld `ld --help`
 - https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
 
-### `-z,separate-code` and `--rosegment`
+### `-z,relro`, `-z,separate-code` and `--rosegment`
 - Using `-z,separate-code` is good for security
 - Adding `--rosegment` when `-z,separate-code` is used makes resulting binaries smaller
 - Using `-z,noseparate-code` is a bad idea; remember how passing `--disable-separate-code` to `binutils` bloated every executable and shared library by at least 2 MB (for better huge page support)
 - With traditional `-z,noseparate-code`, `bfd` defaults to a `RX/R/RW` program header layout
 - With `-z,separate-code` (default on Linux/x86 from binutils 2.31 onwards), `bfd` defaults to a `R/RX/R/RW` program header layout
-- `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)`
+- `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)` (see `lld/docs/ELF/linker_script.rst`)
 - With `--rosegment`, `lld` uses `RX/RW(RELRO)/RW(non-RELRO)`
 - Placing all `R` before `RX` is preferable as it can save one program header and reduce alignment costs
 - `lld`'s split of `RW` saves one maxpagesize alignment and can make the linked image smaller
@@ -453,6 +465,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
+- Ignored by `lld` as it uses a memory model different from `bfd` (see `lld/test/ELF/silent-ignore.test`)
 - `lld` and `mold` do not support `--reduce-memory-overheads`
 
 ### `--relax`
@@ -476,7 +489,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
-- Ignored by `lld` and `mold`
+- Ignored by `lld` and `mold` (see `lld/test/ELF/silent-ignore.test`)
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
 
 ### `--hash-style=gnu`
@@ -496,7 +509,6 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - The following flags are still being studied/tested:
 ```sh
 # CFLAGS
--fgcse-las
 -fsched-pressure
 -fno-ident
 

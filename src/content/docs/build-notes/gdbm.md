@@ -3,6 +3,10 @@ title: gdbm
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Other
+- May not need `gdbm`
+
 ## Configure
 - `--without-readline` prevents `bin/gdbmtool` from linking against system `libreadline` and `libncursesw`
 - Alpine disables large-file support to make the db file compatible with older versions

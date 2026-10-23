@@ -19,3 +19,4 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `tmux`
   - `u-config`
   - `util-linux`
+  - `yash`
