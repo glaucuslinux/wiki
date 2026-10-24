@@ -310,10 +310,10 @@ LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,rel
 - `-fpie` can only be used by executables
 - https://maskray.me/blog/2021-01-09-copy-relocations-canonical-plt-entries-and-protected
 
-### `-fno-plt`
+### `-fno-plt` and `-Wl,-z,now`
 - Only applies to shared libraries and dynamic linking
 - Arch and OpenWRT use it by default
-- It makes sense to use `-fno-plt` as we are already disabling lazy binding using `-Wl,-z,now` which `musl` does not support in favor of immediate binding which `musl` recommends
+- `musl` does not support lazy binding and recommends immediate binding instead, so using `-fno-plt` and `-Wl,-z,now` aligns with its behavior (see `lld/ELF/Driver.cpp` (`ctx.arg.zNow = getZFlag(args, "now", "lazy", false);`))
 - Removes the ability to `prelink`; `prelink`ing is bad for ASLR
 - A `call *GOT` instruction is 6 bytes on `x86-64` vs a `call plt` is 5; `-fno-plt` eliminates the entire PLT stub (16+ bytes per function)
 - https://gist.github.com/reveng007/b9ef8c7c7ed7a46b10a325f4dee42ac4
@@ -401,6 +401,7 @@ zam-plugins
 ```c
 ...
 ctx.arg.ltoo = args::getInteger(args, OPT_lto_O, 2);
+...
 if (ctx.arg.ltoo > 3)
   ErrAlways(ctx) << "invalid optimization level for LTO: " << ctx.arg.ltoo;
 unsigned ltoCgo =
@@ -433,7 +434,29 @@ else
 - `lld`'s split of `RW` saves one maxpagesize alignment and can make the linked image smaller
 - This breaks some assumptions that the (so-called) "text segment" precedes the (so-called) "data segment"
 - If you use bfd's `noseparate-code` or lld's `--no-rosegment`, .rodata and .text will be placed in the same PT_LOAD segment
-- `lld` defaults to `noseparate-code`
+- `lld` defaults to `noseparate-code` (see `lld/ELF/Driver.cpp` (`auto ret = SeparateSegmentKind::None;`)):
+```c
+...
+ctx.arg.zSeparate = getZSeparate(args);
+...
+static SeparateSegmentKind getZSeparate(opt::InputArgList &args) {
+  auto ret = SeparateSegmentKind::None;
+  for (auto *arg : args.filtered(OPT_z)) {
+    StringRef v = arg->getValue();
+    if (v == "noseparate-code")
+      ret = SeparateSegmentKind::None;
+    else if (v == "separate-code")
+      ret = SeparateSegmentKind::Code;
+    else if (v == "separate-loadable-segments")
+      ret = SeparateSegmentKind::Loadable;
+    else
+      continue;
+    arg->claim();
+  }
+  return ret;
+}
+...
+```
 - `--no-rosegment` combines the read-only and the RX segments (output file will consume less address space at run-time)
 - AArch64 and PowerPC64 have a default MAXPAGESIZE of 65536 so `-z,noseparate-code` default ensures that they will not experience unnecessary size increase
 - In `-z,noseparate-code` layouts waste half a huge page on unrelated content and switching to `-z,separate-code` reclaims the benefits of the half huge page but increases the file size

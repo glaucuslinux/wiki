@@ -337,6 +337,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## wak
 - Issue #8: [Will `wak` get added to `toybox`?](https://github.com/raygard/wak/issues/8)
+- Pull Request #12: [Install `wak` binary as `755` not `775`](https://github.com/raygard/wak/pull/12)
 
 ## wget2
 - Issue #644: [Undefined reference to `CRYPTO_free_ex_index`](https://gitlab.com/gnuwget/wget2/-/issues/644)
