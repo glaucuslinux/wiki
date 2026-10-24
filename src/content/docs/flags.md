@@ -3,13 +3,14 @@ title: Flags
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-## LLVM Flags (`clang` + `lld`) (Current)
+## LLVM Flags (`clang` + `lld`) (Current) (Logical order then alphabetical based on appearance in --help and manual)
 ```sh
 CFLAGS="-O2 -flto=thin -march=x86-64-v3 -mtls-dialect=gnu2 -fdata-sections -ffunction-sections -fno-plt -fstack-clash-protection -fstack-protector-strong -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-ident"
 CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -isystem /usr/include/fortify"
 CXXFLAGS="$CFLAGS"
 LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,-z,defs,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,-s $CFLAGS"
 ```
+
 ## GNU Flags (`gcc` + `bfd`) (No Longer Used)
 ```sh
 CFLAGS="-pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2"
@@ -396,7 +397,7 @@ zam-plugins
 - Enables linker optimizations which can reduce code size
 - `bfd` optimizes if a non-zero value was given with no differences between the values
 - `lld` has a higher level `-O2`, and it uses `-O1` by default (see `lld/ELF/Driver.cpp` (`ctx.arg.optimize = args::getInteger(args, OPT_O, 1);`))
-- `lto` supports additional options `--lto-O` and `--lto-CGO` (the former defaults to `2` and the latter defaults to the value of the former) (see `lld/ELF/Driver.cpp`):
+- `lto` supports additional options `--lto-O` and `--lto-CGO` (the former defaults to `2` which is good enough and the latter defaults to the value of the former) (see `lld/ELF/Driver.cpp`):
 ```c
 ...
 ctx.arg.ltoo = args::getInteger(args, OPT_lto_O, 2);
@@ -485,7 +486,8 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - Only useful when `-ffunction-sections` and `-fdata-sections` are used
 - Removes unused code sections in libraries that enable the flags above
 - `-z,start-stop-gc` makes `--gc-sections` more accurate and should in theory result in a smaller binary
-- `lld` defaults to `-z,start-stop-gc`
+- `lld` does not enable `--gc-sections` by default (see `lld/ELF/Driver.cpp` (`ctx.arg.gcSections = args.hasFlag(OPT_gc_sections, OPT_no_gc_sections, false);`) and `lld/ELF/Options.td`)
+- `lld` defaults to `-z,start-stop-gc` (see `lld/ELF/Driver.cpp` (`ctx.arg.zStartStopGC = getZFlag(args, "start-stop-gc", "nostart-stop-gc", true);`))
 - `mold` does not support `-z,start-stop-gc`
 - https://community.nxp.com/t5/Kinetis-Microcontrollers/Optimization-without-quot-ffunction-sections-quot-and-quot-fdata/m-p/1280268
 - https://community.nxp.com/t5/LPCXpresso-IDE-FAQs/Unused-Section-Elimination/m-p/475002
