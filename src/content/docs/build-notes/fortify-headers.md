@@ -5,7 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## TODO
 ### Other
-- Remember to patch `clang` or update `CFLAGS` to include `usr/include/fortify`
+- Update `CFLAGS` to include `usr/include/fortify` and pass `-D_FORTIFY_SOURCE=3`
 
 ## Other
 - Kernel headers are backwards compatible but sabotage's `kernel-headers` are still very old (`4.19.88` with experimental `6.12.77`)

@@ -3,26 +3,18 @@ title: Flags
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-## Current Flags
-- `CXXFLAGS` are identical to `CFLAGS`
-- `CFLAGS` are also appended at the end of `LDFLAGS` for more effective `lto`
-### LLVM (`clang` + `lld`)
-#### CFLAGS
+## LLVM Flags (`clang` + `lld`) (Current)
+```sh
+CFLAGS="-O2 -flto=thin -march=x86-64-v3 -mtls-dialect=gnu2 -fdata-sections -ffunction-sections -fno-plt -fstack-clash-protection -fstack-protector-strong -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-ident"
+CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -isystem /usr/include/fortify"
+CXXFLAGS="$CFLAGS"
+LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,-z,defs,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,-s $CFLAGS"
 ```
--O2 -flto=thin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
-```
-#### LDFLAGS
-```
--Wl,-O2,--pack-dyn-relocs=relr,-s,-z,defs,-z,now,-z,separate-code,--as-needed,--gc-sections,--hash-style=gnu,--build-id=none
-```
-### GNU (`gcc` + `bfd`) (No Longer Used)
-#### CFLAGS
-```
--pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2
-```
-#### LDFLAGS
-```
--Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none
+## GNU Flags (`gcc` + `bfd`) (No Longer Used)
+```sh
+CFLAGS="-pipe -Os -fgcse-las -flto=auto -fuse-linker-plugin -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fno-plt -march=x86-64-v3 -mtls-dialect=gnu2"
+CXXFLAGS="$CFLAGS"
+LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro,-z,separate-code,-z,text,--as-needed,--gc-sections,--no-keep-memory,--relax,--sort-common,--enable-new-dtags,--hash-style=gnu,--build-id=none $CFLAGS"
 ```
 
 ## CFLAGS (Ordered based on appearance in the GCC manual)
@@ -132,7 +124,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - This option is only for shared libraries/dynamic linking and breaks static binaries and libraries
 - Makes code built with `-fPIC` and LTO faster, and improves performance in general; might cause subtle ABI breakages
 - Breaks `LD_PRELOAD` which in turn breaks custom memory allocators like `mimalloc`
-- Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang
+- Contrary to popular belief, enabling this flag globally is safe (unless interposing symbols is required, for example when using different allocators on system libraries), but the reason for it not being enabled by default is to comply with the ELF standard. In contrast, this flag is part of the default when using Clang (see `clang/test/CodeGen/semantic-interposition.c`)
 - https://maskray.me/blog/2021-05-09-fno-semantic-interposition
 
 ### `-fipa-reorder-for-locality`
@@ -305,7 +297,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://gcc.gnu.org/gcc-10/porting_to.html
 
 ### `-fno-ident`
-- `-Qy` and `-Qn` are obsolete synonyms for `-fident` and `-fno-ident` respectively
+- `-Qy` and `-Qn` are obsolete synonyms for `-fident` and `-fno-ident` respectively (`clang --help` still shows the older options only..)
 
 ### `-pie`, `-fpie`, `-fPIE`, `-fpic` and `-fPIC`
 - It is better not to explicitly specify these options globally as we don't know whether they will be passed to build an executable or a shared library (passing `-fpie`/`-fPIE` when building a shared library is not a good thing..)
@@ -400,11 +392,26 @@ zam-plugins
 ```
 
 ## LDFLAGS (Ordered based on appearance in the GNU linker manual)
-### `-O1`
+### `-O1`, `--lto-O` and `--lto-CGO`
 - Enables linker optimizations which can reduce code size
 - `bfd` optimizes if a non-zero value was given with no differences between the values
-- `lld` has a higher level `-O2`, and it uses `-O1` by default
+- `lld` has a higher level `-O2`, and it uses `-O1` by default (see `lld/ELF/Driver.cpp` (`ctx.arg.optimize = args::getInteger(args, OPT_O, 1);`))
+- `lto` supports additional options `--lto-O` and `--lto-CGO` (the former defaults to `2` and the latter defaults to the value of the former) (see `lld/ELF/Driver.cpp`):
+```c
+...
+ctx.arg.ltoo = args::getInteger(args, OPT_lto_O, 2);
+if (ctx.arg.ltoo > 3)
+  ErrAlways(ctx) << "invalid optimization level for LTO: " << ctx.arg.ltoo;
+unsigned ltoCgo =
+    args::getInteger(args, OPT_lto_CGO, args::getCGOptLevel(ctx.arg.ltoo));
+if (auto level = CodeGenOpt::getLevel(ltoCgo))
+  ctx.arg.ltoCgo = *level;
+else
+  ErrAlways(ctx) << "invalid codegen optimization level for LTO: " << ltoCgo;
+...
+```
 - Ignored by `mold`
+- https://reviews.llvm.org/D141970
 
 ### `-x, --discard-all` and `-X, --discard-locals`
 - `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
@@ -419,7 +426,7 @@ zam-plugins
 - With traditional `-z,noseparate-code`, `bfd` defaults to a `RX/R/RW` program header layout
 - With `-z,separate-code` (default on Linux/x86 from binutils 2.31 onwards), `bfd` defaults to a `R/RX/R/RW` program header layout
 - `lld` defaults to `R/RX/RW(RELRO)/RW(non-RELRO)`
-- `lld` defaults to `-z,relro` (see `lld/docs/ELF/linker_script.rst`)
+- `lld` defaults to `-z,relro` (see `lld/docs/ELF/linker_script.rst` and `lld/ELF/Driver.cpp` (`zRelro` is `true` by default))
 - With `--rosegment`, `lld` uses `RX/RW(RELRO)/RW(non-RELRO)`
 - Placing all `R` before `RX` is preferable as it can save one program header and reduce alignment costs
 - `lld`'s split of `RW` saves one maxpagesize alignment and can make the linked image smaller
@@ -444,7 +451,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 
 ### `-z,noexecstack` and `-z,nognustack`
 - `-z,noexecstack` provides "Stack Execution Protection"
-- `lld` defaults to `-z,noexecstack`
+- `lld` defaults to `-z,noexecstack` (see `lld/ELF/Driver.cpp` (`auto ret = GnuStackKind::NoExec;`) and `lld/ELF/InputFiles.cpp` (as it always adds `PT_GNU_STACK`))
 - Should be the default behavior by `gcc`; does not mark the stack as executable by default, and warns when that happens
 - `-z,nognustack` is `lld` specific and is for alternative systems like `netbsd` (using it on `linux` may default to an executable stack)
 - https://github.com/llvm/llvm-project/issues/57009
@@ -457,8 +464,8 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 
 ### `-z,defs` and `-z,text`
 - `-z,text` enforces `Write XOR Execute (W^X)`
-- `lld` defaults to `-z,text`
-- `lld` uses `-z,defs` by default when linking executables as `--no-allow-shlib-undefined` is enabled by default; however, when linking shared libraries `-shared` defaults to `--allow-shlib-undefined` which turns of `-z,defs`
+- `lld` defaults to `-z,text` (see `lld/ELF/Driver.cpp` (`ctx.arg.zText = getZFlag(args, "text", "notext", true);`))
+- `lld` uses `-z,defs` by default when linking executables as `--no-allow-shlib-undefined` is enabled; however, when linking shared libraries `-shared` defaults to `--allow-shlib-undefined` which turns off `-z,defs` (see `lld/ELF/Driver.cpp` (`bool diagRegular = !ctx.arg.shared, diagShlib = !ctx.arg.shared;`) and `lld/test/ELF/zdefs.s`) and it also implies `--unresolved-symbols=ignore-all` because missing symbols are likely to be resolved at runtime
 - `hardened_malloc` builds with `-z,text` and `-z,defs` by default
 - https://maskray.me/blog/dependency-related-linker-options
 
@@ -470,6 +477,9 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - Enforces that the binary must explicitly link against all of its actual dependencies
 - Enabled by default behavior in `ld.bfd` since 2.22
 - https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
+
+### `--as-needed`
+- `lld` defaults to `--no-as-needed` (see `lld/ELF/Options.td`)
 
 ### `-Wl,--gc-sections` and `-Wl,-z,start-stop-gc`
 - Only useful when `-ffunction-sections` and `-fdata-sections` are used
@@ -490,7 +500,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
-- Ignored by `lld` as it uses a memory model different from `bfd` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
+- Silently ignored by `lld` as it uses a different memory model compared to `bfd` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
 - `lld` and `mold` do not support `--reduce-memory-overheads`
 
 ### `--relax`
@@ -499,7 +509,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - `gcc` also has `-mrelax-cmpxchg-loop` for x86
 - This means that `x86-64` has some form of relaxable instructions that `ld.bfd` and `gas` support; enabling this until for now
 - `ld.bfd` ignores both `--relax` and `--no-relax` on platforms where the feature is not supported
- - `lld` and `mold` use `--relax` by default for `x86_64` (see `lld/ELF/Options.td`)
+ - `lld` and `mold` use `--relax` by default for `x86_64` (see `lld/ELF/Driver.cpp` (`ctx.arg.relax = args.hasFlag(OPT_relax, OPT_no_relax, true);`) and `lld/ELF/Options.td`)
 - https://fzakaria.com/2026/01/30/crazy-shit-linkers-do-relaxation
 - https://github.com/gentoo-haskell/gentoo-haskell/issues/704
 - https://inbox.sourceware.org/binutils/20160203162732.GA1545@intel.com/
@@ -514,11 +524,11 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `--sort-common`
 - Sorts COMMON symbols by decreasing alignment, which saves some padding resulting in minor size benefits
 - Can degrade performance if COMMON symbols in an object file have locality and `--sort-common` breaks that locality
-- Ignored by `lld` and `mold` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
+- Silently ignored by `lld` and `mold` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
 - https://maskray.me/blog/2022-02-06-all-about-common-symbols
 
 ### `--enable-new-dtags`
-- `lld` defaults to `--enable-new-dtags` as it already emits `DT_RUNPATH` instead of the older `DT_RPATH` (see `lld/ELF/Options.td`)
+- `lld` defaults to `--enable-new-dtags` as it already emits `DT_RUNPATH` instead of the older `DT_RPATH` (see `lld/ELF/Driver.cpp` (`ctx.arg.enableNewDtags = args.hasFlag(OPT_enable_new_dtags, OPT_disable_new_dtags, true);`) and `lld/ELF/Options.td`)
 
 ### `--hash-style=gnu`
 - `.hash` (`sysv`) is an on-disk hash table
