@@ -8,7 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 CFLAGS="-O2 -flto=thin -march=x86-64-v3 -mtls-dialect=gnu2 -fdata-sections -ffunction-sections -fno-plt -fstack-clash-protection -fstack-protector-strong -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-ident"
 CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -isystem /usr/include/fortify"
 CXXFLAGS="$CFLAGS"
-LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,-z,defs,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,-s $CFLAGS"
+LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,--icf=safe,-z,defs,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,--strip-all $CFLAGS"
 ```
 
 ## GNU Flags (`gcc` + `bfd`) (No Longer Used)
@@ -50,7 +50,8 @@ LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,rel
 - `clang` does not support `-foptimize-strlen`; `clang` implicitly performs this optimization
 
 ### `-fmerge-all-constants`
-- Causes miscompilations due to non-conforming behaviour: https://lkml.org/lkml/2018/3/20/872
+- Causes miscompilations due to non-conforming behaviour
+- https://lkml.org/lkml/2018/3/20/872
 
 ### `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves` and `-fgcse-sm` (store motion)
 - Aggressive common subexpression elimination (cse) and scheduling (particularly modulo scheduling) can dramatically increase register pressure
@@ -295,6 +296,7 @@ LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,rel
 
 ### `-fno-common`
 - Default as of GCC 10
+- `clang` already defaults to `-fno-common` (see `clang/lib/Driver/ToolChains/Clang.cpp`)
 - https://gcc.gnu.org/gcc-10/porting_to.html
 
 ### `-fno-ident`
@@ -415,8 +417,10 @@ else
 - Ignored by `mold`
 - https://reviews.llvm.org/D141970
 
-### `-x, --discard-all` and `-X, --discard-locals`
+### `-s`, `-x, --discard-all` and `-X, --discard-locals`
 - `-s, --strip-all` already removes everything (including `.symtab` and `.strtab`)
+- `lld` considers `-s` an alias for `--strip-all` (not the opposite) (see `lld/ELF/Options.td`)
+- `lld` does not allow using `--strip-all` and `--emit-relocs` together
 - for `-x` and `-X` to work, `.symtab` needs to exist, which means using them alongside `-s` is redundant
 - `-X` is the default behavior for gnu ld `ld --help`
 - https://maskray.me/blog/2020-11-15-explain-gnu-linker-options
@@ -473,11 +477,12 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://maskray.me/blog/2020-12-19-lld-and-gnu-linker-incompatibilities
 - https://maskray.me/blog/2023-12-17-exploring-the-section-layout-in-linker-output
 
-### `-z,noexecstack` and `-z,nognustack`
+### `-z,noexecstack`, `-z,nognustack` and `-z,nodlopen`
 - `-z,noexecstack` provides "Stack Execution Protection"
 - `lld` defaults to `-z,noexecstack` (see `lld/ELF/Driver.cpp` (`auto ret = GnuStackKind::NoExec;`) and `lld/ELF/InputFiles.cpp` (as it always adds `PT_GNU_STACK`))
 - Should be the default behavior by `gcc`; does not mark the stack as executable by default, and warns when that happens
 - `-z,nognustack` is `lld` specific and is for alternative systems like `netbsd` (using it on `linux` may default to an executable stack)
+- `-z,nodlopen` is a bit excessive for a global flag
 - https://github.com/llvm/llvm-project/issues/57009
 
 ### `-z,pack-relative-relocs` and `--pack-dyn-relocs=relr`
@@ -500,6 +505,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - Stops the linker from resolving symbols in the produced binary to transitive library dependencies
 - Enforces that the binary must explicitly link against all of its actual dependencies
 - Enabled by default behavior in `ld.bfd` since 2.22
+- Silently ignored by `lld` (see `lld/ELF/Options.td` and `lld/test/ELF/silent-ignore.test`)
 - https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html
 
 ### `--as-needed`
@@ -522,6 +528,10 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - https://maskray.me/blog/2021-01-31-metadata-sections-comdat-and-shf-link-order
 - https://stackoverflow.com/questions/31521326/gc-sections-discards-used-data
 - https://stackoverflow.com/questions/4274804/query-on-ffunction-section-fdata-sections-options-of-gcc
+
+### `--icf=safe`
+- `bfd` does not support `icf`
+- `lld` defaults to `--icf=none` (see `lld/ELF/Options.td`)
 
 ### `--no-keep-memory` and `--reduce-memory-overheads`
 - Make memory consumption reasonable especially with the optimizations we are using (mainly LTO), at the expense of a slight increase in link time
@@ -559,13 +569,15 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 - `.hash` (`sysv`) is an on-disk hash table
 - `.gnu.hash` (`gnu`) is more modern and has a bloom filter and a hash table to quickly skip DSOs
 - `--hash-style=both` is for for backwards compatibility
+- `lld` defaults to `both` (see `lld/ELF/Driver.cpp`)
 - https://maskray.me/blog/2022-08-21-glibc-and-dt-gnu-hash
 
 ### `--compress-debug-sections=zstd`
 - It does not make sense to compress "nonexistant" debug sections as we're stripping everything with `-s`
 
 ### `--build-id=none`
-- smaller executables and faster link time
+- `lld` makes `--build-id` without an argument default to `sha1` and `tree` is also a synonym for `sha1` (see `lld/ELF/Driver.cpp` and `lld/ELF/Options.td`)
+- `--build-id=none` produces smaller executables and faster link time
 - https://maskray.me/blog/2021-12-19-why-isnt-ld.lld-faster
 
 ## References
