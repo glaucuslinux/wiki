@@ -5,7 +5,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## TODO
 ### Package
-- Check if `util-linux` and `yash` link against `libtinfo.so` and if passing `-lterminfo` resolves it?
+- Check if `util-linux` links against `libtinfo.so` and if passing `-lterminfo` resolves it
 - Check if `libedit`, `pcre2` and `util-linux` explicitly require passing `-lterminfo` to `LIBS` and `LDFLAGS`
 
 ## Build

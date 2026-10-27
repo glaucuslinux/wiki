@@ -327,6 +327,16 @@ LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,rel
 - https://patchwork.ozlabs.org/project/gcc/patch/alpine.LNX.2.11.1505061730460.22867@monopod.intra.ispras.ru/
 - https://stackoverflow.com/questions/77197493/isnt-no-plt-always-preferrable-to-z-now
 
+### `-fstrict-aliasing`
+- `clang` enables `-fstrict-aliasing` when `-Ofast` is used or by default on `linux` (non-windows non-uefi platform) even with `-O2` (check for `tbaa` with `clang -O2 -emit-llvm -S ...` which does not appear when `-fno-strict-aliasing` is explicitly used)
+
+### `-fstrict-enums`
+- May cause silent miscompilations and undefined behavior and is thus unsafe to use as a global flag
+
+### `-fstrict-vtable-pointers`
+- `lld` disables `-fstrict-vtable-pointers` by default as it is still experimental (see `clang/docs/UsersManual.rst`)
+- Only in `CXXFLAGS`
+
 ### `-fvisibility-inlines-hidden`
 - Breaks a lot of packages (particularly C++ packages), and many suggest disabling it to allow `libstdc++` to detect its symbols
 - Its behavior is already covered by `-fvisibility=hidden`
@@ -358,7 +368,7 @@ LDFLAGS="-Wl,-O1,-s,-z,defs,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,rel
 - https://maskray.me/blog/2021-02-14-all-about-thread-local-storage
 
 ### `-momit-leaf-frame-pointer`
-- Redundant when `-fomit-frame-pointer` is used (which is the default with `-O2` and `-Os`)
+- Redundant with `-fomit-frame-pointer` (enabled by default with `-O2` and `-Os`) (see `clang/test/Driver/frame-pointer-elim.c`)
 - https://phoronix.com/review/fedora-frame-pointer
 
 ### Disable LTO
