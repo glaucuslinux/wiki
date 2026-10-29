@@ -4,8 +4,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 - `LANGUAGE` > `LC_ALL` > `LANG`
-- `LC_ALL` overrides category-specific variables
 - `LANG` provides a default for any category not set
+- `LC_ALL` overrides category-specific variables
 - `/etc/locale.conf` is a systemdism from `localectl`
 - If `locale` shows `POSIX` then foreign characters (e.g. Arabic) won't display correctly unless `LC_CTYPE=C.UTF-8` or `LANG=en_US.UTF-8` are used
 ```sh

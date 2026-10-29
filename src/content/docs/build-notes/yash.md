@@ -7,10 +7,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### Configure
 - Consider removing `--disable-dirstack` if required
 - Consider adding `--disable-test` if the `test` builtin is not required
-### `yashrc`
-- Check `Variables used by the shell` section in the manual for additional variables to set/unset
-- Check what locale variables and values to set after checking the manual
-- Check `\ffontspecs.` section in the manual for customizing prompt colors
 ### Other
 - Check if we can replace `bash` entirely even if we enable more features inside `bash` (will also require `yash` not going into POSIXly-correct mode when invoked as `sh`)
 
@@ -34,17 +30,22 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `yash` loads `default` automatically if no `~/.yashrc` is detected
 - `share/config` is not needed as provide our own `default`
 
-## `yashrc`
+## `yashrc` (or `default`)
 - `clobber` is enabled by default
-- `pipe-fail` is disabled by default (similar to `bash`)
 - glaucus builds `yash` with command history and line-editing support so it makes no sense to check if these are enabled or not
 - `HISTRMDUP` can be set to remove duplicate history items but it makes prediction less accurate
-- `MAILCHECK=0` does not disable mail checking and instead checks before every prompt
+- `MAILCHECK=0` does not disable mail checking and instead checks before every prompt, also `unset MAILCHECK` alone does not stop `MAIL` from being set
+- `pipe-fail` is disabled by default (similar to `bash`)
 - `set --le-predict-empty` is counterintuitive
 - `YASH_PS1P='\fi.'` dims predicted text like `fish`
 - Prefer `forward-semiword` and `backward-semiword` to both their `bigword` and `emacsword` variants
 - Prefer `backward-kill-semiword` to `backward-kill-bigword` to respect `/` and `-` in paths
 - `semiword` stops at punctuation
+- Blinking `\fn.` breaks formatting in some environments
+- Do not export every variable as `yashrc` should respect whatever the user's environment is (this isn't a build script to force set the environment)
+- Do not run commands like `logname` or `uname -n` inside `PS1` as they will run with every prompt (evaluate beforehand instead)
+- Do not use `set -o le-trim-right` as it breaks formatting
+- `echo` is a shell builtin and it can print both local and exported variables, while `env` is an external command that only shows exported variables
 - It is not possible to reset all `bindkey`s and start from a clean state, so we keep things vanilla and only bind what is needed
 
 ## Other
