@@ -36,6 +36,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prefer `zstd -T0` to `zstdmt` and `pzstd` as it is more modern
 - Static library can be disabled with `cmake`
 - Support for decoding legacy formats will be disabled by default (`ZSTD_LEGACY_SUPPORT=0`) from `1.6.0`
+- `zstd` is multithreaded, faster and more widely adopted compared to `brotli`
 
 ## Old
 - `clear`'s `fopen` patch has an m mode (rbm) that is only for `glibc`
@@ -45,3 +46,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/facebook/zstd/blob/dev/lib/README.md
 - https://github.com/facebook/zstd/blob/dev/programs/README.md
 - https://github.com/facebook/zstd/blob/dev/tests/README.md
+- https://helpful.knobs-dials.com/index.php/Compression_notes
+- https://peazip.github.io/fast-compression-benchmark-brotli-zstandard.html

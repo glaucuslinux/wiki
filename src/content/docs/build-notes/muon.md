@@ -3,7 +3,9 @@ title: muon
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Does it depend on `libedit` with `bestline`?
+## Configure
+- Prefer `builtin` (default) to `bestline` (`linenoise` fork) as `readline` implementation to prevent an additional dependency
+
 - muon defaults to `static` for `default_library` unlike `meson` which defaults to `shared`
 - Depends on `meson` or itself to cross compile itself on a glibc host
 - Supports `--cross-file` using `muon setup -p cross:<file>`; replace `meson` in `build-cross` (e.g. `kmod`)

@@ -37,7 +37,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `MAILCHECK=0` does not disable mail checking and instead checks before every prompt, also `unset MAILCHECK` alone does not stop `MAIL` from being set
 - `pipe-fail` is disabled by default (similar to `bash`)
 - `set --le-predict-empty` is counterintuitive
-- `YASH_PS1P='\fi.'` dims predicted text like `fish`
+- `: "${LANG:=C}"` breaks yash with `-yash: cannot read input: Invalid or incomplete multibyte or wide character`, this happens as the previous copyright notice in the `yashrc` (or `default`) file included a `UTF-8` byte, which means that `yash` has to start with `LANG=C.UTF-8` or `LANG=en_US.UTF-8` before parsing that configuration file
+- `YASH_PS1P='\fi.'` dims predicted text
+- `\fi.` can be combined with colors on modern terminals `\fgi.` (dimmed green) however this does not work in the `tty`
 - Prefer `forward-semiword` and `backward-semiword` to both their `bigword` and `emacsword` variants
 - Prefer `backward-kill-semiword` to `backward-kill-bigword` to respect `/` and `-` in paths
 - `semiword` stops at punctuation

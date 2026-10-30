@@ -153,6 +153,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## mdevd
 - Issue #8: [Mention `nsss` as an optional dependency](https://github.com/skarnet/mdevd/issues/8)
 - Issue #10: [Default path for executing commands in `mdev.conf`](https://github.com/skarnet/mdevd/issues/10)
+- Pull Request #13: [Fix `nsss` link in `mdevd` doc](https://github.com/skarnet/mdevd/pull/13)
 
 ## mold
 - Issue #1032: [Custom built GCC search paths](https://github.com/rui314/mold/issues/1032)

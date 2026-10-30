@@ -9,9 +9,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `/etc/locale.conf` is a systemdism from `localectl`
 - If `locale` shows `POSIX` then foreign characters (e.g. Arabic) won't display correctly unless `LC_CTYPE=C.UTF-8` or `LANG=en_US.UTF-8` are used
 ```sh
-- *C (aka POSIX, micro optimization, disables UTF-8, performance)
-- C.UTF-8 (glibcism?)
+- *C.UTF-8 (default musl locale, not a glibcism, lightest possible UTF-8 locale without requiring glibc)
 - en_US.UTF-8
+- C (aka POSIX, strict 7-bit single-byte ASCII, disables UTF-8)
 
 ## TERM
 - *linux (tty, 8 colors)

@@ -7,7 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `cmake`
   - `curl`
   - `expat`
-  - `finit`?
+  - `finit`? (`keventd` curates files from `eudev` which uses `ai`)
   - `glib`
   - `linux-headers`
   - `linux-lts`
@@ -15,6 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `llvm-runtimes`
   - `nim`
   - `nim-csources`
+  - `patch` for `neatvi` to support arrow keys
   - `python`
   - `tmux`
   - `u-config`
