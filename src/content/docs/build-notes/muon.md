@@ -20,6 +20,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `muon` defaults to `default_library=static` unlike `meson`
 - `muon`, `meson` and `cmake` do not support `exec-prefix`
 - `muon` now supports `--cross-file` using `muon setup -p cross:<file>`
+- `muon` defaults to `$prefix/com` for `sharedstatedir`, while `meson` defaults to `/var/lib` if `prefix=/usr`
 
 - Alpine uses the following for `abuild-muon`:
 ```
@@ -27,13 +28,6 @@ exec muon meson setup \
   -Db_staticpic=true \
   -Dpython.bytecompile=0 \
   -Dwerror=false \
-```
-- `muon` defaults to `$prefix/com` for `sharedstatedir`, while `meson` defaults to `/var/lib` if `prefix=/usr`
-- Check the following options:
-```
-prefer_static (default false on meson and muon)
-default_both_libraries (default shared on meson and auto on muon)
-default_library (default shared on meson and static on muon)
 ```
 - Check if we should set `$SAMUFLAGS` for `muon samu`:
   - if `SAMUFLAGS=$MAKEFLAGS` then `$MAKEFLAGS` should only contain `-j X`
@@ -46,8 +40,9 @@ default_library (default shared on meson and static on muon)
 - `b_ndebug=true` disables assertions
 - `buildtype=release` sets `debug=false`
 - `default_library=shared` prevents static libraries from being built (`wayland` and `libxkbcommon`)
-- `default_both_libraries=shared` controls what is used internally for linking
+- `default_both_libraries=shared` controls what is used internally for linking (defaults to `shared` on `meson` and `auto` on `muon`)
 - Explicitly set both `default_library` and `default_both_libraries` to `shared` as projects can override them otherwise (this is needed even when `meson` defaults to `default_library=shared`)
+- `prefer_static=false` is the default on both `muon` and `meson`
 - `abuild-meson` uses custom cross files on Alpine
 - When the prefix is `/usr`: `sysconfdir` defaults to `/etc`, `localstatedir` defaults to `/var`, and `sharedstatedir` defaults to `/var/lib`
 - `meson` only understands `cpu_family` and not `cpu`
