@@ -9,7 +9,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check if we need to set `--toolchain=llvm` and `--with-preferred-host-*=llvm-*` as these options only affect `slibtool`'s runtime tool choices for native builds and we already prefer the non-prefixed version of the tools as we only provide `llvm binary utilities` as the default version for the tools `ar`, `as`, `nm` and `ranlib` (see `project/config/cfgdefs.sh`)
 ### Package
 - Check if we can rely on less stuff from `gnu libtool`
-- Check if it is better to symlink `/usr/bin/libtool -> rlibtool` globally as `/usr/bin/libtool -> /usr/share/slibtool/slibtool.sh` is not recommended globally and should only be reserved for some broken projects as `./libtool -> /usr/share/slibtool/slibtool.sh` and when it is used `SLIBTOOL=rlibtool` should be set
+- Check if it is better to symlink `/usr/bin/libtool -> rlibtool` globally as `/usr/bin/libtool -> /usr/share/slibtool/slibtool.sh` is not recommended globally and should only be reserved for some broken projects as `./libtool -> /usr/share/slibtool/slibtool.sh` and when it is used `LIBTOOL=rlibtool` and `SLIBTOOL=rlibtool` should be set
+- Check if we need to set `LIBTOOL=rlibtool`, `SLIBTOOL=rlibtool` and `LIBTOOLIZE=slibtoolize` globally
 ### Other
 - Check if `libarchive` builds with `slibtoolize` now
 - Check if we can use `slibtool`'s `ltmain.sh` now
@@ -47,6 +48,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `dclibtool`, `rclibtool`, `rdlibtool` and `rdclibtool` are combinations of the previous letters (`c` adds `.la` files and `d` adds debug output)
 - `slibtool-static`: equivalent of `-disable-shared` (use `rlibtool` instead)
 - `slibtool-shared`: equivalent of `-disable-static` (use `rlibtool` instead)
+- `autoreconf` copies files from `autoconf` and `automake` packages after installation and not from `/usr/share/libtool/build-aux`
 
 ## References
 - https://dev.midipix.org/cross/slibtool/issue/5
