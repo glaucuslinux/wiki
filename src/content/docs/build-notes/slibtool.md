@@ -11,6 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check if we can rely on less stuff from `gnu libtool`
 - Check if it is better to symlink `/usr/bin/libtool -> rlibtool` globally as `/usr/bin/libtool -> /usr/share/slibtool/slibtool.sh` is not recommended globally and should only be reserved for some broken projects as `./libtool -> /usr/share/slibtool/slibtool.sh` and when it is used `LIBTOOL=rlibtool` and `SLIBTOOL=rlibtool` should be set
 - Check if we need to set `LIBTOOL=rlibtool`, `SLIBTOOL=rlibtool` and `LIBTOOLIZE=slibtoolize` globally
+- Check if we need the `/usr/share/aclocal/libtool.m4 -> ../slibtool/slibtool.m4` symlink in addition to `/usr/share/aclocal/slibtool.m4`
 ### Other
 - Check if `libarchive` builds with `slibtoolize` now
 - Check if we can use `slibtool`'s `ltmain.sh` now
