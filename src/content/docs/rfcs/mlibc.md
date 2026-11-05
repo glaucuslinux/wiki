@@ -3,6 +3,7 @@ title: mlibc
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Other
 - Replaces `musl`
 - Depends on `frigg` which optionally depends on `gtest` and `mimalloc`
 - `-Duse_freestnd_hdrs=enabled` is required for `frigg` to properly include its headers given that `-nostdinc` is being passed

@@ -3,6 +3,7 @@ title: zsh
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Other
 - Faster than `bash` and `yash`, but not `dash`
 - `--emulate sh` mode is not great and breaks the POSIX build system
 - https://rwx.gg/advice/dont/zsh/

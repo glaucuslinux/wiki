@@ -3,9 +3,10 @@ title: nsss
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- Use `--enable-libc-includes` when `nsss` improves (also fix `shadow`)
-- A circular dependency between `nsss` and `s6` (at boot-time)
-- There is no test suite
+## Other
+- `nsss` vs `musl-nscd`
+- `nsss` is only useful for multiple nsswitch backends for hosts that deal with multiple LDAP backends which almost always use `glibc`
+- `lh-bootstrap` uses `nsss`
 - The following definitions are missing in headers from nsss:
 ```c
 #include <features.h>
@@ -21,3 +22,22 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 #include <bits/alltypes.h>
 ```
 - `glibc` includes a daemon called `nscd`, which caches the results of certain types of database lookups, and it is not particuarly useful unless there are a lot of users or groups, or when using a distributed authentication database like LDAP
+- skarnet intentionally does not mention nsss as an optional dependency for `utmps`, this is their reason:
+```
+It's kinda intentional, because I wanted to keep the documentation as simple as possible - this is a simple and very low-level piece of software, but susceptible to be used by any person running musl - no need to confuse them with an option that would only ever be used by a distribution switching entirely to nsss.
+
+People who build a distribution with nsss would know to enable the option on utmps.
+
+It's not very important, but until nsss gets more widespread, I think the statu quo is better.
+```
+
+## References
+- https://git.alpinelinux.org/aports/tree/main/musl-nscd/APKBUILD
+- https://github.com/pikhq/musl-nscd
+- https://gitlab.alpinelinux.org/alpine/aports/-/issues/6711
+- https://karkhaz.github.io/tuscan/musl/nss.html
+- https://news.ycombinator.com/item?id=40703554
+- https://openwall.com/lists/musl/2024/03/06/4
+- https://patchwork.yoctoproject.org/project/oe-core/patch/20220823235624.2488133-6-andrei@gherzan.com/#4971
+- https://reddit.com/r/voidlinux/comments/xfkh8a/mdns_on_musl/
+- https://wiki.musl-libc.org/future-ideas

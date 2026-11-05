@@ -3,30 +3,26 @@ title: Static Libraries
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-## Cross
-```c
-glaucus/cross/usr/lib/gcc/x86_64-glaucus-linux-musl/13.2.0/libgcc.a
-glaucus/cross/usr/lib/gcc/x86_64-glaucus-linux-musl/13.2.0/libgcov.a
-glaucus/cross/usr/lib/libcrypt.a
-glaucus/cross/usr/lib/libdl.a
-glaucus/cross/usr/lib/libiberty.a
-glaucus/cross/usr/lib/libintl.a
-glaucus/cross/usr/lib/libm.a
-glaucus/cross/usr/lib/libpthread.a
-glaucus/cross/usr/lib/libresolv.a
-glaucus/cross/usr/lib/librt.a
-glaucus/cross/usr/lib/libutil.a
-glaucus/cross/usr/lib/libxnet.a
+## Current
 ```
-
-## Toolchain
-```c
-glaucus/cross/usr/lib/libcrypt.a
-glaucus/cross/usr/lib/libdl.a
-glaucus/cross/usr/lib/libm.a
-glaucus/cross/usr/lib/libpthread.a
-glaucus/cross/usr/lib/libresolv.a
-glaucus/cross/usr/lib/librt.a
-glaucus/cross/usr/lib/libutil.a
-glaucus/cross/usr/lib/libxnet.a
+/usr/lib/libresolv.a
+/usr/lib/libc++.a
+/usr/lib/libc++experimental.a
+/usr/lib/librt.a
+/usr/lib/libdl.a
+/usr/lib/libpsx.a
+/usr/lib/libc++abi.a
+/usr/lib/libxnet.a
+/usr/lib/linux/libclang_rt.builtins-x86_64.a
+/usr/lib/libcrypt.a
+/usr/lib/libutil.a
+/usr/lib/x86_64-pc-linux-musl/libc++.a
+/usr/lib/x86_64-pc-linux-musl/libc++experimental.a
+/usr/lib/x86_64-pc-linux-musl/libc++abi.a
+/usr/lib/x86_64-pc-linux-musl/libunwind.a
+/usr/lib/libunwind.a
+/usr/lib/libxxhash.a
+/usr/lib/libpthread.a
+/usr/lib/libcap.a
+/usr/lib/libm.a
 ```

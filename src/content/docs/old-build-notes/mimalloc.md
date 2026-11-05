@@ -3,13 +3,49 @@ title: mimalloc
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- `v3` is the experimental branch, use `v2` instead
+## Configure
 - Do not forget to enable `-DMI_OPT_SIMD=ON` when v3 becomes stable
 - `MI_OPT_ARCH` is enabled by default in v3
 - Alpine adds `-D__USE_ISOC11` to `CFLAGS` to detect `aligned_alloc`
 - `MI_SECURE` is `OFF` by default
-- Export `LD_PRELOAD=/usr/lib/libmimalloc.so` in `/etc/profile` (or `/etc/environment`?)
+
+## Package
+- Export `LD_PRELOAD=/usr/lib/libmimalloc.so` in `/etc/profile` (or `/etc/environment`?) and ensure `-fno-semantic-interposition` is not used in `CFLAGS` as it segfaults otherwise
+
+## Other
+- `v3` is the experimental branch, use `v2` instead
+- `jemalloc`, `mimalloc`, and `rpmalloc` are "modern allocators"
+- `mimalloc` is more than 2.5× faster than `tcmalloc` and `jemalloc`
+- `isoalloc` uses a global lock
+- `jemalloc` is the default allocator for FreeBSD
+- Haiku is considering both `rpmalloc` and `openbsd malloc` for its libc malloc
+- `musl` allocator `malloc-ng` is based on `hardened_malloc` and `openbsd malloc`
+- All allocators should be secure by default; having a secure version does not make sense
+- Alpaquita, Chimera, eweOS, OpenMandriva and Void all have experimental `mimalloc` support
+- Nim and Nimony (Nim 3.0) use `mimalloc` by default
 
 ## References
+- https://chimera-linux.org/docs/configuration/musl
+- https://dustri.org/b/files/blackalps_2022.pdf
+- https://git.alpinelinux.org/aports/tree/community/mimalloc2/APKBUILD
+- https://github.com/OpenMandrivaAssociation/musl
+- https://github.com/OpenMandrivaAssociation/musl/blob/master/import-mimalloc.sh
+- https://github.com/OpenMandrivaAssociation/musl/blob/master/musl-1.2.3-mimalloc-glue.patch
+- https://github.com/OpenMandrivaAssociation/musl/blob/master/musl.spec
+- https://github.com/OpenMandrivaAssociation/musl/commit/275cbeb5d0a4874610d36f92bcf66d932a0fa0ff
 - https://github.com/bell-sw/alpaquita-aports/blob/stream/core/mimalloc
+- https://github.com/dolthub/musl
+- https://github.com/dolthub/musl/commit/8aec69db0851e6e197e69b8dca8da3344190f6dd
+- https://github.com/facebook/jemalloc/wiki/Development-Status
 - https://github.com/microsoft/mimalloc/issues/597
+- https://github.com/microsoft/mimalloc/issues/923
+- https://github.com/pola-rs/polars/issues/23222
+- https://github.com/richfelker/mallocng-draft
+- https://github.com/struct/isoalloc/blob/master/SECURITY_COMPARISON.MD
+- https://github.com/zelang-dev/rpmalloc
+- https://jasone.github.io/2025/06/12/jemalloc-postmortem/
+- https://linkedin.com/pulse/linux-testing-alternative-c-memory-allocators-emerson-gomes/
+- https://linkedin.com/pulse/testing-alternative-c-memory-allocators-pt-2-musl-mystery-gomes/
+- https://openwall.com/lists/musl/2020/05/13/1
+- https://taesoo.kim/pubs/2021/yun:hardsheap-slides.pdf
+- https://tweag.io/blog/2023-08-10-rust-static-link-with-mimalloc/

@@ -1,8 +1,9 @@
 ---
-title: gcompat
+title: sdbus-c++
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Prepare
 - Depends on `systemd`
 
 ## References

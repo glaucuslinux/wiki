@@ -3,6 +3,9 @@ title: mdevd
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## Prepare
+- Depends on `execline` to parse `mdev.conf`'s `+`, `-` and `&` command directives
+
 - `mdevd -n` and `mdevd -N` allow dry runs and configuration file tests without actually running `mdevd`
 - `mdevd` deprecates `s6-uevent-listener` and `s6-uevent-spawner`
 - Check alpine's patches
@@ -62,27 +65,6 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - `devpts` `gid` should match that of `tty` group; `3` or `5` according to `/etc/group`
 - Both `optical` and `cdrom` are still relevant today; `optical` is more up-to-date as it also includes dvd and bluray
 
-## udevd and libudev replacements criteria
-- handles ~10k devices (under one minute?)
-- parallel processing (worker queues) and not linear processing
-- cache `regcomp()` results for speed in large device trees
-- `s6-uevent-listener` (deprecated, see `mdevd`) provides standalone netlink monitoring
-- pipeline approach (listener > data gatherer > event dispatcher)
-- each process replaceable if same api
-- spawns per-event handlers (e.g. `mdev` instances)
-- use unix socket client-server model; single publisher, multiple subscribers
-- implement filters server-side: dispatcher only links unfiltered events to client directories
-- avoid dbus: simple client-server, not symmetrical peer messaging
-- server-side filtering prevents unnecessary client wake-ups
-- never lose events; filesystem storage ensures this
-- filter at kernel/server level when possible
-- maintain replaceable components
-- avoid technical debt of message bus dependencies
-- `libudev`:
-  - `udev_monitor_set_receive_buffer_size()` irrelevant for filesystems as events persist
-  - inefficient client-side filtering; wakes process for filtered events
-  - current socketpair emulation loses filesystem advantage (events can be lost)
-
 ## References
 - https://alpine-devel.alpinelinux.narkive.com/K5nRHm3j/udev-replacement-in-alpine-linux
 - https://alpine-devel.alpinelinux.narkive.com/Tto4DqlQ/udev-replacement-on-alpine-linux
@@ -91,6 +73,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://codeberg.org/smj/mdevd-as-an-admin
 - https://gist.github.com/capezotte/03ee5548218e819b06459819bb120b4b
 - https://git.busybox.net/busybox/plain/docs/mdev.txt
+- https://git.skarnet.org/cgit/mdevd/tree/examples
 - https://github.com/AlexRogalskiy/aports/blob/master/main/busybox-initscripts/mdev.conf
 - https://github.com/alpinelinux/mkinitfs/blob/master/nlplug-findfs/init.sh
 - https://github.com/eweOS/packages/blob/busybox/mdev.conf
@@ -98,7 +81,6 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - https://github.com/illiliti/libudev-zero/blob/master/contrib/mdev.conf
 - https://github.com/skarnet/mdevd/issues/10#issuecomment-2611158482
 - https://gitlab.alpinelinux.org/alpine/mdev-conf/-/blob/master/mdev.conf.in
-- https://git.skarnet.org/cgit/mdevd/tree/examples
 - https://linuxfromscratch.org/hints/downloads/files/eudev-alt-hint.txt
 - https://linuxfromscratch.org/lfs/view/development/chapter08/udev.html
 - https://manned.org/man/nlplug-findfs
