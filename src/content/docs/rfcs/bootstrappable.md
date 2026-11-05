@@ -8,6 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## References
 - https://bootstrappable.org/
+- https://codeberg.org/StaticLinux/neostrap
 - https://codeberg.org/stagex/stagex
 - https://codeberg.org/vasi/bootstrappable-distros
 - https://github.com/davidar/bootsh
@@ -19,4 +20,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/vasi/mid-kid-bootstrap
 - https://hacktivis.me/articles/bootstrap-initrd
 - https://stagex.tools/
+- https://staticlinux.org/docs
 - https://xorvoid.com/sectorc.html

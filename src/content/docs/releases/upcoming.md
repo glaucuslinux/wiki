@@ -12,6 +12,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`libc++abi`](https://libcxxabi.llvm.org/) is now the default c++ standard library support!
 - [`lld`](https://lld.llvm.org/) is now the default linker!
 - [`llvm binary utilities`](https://llvm.org/docs/CommandGuide/#gnu-binutils-replacements) are now the default binutils implementation!
+- [`finit`](https://finit-project.github.io/): is now the default init system and service manager!
 - [`flex`](https://github.com/westes/flex) is now the default lex implementation!
 - [`fping`](https://fping.org/) is now the default ping implementation!
 - [`please`](https://codeberg.org/retucio/please) is now the default privilege escalation tool!

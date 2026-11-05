@@ -49,14 +49,15 @@ make \
 - `utf8` is not recommended for `fat` filesystems: `CONFIG_FAT_DEFAULT_IOCHARSET`
 
 ## References
+- https://codeberg.org/fcoppens/MinOS/src/branch/master/kernel/config
 - https://docs.kernel.org/kbuild/headers_install.html
 - https://docs.kernel.org/kbuild/llvm.html
 - https://elinux.org/Kernel_Size_Tuning_Guide
 - https://firasuke.github.io/DOTSLASHLINUX/
 - https://gist.github.com/12101111/b6978a114c9acca23a67fd064e57f040
 - https://gist.github.com/kinoshita-lab/809b60e08b3d236b9e1db8978b748cda
-- https://github.com/chipsalliance/rocket-chip/issues/1011
 - https://github.com/Frogging-Family/linux-tkg
+- https://github.com/chipsalliance/rocket-chip/issues/1011
 - https://github.com/geirha/shbot-initramfs/blob/master/kernel-howto.md
 - https://github.com/sirlucjan/kernel-patches
 - https://github.com/sn99/Optimizing-linux

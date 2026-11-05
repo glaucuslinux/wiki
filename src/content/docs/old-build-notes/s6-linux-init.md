@@ -9,9 +9,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 sudo s6-linux-init-maker -c /etc/s6/current -L -f /etc/s6/skel someRandomDir
 ```
 
-## Other
-- Use higher baudrates `115200` over `38400` for faster data transfer
-
 ## `s6-linux-init-maker`
 - Do not use `-G "agetty -8 -a root -L tty1 115200"` for early getty because we want `tty1` to depend on `hostname` in order to use it with different kernels that might hardcode `hostname`
 - Do not use `-n` and `-N` with `s6-linux-init-maker` as we have a clean initramfs

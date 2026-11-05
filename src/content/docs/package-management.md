@@ -257,6 +257,7 @@ patch -p0 ...
 - `/var/tmp/rad`: Temporary store for build artefacts; `$tmp`
 
 ## References
+- https://codeberg.org/stark-OS/starkpm
 - https://community.unix.com/t/run-command-stored-in-variable/342447
 - https://crux.nu/doc/handbook.html
 - https://debian.org/releases/bookworm/amd64/ch03s04.en.html
@@ -279,11 +280,11 @@ patch -p0 ...
 - https://linux.die.net/man/8/apt-get
 - https://linux.die.net/man/8/aptitude
 - https://linuxfromscratch.org/blfs/view/svn/introduction/la-files.html
-- https://man7.org/linux/man-pages/man8/dnf.8.html
 - https://man.archlinux.org/man/pacman.8.en
 - https://man.voidlinux.org/xbps-install.1
 - https://man.voidlinux.org/xbps-query.1
 - https://man.voidlinux.org/xbps-remove.1
+- https://man7.org/linux/man-pages/man8/dnf.8.html
 - https://michael.stapelberg.ch/posts/2020-05-09-distri-hermetic-packages/
 - https://os-wiki.ewe.moe/dev/guide/packaging
 - https://pubs.opengroup.org/onlinepubs/9799919799/
@@ -296,12 +297,12 @@ patch -p0 ...
 - https://wiki.archlinux.org/title/Arch_build_system
 - https://wiki.archlinux.org/title/Arch_compared_to_other_distributions
 - https://wiki.archlinux.org/title/Arch_package_guidelines
-- https://wiki.archlinux.org/title/creating_packages
 - https://wiki.archlinux.org/title/Makepkg
 - https://wiki.archlinux.org/title/Meson_package_guidelines
 - https://wiki.archlinux.org/title/Meta_package_and_package_group
 - https://wiki.archlinux.org/title/Official_repositories
-- https://wiki.archlinux.org/title/Pacman/Rosetta
 - https://wiki.archlinux.org/title/PKGBUILD
+- https://wiki.archlinux.org/title/Pacman/Rosetta
+- https://wiki.archlinux.org/title/creating_packages
 - https://wiki.debian.org/ReduceDebian
 - https://wiki.gentoo.org/wiki/Stage_file

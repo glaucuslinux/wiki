@@ -8,6 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`clang`](https://clang.llvm.org/): c compiler
 - [`clang++`](https://clang.llvm.org/): c++ compiler
 - [`compiler-rt`](https://compiler-rt.llvm.org/): runtime compiler support libraries implementation
+- [`finit`](https://finit-project.github.io/): init system and service manager
 - [`flex`](https://github.com/westes/flex): lex implementation
 - [`fping`](https://fping.org/): ping implementation
 - [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny): gettext implementation
@@ -32,8 +33,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [`neatvi`](https://github.com/aligrudi/neatvi): terminal text editor
 - [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses): curses library
 - [`please`](https://codeberg.org/retucio/please): privilege escalation tool
-- [`s6`](https://skarnet.org/software/s6/): init system
-- [`s6-rc`](https://skarnet.org/software/s6-rc/): service manager
 - [`sdhcp`](https://github.com/michaelforney/sdhcp): DHCP client
 - [`sff`](https://codeberg.org/sylphenix/sff): terminal file manager
 - [`slibtool`](https://git.foss21.org/slibtool): libtool implementation
