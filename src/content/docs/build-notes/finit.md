@@ -16,7 +16,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Check if we need `cgroup2` to be used as older versions rely on `tmpfs` on `/sys/fs/cgroup`
 
 ## Configure
-- It is recommended to enable auto reload
+- It is recommended to enable `auto-reload` (unlike `s6` which requires an explicit database compilation)
+- `kernel-cmdline`, `fastboot` and `fsckfix` are disabled by default
+- It is not recommended to enable `kernel-cmdline` and `fsckfix`
+- Explicitly use `--enable-fastboot` to skip `fsck` (similar to `s6-linux-init` which ignores `-f` and `-F` for compatibility)
+- Explicitly use `--disable-logrotate` as we no longer provide `utmp` and `wtmp` support
+- Explicitly use `--disable-dbus-plugin` even with `--disable-dbus` as it is implicitly set to `auto`
 
 ## Other
 - `finit` version `4` is not compatible with version `3`
@@ -30,6 +35,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `fsck` depends on `/sys`
 - `sysctl()` the syscall is officially deprecated, but the binary `sysctl` is what is recommended nowadays and uses `/proc/sys`
 - `.ICE-unix` and `.X11-unix` in `/tmp` belong to `xorg` and have been removed
+- Pseudo-filesystems (like `cgroups` and `tmpfs`) may fail to unmount at the end of shutdown (this usually does not result in data loss)
 
 ## References
 - https://blog.tjll.net/the-systemd-revolution-has-been-a-success/
