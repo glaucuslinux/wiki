@@ -102,7 +102,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Commit ea9288c: [doc: fix typo in Texinfo manual](https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=ea9288c6beca75)
 
 ## finit
-- Issue #133: [`finit` hangs at "Requesting subsystem events"](https://github.com/troglobit/finit/issues/133)
+- Issue #133: [`finit` hangs at "Requesting subsystem events"](https://github.com/finit-project/finit/issues/133)
+- Pull Request #521: [Add conditional include for `sm.h` based on `AUTO_RELOAD`](https://github.com/finit-project/finit/pull/521)
 
 ## fribidi
 - Pull Request #234: [Fix typo in `configure.ac`](https://github.com/fribidi/fribidi/pull/234)

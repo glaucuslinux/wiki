@@ -11,6 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `tools/all_syscalls` hardcodes `gawk`
 - Explicitly specify `--bindir` and `--libdir` as it defaults to `/bin` and `/lib` even with `--prefix=/usr`
 - Use `kill` from `util-linux` instead of `procps-ng` (mainstream)
+- We no longer need to provide `hwclock` from `util-linux` (or `toybox`) as `finit`'s `rtc` plugin fully replaces its functionality
 - `/etc/adjtime` should be `/var/lib/hwclock/adjtime` according to FHS (both Alpine and Arch are using an old directory version) https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s08.html#varlibhwclockStateDirectoryForHwclo
 - If the `adjtime` file does not exist, the default is `utc`
 - `musl` provides its own `sys/ttydefaults.h`, while Alpine provides a separate version
