@@ -10,10 +10,29 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### Package
 - Check if we should provide a minimal `/etc/finit.conf`
 ### Other
-- Check if long-run services are still stored in `finit.conf` and that oneshots are in `rc.local`
 - Check if `finit` falls back to `/bin/sh` if no ttys are configured in `/etc/finit.conf`
-- Check if `finit` handles `efivars` automatically and mounts it at `/sys/efi/firmware/efivars` (like `booster`)
 - Check if the fallback shell is good enough to be used in an initramfs and in rescue environments
+- Check if we can fully replace `mdevd`'s functionality:
+  * in the `initramfs` as a `coldplug` with `mdevd -C`:
+    - a summary of what `mdevd-coldplug` and `udevadm trigger` do:
+    ```sh
+    for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
+    ```
+    - a summary of what `finit`'s `modprobe` plugin does (which we currently disable with `--disable-all-plugins`) without `keventd` or any device manager:
+    ```sh
+    find /sys/devices -name modalias -print0 | xargs -0 sort -u -z | xargs -0 modprobe -abq
+    ```
+    - a `coldplug` script can also be found under `/usr/lib/finit/coldplug` which is meant to run with `mdev -df` (and maybe `keventd`?):
+    ```sh
+    find /sys/devices -name uevent -print | while IFS='' read X; do echo add > $X; done
+    ```
+    - `finit`'s `/usr/lib/finit/keventd` can be run with `keventd -c` which also does coldplug at startup (see `keventd/uevent.c`)
+  * in the services after `initramfs` hands control to `finit` replacing the previous `coldplug` and `mdevd` services
+    - the `coldplug` service can be replaced with `keventd -c` (or the `modprobe` plugin?) (is a second `coldplug` really needed here? I think it is a good idea to keep it since we can't guarantee whether the `initramfs` implementation preserves `/dev` after a `switch_root` (even with a `mount -M` before switching) or if an `initramfs` exists in the first place)
+    - the `mdevd` service can be replaced with `keventd` as it defaults to `netlink` group `4` (for compatibility with `libudev`'s `0x4`) replacing `mdevd -O 4` (also do not supply readiness `-D 3` to `mdevd` as it only works with `s6`)
+    - `finit` starts `keventd` as an internal service and controls it via symlinks in `/run/finit/cond/` (see `doc/keventd.md`)
+    - `keventd` can be run independently with `coldplug` to populate `/dev` from scratch using `keventd -c -n` (see `doc/keventd.md`)
+    - 
 
 ---
 
@@ -40,6 +59,10 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `finit` also supports integration with `watchdogd` (an external `watchdog` daemon also from `troglobit`)
 - Leave `group` set to its default value `root` as it controls ownership of `/run/finit/socket` which `initctl` uses and `/run/finit/bus` which `dbus` uses though we disable `dbus` (another logical value is `wheel`)
 - Leave `sysconfig` set to its default values `/etc/default` and `/etc/conf.d` as both of them are expected (see `doc/example.md` and `src/sample.conf`)
+- The default path for "bundled" plugins is `/usr/lib/finit/plugins` and the default path for "external" plugins is `/usr/lib/finit/plugins:/usr/local/lib/finit/plugins` so we explicitly set `--with-plugin-path=/usr/lib/finit/plugins` to remove `/usr/local` from the "external" plugin path
+- Explicitly pass `--without-sulogin` to disable the built-in `sulogin` as we already pass `--disable-rescue` and we have no use of `sulogin` (even from `util-linux` and `toybox`) as it is generally a better idea to use another live medium to rescue a broken one
+- `--without-rc-local` disables `/etc/rc.local` support as `/etc/rc.local` blocks `finit` and `initctl` at boot after runlevel `S` (or at least used to) and is mainly provided for compatibility with existing `sysv` init systems
+- Do not enable the `hotplug` plugin as it starts `keventd` in passive mode `-p` leaving device management to `udevd`, `mdevd` or `mdev` from `system/10-hotplug.conf` and `keventd` only monitors power supply events (see `doc/keventd.md`)
 
 ## Other
 - `finit` version `4` is not compatible with version `3`
@@ -63,7 +86,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `finit` handles remounting `/` as read-write automatically replacing the previous `s6` service `rw` (see `src/finit.c`)
 - `finit` handles `fstab` automatically replacing the previous `s6` service `fstab` (see `src/finit.c`)
 - Check if further logging (`/var/log/{dmesg,messages,syslog}`) is required
-- Do not provide unnecessary `systemd`-like functionality like `/etc/sysctl.d` and maybe `/etc/modules-load.d` (we may make an exception for the latter and enable the `modules-load` plugin for some compatibility if necessary)
+- Disable unnecessary `systemd`-like functionality like `/etc/sysctl.d` and maybe `/etc/modules-load.d` (we may enable the `modules-load` plugin if necessary)
 - Do not forget to check for wrong permissions `1000:1000` on `iso`
 - `/dev/fd` exists on other unices and is provided under `linux` for compatibility whereas `/proc/*/fd` is specific to `linux`
 - `sysctl()` the syscall is officially deprecated, but the binary `sysctl` is what is recommended nowadays and uses `/proc/sys`
@@ -71,6 +94,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Pseudo-filesystems (like `cgroups` and `tmpfs`) may fail to unmount at the end of shutdown (this usually does not result in data loss)
 - Runlevel `1` is the single-user mode without networking
 - Specifying `single` and `S` in the kernel cmdline starts `finit` with runlevel `1`
+- `finit` does not handle `efivars` automatically unlike `booster` which mounts it at `/sys/firmware/efi/efivars`, though an `fstab` entry (or a `task`) can be added so that `finit` can mount it:
+```
+efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
+```
+- We keep an explicit `modprobe loop` in the `initramfs` of glaucus live iso as a safety measure given that the `loop` device is virtual and its `uevent` entry may not produce a `modalias`
 
 ## References
 - https://finit-project.github.io/
@@ -79,15 +107,18 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - https://github.com/InitWare/InitWare/wiki/Dropped-components
 - https://github.com/chimera-linux/dinit-chimera
 - https://github.com/eweOS/dinit-services
+- https://github.com/finit-project/finit/blob/master/doc/ChangeLog.md
 - https://github.com/finit-project/finit/blob/master/doc/build.md
 - https://github.com/finit-project/finit/blob/master/doc/cmdline.md
 - https://github.com/finit-project/finit/blob/master/doc/config/runlevels.md
+- https://github.com/finit-project/finit/blob/master/doc/config/sysv.md
 - https://github.com/finit-project/finit/blob/master/doc/config/tty.md
 - https://github.com/finit-project/finit/blob/master/doc/dbus.md
 - https://github.com/finit-project/finit/blob/master/doc/distro.md
 - https://github.com/finit-project/finit/blob/master/doc/features.md
 - https://github.com/finit-project/finit/blob/master/doc/plugins.md
 - https://github.com/finit-project/finit/blob/master/doc/runlevels.md
+- https://github.com/finit-project/finit/blob/master/doc/runparts.md
 - https://github.com/finit-project/finit/tree/master/contrib/alpine
 - https://github.com/finix-community/finix
 - https://github.com/fszontagh/gl-recipes/blob/master/finit.sh

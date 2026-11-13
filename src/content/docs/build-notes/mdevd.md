@@ -6,19 +6,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Prepare
 - Depends on `execline` to parse `mdev.conf`'s `+`, `-` and `&` command directives
 
+## Other
 - `mdevd -n` and `mdevd -N` allow dry runs and configuration file tests without actually running `mdevd`
 - `mdevd` deprecates `s6-uevent-listener` and `s6-uevent-spawner`
-- Check alpine's patches
 - Start `mdevd` with `-O4`; this will make the daemon rebroadcast kernel uevents to `libudev-zero`
-- Readiness `-D` only works when `mdevd` is being called by `s6` and not manually in an `initramfs`
-- A summary of what `mdevd-coldplug` and `udevadm trigger` do:
+- `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this weirdly isn't a problem with `dash`
+- `mdevd` does not parse `udev` rules unlike `keventd` which includes a minimal parser for a curated set of rules from `eudev`
+
+## `mdev.conf`
+- Use libudev helper in `mdev.conf`
+- `devices` is the default value for `udevadm trigger -t`
+- with `udevadm` you have to `udevadm hwdb --update`
+### syntax
 ```sh
-for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
-```
-- There is no test suite
-- `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this problem seems to not exist when using `dash`
-- `mdev.conf` syntax:
-```
 # [-]<device regex>  <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
 # [-]$ENVVAR=regex   <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
 # [-]@maj,min[-min2] <uid>:<gid> <permissions> [=path|>path|!] [@|$|*<command>]
@@ -37,13 +37,7 @@ for i in $(find /sys -name uevent); do ( echo change > $i ) ; done
 - The $MDEV variable represents the name of the device that triggered the rule
 ```
 - The command is executed via the system() function (which means you're giving a command to the shell), so make sure you have a shell installed at /bin/sh. You should also keep in mind that the kernel executes hotplug helpers with stdin, stdout, and stderr connected to /dev/null.
-- Use libudev helper in `mdev.conf`
-- Does `mdevd` work with `udev` directories and rules or should we delete them?
-- `devices` is the default value for `udevadm trigger -t`
-- with `udevadm` you have to `udevadm hwdb --update`
-- Does `mdevd -C` remove the need for `modprobe loop`?
-
-## mdev.conf
+### devices
 - `mdevd` parses `mdev.conf` when a new device event occurs
 - `/dev/audio` and `/dev/dsp` have been replaced with newer drivers and naming conventions
 - `/dev/core` has been deprecated
