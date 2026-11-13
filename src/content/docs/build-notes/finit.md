@@ -7,6 +7,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ### Configure
 - Check if explicitly setting `--with-heading` and `--with-hostname` hardcodes the values into `finit` preventing it from parsing `/etc/os-release` and `/etc/hostname` at run time or if it only affects the default values
 - Check if we should enable the `resolvconf` plugin for `openresolv` to work correctly (see `plugins/resolvconf.c`)
+- Check if we should enable the `netlink` plugin
 ### Package
 - Check if we should provide a minimal `/etc/finit.conf`
 ### Other
@@ -32,15 +33,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
     - the `mdevd` service can be replaced with `keventd` as it defaults to `netlink` group `4` (for compatibility with `libudev`'s `0x4`) replacing `mdevd -O 4` (also do not supply readiness `-D 3` to `mdevd` as it only works with `s6`)
     - `finit` starts `keventd` as an internal service and controls it via symlinks in `/run/finit/cond/` (see `doc/keventd.md`)
     - `keventd` can be run independently with `coldplug` to populate `/dev` from scratch using `keventd -c -n` (see `doc/keventd.md`)
-    - 
 
 ---
+
+## Prepare
+- Optional dependency on `libcap` that is enabled by default as it allows services to run with minimal required privileges instead of `root` (see `doc/config/capabilities.md` and `src/service.c`)
+- `keventd` depends on `util-linux`'s `libblkid.so.1` and it is enabled by default
 
 ## Configure
 - It is recommended to enable `auto-reload` (unlike `s6` which requires a database compilation with every change)
 - `kernel-cmdline`, `fastboot` and `fsckfix` are disabled by default
 - It is not recommended to enable `kernel-cmdline` (pre-4.1 behavior) and `fsckfix`
 - Explicitly use `--enable-fastboot` to skip `fsck` (similar to `s6-linux-init` which ignores `-f` and `-F` for compatibility)
+- Explicitly use `--disable-pam` as `pam` support is enabled by default
 - `finit` supports `cgroup` version `2` only and it is enabled by default at build-time and at run time it autodetects if the kernel supports `cgroup` by checking `/sys/fs/cgroup` or if an initramfs has already mounted `cgroup2` there replacing the previous `s6` service `cgroups`
 - Explicitly use `--disable-logrotate` as we no longer provide `utmp` and `wtmp` support
 - Explicitly use `--disable-all-plugins` then enable only those that are needed
@@ -48,7 +53,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `tty` plugin is enabled by default and `--disable-all-plugins` ensures it is disabled as we have no use for new `tty` nodes watcher
 - Do not change default `fstab` as it is automatically set to `$sysconfdir/fstab` which correctly resolves to `/etc/fstab`
 - Explicitly specify `--with-heading="$PRETTY_NAME"` as we already export it and the default `/etc/os-release` may not exist where and when `finit` may be built
-- `keventd` is enabled by default
 - `random-seed` is enabled by default and defaults to `/var/lib/misc/random-seed` and with `--enable-urandom-plugin` replacing the previous `s6` service `random-seed`
 - `rtc` plugin is enabled by default and it fully replaces the previous `s6` service `hwclock` without relying on  the `hwclock` binary from `util-linux`
 - `libsystemd` is a shim for `sd_notify()` only and is disabled by default (pipewire and some wayland compositors may require it)
@@ -65,10 +69,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do not enable the `hotplug` plugin as it starts `keventd` in passive mode `-p` leaving device management to `udevd`, `mdevd` or `mdev` from `system/10-hotplug.conf` and `keventd` only monitors power supply events (see `doc/keventd.md`)
 - A curated ruleset from `eudev` version `3.2.14` is installed by default when `keventd` is enabled and `--without-udev-rules` skips the installation (see `doc/keventd.md`)
 - `keventd` has a small built-in permission table that is functionally equivalent to `mdev.conf`
-- `libcap` support is enabled by default and it allows services to run with minimal required privileges instead of `root` (see `src/service.c`)
-- Leave the `modprobe` plugin disabled by default as `keventd` also probes modules in addition to creating device nodes
+- Keep the `modprobe` plugin disabled by default as `keventd` also probes modules in addition to creating device nodes
 - Do not use `--disable-redirect` as it dumps output to the active console breaking `login` prompts instead of `/dev/null` (the default)
 - Upstream advises against using `--disable-kernel-logging` as it silences too much and runs too late to hide early boot messages and that `quiet` should be used instead in `cmdline`
+- Both `plymouth` and `testserv` plugins are disabled by default (still we already pass `--disable-all-plugins` regardless)
+- Keep the `hook-scripts` plugin disabled by default as it is used for early boot debugging and kernel tracing (see `doc/plugins.md`)
 
 ## Other
 - `finit` version `4` is not compatible with version `3`
@@ -117,7 +122,9 @@ efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
 - https://github.com/finit-project/finit/blob/master/doc/build.md
 - https://github.com/finit-project/finit/blob/master/doc/cmdline.md
 - https://github.com/finit-project/finit/blob/master/doc/config/capabilities.md
+- https://github.com/finit-project/finit/blob/master/doc/config/files.md
 - https://github.com/finit-project/finit/blob/master/doc/config/logging.md
+- https://github.com/finit-project/finit/blob/master/doc/config/pam.md
 - https://github.com/finit-project/finit/blob/master/doc/config/runlevels.md
 - https://github.com/finit-project/finit/blob/master/doc/config/sysv.md
 - https://github.com/finit-project/finit/blob/master/doc/config/tty.md
