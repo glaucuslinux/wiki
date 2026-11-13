@@ -63,6 +63,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Explicitly pass `--without-sulogin` to disable the built-in `sulogin` as we already pass `--disable-rescue` and we have no use of `sulogin` (even from `util-linux` and `toybox`) as it is generally a better idea to use another live medium to rescue a broken one
 - `--without-rc-local` disables `/etc/rc.local` support as `/etc/rc.local` blocks `finit` and `initctl` at boot after runlevel `S` (or at least used to) and is mainly provided for compatibility with existing `sysv` init systems
 - Do not enable the `hotplug` plugin as it starts `keventd` in passive mode `-p` leaving device management to `udevd`, `mdevd` or `mdev` from `system/10-hotplug.conf` and `keventd` only monitors power supply events (see `doc/keventd.md`)
+- A curated ruleset from `eudev` version `3.2.14` is installed by default when `keventd` is enabled and `--without-udev-rules` skips the installation (see `doc/keventd.md`)
+- `keventd` has a small built-in permission table that is functionally equivalent to `mdev.conf`
+- `libcap` support is enabled by default and it allows services to run with minimal required privileges instead of `root` (see `src/service.c`)
+- Leave the `modprobe` plugin disabled by default as `keventd` also probes modules in addition to creating device nodes
+- Do not use `--disable-redirect` as it dumps output to the active console breaking `login` prompts instead of `/dev/null` (the default)
+- Upstream advises against using `--disable-kernel-logging` as it silences too much and runs too late to hide early boot messages and that `quiet` should be used instead in `cmdline`
 
 ## Other
 - `finit` version `4` is not compatible with version `3`
@@ -110,6 +116,8 @@ efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
 - https://github.com/finit-project/finit/blob/master/doc/ChangeLog.md
 - https://github.com/finit-project/finit/blob/master/doc/build.md
 - https://github.com/finit-project/finit/blob/master/doc/cmdline.md
+- https://github.com/finit-project/finit/blob/master/doc/config/capabilities.md
+- https://github.com/finit-project/finit/blob/master/doc/config/logging.md
 - https://github.com/finit-project/finit/blob/master/doc/config/runlevels.md
 - https://github.com/finit-project/finit/blob/master/doc/config/sysv.md
 - https://github.com/finit-project/finit/blob/master/doc/config/tty.md

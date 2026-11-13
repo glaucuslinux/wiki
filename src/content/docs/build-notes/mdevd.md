@@ -11,7 +11,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `mdevd` deprecates `s6-uevent-listener` and `s6-uevent-spawner`
 - Start `mdevd` with `-O4`; this will make the daemon rebroadcast kernel uevents to `libudev-zero`
 - `yash` does not specify `PATH` in `initramfs` which causes `mdevd` to not find its `command`s; this weirdly isn't a problem with `dash`
-- `mdevd` does not parse `udev` rules unlike `keventd` which includes a minimal parser for a curated set of rules from `eudev`
+- `mdevd` does not parse `udev` rules unlike `keventd` which includes a minimal parser for a curated subset of rules from `eudev`
 
 ## `mdev.conf`
 - Use libudev helper in `mdev.conf`
