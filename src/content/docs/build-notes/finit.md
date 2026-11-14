@@ -5,9 +5,9 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## TODO
 ### Configure
-- Check if explicitly setting `--with-heading` and `--with-hostname` hardcodes the values into `finit` preventing it from parsing `/etc/os-release` and `/etc/hostname` at run time or if it only affects the default values
-- Check if we should enable the `resolvconf` plugin for `openresolv` to work correctly (see `plugins/resolvconf.c`)
+- Check if explicitly setting `--with-heading` and `--with-hostname` hardcodes the values into `finit` preventing it from parsing `/etc/os-release` and `/etc/hostname` at run time or if it only affects the default values replacing the previous `s6` service `hostname`
 - Check if we should enable the `netlink` plugin
+- Check if we should enable `resolvconf` plugin as it is intended for debian's legacy `resolvconf` implementation and `openresolv` is "fully command line compatible" with debian's `resolvconf` (see `plugins/resolvconf.c`)
 ### Package
 - Check if we should provide a minimal `/etc/finit.conf`
 ### Other
@@ -33,6 +33,11 @@ description: An opinionated Linux® distribution based on musl libc and toybox
     - the `mdevd` service can be replaced with `keventd` as it defaults to `netlink` group `4` (for compatibility with `libudev`'s `0x4`) replacing `mdevd -O 4` (also do not supply readiness `-D 3` to `mdevd` as it only works with `s6`)
     - `finit` starts `keventd` as an internal service and controls it via symlinks in `/run/finit/cond/` (see `doc/keventd.md`)
     - `keventd` can be run independently with `coldplug` to populate `/dev` from scratch using `keventd -c -n` (see `doc/keventd.md`)
+- Check if we need services for network interfaces like `lo` (should depend on `coldplug`) with both `up` (`ip link set lo up`) and `down` (`ip link set lo down`) scripts
+- Both `finit` and `s6` do not handle `efivars` automatically and an `fstab` entry or a `task` may be required (we should also check if this mount should happen early on the `initramfs` and if the boot loader `limine` should be responsible for it?):
+```
+efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
+```
 
 ---
 
@@ -49,6 +54,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `finit` supports `cgroup` version `2` only and it is enabled by default at build-time and at run time it autodetects if the kernel supports `cgroup` by checking `/sys/fs/cgroup` or if an initramfs has already mounted `cgroup2` there replacing the previous `s6` service `cgroups`
 - Explicitly use `--disable-logrotate` as we no longer provide `utmp` and `wtmp` support
 - Explicitly use `--disable-all-plugins` then enable only those that are needed
+- `finit` always enables the `bootmisc`, `pidfile`, `procps`, `sys` and `usr` plugins even with `--disable-all-plugins`
 - `dbus` plugin is implicitly set to `auto` even with `--disable-dbus`, whereas `--disable-all-plugins` ensures it is disabled
 - `tty` plugin is enabled by default and `--disable-all-plugins` ensures it is disabled as we have no use for new `tty` nodes watcher
 - Do not change default `fstab` as it is automatically set to `$sysconfdir/fstab` which correctly resolves to `/etc/fstab`
@@ -73,7 +79,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Do not use `--disable-redirect` as it dumps output to the active console breaking `login` prompts instead of `/dev/null` (the default)
 - Upstream advises against using `--disable-kernel-logging` as it silences too much and runs too late to hide early boot messages and that `quiet` should be used instead in `cmdline`
 - Both `plymouth` and `testserv` plugins are disabled by default (still we already pass `--disable-all-plugins` regardless)
-- Keep the `hook-scripts` plugin disabled by default as it is used for early boot debugging and kernel tracing (see `doc/plugins.md`)
+- Keep the `hook-scripts` plugin disabled by default as it is used for early boot debugging and kernel tracing, also it does not hurt to explicitly pass `--without-hook-scripts-path` (see `doc/plugins.md`)
 
 ## Other
 - `finit` version `4` is not compatible with version `3`
@@ -105,10 +111,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Pseudo-filesystems (like `cgroups` and `tmpfs`) may fail to unmount at the end of shutdown (this usually does not result in data loss)
 - Runlevel `1` is the single-user mode without networking
 - Specifying `single` and `S` in the kernel cmdline starts `finit` with runlevel `1`
-- `finit` does not handle `efivars` automatically unlike `booster` which mounts it at `/sys/firmware/efi/efivars`, though an `fstab` entry (or a `task`) can be added so that `finit` can mount it:
-```
-efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
-```
 - We keep an explicit `modprobe loop` in the `initramfs` of glaucus live iso as a safety measure given that the `loop` device is virtual and its `uevent` entry may not produce a `modalias`
 
 ## References
