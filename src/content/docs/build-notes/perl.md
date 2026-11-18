@@ -20,13 +20,19 @@ generate_uudmap.o: file not recognized: file format not recognized
 ## Prepare
 - Depends on `mawk`
 - Does not depend on a loopback `lo` network device or a `/etc/hosts` file (only the test suite does)
+- No need to set `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` or use stack size patches for `musl` on `x86_64` (only for `s390x`)
 
 ## Configure
+- After running `Configure` a `config.sh` file containing configuration data will be generated
 - Prefer `-D`/`-U` to `='define'`/`='undef'`, `='true'`/`='false'` and `='y'`/`='n'` respectively
 - `-D` overrides values in `hints/linux.sh`, while `-A` appends to them
 - It is better to use `-Accflags` to add preprocessor macros like `-DNO_TAINT_SUPPORT` and not optimization flags (see `INSTALL`)
 - Do not use `-Dccflags` as that overrides preprocessor macros defined in `hints/linux.sh` (see `INSTALL`)
 - It is better to use `-Doptimize` to completely override optimization flags for `perl`
+- No need to pass `-Accflags=-D_GNU_SOURCE` as `perl` already detects `musl` and passes it (see `hints/linux.sh`)
+- Explicitly specify `cc` using `-Dcc=clang` as `Configure` does not honor `$CC` (see `Configure` and `INSTALL`)
+- `-Dusemallocwrap` is enabled by default on `linux` (see `hints/linux.sh`)
+- `-Uusemymalloc` uses system `malloc` (e.g. `musl`) instead of bundled `malloc.c` and is the default on `linux` (see `hints/linux.sh`)
 - Explicitly set `-Dusethreads` as `perl` defaults to compiling without thread support (`perl` previously had two threads implementations, the current `ithreads` which is synonymous with `threads` and the deprecated `5005threads`) (see `INSTALL`)
 - Large file support is enabled by default on `linux` (see `hints/linux.sh` and `INSTALL`)
 - Avoid `-Duse64bitint` and `-Duse64bitall` on a 64-bit system as they are intended as workarounds on legacy 32-bit hardware (see `INSTALL`)
@@ -39,7 +45,8 @@ generate_uudmap.o: file not recognized: file format not recognized
 - Avoid `-Uusedl` as it forces `perl` to be compiled completely statically (see `INSTALL`)
 - `-Duseshrplib` provides a shared `perl` library `libperl.so` and this comes with a performance penalty (see `INSTALL`)
 - `$prefixexp` is generated from `$prefix`, with `~` expansion done to convert home directories into absolute paths (see `INSTALL`)
-- Explicitly specify `-Dman1dir=none` and `-Dman3dir=none` to disable installation of man pages completely (this also removes the need to pass any other `*man*` define) (see `INSTALL`)
+- `-Dman1dir=none` and `-Dman3dir=none` should "in theory" disable man pages but `installman` installs them regardless (see `INSTALL`)
+- `man1dir`, `man3dir`, `siteman1dir`, `siteman3dir`, `vendorman1dir` and `vendorman3dir` all default to `/usr/man/man1` and `/usr/man/man3` respectively which is not desired but we do not care as we install `perl` using the `install.perl` target (see `Policy_sh.SH`)
 - `perl` does not install `html` documentation by default (set to `none`) (see `INSTALL`)
 - Avoid passing `DESTDIR` to `-Dinstallprefix=$DESTDIR` and prefer `make DESTDIR="$DESTDIR" install` instead (see `INSTALL`)
 - Avoid `-Duserelocatableinc` as it is not compatible with `-Duseshrplib` (see `INSTALL`)
@@ -57,25 +64,16 @@ generate_uudmap.o: file not recognized: file format not recognized
 - Do not set `-Accflags=-DZ_SOLO` as it is only for bundled `zlib` which we disable with `BUILD_ZLIB=0` in favor of system `libz`
 - `usesoname` is no longer available
 - Do not unset `-Ud_fpos64_t` and `-Ud_off64_t` as `musl` defines `fpos64_t` and `off64_t` so let the build system decide
-- Explicitly set `-Dd_sockaddr_in6=define` as musl defines `sockaddr_in6`
+- Explicitly set `-Dd_sockaddr_in6` as musl defines `sockaddr_in6`
 - `siteprefix` is automatically set to `prefix`
-
-- Do not specify `scriptdir` or other dirs that might change where binaries are being installed (perl binaries and scripts are expected to be in `/usr/bin`)
-- No need to pass `-D_GNU_SOURCE` in `CFLAGS` as `perl` already detects `musl` and passes it (see `hints/linux.sh`)
-- `-Dusemallocwrap` is enabled by default on `linux` (see `hints/linux.sh`)
-- `-Uusemymalloc` uses system `malloc` (e.g. `musl`) instead of bundled `malloc.c` and is the default on `linux` (see `hints/linux.sh`)
-- Explicitly specify `man1dir`, `man3dir`, `siteman1dir`, `siteman3dir`, `vendorman1dir` and `vendorman3dir` all default to `/usr/man/man1` and `/usr/man/man3` respectively which is not desired (see `Policy_sh.SH`)
-- `installman1dir` and `installman3dir` are not portable and should only be used in Makefiles
-- After `Configure` has run a `config.sh` file containing configuration data will be generated
-- Explicitly specify `cc` using `-Dcc=clang` as `Configure` does not honor `$CC` (see `Configure` and `INSTALL`)
-- Do not use `-Dinstallusrbinperl` as it force creates a symlink in `/usr/bin` even when we are installing in a custom staging directory
 - `Configure -d` disables `usedevel` and an explicit `-Dusedevel` is required to enable development builds if needed (see `INSTALL`)
 - Avoid `PERL_EXTERNAL_GLOB` as it is a legacy behavior retained only for `csh` (see `INSTALL`)
+- `perl`'s build system automatically detects `static_inline`
+- `less -is` is a simpler and saner default compared to `less -iRs`
 
+- Do not use `-Dinstallusrbinperl` as it force creates a symlink in `/usr/bin` even when we are installing in a custom staging directory
+- `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin` where binaries and scripts are stored
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
-- Unable to use upstream binaries; requires signing up with a third party vendor?
-- `Config_heavy.pl` applies compile-time flags to future builds and modules; which is also why we don't use `cf_email` as it would require patching to prevent sending reports of some broken modules to different emails
-- `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` and stack size patches for musl are needed for `s390x` not `x86_64`
 - Void passes `export CFLAGS+="-DNO_POSIX_2008_LOCALE"` to fix build on musl
 - Specify additional flags?
 ```
@@ -84,11 +82,6 @@ generate_uudmap.o: file not recognized: file format not recognized
 -Dlddlflags="-shared $LDFLAGS"
 -Dldflags="$LDFLAGS
 ```
-- Do we need a `/usr/lib/libperl.so` symlink?
-- Do we need to explicitly define `static_inline`? Or does `perl`'s build system automatically detect it?
-- `musl-locale` patches are for `perl-cross` which glaucus does not use as we natively build `perl` early in a bootable `cross` environment
-- `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin`
-- combine both `lib` and `share` into the same directory under `lib` for `core`, `site` and `vendor`
 
 ## Build
 - `make realclean` is equivalent to `make clean`
