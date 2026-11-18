@@ -16,6 +16,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `nim`
   - `nim-csources`
   - `patch` for `neatvi` to support arrow keys
+  - `perl`
   - `python`
   - `tmux`
   - `u-config`

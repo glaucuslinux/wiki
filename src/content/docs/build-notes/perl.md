@@ -3,63 +3,135 @@ title: perl
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-- added `core_perl` to `$PATH` in bootstrap to prevent warnings about missing `pod2man`
+## TODO
+### Configure
+- Check if we need `-Dar=llvm-ar`, `-Dld=ld.lld`, `-Dnm=llvm-nm` and `-Dranlib=llvm-ranlib` or if the regular symlinks `ar`, `nm` and `ranlib` are already provided by `llvm`
+- Check if we can disable more extensions (see `cpan/`, `dist/` and `ext/`)
+### Build
+- Check if `perl` still does not build with `lto` enabled (particularly `-flto=thin`):
+```c
+generate_uudmap.o: file not recognized: file format not recognized
+```
+### Other
+- Check if we still need to add `core_perl` to `$PATH` in bootstrap to prevent warnings about missing `pod2man` or if that was only needed for the previous `gcc` + `binutils` toolchain (we now remove `/usr/bin/pod2man` instead check if we require a `pod2man` stub if anything requires it)
+
+---
+
+## Prepare
 - Depends on `mawk`
-- Depends on `gdbm` or `db` on Alpine and Arch
+- Does not depend on a loopback `lo` network device or a `/etc/hosts` file (only the test suite does)
+
+## Configure
+- Prefer `-D`/`-U` to `='define'`/`='undef'`, `='true'`/`='false'` and `='y'`/`='n'` respectively
+- `-D` overrides values in `hints/linux.sh`, while `-A` appends to them
+- It is better to use `-Accflags` to add preprocessor macros like `-DNO_TAINT_SUPPORT` and not optimization flags (see `INSTALL`)
+- Do not use `-Dccflags` as that overrides preprocessor macros defined in `hints/linux.sh` (see `INSTALL`)
+- It is better to use `-Doptimize` to completely override optimization flags for `perl`
+- Explicitly set `-Dusethreads` as `perl` defaults to compiling without thread support (`perl` previously had two threads implementations, the current `ithreads` which is synonymous with `threads` and the deprecated `5005threads`) (see `INSTALL`)
+- Large file support is enabled by default on `linux` (see `hints/linux.sh` and `INSTALL`)
+- Avoid `-Duse64bitint` and `-Duse64bitall` on a 64-bit system as they are intended as workarounds on legacy 32-bit hardware (see `INSTALL`)
+- Avoid `-Dusemorebits` as it enables both 64-bit support and `long double` support
+- Avoid `-Dusequadmath` with `clang`
+- `-Accflags=-DNO_TAINT_SUPPORT` provides a 5-10% performance improvement without compromising security unlike `-Accflags=-DSILENT_NO_TAINT_SUPPORT` (see `INSTALL`)
+- Avoid changing or overriding the default hash functions used by `perl` as they are already good enough (see `INSTALL`)
+- Avoid `-Duselongdouble` as it may double memory overhead and cause non-deterministic behavior on `musl`
+- Avoid `-Dusesocks` as it configures `perl` to be "socksified" (linked against `libsocks`) (see `INSTALL`)
+- Avoid `-Uusedl` as it forces `perl` to be compiled completely statically (see `INSTALL`)
+- `-Duseshrplib` provides a shared `perl` library `libperl.so` and this comes with a performance penalty (see `INSTALL`)
+- `$prefixexp` is generated from `$prefix`, with `~` expansion done to convert home directories into absolute paths (see `INSTALL`)
+- Explicitly specify `-Dman1dir=none` and `-Dman3dir=none` to disable installation of man pages completely (this also removes the need to pass any other `*man*` define) (see `INSTALL`)
+- `perl` does not install `html` documentation by default (set to `none`) (see `INSTALL`)
+- Avoid passing `DESTDIR` to `-Dinstallprefix=$DESTDIR` and prefer `make DESTDIR="$DESTDIR" install` instead (see `INSTALL`)
+- Avoid `-Duserelocatableinc` as it is not compatible with `-Duseshrplib` (see `INSTALL`)
+- Explicitly specify `-Dinc_version_list=none` to disable using older `perl` versions and modules (see `INSTALL`)
+- Avoid `-DDEBUGGING` as it bloats `perl` by a factor of 2x to 3x and use `-UDEBUGGING` instead (see `INSTALL`)
+- Avoid `-Dusedtrace` as `glaucus` does not provide `dtrace`
+- `Configure` will build all supported extensions by default (e.g. `GDBM_File` if the gdbm library exists) (see `INSTALL`)
+- Prefer `-Dnoextensions='DB_File GDBM_File NDBM_File ODBM_File SDBM_File'` to `-Ui_db -Ui_ndbm -Ui_gdbm -Ui_odbm -Ui_sdbm` (see `INSTALL`)
+- Prefer `-Dnoextensions="Archive/Tar Compress/Raw/Bzip2 Compress/Raw/Zlib IO/Compress IO/Zlib XS/APItest XS/Typemap"` to `-Dnoextensions="Archive-Tar Compress-Raw-Bzip2 Compress-Raw-Zlib DB_File GDBM_File IO-Compress IO-Zlib NDBM_File ODBM_File SDBM_File XS-APItest XS-Typemap"` as the latter does not correctly detect extensions
+- Avoid `-Dhostgenerate`, `-Dhostperl`, `-Dsysroot`, `-Dtargetarch`, `-Dtargetdir`, `-Dtargetenv`, `-Dtargethost`, `-Dtargetuser` and `-Dusecrosscompile` as we only plan to natively compile `perl`  as cross compiling `perl` is a major hassle (see `INSTALL`)
+- `suidperl` is no longer available, use a separate privilege escalation tool (see `INSTALL`)
+- `miniperl` is a small temporary version of perl built automatically during the build process with enough functionality to bootstrap the rest of the build until the final `perl` binary is fully built (see `INSTALL`)
+- Explicitly specify `-Uusenm` to prevent the "faster" `nm` extraction (or `llvm-nm`) from running on `libc` during `Configure` for a more accurate symbol probing (see `INSTALL`)
+- Append `-DNO_MATHOMS` to `ccflags` to stop functions from `mathoms.c` from being compiled as they are no longer used by `perl` and are only included for compatibility reasons without being completely removed (see `INSTALL`)
+- Do not set `-Accflags=-DZ_SOLO` as it is only for bundled `zlib` which we disable with `BUILD_ZLIB=0` in favor of system `libz`
+- `usesoname` is no longer available
+- Do not unset `-Ud_fpos64_t` and `-Ud_off64_t` as `musl` defines `fpos64_t` and `off64_t` so let the build system decide
+- Explicitly set `-Dd_sockaddr_in6=define` as musl defines `sockaddr_in6`
+- `siteprefix` is automatically set to `prefix`
+
 - Do not specify `scriptdir` or other dirs that might change where binaries are being installed (perl binaries and scripts are expected to be in `/usr/bin`)
-- `-Ud_fpos64_t` and `-Ud_off64_t` undefine symbols in configure on Alpine and Clear; musl defines them so it is better to let the build system decide
-- `Z_SOLO` on Alpine is used to compile and use zlib without external libraries
-- Check large file and usenm support
+- No need to pass `-D_GNU_SOURCE` in `CFLAGS` as `perl` already detects `musl` and passes it (see `hints/linux.sh`)
+- `-Dusemallocwrap` is enabled by default on `linux` (see `hints/linux.sh`)
+- `-Uusemymalloc` uses system `malloc` (e.g. `musl`) instead of bundled `malloc.c` and is the default on `linux` (see `hints/linux.sh`)
+- Explicitly specify `man1dir`, `man3dir`, `siteman1dir`, `siteman3dir`, `vendorman1dir` and `vendorman3dir` all default to `/usr/man/man1` and `/usr/man/man3` respectively which is not desired (see `Policy_sh.SH`)
 - `installman1dir` and `installman3dir` are not portable and should only be used in Makefiles
-- `perl` manpages take 20 MB (a 1/3 of its entire install size); adelie removes manpages for modules
+- After `Configure` has run a `config.sh` file containing configuration data will be generated
+- Explicitly specify `cc` using `-Dcc=clang` as `Configure` does not honor `$CC` (see `Configure` and `INSTALL`)
+- Do not use `-Dinstallusrbinperl` as it force creates a symlink in `/usr/bin` even when we are installing in a custom staging directory
+- `Configure -d` disables `usedevel` and an explicit `-Dusedevel` is required to enable development builds if needed (see `INSTALL`)
+- Avoid `PERL_EXTERNAL_GLOB` as it is a legacy behavior retained only for `csh` (see `INSTALL`)
+
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
 - Unable to use upstream binaries; requires signing up with a third party vendor?
-- Does `perl` require a loopback `lo` network device and `/etc/hosts`?
 - `Config_heavy.pl` applies compile-time flags to future builds and modules; which is also why we don't use `cf_email` as it would require patching to prevent sending reports of some broken modules to different emails
-- `1p` for commands and `3pm` for modules
-- `-Dusesoname` is obsolete
-- It is recommended not to use `-Dusenm` on Linux
-- Check `dtrace` and threaded perl?
-- `miniperl` is not needed as we aren't bootstrapping `perl`
-- `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` and stack size patches for musl are needed for `s390x` on Alpine and Void
-- `PERL_TEST_HARNESS_ASAP=1` causes the test suite to finish somewhat earlier with less logical ordering of the tests
-- `PERL_BUILD_PACKAGING` skips a small number of porting tests (those in t/porting) that assume they are in a git clone of the upstream Perl repository, or enforce irrelevant rules which are not
-- musl defines `sockaddr_in6` so use `-Dd_sockaddr_in6=define`
-- Void passes `export CFLAGS+="-DNO_POSIX_2008_LOCALE -D_GNU_SOURCE"` to fix build on musl
+- `LDFLAGS="-Wl,-z,stack-size=2097152 -pthread"` and stack size patches for musl are needed for `s390x` not `x86_64`
+- Void passes `export CFLAGS+="-DNO_POSIX_2008_LOCALE"` to fix build on musl
 - Specify additional flags?
 ```
--Aappend:optimize="$CFLAGS"
--Accflags
--Adefine:ccflags="$CFLAGS"
--Adefine:lddflags="$LDFLAGS"
--Adefine:ldflags="$LDFLAGS"
 -Dcccdlflags="-fPIC"
 -Dccdlflags="-rdynamic"
--Dccflags="$CFLAGS"
 -Dlddlflags="-shared $LDFLAGS"
 -Dldflags="$LDFLAGS
--Doptimize="-Wall $CFLAGS"
 ```
-- A custom memory allocator can be used with `usemymalloc`
-- Alpine further splits the package into `dev` and `utils` each with certain binaries
-- Compare `make` vs `make libperl.so && make`
-- Compare `make install` target vs `make install.perl`
-- `-Duse64bitint -Duselargefiles` are detected by default?
-- Prefer `test_harness_notty` over `test_harness`?
-- `HARNESS_OPTIONS` defaults to `j9`?
-- Examine alpine's `-Dd_semctl_semun`?
 - Do we need a `/usr/lib/libperl.so` symlink?
-- Modify `CPAN/FirstTime.pm` for site directories?
-- Might require a permission fix to `644`?
 - Do we need to explicitly define `static_inline`? Or does `perl`'s build system automatically detect it?
 - `musl-locale` patches are for `perl-cross` which glaucus does not use as we natively build `perl` early in a bootable `cross` environment
-- `siteprefix` is automatically set equal to `prefix`
 - `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin`
 - combine both `lib` and `share` into the same directory under `lib` for `core`, `site` and `vendor`
 
+## Build
+- `make realclean` is equivalent to `make clean`
+
+## Package
+- Do not use `make install-strip` as it installs `man` pages and runs `installman` even when setting all `*man*` variables to `none`:
+```
+-Dman1dir=none
+-Dman3dir=none
+-Dsiteman1dir=none
+-Dsiteman3dir=none
+-Dvendorman1dir=none
+-Dvendorman3dir=none
+```
+- `make install.perl` does not install `man` pages but still installs `pod` files, it also does not `strip` installed binaries by default
+- `./perl installperl -p --destdir=$dir` does not install `man` pages and `pod` files (due to `-p`)
+- `./perl installperl -h` shows a list of possible options that can be passed to `INSTALLFLAGS` when running `make install.perl`
+- Use `make INSTALLFLAGS='-s -f -o -p' install.perl` as it strips installed binaries and does not install `man` pages and `pod` files
+
+## Other
+- Even-numbered subreleases (like `5.40.x` and `5.42.x`) are stable maintenance releases (see `INSTALL`)
+- Odd-numbered subreleases (like `5.41.x` and `5.43.x`) are unstable development releases (see `INSTALL`)
+- With `5.36` the C compiler baseline requirement changed from "ANSI C89" to "C89 plus some specific C99 features"
+- The `configure.gnu` script is a compatibility shim for `gnu` configure that may not understand `-D` symbols and is not used by default (`INSTALL` mentions it forwards options to `Configure` so use that instead)
+- The `configpm` script is run using `miniperl` to regenerate `lib/Config.pm`, `lib/Config_heavy.pl` and `lib/Config.pod` from the contents of `config.sh`, `Porting/Glossary` and `myconfig.SH` and it accepts a `--no-glossary` option which stops `Porting/Glossary` from being included in `lib/Config.pod` though we do not require it as we manually remove all `pod` files post install
+- The `myconfig.SH` script is a helper script that is used for bug reports
+- The scripts under `hints/` are used by `Configure` to set things which `Configure` either can't or doesn't guess properly
+- The `Policy_sh.SH` script is run by `Configure` to generate `Policy.sh` for repeated builds and `-D` overrides `Policy.sh` definitions
+- `perl -V:config_args` shows how `perl` was configured
+- `perl` manpages take 20 MB (a 1/3 of its entire install size) so remove them
+
 ## References
-- https://bugs.gentoo.org/506818
-- https://cgit.freebsd.org/ports/commit/lang/perl5.40?id=06745788d4b143777aa2cb91e31a4c07af90ded3
-- https://github.com/void-linux/void-packages/blob/master/srcpkgs/perl/patches/cpan_definstalldirs.diff
+### Offline
+- cflags.SH
+- Configure
+- INSTALL
+- installperl
+- hints/linux.sh
+- hints/README.hints
+- Makefile.SH
+- Policy_sh.SH
+- Porting/Glossary
+### Online
 - https://perldoc.perl.org/Config
+- https://perldoc.perl.org/perlglossary
 - https://wiki.archlinux.org/title/Perl_package_guidelines

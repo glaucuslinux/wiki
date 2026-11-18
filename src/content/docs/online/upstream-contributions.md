@@ -104,6 +104,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## finit
 - Issue #133: [`finit` hangs at "Requesting subsystem events"](https://github.com/finit-project/finit/issues/133)
 - Pull Request #521: [Add conditional include for `sm.h` based on `AUTO_RELOAD`](https://github.com/finit-project/finit/pull/521)
+- Pull Request #522: [`doc`: list `libcap` as a dependency](https://github.com/finit-project/finit/pull/522)
 
 ## fribidi
 - Pull Request #234: [Fix typo in `configure.ac`](https://github.com/fribidi/fribidi/pull/234)
@@ -255,6 +256,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - [Perl 5.38.0 Contributor](https://nntp.perl.org/group/perl.perl5.porters/2023/07/msg266602.html)
 - [Perl Author](https://nntp.perl.org/group/perl.perl5.changes/2023/05/msg61675.html)
 - Pull Request #21094: [Fix typo in `INSTALL`](https://github.com/Perl/perl5/pull/21094)
+- Pull Request #25069: [`hints/linux.sh`: fix typo in comment about `memmem` function](https://github.com/Perl/perl5/pull/25069)
 
 ## procps-ng
 - Merge Request #158: [`netbsd-curses` compatibility](https://gitlab.com/procps-ng/procps/-/merge_requests/158)
