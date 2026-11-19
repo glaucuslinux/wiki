@@ -12,6 +12,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ```c
 generate_uudmap.o: file not recognized: file format not recognized
 ```
+- Check if `--pack-dyn-relocs=relr` causes issues or not (the following error occurred during a native build on a `glibc` host only so check again if a native build in a `musl` chroot will complain or not):
+```c
+./try: error while loading shared libraries: ./try: DT_RELR without GLIBC_ABI_DT_RELR dependency
+```
+- Check if `$LDFLAGS` should be passed to `-Dldflags` or to `-Dlddlflags` or both
+- Check whether `$LD` should be kept as `ld.lld` or set to `clang` via `-Dld=clang`
 ### Other
 - Check if we still need to add `core_perl` to `$PATH` in bootstrap to prevent warnings about missing `pod2man` or if that was only needed for the previous `gcc` + `binutils` toolchain (we now remove `/usr/bin/pod2man` instead check if we require a `pod2man` stub if anything requires it)
 
@@ -88,21 +94,12 @@ USE_ZLIB_NG=0 \
 $dir/usr/lib/perl5/5.42.0/x86_64-linux-thread-multi
 $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 ```
-- `privlib`, `sitelib` and `vendorlib` are not architecture specific and contain pure `perl` code (not compiled) and should go under `/usr/share`
+- `privlib`, `sitelib` and `vendorlib` are not architecture specific and contain pure `perl` code (not compiled) and should go under `/usr/share` as recommended by `FHS`
 - `archlib`, `sitearch` and `vendorarch` are architecture specific and contain compiled extensions and should go under `/usr/lib`
-- Do not embed version information or host/target tuples in install paths like `perl5/5.42.0` or `5.42.0/x86_64-linux-thread-multi`
-
-- Do not use `-Dinstallusrbinperl` as it force creates a symlink in `/usr/bin` even when we are installing in a custom staging directory
-- `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin` where binaries and scripts are stored
-- `PERL_MM_USE_DEFAULT=1` uses default values when answering questions
-- Void passes `export CFLAGS+="-DNO_POSIX_2008_LOCALE"` to fix build on musl
-- Specify additional flags?
-```
--Dcccdlflags="-fPIC"
--Dccdlflags="-rdynamic"
--Dlddlflags="-shared $LDFLAGS"
--Dldflags="$LDFLAGS
-```
+- Do not embed version information or host/target tuples in install paths like `perl5/5.42.0/x86_64-linux-thread-multi`
+- `scriptdir`, `sitescript` and `vendorscript` are automatically set to `$prefix/bin` where binaries and scripts are stored (see `config.sh` after running `Configure`)
+- `PERL_MM_USE_DEFAULT=1` uses default values when answering questions for later `cpan` and `module` builds
+- `-Dinstallusrbinperl` does nothing with our configure options as it ensure `/usr/bin/perl` exists which it does given our paths
 
 ## Build
 - `make realclean` is equivalent to `make clean`
@@ -121,6 +118,8 @@ $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 - `./perl installperl -p --destdir=$dir` does not install `man` pages and `pod` files (due to `-p`)
 - `./perl installperl -h` shows a list of possible options that can be passed to `INSTALLFLAGS` when running `make install.perl`
 - Use `make INSTALLFLAGS='-s -f -o -p' install.perl` as it strips installed binaries and does not install `man` pages and `pod` files
+- No need to add additional `find` statements to remove `.bs`, `.packlist`, `Change`, `README` and `TODO` as they do not exist given the method we use to install `perl`
+- `$dir/usr/bin/perl` and `$dir/usr/bin/perl$ver` are hard links meaning they are two names for the same file, so remove the latter versioned one `perl$ver`
 
 ## Other
 - Even-numbered subreleases (like `5.40.x` and `5.42.x`) are stable maintenance releases (see `INSTALL`)
@@ -148,4 +147,6 @@ $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 ### Online
 - https://perldoc.perl.org/Config
 - https://perldoc.perl.org/perlglossary
+- https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s06.html
+- https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s11.html
 - https://wiki.archlinux.org/title/Perl_package_guidelines
