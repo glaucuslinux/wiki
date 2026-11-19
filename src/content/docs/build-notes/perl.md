@@ -29,7 +29,7 @@ generate_uudmap.o: file not recognized: file format not recognized
 - It is better to use `-Accflags` to add preprocessor macros like `-DNO_TAINT_SUPPORT` and not optimization flags (see `INSTALL`)
 - Do not use `-Dccflags` as that overrides preprocessor macros defined in `hints/linux.sh` (see `INSTALL`)
 - It is better to use `-Doptimize` to completely override optimization flags for `perl`
-- No need to pass `-Accflags=-D_GNU_SOURCE` as `perl` already detects `musl` and passes it (see `hints/linux.sh`)
+- No need to pass `-Accflags=-D_GNU_SOURCE` as `perl` already detects `musl` and passes it (see `config.sh` after `Configure` is run and `hints/linux.sh`)
 - Explicitly specify `cc` using `-Dcc=clang` as `Configure` does not honor `$CC` (see `Configure` and `INSTALL`)
 - `-Dusemallocwrap` is enabled by default on `linux` (see `hints/linux.sh`)
 - `-Uusemymalloc` uses system `malloc` (e.g. `musl`) instead of bundled `malloc.c` and is the default on `linux` (see `hints/linux.sh`)
@@ -56,6 +56,19 @@ generate_uudmap.o: file not recognized: file format not recognized
 - `Configure` will build all supported extensions by default (e.g. `GDBM_File` if the gdbm library exists) (see `INSTALL`)
 - Prefer `-Dnoextensions='DB_File GDBM_File NDBM_File ODBM_File SDBM_File'` to `-Ui_db -Ui_ndbm -Ui_gdbm -Ui_odbm -Ui_sdbm` (see `INSTALL`)
 - Prefer `-Dnoextensions="Archive/Tar Compress/Raw/Bzip2 Compress/Raw/Zlib IO/Compress IO/Zlib XS/APItest XS/Typemap"` to `-Dnoextensions="Archive-Tar Compress-Raw-Bzip2 Compress-Raw-Zlib DB_File GDBM_File IO-Compress IO-Zlib NDBM_File ODBM_File SDBM_File XS-APItest XS-Typemap"` as the latter does not correctly detect extensions
+- Disabling `bzip2` and `zlib` via `-Dnoextensions` is enough and the following is not enough or needed after `-Dnoextensions`:
+```sh
+rm -fR cpan/Compress-Raw-Zlib/zlib-src
+rm -fR cpan/Compress-Raw-Bzip2/bzip2-src
+
+sed '/\(bzip2\|zlib\)-src/d' -i MANIFEST
+
+BUILD_BZIP2=0 \
+BUILD_ZLIB=0 \
+USE_ZLIB_NG=0 \
+./Configure \
+...
+```
 - Avoid `-Dhostgenerate`, `-Dhostperl`, `-Dsysroot`, `-Dtargetarch`, `-Dtargetdir`, `-Dtargetenv`, `-Dtargethost`, `-Dtargetuser` and `-Dusecrosscompile` as we only plan to natively compile `perl`  as cross compiling `perl` is a major hassle (see `INSTALL`)
 - `suidperl` is no longer available, use a separate privilege escalation tool (see `INSTALL`)
 - `miniperl` is a small temporary version of perl built automatically during the build process with enough functionality to bootstrap the rest of the build until the final `perl` binary is fully built (see `INSTALL`)
@@ -65,11 +78,19 @@ generate_uudmap.o: file not recognized: file format not recognized
 - `usesoname` is no longer available
 - Do not unset `-Ud_fpos64_t` and `-Ud_off64_t` as `musl` defines `fpos64_t` and `off64_t` so let the build system decide
 - Explicitly set `-Dd_sockaddr_in6` as musl defines `sockaddr_in6`
-- `siteprefix` is automatically set to `prefix`
+- `siteprefix` is automatically set to `prefix`, unlike `vendorprefix` which is not set by default (see `INSTALL`)
 - `Configure -d` disables `usedevel` and an explicit `-Dusedevel` is required to enable development builds if needed (see `INSTALL`)
 - Avoid `PERL_EXTERNAL_GLOB` as it is a legacy behavior retained only for `csh` (see `INSTALL`)
 - `perl`'s build system automatically detects `static_inline`
 - `less -is` is a simpler and saner default compared to `less -iRs`
+- Relying only on `-Dprefix=/usr` and `-Dvendorprefix=/usr` (as `-Dsiteprefix=/usr` is set by default implicitly) produces the following layout (which is not desirable):
+```sh
+$dir/usr/lib/perl5/5.42.0/x86_64-linux-thread-multi
+$dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
+```
+- `privlib`, `sitelib` and `vendorlib` are not architecture specific and contain pure `perl` code (not compiled) and should go under `/usr/share`
+- `archlib`, `sitearch` and `vendorarch` are architecture specific and contain compiled extensions and should go under `/usr/lib`
+- Do not embed version information or host/target tuples in install paths like `perl5/5.42.0` or `5.42.0/x86_64-linux-thread-multi`
 
 - Do not use `-Dinstallusrbinperl` as it force creates a symlink in `/usr/bin` even when we are installing in a custom staging directory
 - `scriptdir`, `sitescript` and `vendorscript` are automatically set to their relative `prefix/bin` where binaries and scripts are stored
