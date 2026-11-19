@@ -59,6 +59,7 @@ generate_uudmap.o: file not recognized: file format not recognized
 - Explicitly specify `-Dinc_version_list=none` to disable using older `perl` versions and modules (see `INSTALL`)
 - Avoid `-DDEBUGGING` as it bloats `perl` by a factor of 2x to 3x and use `-UDEBUGGING` instead (see `INSTALL`)
 - Avoid `-Dusedtrace` as `glaucus` does not provide `dtrace`
+- Avoid `-Dusemultiplicity` as `glaucus` does not provide or allow multiple `perl` versions to coexist (see `Configure`)
 - `Configure` will build all supported extensions by default (e.g. `GDBM_File` if the gdbm library exists) (see `INSTALL`)
 - Prefer `-Dnoextensions='DB_File GDBM_File NDBM_File ODBM_File SDBM_File'` to `-Ui_db -Ui_ndbm -Ui_gdbm -Ui_odbm -Ui_sdbm` (see `INSTALL`)
 - Prefer `-Dnoextensions="Archive/Tar Compress/Raw/Bzip2 Compress/Raw/Zlib IO/Compress IO/Zlib XS/APItest XS/Typemap"` to `-Dnoextensions="Archive-Tar Compress-Raw-Bzip2 Compress-Raw-Zlib DB_File GDBM_File IO-Compress IO-Zlib NDBM_File ODBM_File SDBM_File XS-APItest XS-Typemap"` as the latter does not correctly detect extensions
@@ -100,6 +101,9 @@ $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 - `scriptdir`, `sitescript` and `vendorscript` are automatically set to `$prefix/bin` where binaries and scripts are stored (see `config.sh` after running `Configure`)
 - `PERL_MM_USE_DEFAULT=1` uses default values when answering questions for later `cpan` and `module` builds
 - `-Dinstallusrbinperl` does nothing with our configure options as it ensure `/usr/bin/perl` exists which it does given our paths
+- `-Ddefault_inc_excludes_dot` is set by default and `-Udefault_inc_excludes_dot` turns on the old less secure behavior (see `INSTALL`)
+- Explicitly specify `-Uusecbacktrace` to disable `backtrace` support for a slightly smaller `perl`
+- Explicitly specify `-Uuselanginfo` to disable `locale` support and also pass `-Accflags=-DNO_LOCALE` to ensure `I18N/Langinfo.pm` and `I18N/Langinfo/Langinfo.so` are not getting installed in `/usr/lib/perl5/core_perl` (no need to pass `-Dnoextensions='I18N/Langinfo I18N/Collate I18N/LangTags'` as it has no effect)
 
 ## Build
 - `make realclean` is equivalent to `make clean`
