@@ -6,7 +6,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## TODO
 ### Configure
 - Check if we need `-Dar=llvm-ar`, `-Dld=ld.lld`, `-Dnm=llvm-nm` and `-Dranlib=llvm-ranlib` or if the regular symlinks `ar`, `nm` and `ranlib` are already provided by `llvm`
-- Check if we can disable more extensions (see `cpan/`, `dist/` and `ext/`)
+- Check if we can disable more extensions (see `cpan/`, `dist/` and `ext/`) (also check `extensions` and `known_extensions` in `config.sh` after running `Configure`)
 ### Build
 - Check if `perl` still does not build with `lto` enabled (particularly `-flto=thin`):
 ```c
@@ -49,7 +49,7 @@ generate_uudmap.o: file not recognized: file format not recognized
 - Avoid `-Duselongdouble` as it may double memory overhead and cause non-deterministic behavior on `musl`
 - Avoid `-Dusesocks` as it configures `perl` to be "socksified" (linked against `libsocks`) (see `INSTALL`)
 - Avoid `-Uusedl` as it forces `perl` to be compiled completely statically (see `INSTALL`)
-- `-Duseshrplib` provides a shared `perl` library `libperl.so` and this comes with a performance penalty (see `INSTALL`)
+- `-Duseshrplib` provides a shared `perl` library `libperl.so` and this comes with a performance penalty; however, not using it results in a larger install and a static `libperl.a` (see `INSTALL`)
 - `$prefixexp` is generated from `$prefix`, with `~` expansion done to convert home directories into absolute paths (see `INSTALL`)
 - `-Dman1dir=none` and `-Dman3dir=none` should "in theory" disable man pages but `installman` installs them regardless (see `INSTALL`)
 - `man1dir`, `man3dir`, `siteman1dir`, `siteman3dir`, `vendorman1dir` and `vendorman3dir` all default to `/usr/man/man1` and `/usr/man/man3` respectively which is not desired but we do not care as we install `perl` using the `install.perl` target (see `Policy_sh.SH`)
@@ -104,6 +104,9 @@ $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 - `-Ddefault_inc_excludes_dot` is set by default and `-Udefault_inc_excludes_dot` turns on the old less secure behavior (see `INSTALL`)
 - Explicitly specify `-Uusecbacktrace` to disable `backtrace` support for a slightly smaller `perl`
 - Explicitly specify `-Uuselanginfo` to disable `locale` support and also pass `-Accflags=-DNO_LOCALE` to ensure `I18N/Langinfo.pm` and `I18N/Langinfo/Langinfo.so` are not getting installed in `/usr/lib/perl5/core_perl` (no need to pass `-Dnoextensions='I18N/Langinfo I18N/Collate I18N/LangTags'` as it has no effect)
+- Do not use `-Ud_uselocale` as it does not disable `perl` locale support and instead unsets feature detection of `uselocale` which `musl` supports
+- Do not use `-Accflags='-DNO_POSIX_2008_LOCALE -DNO_THREAD_SAFE_LOCALE'` as they let `perl` fallback to the old non-thread safe locale support (see `pod/perllocale.pod`)
+- `usevfork` is disabled by default on `linux` unlike `freebsd` (see `hints/linux.sh`)
 
 ## Build
 - `make realclean` is equivalent to `make clean`
@@ -146,6 +149,7 @@ $dir/usr/lib/perl5/site_perl/5.42.0/x86_64-linux-thread-multi
 - hints/linux.sh
 - hints/README.hints
 - Makefile.SH
+- pod/perllocale.pod
 - Policy_sh.SH
 - Porting/Glossary
 ### Online

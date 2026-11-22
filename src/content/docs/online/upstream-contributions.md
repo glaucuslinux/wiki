@@ -358,4 +358,5 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Issue #565: [Is `bash` a requirement?](https://github.com/zlib-ng/zlib-ng/issues/565)
 
 ## zstd
-- Issue #4004: [Why was the new release `1.5.6` removed?](https://github.com/facebook/zstd/issues/4004)
+- Issue #4004: [Why was the new release `1.5.6` removed?](https://github.com/meta/zstd/issues/4004)
+- Pull Request #4858: [Fix `zstd-nolegacy` cli target name in `programs/README.md`](https://github.com/meta/zstd/pull/4858)
