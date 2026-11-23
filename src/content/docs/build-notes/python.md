@@ -15,20 +15,22 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## Prepare
-- Depends on external `mpdecimal` as bundled version was removed as of `3.16`
 - `autoreconf` breaks build
+- Depends on external `mpdecimal` as bundled version was removed as of `3.16`
+- Depends on `which`
 
 ## Build
 - Do not build `python` out-of-tree as it attempts to clean the directory `./build` and errors out doing so
 
 ## Configure
-- `universalsdk` and `framework` are `macos` specific and are disabled by default (see `configure.ac` and `Mac/README.rst`)
+- `universalsdk` and `framework` are `macos` specific and are disabled by default on `linux` (see `configure.ac` and `Mac/README.rst`)
 - `wasm-dynamic-linking` and `--enable-wasm-pthreads` are `wasm` specific and are also disabled by default (see `configure.ac` and `Mac/README.rst`)
 - `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc`)
 - `profiling` and `pystats` are disabled by default (see `configure.ac`)
 - Do not enable `optimizations` as it enables `pgo` which runs tests (some of which may hang) and collects profiling data to improve performance and is disabled by default (it also requires `llvm-profdata`) (see `configure.ac`)
 - Do not enable `bolt` as it runs the post-link optimizer `llvm-bolt` after `pgo` which requires profiling data from representative workloads and is disabled by default (see `configure.ac`)
 - Explicitly enable `safety` as it adds `-fstack-protector-strong`, `-Wtrampolines`, `-Wimplicit-fallthrough`, `-Werror=format-security`, `-Wbidi-chars=any` and `-Wall` to `CFLAGS` and is disabled by default (see `configure.ac`)
+- `clang` does not support `-Wtrampolines` and `-Wbidi-chars=any` as it does not implement `gcc`'s nested functions
 - Explicitly enable `slower-safety` as it adds `-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3` to `CFLAGS` and is disabled by default (see `configure.ac`) (glaucus already has `-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -isystem /usr/include/fortify` in the global `CPPFLAGS`)
 - `experimental-jit` is disabled by default and enabling it requires `gil` which glaucus disables in favor of a free-threaded `python` (see `.configure.ac`)
 - `loadable-sqlite-extensions` are disabled by default (see `configure.ac`)
@@ -41,6 +43,14 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--with-framework-name` is `macos` specific and is meaningless on `linux` where `framework` is disabled by default (see `configure.ac` and `Mac/README.rst`)
 - `--with-app-store-compliance` is `macos` specific and is meaningless on `linux` (see `configure.ac` and `Mac/README.rst`)
 - Do not set executable suffix `--with-suffix` and leave the default value which is empty on `linux` (see `configure.ac`)
+- Explicitly disable `static-libpython` as it is enabled by default (see `configure.ac`)
+- `pydebug` and `assertions` are disabled by default (see `configure.ac`)
+- `trace-refs` are disabled by default and enabling them requires `gil` which glaucus disables (see `configure.ac`)
+- `lto` is disabled by default so explicitly specify `--with-lto=thin` as glaucus defaults to `clang` (this also requires `llvm-ar`) (see `configure.ac`)
+- `strict-overflow` is disabled by default, this means that `-fno-strict-overflow` is passed which prevents the compiler from performing this optimization that may cause code miscompilations (see `configure.ac`)
+- `dsymutil` is `macos` specific and is disabled by default on `linux` (see `configure.ac`)
+- `address-sanitizer`, `memory-sanitizer`, `undefined-behavior-sanitizer` and `thread-sanitizer` are fragile on `musl` and are disabled by default, they also disable `pymalloc` (when they are enabled) as it interferes with the sanitizers (see `configure.ac`)
+- `hash-algorithm` defaults to `siphash13` as `siphash24` is older and `fnv` is not as cryptographically strong (see `configure.ac`)
 
 - Remove the `pip` symlinks in install if it is not being installed
 - Alpine and Arch provide "Externally Managed" python
@@ -81,6 +91,7 @@ sed -i 's@return readline@return feedline@' configure
 - https://docs.python.org/3/howto/free-threading-python.html
 - https://docs.python.org/3/using/configure.html
 - https://packaging.python.org/en/latest/specifications/externally-managed-environments/
+- https://peps.python.org/pep-0456/
 - https://peps.python.org/pep-0644/
 - https://peps.python.org/pep-0668/
 - https://rfc.archlinux.page/0010-adopt-pep517-tooling/
