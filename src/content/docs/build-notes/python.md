@@ -6,7 +6,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## TODO
 ### Prepare
 - Check if `libgcov.a` from `gcc` is required
-- Check if `gdbm` is required
 - Check if `python` still supports `libressl`
 - Check if `zstd` is required
 ### Package
@@ -16,7 +15,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 
 ## Prepare
 - `autoreconf` breaks build
-- Depends on external `mpdecimal` as bundled version was removed as of `3.16`
+- Depends on system `expat` and `mpdecimal` as bundled version is scheduled for removal in `3.16` (see `configure.ac`)
 - Depends on `which`
 
 ## Build
@@ -25,7 +24,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Configure
 - `universalsdk` and `framework` are `macos` specific and are disabled by default on `linux` (see `configure.ac` and `Mac/README.rst`)
 - `wasm-dynamic-linking` and `--enable-wasm-pthreads` are `wasm` specific and are also disabled by default (see `configure.ac` and `Mac/README.rst`)
-- `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc`)
+- `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc`) (see `configure.ac`)
 - `profiling` and `pystats` are disabled by default (see `configure.ac`)
 - Do not enable `optimizations` as it enables `pgo` which runs tests (some of which may hang) and collects profiling data to improve performance and is disabled by default (it also requires `llvm-profdata`) (see `configure.ac`)
 - Do not enable `bolt` as it runs the post-link optimizer `llvm-bolt` after `pgo` which requires profiling data from representative workloads and is disabled by default (see `configure.ac`)
@@ -51,6 +50,20 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `dsymutil` is `macos` specific and is disabled by default on `linux` (see `configure.ac`)
 - `address-sanitizer`, `memory-sanitizer`, `undefined-behavior-sanitizer` and `thread-sanitizer` are fragile on `musl` and are disabled by default, they also disable `pymalloc` (when they are enabled) as it interferes with the sanitizers (see `configure.ac`)
 - `hash-algorithm` defaults to `siphash13` as `siphash24` is older and `fnv` is not as cryptographically strong (see `configure.ac`)
+- `--without-tzpath` and `--with-tzpath=no` are invalid so leave the default value (see `configure.ac`)
+- Do not use `--without-libs` as it does not link against any additional libs by default (see `configure.ac`)
+- Explicitly use `--with-system-expat` as the bundled version is used by default (see `configure.ac`)
+- `--with-system-libmpdec` is used by default as the bundled version is scheduled for removal in `3.16` (see `configure.ac`)
+- `--with-decimal-contextvar` defaults to `coroutine-local` rather than `thread-local` context which is better for modern `python` and `async` code (see `configure.ac`)
+- `--without-dbmliborder` and `--with-dbmliborder=no` are invalid so leave the default value `gdbm:ndbm:bdb` as it only controls the detection order for the optional `dbm.ndbm` module and does not make `python` depend on `bdb`, `gdbm`, `ndbm` (see `configure.ac`)
+- Explicitly disable `doc-strings` as they are enabled by default (see `configure.ac`)
+- Force enable the bundled `mimalloc` as we already disable the `gil` and the default is to check for `stdatomic.h` (see `configure.ac`)
+- Explicitly disable `pymalloc` as it requires the `gil` which we disable (see `configure.ac`)
+- `c-locale-coercion` is enabled by default and it prevents `python` from "misbehaving" on a `UTF-8` byte (see `configure.ac`)
+- `valgrind` and `dtrace` are disabled by default (see `configure.ac`)
+- No need to specify `--with-libm` as it defaults to `-lm` (see `configure.ac`)
+- No need to specify `--with-libc` as the default value is empty so leave it (see `configure.ac`)
+- No need to specify `--with-platlibdir` as it defaults to `lib` and glaucus does not support or provide `lib64` (see `configure.ac`)
 
 - Remove the `pip` symlinks in install if it is not being installed
 - Alpine and Arch provide "Externally Managed" python
