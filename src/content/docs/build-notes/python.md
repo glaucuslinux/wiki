@@ -3,20 +3,10 @@ title: python
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
-## TODO
-### Configure
-- Check if the `repl` works when `--without-readline` is used (instead of `--with-readline=editline`)
-### Package
-- Check if we should create symlinks for `idle`, `pip` and `pydoc` to their `3` versions or are they not being installed in the first place?
-- No need to provide an `EXTERNALLY-MANAGED` file as we want users to use `pip` to manage python packages
-- Should we allow `pip` and other programming languages package managers to run as root alongside `rad`?; `cp externally-managed /usr/lib/python3.13/EXTERNALLY-MANAGED`
-
----
-
 ## Prepare
 - `autoreconf` breaks build
 - Depends on system `expat` and `mpdecimal` as bundled version is scheduled for removal in `3.16` (see `configure.ac`)
-- Depends on `which`
+- Depends on `which` in `$PATH`
 - Depends on `libgcov.a` from `gcc` when `--enable-optimizations` is enabled for `pgo`
 - No need to manually remove modules under `Modules/` as both `expat` and `mpdecimal` support the `--with-system` switch and `test-modules` can be explicitly disabled
 
@@ -68,7 +58,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - No need to specify `--with-libc` as the default value is empty so leave it (see `configure.ac`)
 - No need to specify `--with-platlibdir` as it defaults to `lib` and glaucus does not support or provide `lib64` (see `configure.ac`)
 - No need to specify `--with-wheel-pkg-dir` as it is empty by default and glaucus already disables `ensurepip` (see `configure.ac`)
-- Explicitly specify `--with-readline=editline` as it defaults to `readline` and do not specify `--without-readline` as it disables the module entirely in the `repl` (see `configure.ac`)
+- Explicitly disable the `readline` module using `--without-readline` as it defaults to `readline` and the `repl` now relies on `pyrepl` as of `3.13` (this will cause issues when `import readline` is used, but the `repl` still works, and even then `python` is only provided to satisfy some build scripts) (see `configure.ac`)
 - Explicitly specify `--with-computed-gotos` as the default is to check for support which `clang` has (see `configure.ac`)
 - Explicitly disable `computed-gotos` as `python` checks then enables it by default (see `configure.ac`)
 - Explicitly enable the `tail-call` interpreter as `python` disables it by default (see `configure.ac`)
@@ -76,24 +66,16 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - Prefer the relatively newer `tail-call` interpreter over the older `computed-gotos` interpreter
 - The `tail-call` interpreter benefits greatly when `clang` is used and with `--enable-optimizations` which we currently disable
 - Explicitly disable `remote-debug` as it is enabled by default (see `configure.ac`)
-- Explicitly disable `ensurepip` as the default is to `upgrade` using bundled `pip` (see `configure.ac`)
+- Explicitly disable `ensurepip` as the default is to `upgrade` using bundled `pip` after `make install` (this does not prevent `ensurepip` from being installed so we'll have to manually remove it) (see `configure.ac`)
 - Do not set `--with-openssl` as glaucus already installs `libressl` system-wide (which is compatible with `openssl` paths)
 - `--with-openssl-rpath` is disabled by default (see `configure.ac`)
 - Only set `--with-openssl=$customDir/usr` and `--with-openssl-rpath=auto` when `libressl` is installed inside `$customDir` (e.g. when building on a host machine with a different `ssl` library that we want to avoid, may also require `LDFLAGS=-L$customDir/usr/lib`)
 - Explicitly specify `--with-ssl-default-suites=openssl` as it defaults to `python` which is a curated set of strict selections and while that is generally better than untouched defaults on systems that use regular `openssl`, it is not necessarily the better option on glaucus as we use `libressl` and trust its defaults (see `configure.ac`)
 - No need to specify `--with-builtin-hashlib-hashes` as it defaults to `md5,sha1,sha2,sha3,blake2` which is good (see `configure.ac`)
+- `--with-system-ffi` was removed (see `Misc/HISTORY` and `Misc/NEWS`)
 
-- Alpine and Arch provide "Externally Managed" python
-- `--with-system-ffi` has been deprecated
-- Consider adding `-DLIBEDIT_SUPPORT` to `EXTRA_CFLAGS`
-- For `libedit` support, sabotage also does:
-```
-# Apple is not the only platform where libedit is used
-sed -i 's/__APPLE__/LIBEDIT_SUPPORT/g' Modules/readline.c
-# workaround readline bug by removing unnecessary strdup/setlocale calls
-sed -i 's/HAVE_SETLOCALE/HAVE_SETLOCALE) \&\& !defined(LIBEDIT_SUPPORT/g' Modules/readline.c
-sed -i 's@return readline@return feedline@' configure
-```
+## Package
+- No need to provide an `EXTERNALLY-MANAGED` marker file as we disable `ensurepip` post `make install` then manually remove the module
 
 ## References
 ### Offline
