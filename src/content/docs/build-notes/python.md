@@ -4,12 +4,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## TODO
-### Prepare
-- Check if `libgcov.a` from `gcc` is required
-- Check if `python` still supports `libressl`
-- Check if `zstd` is required
+### Configure
+- Check if the `repl` works when `--without-readline` is used (instead of `--with-readline=editline`)
 ### Package
-- Check if we should create symlinks for `idle`, `pip` and `pydoc` to their `3` versions
+- Check if we should create symlinks for `idle`, `pip` and `pydoc` to their `3` versions or are they not being installed in the first place?
+- No need to provide an `EXTERNALLY-MANAGED` file as we want users to use `pip` to manage python packages
+- Should we allow `pip` and other programming languages package managers to run as root alongside `rad`?; `cp externally-managed /usr/lib/python3.13/EXTERNALLY-MANAGED`
 
 ---
 
@@ -17,6 +17,8 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `autoreconf` breaks build
 - Depends on system `expat` and `mpdecimal` as bundled version is scheduled for removal in `3.16` (see `configure.ac`)
 - Depends on `which`
+- Depends on `libgcov.a` from `gcc` when `--enable-optimizations` is enabled for `pgo`
+- No need to manually remove modules under `Modules/` as both `expat` and `mpdecimal` support the `--with-system` switch and `test-modules` can be explicitly disabled
 
 ## Build
 - Do not build `python` out-of-tree as it attempts to clean the directory `./build` and errors out doing so
@@ -24,6 +26,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ## Configure
 - `universalsdk` and `framework` are `macos` specific and are disabled by default on `linux` (see `configure.ac` and `Mac/README.rst`)
 - `wasm-dynamic-linking` and `--enable-wasm-pthreads` are `wasm` specific and are also disabled by default (see `configure.ac` and `Mac/README.rst`)
+- `--enable-shared` provides a shared `python` library `libpython.so` which comes with a performance penalty like `perl`'s `-Duseshrplib`
 - `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc`) (see `configure.ac`)
 - `profiling` and `pystats` are disabled by default (see `configure.ac`)
 - Do not enable `optimizations` as it enables `pgo` which runs tests (some of which may hang) and collects profiling data to improve performance and is disabled by default (it also requires `llvm-profdata`) (see `configure.ac`)
@@ -64,21 +67,24 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - No need to specify `--with-libm` as it defaults to `-lm` (see `configure.ac`)
 - No need to specify `--with-libc` as the default value is empty so leave it (see `configure.ac`)
 - No need to specify `--with-platlibdir` as it defaults to `lib` and glaucus does not support or provide `lib64` (see `configure.ac`)
+- No need to specify `--with-wheel-pkg-dir` as it is empty by default and glaucus already disables `ensurepip` (see `configure.ac`)
+- Explicitly specify `--with-readline=editline` as it defaults to `readline` and do not specify `--without-readline` as it disables the module entirely in the `repl` (see `configure.ac`)
+- Explicitly specify `--with-computed-gotos` as the default is to check for support which `clang` has (see `configure.ac`)
+- Explicitly disable `computed-gotos` as `python` checks then enables it by default (see `configure.ac`)
+- Explicitly enable the `tail-call` interpreter as `python` disables it by default (see `configure.ac`)
+- `clang` supports both the older `computed-gotos` interpreter and the relatively newer `tail-call` interpreter
+- Prefer the relatively newer `tail-call` interpreter over the older `computed-gotos` interpreter
+- The `tail-call` interpreter benefits greatly when `clang` is used and with `--enable-optimizations` which we currently disable
+- Explicitly disable `remote-debug` as it is enabled by default (see `configure.ac`)
+- Explicitly disable `ensurepip` as the default is to `upgrade` using bundled `pip` (see `configure.ac`)
+- Do not set `--with-openssl` as glaucus already installs `libressl` system-wide (which is compatible with `openssl` paths)
+- `--with-openssl-rpath` is disabled by default (see `configure.ac`)
+- Only set `--with-openssl=$customDir/usr` and `--with-openssl-rpath=auto` when `libressl` is installed inside `$customDir` (e.g. when building on a host machine with a different `ssl` library that we want to avoid, may also require `LDFLAGS=-L$customDir/usr/lib`)
+- Explicitly specify `--with-ssl-default-suites=openssl` as it defaults to `python` which is a curated set of strict selections and while that is generally better than untouched defaults on systems that use regular `openssl`, it is not necessarily the better option on glaucus as we use `libressl` and trust its defaults (see `configure.ac`)
+- No need to specify `--with-builtin-hashlib-hashes` as it defaults to `md5,sha1,sha2,sha3,blake2` which is good (see `configure.ac`)
 
-- Remove the `pip` symlinks in install if it is not being installed
 - Alpine and Arch provide "Externally Managed" python
-- Unable to use upstream binaries
-- Alpine uses stack size patches to avoid segfaults with `sys.getrecursionlimit()`
-- Adelie patches `posixmodule.h` to define `int login_tty(int);` as musl supports it
 - `--with-system-ffi` has been deprecated
-- No need to provide an `EXTERNALLY-MANAGED` file as we want users to use `pip` to manage python packages
-- Should we allow `pip` and other programming languages package managers to run as root alongside `rad`?; `cp externally-managed /usr/lib/python3.13/EXTERNALLY-MANAGED`
-- Do we need to explicitly pass `--with-openssl=/usr`?
-- Do we need to specify these?
-```
-ac_cv_header_bluetooth_bluetooth_h=no
-ac_cv_header_bluetooth_h=no
-```
 - Consider adding `-DLIBEDIT_SUPPORT` to `EXTRA_CFLAGS`
 - For `libedit` support, sabotage also does:
 ```
@@ -101,6 +107,7 @@ sed -i 's@return readline@return feedline@' configure
 - pyconfig.h.in
 - README.rst
 ### Online
+- https://blog.nelhage.com/post/cpython-tail-call/
 - https://docs.python.org/3/howto/free-threading-python.html
 - https://docs.python.org/3/using/configure.html
 - https://packaging.python.org/en/latest/specifications/externally-managed-environments/
