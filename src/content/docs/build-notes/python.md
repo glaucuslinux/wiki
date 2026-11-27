@@ -3,15 +3,20 @@ title: python
 description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
+## TODO
+### Build
+- Check if it builds with `--pack-dyn-relocs=relr`
+- Check if we need to specify stack size in flags using `LDFLAGS="-Wl,-z,stack-size=$size"` and `CPPFLAGS="-DTHREAD_STACK_SIZE=$size"` where `size=0x200000` (2 MB)
+
+---
+
 ## Prepare
 - `autoreconf` breaks build
+- `Modules/_ssl.c` as of version `3.14.2` requires patching to work with `libressl` version `4.2.1`
 - Depends on system `expat` and `mpdecimal` as bundled version is scheduled for removal in `3.16` (see `configure.ac`)
 - Depends on `which` in `$PATH`
 - Depends on `libgcov.a` from `gcc` when `--enable-optimizations` is enabled for `pgo`
 - No need to manually remove modules under `Modules/` as both `expat` and `mpdecimal` support the `--with-system` switch and `test-modules` can be explicitly disabled
-
-## Build
-- Do not build `python` out-of-tree as it attempts to clean the directory `./build` and errors out doing so
 
 ## Configure
 - `universalsdk` and `framework` are `macos` specific and are disabled by default on `linux` (see `configure.ac` and `Mac/README.rst`)
@@ -74,13 +79,19 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - No need to specify `--with-builtin-hashlib-hashes` as it defaults to `md5,sha1,sha2,sha3,blake2` which is good (see `configure.ac`)
 - `--with-system-ffi` was removed (see `Misc/HISTORY` and `Misc/NEWS`)
 
+## Build
+- Do not build `python` out-of-tree as it attempts to clean the directory `./build` and errors out doing so
+- No need to specify `CFLAGS_NODIST`, `CXXFLAGS_NODIST` and `LDFLAGS_NODIST` as build system automatically picks up global `$CFLAGS`, `$CXXFLAGS` and `$LDFLAGS`
+
 ## Package
 - All `install` targets use `all` target as synchronization point to prevent race conditions with `pgo` builds (see `Makefile.pre.in`)
 - `installapps`, `installunixtools`, `altinstallunixtools` and `installextras` targets are `macos` specific
 - `commoninstall` target includes `altbininstall`, `libinstall`, `inclinstall`, `libainstall`, `sharedinstall` and `altmaninstall`
 - `altinstall` calls `commoninstall`
 - `bininstall` also calls `commoninstall`
-- Manually strip `/usr/lib/libpython3.14t.so.1.0` using `--strip-unneeded` to avoid breakages as `STRIPFLAGS=-s` only strips binaries (see `Makefile.pre.in`)
+- Either manually strip `/usr/lib/libpython3.14t.so.1.0` using `--strip-unneeded` (as `STRIPFLAGS=-s` only strips binaries) or rely on `--strip-all` in our global `$LDFLAGS` to do so (see `Makefile.pre.in`)
+- We manually remove `ensurepip/`, `idlelib/`, `pydoc*`, `tkinter/` and `turtle*` as we have no use for `gui` and `ide` packages
+- No need to manually remove `readme`, `changelog`, `todo` or `news` files as they are mostly under `$dir/usr/lib/python3.14t/idlelib/` which we explicitly remove
 - No need to provide an `EXTERNALLY-MANAGED` marker file as we disable `ensurepip` post `make install` then manually remove the module
 
 ## References

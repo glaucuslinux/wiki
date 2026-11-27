@@ -8,7 +8,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 CFLAGS="-O2 -flto=thin -march=x86-64-v3 -mtls-dialect=gnu2 -fdata-sections -ffunction-sections -fno-plt -fstack-clash-protection -fstack-protector-strong -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-ident"
 CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -isystem /usr/include/fortify"
 CXXFLAGS="$CFLAGS"
-LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,--icf=safe,-z,defs,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,--strip-all $CFLAGS"
+LDFLAGS="-Wl,-O2,--as-needed,--gc-sections,--icf=safe,-z,now,-z,separate-code,--build-id=none,--hash-style=gnu,--pack-dyn-relocs=relr,--strip-all $CFLAGS"
 ```
 
 ## GNU Flags (`gcc` + `bfd`) (No Longer Used)
@@ -504,7 +504,7 @@ Nim Output /usr/bin/ld: unrecognized option '--rosegment'
 ### `-z,defs` and `-z,text`
 - `-z,text` enforces `Write XOR Execute (W^X)`
 - `lld` defaults to `-z,text` (see `lld/ELF/Driver.cpp` (`ctx.arg.zText = getZFlag(args, "text", "notext", true);`))
-- `lld` uses `-z,defs` by default when linking executables as `--no-allow-shlib-undefined` is enabled; however, when linking shared libraries `-shared` defaults to `--allow-shlib-undefined` which turns off `-z,defs` (see `lld/ELF/Driver.cpp` (`bool diagRegular = !ctx.arg.shared, diagShlib = !ctx.arg.shared;`) and `lld/test/ELF/zdefs.s`) and it also implies `--unresolved-symbols=ignore-all` because missing symbols are likely to be resolved at runtime
+- `lld` defaults to `-z,defs` when linking executables as `--no-allow-shlib-undefined` is enabled; however, when linking shared libraries `-shared` defaults to `--allow-shlib-undefined` which turns off `-z,defs` (see `lld/ELF/Driver.cpp` (`bool diagRegular = !ctx.arg.shared, diagShlib = !ctx.arg.shared;`) and `lld/test/ELF/zdefs.s`) and it also implies `--unresolved-symbols=ignore-all` because missing symbols are likely to be resolved at runtime, so do not force `-z,defs` in the global `LDFLAGS` as it may break shared libraries for certain packages like `libpython$ver.so`
 - `hardened_malloc` builds with `-z,text` and `-z,defs` by default
 - https://maskray.me/blog/dependency-related-linker-options
 
