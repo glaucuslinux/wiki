@@ -9,7 +9,6 @@ description: An opinionated Linux® distribution based on musl libc and toybox
   - `bash`
   - `bison`: not yet used but under consideration
   - `fribidi`: a build-time dependency for `pango`
-  - `gdbm`: a dependency for `python`; does `--with-dbmliborder=gdbm:ndbm` imply order only?
   - `gperf`: a build-time dependency for `basu`, `fontconfig` and `m4`
   - `less`
   - `m4`

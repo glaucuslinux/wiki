@@ -17,7 +17,7 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `universalsdk` and `framework` are `macos` specific and are disabled by default on `linux` (see `configure.ac` and `Mac/README.rst`)
 - `wasm-dynamic-linking` and `--enable-wasm-pthreads` are `wasm` specific and are also disabled by default (see `configure.ac` and `Mac/README.rst`)
 - `--enable-shared` provides a shared `python` library `libpython.so` which comes with a performance penalty like `perl`'s `-Duseshrplib`
-- `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc`) (see `configure.ac`)
+- `--disable-gil` enables free threading support for `python` by disabling the `gil` which improves multi-threaded performance and causes a slight overhead for single-threaded workloads (it also strictly relies on the bundled `mimalloc` and not `pymalloc` and renames `/usr/lib/python3.14` to `/usr/lib/python3.14t`) (see `configure.ac`)
 - `profiling` and `pystats` are disabled by default (see `configure.ac`)
 - Do not enable `optimizations` as it enables `pgo` which runs tests (some of which may hang) and collects profiling data to improve performance and is disabled by default (it also requires `llvm-profdata`) (see `configure.ac`)
 - Do not enable `bolt` as it runs the post-link optimizer `llvm-bolt` after `pgo` which requires profiling data from representative workloads and is disabled by default (see `configure.ac`)
@@ -75,6 +75,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 - `--with-system-ffi` was removed (see `Misc/HISTORY` and `Misc/NEWS`)
 
 ## Package
+- All `install` targets use `all` target as synchronization point to prevent race conditions with `pgo` builds (see `Makefile.pre.in`)
+- `installapps`, `installunixtools`, `altinstallunixtools` and `installextras` targets are `macos` specific
+- `commoninstall` target includes `altbininstall`, `libinstall`, `inclinstall`, `libainstall`, `sharedinstall` and `altmaninstall`
+- `altinstall` calls `commoninstall`
+- `bininstall` also calls `commoninstall`
+- Manually strip `/usr/lib/libpython3.14t.so.1.0` using `--strip-unneeded` to avoid breakages as `STRIPFLAGS=-s` only strips binaries (see `Makefile.pre.in`)
 - No need to provide an `EXTERNALLY-MANAGED` marker file as we disable `ensurepip` post `make install` then manually remove the module
 
 ## References
