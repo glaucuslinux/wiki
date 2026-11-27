@@ -11,8 +11,12 @@ description: An opinionated Linux® distribution based on musl libc and toybox
 ---
 
 ## Prepare
+- As of `python` version `3.14.2` to work with `libressl` version `4.2.1` the following are needed:
+  - patch `Modules/_ssl.c` as `libressl` does not declare `X509_VERIFY_PARAM_get_hostflags`
+  - patch `Modules/_hashopenssl.c` as `libressl` lacks `NID_id_scrypt` and `EVP_MD_FLAG_XOF`
+  - pass `ac_cv_working_openssl_hashlib=yes` to `./configure` as `libressl` does not find `_hashlib`
+- `musl` does not ship with `ldconfig` which is why a manual search patch from alpine for `Lib/ctypes/util.py` is required
 - `autoreconf` breaks build
-- `Modules/_ssl.c` as of version `3.14.2` requires patching to work with `libressl` version `4.2.1`
 - Depends on system `expat` and `mpdecimal` as bundled version is scheduled for removal in `3.16` (see `configure.ac`)
 - Depends on `which` in `$PATH`
 - Depends on `libgcov.a` from `gcc` when `--enable-optimizations` is enabled for `pgo`
